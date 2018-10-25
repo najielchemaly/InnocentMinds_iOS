@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RegisterChildStep1CollectionViewCell" id="gTV-IL-0wX" customClass="RegisterChildStep1CollectionViewCell" customModule="innocentminds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7O-xQ-Iyt">
+                        <rect key="frame" x="0.0" y="62.5" width="275" height="150"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kJP-qp-QXo">
+                                <rect key="frame" x="8" y="0.0" width="259" height="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="h1f-eg-2hK"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYA-bh-7NJ">
+                                <rect key="frame" x="0.0" y="50" width="275" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="n75-U1-ORL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Il7-QS-j2H">
+                                <rect key="frame" x="8" y="50" width="259" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eej-te-y0J"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="amk-Zf-HUp"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvB-NX-RT1">
+                                <rect key="frame" x="0.0" y="99" width="275" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fEl-Uo-UUk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's Date of birth" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDU-xV-FAx">
+                                <rect key="frame" x="8" y="100" width="259" height="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="Rod-Fq-ule"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="DYA-bh-7NJ" firstAttribute="top" secondItem="kJP-qp-QXo" secondAttribute="bottom" id="64I-Yp-Lkg"/>
+                            <constraint firstItem="Il7-QS-j2H" firstAttribute="centerY" secondItem="q7O-xQ-Iyt" secondAttribute="centerY" id="9h2-aF-R13"/>
+                            <constraint firstAttribute="height" constant="150" id="Au0-qz-uzh"/>
+                            <constraint firstAttribute="trailing" secondItem="Il7-QS-j2H" secondAttribute="trailing" constant="8" id="CZR-X2-pMe"/>
+                            <constraint firstItem="RDU-xV-FAx" firstAttribute="leading" secondItem="q7O-xQ-Iyt" secondAttribute="leading" constant="8" id="JjD-EL-Pye"/>
+                            <constraint firstAttribute="trailing" secondItem="DYA-bh-7NJ" secondAttribute="trailing" id="NnO-9G-I10"/>
+                            <constraint firstItem="GvB-NX-RT1" firstAttribute="bottom" secondItem="Il7-QS-j2H" secondAttribute="bottom" id="RGW-7K-Y0E"/>
+                            <constraint firstItem="DYA-bh-7NJ" firstAttribute="top" secondItem="Il7-QS-j2H" secondAttribute="top" id="TTI-Os-izs"/>
+                            <constraint firstAttribute="bottom" secondItem="RDU-xV-FAx" secondAttribute="bottom" id="UgI-ef-nHw"/>
+                            <constraint firstAttribute="trailing" secondItem="kJP-qp-QXo" secondAttribute="trailing" constant="8" id="WSu-km-hzc"/>
+                            <constraint firstItem="RDU-xV-FAx" firstAttribute="top" secondItem="Il7-QS-j2H" secondAttribute="bottom" id="ZAc-bj-fAJ"/>
+                            <constraint firstItem="kJP-qp-QXo" firstAttribute="top" secondItem="q7O-xQ-Iyt" secondAttribute="top" id="a1p-1f-cDm"/>
+                            <constraint firstItem="DYA-bh-7NJ" firstAttribute="leading" secondItem="q7O-xQ-Iyt" secondAttribute="leading" id="bxO-8u-byt"/>
+                            <constraint firstAttribute="trailing" secondItem="GvB-NX-RT1" secondAttribute="trailing" id="ckG-v5-7IT"/>
+                            <constraint firstItem="kJP-qp-QXo" firstAttribute="leading" secondItem="q7O-xQ-Iyt" secondAttribute="leading" constant="8" id="gRz-SO-QR6"/>
+                            <constraint firstItem="GvB-NX-RT1" firstAttribute="leading" secondItem="q7O-xQ-Iyt" secondAttribute="leading" id="i2X-6s-CW2"/>
+                            <constraint firstAttribute="trailing" secondItem="RDU-xV-FAx" secondAttribute="trailing" constant="8" id="mF6-bI-MqU"/>
+                            <constraint firstItem="Il7-QS-j2H" firstAttribute="leading" secondItem="q7O-xQ-Iyt" secondAttribute="leading" constant="8" id="tUr-d7-oPa"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fav-PV-oBJ">
+                        <rect key="frame" x="66" y="228.5" width="142.5" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="4Qt-Xv-A9f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal" title="Not born yet">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="buttonNotBornYetTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="fkc-Uz-vWU"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Fav-PV-oBJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="66" id="82P-Fh-tww"/>
+                <constraint firstAttribute="trailing" secondItem="Fav-PV-oBJ" secondAttribute="trailing" constant="66.5" id="89V-9G-A0j"/>
+                <constraint firstItem="q7O-xQ-Iyt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GUP-Qj-FX8"/>
+                <constraint firstItem="q7O-xQ-Iyt" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="L4x-Bk-VkV"/>
+                <constraint firstItem="Fav-PV-oBJ" firstAttribute="top" secondItem="q7O-xQ-Iyt" secondAttribute="bottom" constant="16" id="Yny-7v-EiZ"/>
+                <constraint firstAttribute="trailing" secondItem="q7O-xQ-Iyt" secondAttribute="trailing" id="kKr-XP-oyM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="buttonNotBornYet" destination="Fav-PV-oBJ" id="ZZb-oB-x4E"/>
+                <outlet property="mainView" destination="q7O-xQ-Iyt" id="KIX-ip-00n"/>
+                <outlet property="textFieldDateOfBirth" destination="RDU-xV-FAx" id="q1n-df-7Ch"/>
+                <outlet property="textFieldFirstName" destination="kJP-qp-QXo" id="SZe-zr-rG0"/>
+                <outlet property="textFieldLastName" destination="Il7-QS-j2H" id="reQ-nN-AUb"/>
+            </connections>
+            <point key="canvasLocation" x="44.5" y="88.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

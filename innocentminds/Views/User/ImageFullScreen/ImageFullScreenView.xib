@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ImageFullScreenView" id="iN0-l3-epB" customClass="ImageFullScreenView" customModule="innocentminds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" restorationIdentifier="PagerView" translatesAutoresizingMaskIntoConstraints="NO" id="e5a-xf-M1n" customClass="PagerView" customModule="innocentminds" customModuleProvider="target">
+                    <rect key="frame" x="8" y="120" width="359" height="419"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7R-oi-pbd">
+                    <rect key="frame" x="105.5" y="559" width="46" height="32"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="Share">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonShareTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ue4-fA-fsY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNL-cw-7mt">
+                    <rect key="frame" x="167.5" y="555" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="CeH-jP-wfw"/>
+                        <constraint firstAttribute="width" constant="40" id="LiP-0g-tUZ"/>
+                    </constraints>
+                    <state key="normal" image="facebook_icon"/>
+                    <connections>
+                        <action selector="buttonFacebookTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="5B1-Ps-86g"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-SR-9GR">
+                    <rect key="frame" x="217.5" y="555" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="1xN-R8-9F9"/>
+                        <constraint firstAttribute="width" constant="40" id="fAh-Iy-hO5"/>
+                    </constraints>
+                    <state key="normal" image="instagram_icon"/>
+                    <connections>
+                        <action selector="buttonInstagramTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="6Vn-ly-6Ff"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPV-X3-l6t">
+                    <rect key="frame" x="160" y="615" width="55" height="32"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title=" Close ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonCloseTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="0XM-Xr-IDi"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.015686274510000001" green="0.054901960780000002" blue="0.13725490200000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e5a-xf-M1n" secondAttribute="trailing" constant="8" id="2K5-VN-QkR"/>
+                <constraint firstItem="xNL-cw-7mt" firstAttribute="leading" secondItem="F7R-oi-pbd" secondAttribute="trailing" constant="16" id="7L7-Kq-AZw"/>
+                <constraint firstItem="ggI-SR-9GR" firstAttribute="leading" secondItem="xNL-cw-7mt" secondAttribute="trailing" constant="10" id="7Vy-Yp-oTd"/>
+                <constraint firstItem="iPV-X3-l6t" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JQO-Pr-snD"/>
+                <constraint firstItem="F7R-oi-pbd" firstAttribute="centerY" secondItem="xNL-cw-7mt" secondAttribute="centerY" id="Kuu-Sn-cKN"/>
+                <constraint firstItem="e5a-xf-M1n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="MW1-WT-9Re"/>
+                <constraint firstItem="xNL-cw-7mt" firstAttribute="top" secondItem="e5a-xf-M1n" secondAttribute="bottom" constant="16" id="X3X-ID-5Oc"/>
+                <constraint firstItem="iPV-X3-l6t" firstAttribute="top" secondItem="xNL-cw-7mt" secondAttribute="bottom" constant="20" id="dHG-Rn-98O"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iPV-X3-l6t" secondAttribute="bottom" constant="20" id="kiE-L2-hBM"/>
+                <constraint firstItem="e5a-xf-M1n" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="sbA-eC-18T"/>
+                <constraint firstItem="ggI-SR-9GR" firstAttribute="centerY" secondItem="xNL-cw-7mt" secondAttribute="centerY" id="uf0-fF-KUX"/>
+                <constraint firstItem="xNL-cw-7mt" firstAttribute="centerX" secondItem="iPV-X3-l6t" secondAttribute="centerX" id="zf0-S4-TJc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="buttonFacebook" destination="xNL-cw-7mt" id="KAv-U0-fAN"/>
+                <outlet property="buttonInstagram" destination="ggI-SR-9GR" id="Mqu-em-cbU"/>
+                <outlet property="buttonShare" destination="F7R-oi-pbd" id="xHa-dd-KW7"/>
+                <outlet property="pagerView" destination="e5a-xf-M1n" id="taB-bH-TSm"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="facebook_icon" width="128" height="128"/>
+        <image name="instagram_icon" width="128" height="128"/>
+    </resources>
+</document>

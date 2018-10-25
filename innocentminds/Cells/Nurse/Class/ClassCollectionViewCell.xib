@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClassCollectionViewCell" id="gTV-IL-0wX" customClass="ClassCollectionViewCell" customModule="innocentminds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="class_item_background" translatesAutoresizingMaskIntoConstraints="NO" id="aHb-KT-3qu">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="class_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mah-Ua-aJt">
+                        <rect key="frame" x="55" y="35" width="90" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="mah-Ua-aJt" secondAttribute="height" multiplier="1:1" id="Xtw-Zp-l0b"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class 1 - B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Eej-Km-Bhj">
+                        <rect key="frame" x="16" y="141" width="168" height="18"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mah-Ua-aJt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="top" constant="35" id="1Ui-kj-H1K"/>
+                <constraint firstItem="Eej-Km-Bhj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="BnU-wy-HJN"/>
+                <constraint firstItem="aHb-KT-3qu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BtY-4y-enI"/>
+                <constraint firstAttribute="trailing" secondItem="Eej-Km-Bhj" secondAttribute="trailing" constant="16" id="Lsa-nr-8aV"/>
+                <constraint firstItem="mah-Ua-aJt" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="WiQ-8k-Nvx"/>
+                <constraint firstAttribute="bottom" secondItem="aHb-KT-3qu" secondAttribute="bottom" id="bfE-KG-JQW"/>
+                <constraint firstItem="Eej-Km-Bhj" firstAttribute="top" secondItem="mah-Ua-aJt" secondAttribute="bottom" constant="16" id="c3K-cn-j63"/>
+                <constraint firstAttribute="trailing" secondItem="aHb-KT-3qu" secondAttribute="trailing" id="krg-ml-hPK"/>
+                <constraint firstItem="mah-Ua-aJt" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" constant="-20" id="qyd-jA-0bB"/>
+                <constraint firstItem="aHb-KT-3qu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wUP-5b-w6o"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="labelClassName" destination="Eej-Km-Bhj" id="eRt-yZ-Y7o"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="class_icon" width="125" height="179"/>
+        <image name="class_item_background" width="466" height="485"/>
+    </resources>
+</document>

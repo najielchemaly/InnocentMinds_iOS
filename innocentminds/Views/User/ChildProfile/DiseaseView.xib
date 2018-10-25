@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="DiseaseView" id="iN0-l3-epB" customClass="DiseaseView" customModule="innocentminds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BIx-6l-xpQ">
+                    <rect key="frame" x="30" y="243" width="315" height="200"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="g8a-PX-G3T"/>
+                    </constraints>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="MwE-wm-yQD"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="GgV-fA-ETn"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31n-hn-H4i">
+                    <rect key="frame" x="30" y="459" width="315" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="xoX-kZ-tIh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
+                    <state key="normal" title="Confirm">
+                        <color key="titleColor" red="0.15146771070000001" green="0.68520498279999997" blue="0.88030928369999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonConfirmTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="JO0-Sn-FGf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRU-9W-gqa">
+                    <rect key="frame" x="167.5" y="607" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="36M-dz-uSm"/>
+                        <constraint firstAttribute="width" constant="40" id="Dgo-cs-Hxo"/>
+                    </constraints>
+                    <state key="normal" image="close_menu_icon"/>
+                    <connections>
+                        <action selector="buttonCloseTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="fqr-oa-Qr7"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.039215686270000001" green="0.038473498080000001" blue="0.18499207500000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="31n-hn-H4i" firstAttribute="trailing" secondItem="BIx-6l-xpQ" secondAttribute="trailing" id="7F8-BU-bzi"/>
+                <constraint firstItem="BIx-6l-xpQ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="7wk-jf-DwN"/>
+                <constraint firstItem="zRU-9W-gqa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="9bJ-iH-uln"/>
+                <constraint firstItem="31n-hn-H4i" firstAttribute="leading" secondItem="BIx-6l-xpQ" secondAttribute="leading" id="NCk-Rt-Tdc"/>
+                <constraint firstItem="BIx-6l-xpQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="Ul1-MB-aSg"/>
+                <constraint firstItem="31n-hn-H4i" firstAttribute="top" secondItem="BIx-6l-xpQ" secondAttribute="bottom" constant="16" id="VL5-2L-Z0A"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BIx-6l-xpQ" secondAttribute="trailing" constant="30" id="Y8i-FU-aBN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zRU-9W-gqa" secondAttribute="bottom" constant="20" id="ZIA-uJ-jXq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="buttonConfirm" destination="31n-hn-H4i" id="nsD-aa-4qg"/>
+                <outlet property="tableView" destination="BIx-6l-xpQ" id="YzI-eg-daI"/>
+            </connections>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close_menu_icon" width="145" height="145"/>
+    </resources>
+</document>

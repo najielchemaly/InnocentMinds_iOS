@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RegisterChildStep3CollectionViewCell" id="gTV-IL-0wX" customClass="RegisterChildStep3CollectionViewCell" customModule="innocentminds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGu-q5-NIc">
+                        <rect key="frame" x="0.0" y="62" width="275" height="150"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Desired date of entry" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="64u-SH-qB4">
+                                <rect key="frame" x="8" y="0.0" width="259" height="50.5"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="ycb-nq-JfR"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzy-5o-Ogf">
+                                <rect key="frame" x="0.0" y="50.5" width="275" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="pH7-vU-L5f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Branch" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vc-cC-YYN">
+                                <rect key="frame" x="8" y="50" width="259" height="50.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="myj-xE-CkZ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjF-NN-sPi">
+                                <rect key="frame" x="0.0" y="99.5" width="275" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1BM-Ke-DSl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="How did you hear about us" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WI-YE-A97">
+                                <rect key="frame" x="8" y="100.5" width="259" height="49.5"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="DDv-HF-hPC"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LjF-NN-sPi" secondAttribute="trailing" id="2N2-Xi-0St"/>
+                            <constraint firstItem="Pzy-5o-Ogf" firstAttribute="top" secondItem="9vc-cC-YYN" secondAttribute="top" id="2yY-do-lnb"/>
+                            <constraint firstAttribute="height" constant="150" id="ARW-iW-zln"/>
+                            <constraint firstAttribute="trailing" secondItem="Pzy-5o-Ogf" secondAttribute="trailing" id="AY3-wr-t15"/>
+                            <constraint firstItem="64u-SH-qB4" firstAttribute="top" secondItem="fGu-q5-NIc" secondAttribute="top" id="Dfg-zg-Qjk"/>
+                            <constraint firstAttribute="trailing" secondItem="9vc-cC-YYN" secondAttribute="trailing" constant="8" id="E99-Nb-LJT"/>
+                            <constraint firstItem="9vc-cC-YYN" firstAttribute="centerY" secondItem="fGu-q5-NIc" secondAttribute="centerY" id="LRu-de-oiO"/>
+                            <constraint firstItem="Pzy-5o-Ogf" firstAttribute="leading" secondItem="fGu-q5-NIc" secondAttribute="leading" id="PwE-DT-Gyy"/>
+                            <constraint firstAttribute="trailing" secondItem="64u-SH-qB4" secondAttribute="trailing" constant="8" id="TGg-pu-eDl"/>
+                            <constraint firstItem="LjF-NN-sPi" firstAttribute="leading" secondItem="fGu-q5-NIc" secondAttribute="leading" id="XD0-bk-iax"/>
+                            <constraint firstAttribute="trailing" secondItem="1WI-YE-A97" secondAttribute="trailing" constant="8" id="aPx-oP-9WQ"/>
+                            <constraint firstItem="1WI-YE-A97" firstAttribute="top" secondItem="9vc-cC-YYN" secondAttribute="bottom" id="bd9-aL-XEz"/>
+                            <constraint firstItem="Pzy-5o-Ogf" firstAttribute="top" secondItem="64u-SH-qB4" secondAttribute="bottom" id="e0g-9A-6c3"/>
+                            <constraint firstItem="1WI-YE-A97" firstAttribute="leading" secondItem="fGu-q5-NIc" secondAttribute="leading" constant="8" id="ft7-Wo-1Cl"/>
+                            <constraint firstItem="64u-SH-qB4" firstAttribute="leading" secondItem="fGu-q5-NIc" secondAttribute="leading" constant="8" id="nwm-Fs-7QT"/>
+                            <constraint firstItem="LjF-NN-sPi" firstAttribute="bottom" secondItem="9vc-cC-YYN" secondAttribute="bottom" id="sf0-og-iTj"/>
+                            <constraint firstAttribute="bottom" secondItem="1WI-YE-A97" secondAttribute="bottom" id="tuD-Bo-xrq"/>
+                            <constraint firstItem="9vc-cC-YYN" firstAttribute="leading" secondItem="fGu-q5-NIc" secondAttribute="leading" constant="8" id="zP2-Gr-R8K"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="fGu-q5-NIc" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="BVR-QV-TlF"/>
+                <constraint firstAttribute="trailing" secondItem="fGu-q5-NIc" secondAttribute="trailing" id="Sja-Eb-w5x"/>
+                <constraint firstItem="fGu-q5-NIc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xFq-CR-fJ7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="mainView" destination="fGu-q5-NIc" id="buD-hk-cvH"/>
+                <outlet property="textFieldBranch" destination="9vc-cC-YYN" id="s2P-qC-YD1"/>
+                <outlet property="textFieldDateOfEntry" destination="64u-SH-qB4" id="NA5-fb-pB4"/>
+                <outlet property="textFieldHearAboutUs" destination="1WI-YE-A97" id="EUW-AB-icU"/>
+            </connections>
+            <point key="canvasLocation" x="44.5" y="88.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
