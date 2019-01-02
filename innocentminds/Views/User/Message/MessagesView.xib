@@ -40,7 +40,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <state key="normal" title="Notifications">
+                                            <state key="normal" title="My Notifications">
                                                 <color key="titleColor" red="0.5758625865" green="0.56480687860000001" blue="0.56452065709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <state key="selected">

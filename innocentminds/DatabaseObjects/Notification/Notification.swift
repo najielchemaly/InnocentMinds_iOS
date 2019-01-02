@@ -61,7 +61,11 @@ public class Notification {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		id = dictionary["id"] as? String
+		if let id = dictionary["id"] as? String {
+            self.id = id
+        } else if let id = dictionary["id"] as? Int {
+            self.id = "\(id)"
+        }
 		title = dictionary["title"] as? String
 		description = dictionary["description"] as? String
 		is_read = dictionary["is_read"] as? Bool

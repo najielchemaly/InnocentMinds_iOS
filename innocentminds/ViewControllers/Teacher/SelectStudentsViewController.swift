@@ -39,18 +39,8 @@ class SelectStudentsViewController: BaseViewController, UITableViewDelegate, UIT
         self.buttonConfirm.layer.cornerRadius = self.buttonConfirm.frame.height/2
         self.buttonConfirm.isEnabled(enable: self.selectedIds.count>0)
         
-        // TODO Dummy
-        if let students = currentUser.children {
+        if let students = Objects.user.children {
             self.students = students
-        } else {
-            for var i in (0..<5)
-            {
-                let student = Child()
-                student.id = "\(i+1)"
-                student.firstname = "Maya"
-                student.lastname = "Nehme \(i+1)"
-                self.students.append(student)
-            }
         }
     }
     
@@ -73,12 +63,13 @@ class SelectStudentsViewController: BaseViewController, UITableViewDelegate, UIT
             
             let student = self.students[indexPath.row]
             
-            // TODO Dummy
-            if let image = student.image {
+            if let image = student.image, !image.isEmpty {
                 cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
             } else {
-                cell.imageViewProfile.image = #imageLiteral(resourceName: "avatar_baby")
+                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
+                cell.imageViewProfile.tintColor = Colors.lightGray
             }
+            
             if let firstName = student.firstname, let lastName = student.lastname {
                 cell.labelName.text = firstName + " " + lastName
             }

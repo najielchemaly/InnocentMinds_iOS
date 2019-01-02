@@ -29,6 +29,8 @@ public class Variables {
     public var habit_ranks : Array<HabitRank>?
     public var diseases : Array<Disease>?
     public var character_types : Array<CharacterType>?
+    public var bath_types : Array<BathType>?
+    public var bath_potty_types : Array<BathPottyType>?
 
     public init() {}
     
@@ -80,6 +82,8 @@ public class Variables {
         if (dictionary["habit_ranks"] != nil) { habit_ranks = HabitRank.modelsFromDictionaryArray(array: dictionary["habit_ranks"] as! NSArray) }
         if (dictionary["diseases"] != nil) { diseases = Disease.modelsFromDictionaryArray(array: dictionary["diseases"] as! NSArray) }
         if (dictionary["character_types"] != nil) { character_types = CharacterType.modelsFromDictionaryArray(array: dictionary["character_types"] as! NSArray) }
+        if (dictionary["bath_types"] != nil) { bath_types = BathType.modelsFromDictionaryArray(array: dictionary["bath_types"] as! NSArray) }
+        if (dictionary["bath_potty_types"] != nil) { bath_potty_types = BathPottyType.modelsFromDictionaryArray(array: dictionary["bath_potty_types"] as! NSArray) }
 	}
 		
 /**

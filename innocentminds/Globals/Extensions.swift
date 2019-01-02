@@ -9,6 +9,7 @@
 import Foundation
 import FSPagerView
 import UIKit
+import NVActivityIndicatorView
 
 extension UIColor {
     public convenience init?(hexString: String, alpha: CGFloat = 1) {
@@ -109,7 +110,7 @@ extension UIView {
     
     func isEnabled(enable: Bool) {
         self.isUserInteractionEnabled = enable
-        self.alpha = enable ? 1 : 0.5
+        self.alpha = enable ? 1 : 0.7
     }
     
     func hide(remove: Bool = false) {
@@ -134,6 +135,10 @@ extension UIView {
         self.layer.borderWidth = 1
         self.layer.borderColor = Colors.white.cgColor
         self.layer.cornerRadius = width
+    }
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
     }
     
 }
@@ -171,7 +176,7 @@ extension UIDatePicker {
     
 }
 
-extension UIViewController {
+extension BaseViewController {
     
     enum NavigationType : String {
         case push = "PUSH"
@@ -232,9 +237,10 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
+        self.customView.endEditing(true)
     }
     
-    func popVC(toRoot: Bool = false, fromTop: Bool = false) {
+    @objc func popVC(toRoot: Bool = false, fromTop: Bool = false) {
         if toRoot {
             self.navigationController?.popToRootViewController(animated: true)
         } else if fromTop {
@@ -251,6 +257,7 @@ extension UIViewController {
     }
     
     @objc func dismissVC() {
+        self.hideView()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -444,5 +451,52 @@ extension UIStackView {
                 button.isSelected = button.tag <= index
             }
         }
+    }
+}
+
+protocol JSONable {}
+extension JSONable {
+    func toDict() -> [String:Any] {
+        var dict = [String:Any]()
+        let otherSelf = Mirror(reflecting: self)
+        for child in otherSelf.children {
+            if let key = child.label {
+                if let childTemperatures = child.value as? Array<ChildTemperature> {
+                    var temperatures = [NSDictionary]()
+                    for childTemperature in childTemperatures {
+                        temperatures.append(childTemperature.toDict() as NSDictionary)
+                    }
+                    
+                    dict[key] = temperatures
+                } else if let childActivities = child.value as? Array<Activity> {
+                    var activities = [NSDictionary]()
+                    for childActivity in childActivities {
+                        activities.append(childActivity.toDict() as NSDictionary)
+                    }
+                    
+                    dict[key] = activities
+                } else if let activityPhotos = child.value as? Array<Photo> {
+                    var photos = [NSDictionary]()
+                    for activityPhoto in activityPhotos {
+                        photos.append(activityPhoto.toDict() as NSDictionary)
+                    }
+                    
+                    dict[key] = photos
+                } else if child.value is UIImage {
+                    // Do nothing
+                } else {
+                    dict[key] = child.value
+                }
+            }
+        }
+        return dict
+    }
+}
+
+extension UIWindow {
+    func showLoader(message: String? = nil, type: NVActivityIndicatorType? = .ballScaleMultiple,
+                    color: UIColor? = nil , textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
+        let activityData = ActivityData(message: message, type: type, color: color, backgroundColor: backgroundColor, textColor: textColor)
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)        
     }
 }

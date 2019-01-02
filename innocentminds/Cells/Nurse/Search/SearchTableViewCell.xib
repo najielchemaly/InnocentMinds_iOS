@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,10 +28,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IWj-d6-w9P">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IWj-d6-w9P">
                         <rect key="frame" x="16" y="10" width="39.5" height="39.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="IWj-d6-w9P" secondAttribute="height" multiplier="1:1" id="nyq-N7-A7x"/>
+                            <constraint firstAttribute="width" constant="40" id="eIJ-Hd-XGo"/>
+                            <constraint firstAttribute="height" constant="40" id="xAh-f1-YUV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uBW-Pq-rug">
@@ -56,10 +56,8 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="IWj-d6-w9P" secondAttribute="bottom" constant="10" id="59L-OQ-i1l"/>
                     <constraint firstItem="jxm-J7-lHH" firstAttribute="leading" secondItem="uBW-Pq-rug" secondAttribute="trailing" constant="8" id="7gd-9p-pdZ"/>
                     <constraint firstItem="jxm-J7-lHH" firstAttribute="centerY" secondItem="aWo-yQ-KZL" secondAttribute="centerY" id="8qE-Ce-q0w"/>
-                    <constraint firstItem="IWj-d6-w9P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="HMw-Ry-8ld"/>
                     <constraint firstItem="aWo-yQ-KZL" firstAttribute="leading" secondItem="jxm-J7-lHH" secondAttribute="trailing" constant="16" id="Id5-IV-FcC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="aWo-yQ-KZL" secondAttribute="trailing" constant="8" id="Pf5-Wb-OLI"/>
                     <constraint firstItem="uBW-Pq-rug" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="S5H-vh-Al3"/>
@@ -67,6 +65,7 @@
                     <constraint firstItem="uBW-Pq-rug" firstAttribute="leading" secondItem="IWj-d6-w9P" secondAttribute="trailing" constant="8" id="eNa-K0-qgA"/>
                     <constraint firstItem="aWo-yQ-KZL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="idT-GN-4dt"/>
                     <constraint firstItem="IWj-d6-w9P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xfV-AX-lGV"/>
+                    <constraint firstItem="IWj-d6-w9P" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xoU-QR-1sJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

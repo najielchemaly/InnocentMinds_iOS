@@ -19,7 +19,9 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
     @IBOutlet weak var textViewRegularMedications: UITextView!
     @IBOutlet weak var buttonDesease: UIButton!
     @IBOutlet weak var textViewSpecialMedicalConditions: UITextView!
-
+    @IBOutlet weak var viewAllergy: UIView!
+    @IBOutlet weak var viewRegularMedication: UITextView!
+    
     var bloodTypes: [BloodType] = [BloodType]()
     
     var pickerView: UIPickerView!
@@ -41,7 +43,9 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
         }
         
         self.textViewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
+        self.viewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
         self.textViewRegularMedications.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
+        self.viewRegularMedication.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
         
         self.setupDelegates()
         self.setupPickerViews()
@@ -108,11 +112,13 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
             } else if self.textFieldAllergy.isFirstResponder {
                 self.textFieldAllergy.text = Objects.answers[row]
                 self.textViewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
-                self.textViewAllergy.text = self.textFieldAllergy.text == "Yes" ? nil : Localization.string(key: MessageKey.Specify)
+                self.viewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
+//                self.textViewAllergy.text = self.textFieldAllergy.text == "Yes" ? nil : Localization.string(key: MessageKey.Specify)
             } else if self.textFieldRegularMedications.isFirstResponder {
                 self.textFieldRegularMedications.text = Objects.answers[row]
                 self.textViewRegularMedications.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
-                self.textViewRegularMedications.text = self.textFieldRegularMedications.text == "Yes" ? nil : Localization.string(key: MessageKey.Specify)
+                self.viewRegularMedication.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
+//                self.textViewRegularMedications.text = self.textFieldRegularMedications.text == "Yes" ? nil : Localization.string(key: MessageKey.Specify)
             }
         
             editChildProfileVC.dismissKeyboard()
@@ -122,11 +128,11 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if let editChildProfileVC = currentVC as? EditChildProfileViewController {
             if self.textViewAllergy.isFirstResponder {
-                editChildProfileVC.selectedChild.allergy = self.textViewAllergy.text
+                editChildProfileVC.selectedChild.allergy = self.textViewAllergy.text ?? "" + text
             } else if self.textViewRegularMedications.isFirstResponder {
-                editChildProfileVC.selectedChild.regular_medication = self.textViewRegularMedications.text
+                editChildProfileVC.selectedChild.regular_medication = self.textViewRegularMedications.text ?? "" + text
             } else if self.textViewSpecialMedicalConditions.isFirstResponder {
-                editChildProfileVC.selectedChild.special_medical_conditions = self.textViewSpecialMedicalConditions.text
+                editChildProfileVC.selectedChild.special_medical_conditions = self.textViewSpecialMedicalConditions.text ?? "" + text
             }
         }
         
@@ -136,7 +142,7 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
     @IBAction func buttonDiseaseTapped(_ sender: Any) {
         if let editChildProfileVC = currentVC as? EditChildProfileViewController {
             if let diseaseView = editChildProfileVC.showView(name: Views.DiseaseView) as? DiseaseView {
-                diseaseView.initializeViews()
+                diseaseView.initializeViews(diseaseIds: editChildProfileVC.selectedChild.disease_ids ?? "")
             }
         }
     }

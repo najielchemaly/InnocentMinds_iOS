@@ -17,7 +17,6 @@ let FACEBOOK_APP_ID = "1579204765559733"
 var currentVC: UIViewController!
 var isUserLoggedIn: Bool = false
 var isReview: Bool = false
-var currentUser: User = User()
 var defaultBackground: String!
 var notificationBadge: Int = 0
 
@@ -129,7 +128,7 @@ struct StoryboardIds {
     static let MessageDetailsViewController: String = "MessageDetailsViewController"
     static let EditMyProfileViewController: String = "EditMyProfileViewController"
     static let ChangeMyPasswordViewController: String = "ChangeMyPasswordViewController"
-    static let DashboardNavigationBarController: String = "DashboardNavigationBarController"
+    static let DashboardNavigationBarController: String = "DashboardNavigationController"
     static let AboutUsViewController: String = "AboutUsViewController"
     static let ContactUsViewController: String = "ContactUsViewController"
     static let GalleryViewController: String = "GalleryViewController"
@@ -151,6 +150,7 @@ struct StoryboardIds {
     static let AdditionalActivityViewController: String = "AdditionalActivityViewController"
     static let EditChildProfileViewController: String = "EditChildProfileViewController"
     static let AddDailyAgendaViewController: String = "AddDailyAgendaViewController"
+    static let SearchNavigationController: String = "SearchNavigationController"
 }
 
 struct CellIds {
@@ -212,6 +212,7 @@ struct Views {
     static let AddTemperatureView: String = "AddTemperatureView"
     static let SendParentsMessageView: String = "SendParentsMessageView"
     static let DiseaseView: String = "DiseaseView"
+    static let EmptyDataView: String = "EmptyDataView"
 }
 
 struct MessageKey {
@@ -232,17 +233,18 @@ struct MessageKey {
     static let EmailEmpty: String = "Email field cannot be empty"
     static let PhoneEmpty: String = "Phone number field cannot be empty"
     static let AddressEmpty: String = "Address field cannot be empty"
-    static let InternalServerError: String = "An error has occured, please try again."
-    static let Register: String = "Register Child"
+    static let InternalServerError: String = "An error has occured, please try again or contact support"
+    static let Register: String = "Register child"
     static let EmailSentPref: String = "We've sent you an email to"
     static let EmailSentSuff: String = "with further instructions on how to reset your password."
     static let RegisterComplete: String = "Our team will shortly contact you to schedule an appointment."
     static let TitleEmpty: String = "Title field cannot be empty"
     static let SelectedStudentsEmpty: String = "You should select at least 1 student"
     static let ActivityImagesEmpty: String = "You should add at least 1 image"
-    static let Specify: String = "If yes, specify"
-    static let Logout: String = "Are you sure you want to logout?"
-    static let MainMenu: String = "Are you sure you want to return to main menu?"
+    static let Specify: String = "If yes, specify allergy"
+    static let LogoutValidation: String = "Are you sure you want to logout?"
+    static let Logout: String = "Logout"
+    static let MainMenuValidation: String = "Are you sure you want to return to main menu?"
     static let DeleteActivity: String = "Are you sure you want to delete this activity?"
     static let Rating: String = "You should set a rating"
     static let NapTime: String = "You should specify the nap time"
@@ -251,11 +253,55 @@ struct MessageKey {
     static let BathTime: String = "You should specify the bath time"
     static let PottyTime: String = "You should specify the potty time"
     static let NoMessage: String = "There are no messages yet"
-    static let NoDashboard: String = "There are no activities yet for your child"
+    static let NoDashboard: String = "There are no activities yet for this child"
     static let NoChildren: String = "There are no children yet"
     static let NoNotifications: String = "You do not have notifications yet"
     static let BranchEmpty: String = "Branch field cannot be empty"
     static let InquiryEmpty: String = "Inquiry field cannot be empty"
+    static let NoClasses: String = "You do not have classes yet"
+    static let NoResultFound: String = "No results found"
+    static let SubmitStudentArrival: String = "Are you sure you want to submit student's arrival information?"
+    static let Submit: String = "Submit"
+    static let Publish: String = "Publish"
+    static let TemperatureRequired: String = "You must enter at least 2 temperatures daily"
+    static let DeleteTemperature: String = "Are you sure you want to delete this temperature?"
+    static let Save: String = "Save"
+    static let TimeEmpty: String = "Time field cannot be empty"
+    static let TemperatureEmpty: String = "Temperature field cannot be empty"
+    static let CommentEmpty: String = "Comment field cannot be empty"
+    static let SendContactUs: String = "Your message has been sent successfully"
+    static let EditProfile: String = "Your profile has been updated successfully"
+    static let EditChildProfile: String = "Your child's profile has been updated successfully"
+    static let ParentEmpty: String = "You must specify your relation to your child"
+    static let DesiredDateEmpty: String = "Desired date field cannot be empty"
+    static let HearAboutUsEmpty: String = "Please tell us how did you hear about us"
+    static let FatherNameEmpty: String = "Father name field cannot be empty"
+    static let GenderEmpty: String = "Gender field cannot be empty"
+    static let PlaceOfBirthEmpty: String = "Place of birth field cannot be empty"
+    static let HomeLanguageEmpty: String = "Home language field cannot be empty"
+    static let DesiredLanguageEmpty: String = "Desired language field cannot be empty"
+    static let TransportationEmpty: String = "Transportation field cannot be empty"
+    static let WorkplaceEmpty: String = "Workplace field cannot be empty"
+    static let BloodTypeEmpty: String = "Blood type field cannot be empty"
+    static let AllergyEmpty: String = "Allergy field cannot be empty"
+    static let RegularMedicationEmpty: String = "Regular medication field cannot be empty"
+    static let DiseaseEmpty: String = "Disease field cannot be empty"
+    static let SpecialMedicationConditionsEmpty: String = "Special medication conditions field cannot be empty"
+    static let SleepHabitEmpty: String = "Sleep habit field cannot be empty"
+    static let EatingHabitEmpty: String = "Eating habit field cannot be empty"
+    static let CleanEmpty: String = "Clean field cannot be empty"
+    static let CharacterEmpty: String = "Character habit field cannot be empty"
+    static let NewPasswordEmpty: String = "You must enter a new password"
+    static let PasswordNotMatch: String = "Passwords do not match"
+    static let ChangePassword: String = "Your password has been changed successfully"
+    static let NoPayments: String = "No statement of account available yet"
+    static let Retry: String = "Retry"
+    static let SubmitActivities: String = "Are you sure you want to submit child's daily agendas?"
+    static let ActivitiesSent: String = "Activities has been submitted successfully"
+    static let PublishActivities: String = "Are you sure you want to publish child's activities?"
+    static let ActivitiesPublished: String = "Activities has been published successfully"
+    static let LeaveWithoutSaving: String = "Are you sure you want to leave without saving?"
+    static let NoStudents: String = "You are not assigned to any class yet"
 }
 
 struct Dimensions {
@@ -297,9 +343,14 @@ enum Language: Int {
     case English = 2
 }
 
-enum ActivityMode {
+enum ActionMode {
     case add
     case edit
+}
+
+enum RegisterMode {
+    case request
+    case add
 }
 
 enum WebViewComingFrom {
@@ -437,18 +488,6 @@ func timeAgoSince(_ date: Date) -> String {
     
     return "Just now"
     
-}
-
-func updateNotificationBadge() {
-    let userDefaults = UserDefaults.standard
-    if let notificationNumber = userDefaults.value(forKey: "notificationNumber") as? String {
-        if let notificationBadge = Int(notificationNumber) {
-            userDefaults.set(String(describing: notificationBadge + 1), forKey: "notificationNumber")
-        }
-    } else {
-        userDefaults.set(String(describing: "1"), forKey: "notificationNumber")
-    }
-    userDefaults.synchronize()
 }
 
 class PagerView: FSPagerView {

@@ -16,6 +16,7 @@ class AlertView: UIView {
     @IBOutlet weak var buttonOk: UIButton!
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var stackViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageIcon: UIImageView!
     
     func initializeViews() {
         self.mainView.layer.cornerRadius = Dimensions.cornerRadiusHigh

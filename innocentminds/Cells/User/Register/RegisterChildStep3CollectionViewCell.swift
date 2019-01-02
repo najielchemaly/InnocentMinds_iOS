@@ -77,9 +77,9 @@ class RegisterChildStep3CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if self.textFieldBranch.isFirstResponder {
-            return 3
+            return self.branches.count
         } else if self.textFieldHearAboutUs.isFirstResponder {
-            return 5
+            return self.hearAboutUs.count
         }
         
         return 0
@@ -103,7 +103,7 @@ class RegisterChildStep3CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
                 child.branch_id = self.branches[row].id
             } else if self.textFieldHearAboutUs.isFirstResponder {
                 self.textFieldHearAboutUs.text = self.hearAboutUs[row].title
-                registerChildVC.tempUser.hear_about_us = self.hearAboutUs[row].id
+                child.hear_about_us_id = self.hearAboutUs[row].id
             } else {
                 self.handleDatePicker()
             }

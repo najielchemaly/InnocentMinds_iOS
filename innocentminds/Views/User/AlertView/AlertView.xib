@@ -34,9 +34,9 @@
                             <color key="textColor" red="0.97299259901046753" green="0.68883693218231201" blue="0.13525789976119995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our team will shortly contact you to schedule an appointment" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCk-tS-bAp">
-                            <rect key="frame" x="16" y="87" width="243" height="34.5"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCk-tS-bAp">
+                            <rect key="frame" x="16" y="100.5" width="243" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                             <color key="textColor" red="0.53310918807983398" green="0.52952796220779419" blue="0.52497607469558716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -68,9 +68,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="dqG-pT-EDc" secondAttribute="bottom" constant="12" id="Kxq-gF-0Kq"/>
+                        <constraint firstItem="gCk-tS-bAp" firstAttribute="centerY" secondItem="FNv-ip-2GJ" secondAttribute="centerY" id="LJ4-ob-TYT"/>
                         <constraint firstItem="jYU-sH-XI4" firstAttribute="top" secondItem="FNv-ip-2GJ" secondAttribute="top" constant="50" id="LcI-is-pm4"/>
                         <constraint firstAttribute="trailing" secondItem="gCk-tS-bAp" secondAttribute="trailing" constant="16" id="QvN-od-6la"/>
-                        <constraint firstItem="gCk-tS-bAp" firstAttribute="top" secondItem="jYU-sH-XI4" secondAttribute="bottom" constant="16" id="Xt4-Eu-25j"/>
                         <constraint firstItem="dqG-pT-EDc" firstAttribute="centerX" secondItem="FNv-ip-2GJ" secondAttribute="centerX" id="dk0-VO-K41"/>
                         <constraint firstItem="jYU-sH-XI4" firstAttribute="centerX" secondItem="FNv-ip-2GJ" secondAttribute="centerX" id="e7I-Nl-v6w"/>
                         <constraint firstItem="gCk-tS-bAp" firstAttribute="leading" secondItem="FNv-ip-2GJ" secondAttribute="leading" constant="16" id="fXW-9g-T9i"/>
@@ -98,6 +98,7 @@
             <connections>
                 <outlet property="buttonCancel" destination="Gi3-4s-eIU" id="QYu-4R-4rl"/>
                 <outlet property="buttonOk" destination="ZZP-ma-Y66" id="1bf-CS-vhE"/>
+                <outlet property="imageIcon" destination="Nyg-Tk-bSI" id="eZU-z6-Anc"/>
                 <outlet property="labelDescription" destination="gCk-tS-bAp" id="aVM-Bi-9qI"/>
                 <outlet property="labelTitle" destination="jYU-sH-XI4" id="jEO-oZ-UOp"/>
                 <outlet property="mainView" destination="FNv-ip-2GJ" id="g6v-k2-lK3"/>

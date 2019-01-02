@@ -15,6 +15,7 @@ class TemperatureTableViewCell: UITableViewCell {
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var buttonEdit: UIButton!
     @IBOutlet weak var buttonDelete: UIButton!
+    @IBOutlet weak var labelComment: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

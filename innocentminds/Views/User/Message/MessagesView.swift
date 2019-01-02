@@ -22,7 +22,8 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var horizontalSeperatorView: UIView!
     
     var messageType: Int = MessageType.Notifications.rawValue
-    var notifications: [Notification] = [Notification]()
+    var notifications: [Notification] = [Notification]()    
+    var refreshControl: UIRefreshControl = UIRefreshControl()
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
         self.hide(remove: true)
@@ -79,6 +80,7 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.buttonNotifications.isUserInteractionEnabled = false
         
         self.getNotifications()
+        
 //        let swipeRightTap = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight))
 //        swipeRightTap.direction = .right
 //        self.mainView.addGestureRecognizer(swipeRightTap)
@@ -87,13 +89,13 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
 //        swipeLeftTap.direction = .left
 //        self.mainView.addGestureRecognizer(swipeLeftTap)
         
-        self.notifications = [
-            Notification(id: "1", description: "This is a test description for notifications, This is a test description for notifications 1", is_read: false, date: "2018-10-10 18:21:00"),
-            Notification(id: "2", description: "This is a test description for notifications, This is a test description for notifications 2", is_read: false, date: "2018-10-10 20:35:15"),
-            Notification(id: "3", description: "This is a test description for notifications, This is a test description for notifications 3", is_read: false, date: "2018-10-10 21:25:00"),
-            Notification(id: "4", description: "This is a test description for notifications, This is a test description for notifications 4", is_read: true, date: "2018-10-10 23:06:26"),
-            Notification(id: "5", description: "This is a test description for notifications, This is a test description for notifications 5", is_read: true, date: "2018-10-11 02:45:00")
-        ]
+//        self.notifications = [
+//            Notification(id: "1", description: "This is a test description for notifications, This is a test description for notifications 1", is_read: false, date: "2018-10-10 18:21:00"),
+//            Notification(id: "2", description: "This is a test description for notifications, This is a test description for notifications 2", is_read: false, date: "2018-10-10 20:35:15"),
+//            Notification(id: "3", description: "This is a test description for notifications, This is a test description for notifications 3", is_read: false, date: "2018-10-10 21:25:00"),
+//            Notification(id: "4", description: "This is a test description for notifications, This is a test description for notifications 4", is_read: true, date: "2018-10-10 23:06:26"),
+//            Notification(id: "5", description: "This is a test description for notifications, This is a test description for notifications 5", is_read: true, date: "2018-10-11 02:45:00")
+//        ]
     }
     
     @objc func swipeRight() {
@@ -104,16 +106,20 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.buttonMessagesTapped(self.buttonMessages)
     }
     
-    func getNotifications() {
+    func getNotifications(shouldReload: Bool = true) {
         if let baseVC = currentVC as? BaseViewController {
-            baseVC.showLoader()
+            if shouldReload {
+                baseVC.showLoader()
+            }
+            
+            let userId = Objects.user.id ?? "0"
             
             DispatchQueue.global(qos: .background).async {
-                let result = appDelegate.services.getNotifications()
+                let result = appDelegate.services.getNotifications(id: userId)
                 
                 DispatchQueue.main.async {
                     if result?.status == ResponseStatus.SUCCESS.rawValue {
-                        if let jsonArray = result?.json {
+                        if let jsonObject = result?.json?.first, let jsonArray = jsonObject["notifications"] as? [NSDictionary] {
                             self.notifications = [Notification]()
                             for json in jsonArray {
                                 guard let notification = Notification.init(dictionary: json) else {
@@ -126,6 +132,8 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
                         
                         self.tableView.reloadData()
                     }
+                    
+                    self.refreshControl.endRefreshing()
                     
                     baseVC.hideLoader()
                 }
@@ -141,6 +149,18 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = self.refreshControl
+        } else {
+            self.tableView.addSubview(self.refreshControl)
+        }
+        
+        self.refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func handleRefresh() {
+        self.getNotifications(shouldReload: false)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,6 +195,7 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
             if self.notifications.count == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
                     cell.labelTitle.text = Localization.string(key: MessageKey.NoNotifications)
+                    cell.labelTitle.textColor = Colors.textDark
                     
                     return cell
                 }
@@ -192,6 +213,18 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
 
                 cell.notificationImageView.image = notification.is_read == true ? #imageLiteral(resourceName: "inbox_message_gray") : #imageLiteral(resourceName: "inbox_message_red")
                 cell.labelDescription.textColor = notification.is_read == true ? Colors.textDark : Colors.appOrange
+                
+                if notification.is_read != true {
+                    let userId = Objects.user.id ?? "0"
+                    DispatchQueue.global(qos: .background).async {
+                        if let id = notification.id {
+                            let result = appDelegate.services.updateNotification(id: userId, notifId: id, isRead: true)
+                            if result?.status == ResponseStatus.SUCCESS.rawValue {
+                                self.notifications[indexPath.row].is_read = true
+                            }
+                        }
+                    }
+                }
                 
                 return cell
             }
@@ -235,12 +268,13 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             if let id = self.notifications[indexPath.row].id {
+                let userId = Objects.user.id ?? "0"
                 DispatchQueue.global(qos: .background).async {
-                    _ = appDelegate.services.updateNotification(id: id, isDeleted: true)
+                    _ = appDelegate.services.updateNotification(id: userId, notifId: id, isDeleted: true)
                 }
                 
                 self.notifications.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.reloadData()
             }
         }
     }

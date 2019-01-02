@@ -19,6 +19,7 @@ class ImageFullScreenView: UIView, FSPagerViewDelegate, FSPagerViewDataSource, U
     @IBOutlet weak var pagerView: PagerView!
     
     var documentInteractionController: UIDocumentInteractionController!
+    var selectedPhoto: Photo = Photo()
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -80,20 +81,21 @@ class ImageFullScreenView: UIView, FSPagerViewDelegate, FSPagerViewDataSource, U
     }
     
     func setupPagerView() {
-        self.pagerView.transformer = FSPagerViewTransformer(type: .zoomOut)
+        self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
         self.pagerView.register(UINib.init(nibName: CellIds.ImageFullCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: CellIds.ImageFullCollectionViewCell)
-        
-        self.pagerView.delegate = self
-        self.pagerView.dataSource = self
     }
     
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return 8
+        return 1
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        if let cell = pagerView.dequeueReusableCell(withReuseIdentifier: CellIds.ImageFullCollectionViewCell, at: index) as? ImageFullCollectionViewCell {            
-            cell.imageViewFull.image = #imageLiteral(resourceName: "gallery_dummy")
+        if let cell = pagerView.dequeueReusableCell(withReuseIdentifier: CellIds.ImageFullCollectionViewCell, at: index) as? ImageFullCollectionViewCell {
+            if let _image = self.selectedPhoto._image {
+                cell.imageViewFull.image = _image
+            } else if let image = self.selectedPhoto.image, !image.isEmpty {
+                cell.imageViewFull.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+            }
             
             return cell
         }

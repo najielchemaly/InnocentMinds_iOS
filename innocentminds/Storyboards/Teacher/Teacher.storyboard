@@ -135,27 +135,27 @@
                                     <action selector="buttonBackTapped:" destination="9oq-Jb-UDl" eventType="touchUpInside" id="z9A-cQ-8IX"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_baby" translatesAutoresizingMaskIntoConstraints="NO" id="7ky-Za-hL9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boy_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="7ky-Za-hL9">
                                 <rect key="frame" x="115" y="40" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="afv-eL-WAH"/>
                                     <constraint firstAttribute="height" constant="90" id="twn-N3-WEH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maya Nehme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="22p-IM-ycb">
-                                <rect key="frame" x="16" y="146" width="288" height="29.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="22p-IM-ycb">
+                                <rect key="frame" x="16" y="146" width="288" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXi-Eh-BUf">
-                                <rect key="frame" x="20" y="165" width="280" height="60"/>
+                                <rect key="frame" x="20" y="135.5" width="280" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Zlz-vl-b6p"/>
                                 </constraints>
                             </view>
                             <stackView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cwK-vK-HzD">
-                                <rect key="frame" x="20" y="195" width="280" height="0.0"/>
+                                <rect key="frame" x="20" y="165.5" width="280" height="0.0"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Esa-rN-08e">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="0.0"/>
@@ -195,7 +195,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EiV-nH-FJu">
-                                <rect key="frame" x="20" y="195" width="280" height="295"/>
+                                <rect key="frame" x="20" y="165.5" width="280" height="324.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -229,6 +229,16 @@
                                     <constraint firstItem="gCt-Dj-KzD" firstAttribute="centerX" secondItem="byH-a3-b0N" secondAttribute="centerX" constant="20" id="ilD-zR-j0K"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKf-Wn-YqF">
+                                <rect key="frame" x="243" y="40" width="61" height="32"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSubmitTapped:" destination="9oq-Jb-UDl" eventType="touchUpInside" id="6f3-ER-XFy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -253,7 +263,9 @@
                             <constraint firstItem="22p-IM-ycb" firstAttribute="top" secondItem="7ky-Za-hL9" secondAttribute="bottom" constant="16" id="j9Y-ot-b7c"/>
                             <constraint firstItem="7ky-Za-hL9" firstAttribute="top" secondItem="QQB-Jy-mEZ" secondAttribute="top" constant="20" id="kZP-rd-S3M"/>
                             <constraint firstItem="QeZ-DA-0Yp" firstAttribute="top" secondItem="mYX-98-7H9" secondAttribute="top" id="kbR-em-klD"/>
+                            <constraint firstItem="QQB-Jy-mEZ" firstAttribute="trailing" secondItem="AKf-Wn-YqF" secondAttribute="trailing" constant="16" id="mvQ-XS-hEP"/>
                             <constraint firstItem="nkG-UD-OWH" firstAttribute="leading" secondItem="QQB-Jy-mEZ" secondAttribute="leading" constant="16" id="oRB-4d-02C"/>
+                            <constraint firstItem="AKf-Wn-YqF" firstAttribute="top" secondItem="QQB-Jy-mEZ" secondAttribute="top" constant="20" id="pjm-l7-Lck"/>
                             <constraint firstItem="EiV-nH-FJu" firstAttribute="top" secondItem="cwK-vK-HzD" secondAttribute="bottom" id="q6r-H2-jlI"/>
                             <constraint firstItem="22p-IM-ycb" firstAttribute="leading" secondItem="QQB-Jy-mEZ" secondAttribute="leading" constant="16" id="w6E-zM-9Pc"/>
                             <constraint firstItem="QQB-Jy-mEZ" firstAttribute="bottom" secondItem="QeZ-DA-0Yp" secondAttribute="bottom" id="wOx-8H-UgN"/>
@@ -269,6 +281,7 @@
                         <outlet property="buttonAdditionalActivities" destination="ESc-VK-xm4" id="IQm-8P-nYE"/>
                         <outlet property="buttonBack" destination="nkG-UD-OWH" id="zz1-02-q7C"/>
                         <outlet property="buttonDailyAgenda" destination="Esa-rN-08e" id="iF2-C5-z1d"/>
+                        <outlet property="buttonSubmit" destination="AKf-Wn-YqF" id="qko-6t-xcz"/>
                         <outlet property="imageViewChild" destination="7ky-Za-hL9" id="E5l-Mz-DU4"/>
                         <outlet property="labelChildName" destination="22p-IM-ycb" id="4jK-Th-WSM"/>
                         <outlet property="segmentView" destination="OXi-Eh-BUf" id="qKz-bW-m2H"/>
@@ -651,37 +664,55 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TTe-1L-0sb">
-                                <rect key="frame" x="16" y="81" width="288" height="487"/>
+                                <rect key="frame" x="16" y="81" width="288" height="399"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZYp-d7-qgI" id="8Iu-mV-HkT"/>
                                     <outlet property="delegate" destination="ZYp-d7-qgI" id="lb2-ow-GUU"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpH-1z-0Rs">
+                                <rect key="frame" x="30" y="488" width="260" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="jKa-Zx-bSM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.16125419739999999" green="0.72026985880000005" blue="0.92425370220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSubmitTapped:" destination="ZYp-d7-qgI" eventType="touchUpInside" id="c4M-DS-CWi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5oQ-aQ-Mas" firstAttribute="bottom" secondItem="TTe-1L-0sb" secondAttribute="bottom" id="0oB-XO-ItW"/>
+                            <constraint firstItem="5oQ-aQ-Mas" firstAttribute="bottom" secondItem="cpH-1z-0Rs" secondAttribute="bottom" constant="20" id="IVN-t2-ObZ"/>
                             <constraint firstItem="Rt7-pM-MwE" firstAttribute="bottom" secondItem="5oQ-aQ-Mas" secondAttribute="bottom" id="Isa-nE-BSn"/>
+                            <constraint firstItem="5oQ-aQ-Mas" firstAttribute="trailing" secondItem="cpH-1z-0Rs" secondAttribute="trailing" constant="30" id="QtZ-XN-cse"/>
                             <constraint firstItem="5oQ-aQ-Mas" firstAttribute="trailing" secondItem="TTe-1L-0sb" secondAttribute="trailing" constant="16" id="UYZ-Xu-Q9M"/>
                             <constraint firstItem="Rt7-pM-MwE" firstAttribute="trailing" secondItem="5oQ-aQ-Mas" secondAttribute="trailing" id="VPF-d5-LZ0"/>
                             <constraint firstItem="51Q-Q4-sMe" firstAttribute="top" secondItem="5oQ-aQ-Mas" secondAttribute="top" constant="20" id="Vzx-y3-jb1"/>
                             <constraint firstItem="Rt7-pM-MwE" firstAttribute="top" secondItem="0DR-pT-W5Y" secondAttribute="top" id="ddi-TW-Rcc"/>
+                            <constraint firstItem="cpH-1z-0Rs" firstAttribute="leading" secondItem="5oQ-aQ-Mas" secondAttribute="leading" constant="30" id="eqr-Iv-43C"/>
                             <constraint firstItem="51Q-Q4-sMe" firstAttribute="leading" secondItem="5oQ-aQ-Mas" secondAttribute="leading" constant="16" id="f2S-in-BeF"/>
                             <constraint firstItem="TTe-1L-0sb" firstAttribute="top" secondItem="51Q-Q4-sMe" secondAttribute="bottom" constant="16" id="hrW-qo-EIV"/>
                             <constraint firstItem="Rt7-pM-MwE" firstAttribute="leading" secondItem="5oQ-aQ-Mas" secondAttribute="leading" id="jfP-Af-SJo"/>
+                            <constraint firstItem="cpH-1z-0Rs" firstAttribute="top" secondItem="TTe-1L-0sb" secondAttribute="bottom" constant="8" id="pgq-bg-Cem"/>
                             <constraint firstItem="TTe-1L-0sb" firstAttribute="leading" secondItem="5oQ-aQ-Mas" secondAttribute="leading" constant="16" id="rh9-sZ-XXR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5oQ-aQ-Mas"/>
                     </view>
                     <connections>
                         <outlet property="buttonBack" destination="51Q-Q4-sMe" id="rnQ-LQ-7TN"/>
+                        <outlet property="buttonSubmit" destination="cpH-1z-0Rs" id="mcO-he-yOu"/>
                         <outlet property="tableView" destination="TTe-1L-0sb" id="Dnv-PB-0V5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpK-kP-WpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844" y="786"/>
+            <point key="canvasLocation" x="843.75" y="785.91549295774644"/>
         </scene>
         <!--Add Daily Agenda View Controller-->
         <scene sceneID="4LA-Kz-Q7M">
@@ -803,8 +834,8 @@
     </scenes>
     <resources>
         <image name="add_activity_icon" width="113" height="112"/>
-        <image name="avatar_baby" width="124" height="124"/>
         <image name="back_arrow" width="29" height="47"/>
+        <image name="boy_avatar" width="225" height="232"/>
         <image name="drop_down_white_icon" width="47" height="29"/>
         <image name="gallery_background" width="1080" height="1672"/>
         <image name="logout_icon" width="60" height="64"/>

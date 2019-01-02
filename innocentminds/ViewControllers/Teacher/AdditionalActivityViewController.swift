@@ -12,15 +12,17 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
 
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonSubmit: UIButton!
     
     var additionalActivities: [Activity] = [Activity]()
+    var shouldAskBeforeLeaving: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.initializeViews()
-        self.setupTableView()
+        self.setupTableView()        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +32,11 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
     
     func initializeViews() {
         self.buttonBack.imageView?.contentMode = .scaleAspectFit
+        self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height/2
+        
+        if let activities = Objects.user.additional_activities {
+            self.additionalActivities = activities
+        }
     }
     
     func setupTableView() {
@@ -45,7 +52,7 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return additionalActivities.count == 0 ? 150 : indexPath.row == 0 ? 70 : 170
+        return additionalActivities.count == 0 ? 150 : indexPath.row == 0 ? 70 : 160
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -124,7 +131,15 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
     }
     
     @IBAction func buttonBackTapped(_ sender: Any) {
-        self.popVC()
+        if self.shouldAskBeforeLeaving {
+            self.showAlertView(message: Localization.string(key: MessageKey.LeaveWithoutSaving), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel))
+            
+            if let alertView = self.customView as? AlertView {
+                alertView.buttonOk.addTarget(self, action: #selector(self.popVC), for: .touchUpInside)
+            }
+        } else {
+            self.popVC()
+        }
     }
     
     @objc func addActivityCellTapped() {
@@ -168,7 +183,6 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
         }
         
         self.additionalActivities.remove(at: self.deleteActivityIndex)
-//        self.tableView.deleteRows(at: [IndexPath(row: self.deleteActivityIndex+1, section: 0)], with: .automatic)
         self.tableView.reloadData()
     }
     
@@ -196,6 +210,38 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
                 addPhotoViewController.selectedActivityIndex = sender.tag
             }
             self.present(addPhotoViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func buttonSubmitTapped(_ sender: Any) {
+        self.showLoader()
+        
+        if let userId = Objects.user.id, let id = Int(userId) {
+            let sendActivity = SendActivity(user_id: id, child_id: -1, child_activities: self.additionalActivities)
+            
+            DispatchQueue.global(qos: .background).async {
+                let result = appDelegate.services.addActivity(sendActivity: sendActivity)
+                
+                DispatchQueue.main.async {
+                    if result?.status == ResponseStatus.SUCCESS.rawValue {
+                        if let message = result?.message {
+                            self.showAlertView(message: message)
+                        } else {
+                            self.showAlertView(message: Localization.string(key: MessageKey.ActivitiesSent))
+                        }
+                        
+                        self.shouldAskBeforeLeaving = false
+                    } else {
+                        if let message = result?.message {
+                            self.showAlertView(message: message, isError: true)
+                        } else {
+                            self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
+                        }
+                    }
+                    
+                    self.hideLoader()
+                }
+            }
         }
     }
     

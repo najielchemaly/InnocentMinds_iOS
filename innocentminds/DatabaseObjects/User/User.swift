@@ -12,7 +12,7 @@ import Foundation
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class User {
+public class User: NSObject, NSCoding {
 	public var id : String?
 	public var role_id : String?
 	public var parent_type : String?
@@ -25,10 +25,12 @@ public class User {
     public var hear_about_us : String?
 	public var classes : Array<Class>?
 	public var children : Array<Child>?
-
+    public var additional_activities : Array<Activity>?
+    public var firebase_token : String?
+    
     public static let key: String = "User"
     
-    public init() {}
+    public override init() {}
     
 /**
     Returns an array of models based on given dictionary.
@@ -50,6 +52,34 @@ public class User {
         return models
     }
 
+    required public init(coder decoder: NSCoder) {
+        id = decoder.decodeObject(forKey:"id") as? String
+        role_id = decoder.decodeObject(forKey:"role_id") as? String
+        parent_type = decoder.decodeObject(forKey:"parent_type") as? String
+        fullname = decoder.decodeObject(forKey:"fullname") as? String
+        phone = decoder.decodeObject(forKey:"phone") as? String
+        email = decoder.decodeObject(forKey:"email") as? String
+        address = decoder.decodeObject(forKey:"address") as? String
+        mobile = decoder.decodeObject(forKey:"mobile") as? String
+        now = decoder.decodeObject(forKey:"now") as? String
+        hear_about_us = decoder.decodeObject(forKey:"hear_about_us") as? String
+        firebase_token = decoder.decodeObject(forKey:"firebase_token") as? String
+    }
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(role_id, forKey: "role_id")
+        coder.encode(parent_type, forKey: "parent_type")
+        coder.encode(fullname, forKey: "fullname")
+        coder.encode(phone, forKey: "phone")
+        coder.encode(email, forKey: "email")
+        coder.encode(address, forKey: "address")
+        coder.encode(mobile, forKey: "mobile")
+        coder.encode(now, forKey: "now")
+        coder.encode(hear_about_us, forKey: "hear_about_us")
+        coder.encode(firebase_token, forKey: "firebase_token")
+    }
+    
 /**
     Constructs the object based on the given dictionary.
     
@@ -62,8 +92,12 @@ public class User {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		id = dictionary["id"] as? String
-		role_id = dictionary["role_id"] as? String
+		if let id = dictionary["id"] as? String {
+            self.id = id
+        } else if let id = dictionary["id"] as? Int {
+            self.id = "\(id)"
+        }
+        role_id = dictionary["role_id"] as? String
 		parent_type = dictionary["parent_type"] as? String
 		fullname = dictionary["fullname"] as? String
 		phone = dictionary["phone"] as? String
@@ -72,8 +106,16 @@ public class User {
 		mobile = dictionary["mobile"] as? String
 		now = dictionary["now"] as? String
         hear_about_us = dictionary["hear_about_us"] as? String
-        if (dictionary["classes"] != nil) { classes = Class.modelsFromDictionaryArray(array: dictionary["classes"] as! NSArray) }
-		if (dictionary["children"] != nil) { children = Child.modelsFromDictionaryArray(array: dictionary["children"] as! NSArray) }
+        firebase_token = dictionary["firebase_token"] as? String
+        if let classesDict = dictionary["classes"] as? NSArray {
+            classes = Class.modelsFromDictionaryArray(array: classesDict)
+        }
+        if let childrenDict = dictionary["children"] as? NSArray {
+            children = Child.modelsFromDictionaryArray(array: childrenDict)
+        }
+        if let additionalActivitiesDict = dictionary["additional_activities"] as? NSArray {
+            additional_activities = Activity.modelsFromDictionaryArray(array: additionalActivitiesDict)
+        }
 	}
 
 		
@@ -98,6 +140,7 @@ public class User {
         dictionary.setValue(self.hear_about_us, forKey: "hear_about_us")
         dictionary.setValue(self.classes, forKey: "classes")
         dictionary.setValue(self.children, forKey: "children")
+        dictionary.setValue(self.firebase_token, forKey: "firebase_token")
 
 		return dictionary
 	}

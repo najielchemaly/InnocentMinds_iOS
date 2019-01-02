@@ -93,9 +93,9 @@ class RegisterChildStep1CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let registerChildVC = currentVC as? RegisterChildViewController, let child = registerChildVC.tempUser.children?.first {
             if textField == self.textFieldFirstName, let text = textField.text {
-                child.firstname = text
+                child.firstname = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             } else if textField == self.textFieldLastName, let text = textField.text {
-                child.lastname = text
+                child.lastname = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             }
         }
         
@@ -119,6 +119,7 @@ class RegisterChildStep1CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
         
         if let registerChildVC = currentVC as? RegisterChildViewController, let child = registerChildVC.tempUser.children?.first {
             child.is_born = !self.buttonNotBornYet.isSelected
+            child.date_of_birth = ""
         }
     }
     

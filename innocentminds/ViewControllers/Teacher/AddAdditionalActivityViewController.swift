@@ -18,7 +18,7 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buttonSelectStudents: UIButton!
     
-    var mode: ActivityMode = ActivityMode.add
+    var mode: ActionMode = .add
     var activity: Activity = Activity()
     
 //    var images: [UIImage] = [UIImage]()
@@ -41,7 +41,6 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
         super.viewWillAppear(animated)
         
         self.collectionView.isHidden = self.activity.photos?.count == 0 ? true : false
-        self.viewActivityTitle.isHidden = self.activity.photos?.count == 0 ? false : true
         self.buttonAddImages.isHidden = self.activity.photos?.count == 0 ? false : true
         
         if self.mode == .edit {
@@ -127,12 +126,17 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
                     additionalActivityVC.additionalActivities[additionalActivityVC.editActivityIndex] = activity
                 }
                 
+                additionalActivityVC.shouldAskBeforeLeaving = true
                 additionalActivityVC.tableView.reloadData()
+                
+                if let userId = Objects.user.id {
+                    Activity.saveArray(activities: additionalActivityVC.additionalActivities, key: Activity.key+userId)
+                }
             }
             
             self.dismissVC()
         } else {
-            self.showAlertView(message: errorMessage)
+            self.showAlertView(message: errorMessage, isError: true)
         }
     }
     

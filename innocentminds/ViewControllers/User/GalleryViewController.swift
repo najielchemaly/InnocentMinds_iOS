@@ -12,10 +12,14 @@ class GalleryViewController: BaseViewController, UICollectionViewDelegate, UICol
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var selectedChild: Child = Child()
+    var photos: [Photo] = [Photo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.initializeViews()
         self.setupCollectionView()
     }
 
@@ -28,17 +32,32 @@ class GalleryViewController: BaseViewController, UICollectionViewDelegate, UICol
         self.dismissVC()
     }
     
+    func initializeViews() {
+        if let activities = self.selectedChild.activities {
+            for activity in activities {
+                if let photos = activity.photos {
+                    self.photos.append(contentsOf: photos)
+                }
+            }
+        }
+    }
+    
     func setupCollectionView() {
         self.collectionView.register(UINib.init(nibName: CellIds.ImageViewCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: CellIds.ImageViewCollectionViewCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIds.ImageViewCollectionViewCell, for: indexPath) as? ImageViewCollectionViewCell {
-            cell.imageView.image = #imageLiteral(resourceName: "gallery_dummy")
+            let photo = self.photos[indexPath.row]
+            if let _image = photo._image {
+                cell.imageView.image = _image
+            } else if let image = photo.image, !image.isEmpty {
+                cell.imageView.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+            }
             
             return cell
         }
@@ -48,6 +67,7 @@ class GalleryViewController: BaseViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let imageFullScreenView = self.showView(name: Views.ImageFullScreenView) as? ImageFullScreenView {
+            imageFullScreenView.selectedPhoto = self.photos[indexPath.row]
             imageFullScreenView.setupPagerView()
         }
     }

@@ -16,6 +16,7 @@ class ImageFullCollectionViewCell: FSPagerViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.contentView.layer.shadowRadius = 0
     }
 
 }

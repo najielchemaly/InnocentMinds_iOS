@@ -13,7 +13,7 @@ import UIKit
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class Photo {
+public class Photo: JSONable {
 	public var id : String?
 	public var image : String?
     public var _image: UIImage?
@@ -56,7 +56,11 @@ public class Photo {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		id = dictionary["id"] as? String
+		if let id = dictionary["id"] as? String {
+            self.id = id
+        } else if let id = dictionary["id"] as? Int {
+            self.id = "\(id)"
+        }
 		image = dictionary["image"] as? String
 	}
 

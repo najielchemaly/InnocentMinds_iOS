@@ -34,34 +34,50 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
     func initializeViews() {
         self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height/2
         
-        if let students = currentUser.children {
+        if let fullname = Objects.user.fullname {
+            self.labelTeacherName.text = "\(fullname) (teacher)"
+        }
+        
+        if let students = Objects.user.children {
             self.students = students
         }
-        if let selectedClass = currentUser.classes?.first {
+        
+        if let selectedClass = Objects.user.classes?.first {
             self.selectedClass = selectedClass
         }
+        
+        if let roleId = Objects.user.role_id, roleId == UserRole.Teacher.rawValue {
+            self.buttonSubmit.isHidden = true
+        } else {
+            self.buttonSubmit.isHidden = self.students.count == 0
+        }
+        
+        self.tableView.isScrollEnabled = self.students.count > 0
     }
     
     func setupTableView() {
         self.tableView.register(UINib.init(nibName: CellIds.TeacherStudentTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.TeacherStudentTableViewCell)
         self.tableView.register(UINib.init(nibName: CellIds.TeacherStudentHeaderTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.TeacherStudentHeaderTableViewCell)
+        self.tableView.register(UINib.init(nibName: CellIds.EmptyDataTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.EmptyDataTableViewCell)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5//self.students.count
+        return self.students.count == 0 ? 1 : self.students.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return self.students.count == 0 ? tableView.frame.height : 70
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.TeacherStudentHeaderTableViewCell) as? TeacherStudentHeaderTableViewCell {            
-            cell.labelClass.text = self.selectedClass.name
-            
-            cell.buttonAdditionActivities.addTarget(self, action: #selector(buttonAdditionActivitiesTapped), for: .touchUpInside)
-            
-            return cell
+        if self.students.count > 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.TeacherStudentHeaderTableViewCell) as? TeacherStudentHeaderTableViewCell {
+                cell.labelClass.text = self.selectedClass.name
+                
+                cell.buttonAdditionActivities.addTarget(self, action: #selector(buttonAdditionActivitiesTapped), for: .touchUpInside)
+                
+                return cell
+            }
         }
         
         return nil
@@ -72,7 +88,7 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        return self.students.count == 0 ? 0 : 70
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -86,26 +102,35 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.TeacherStudentTableViewCell) as? TeacherStudentTableViewCell {            
-            cell.initializeViews()
-            
-            let cellTap = UITapGestureRecognizer(target: self, action: #selector(didSelectRow(sender:)))
-            cell.addGestureRecognizer(cellTap)
-            cell.tag = indexPath.row
+        if self.students.count == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
+                cell.labelTitle.text = Localization.string(key: MessageKey.NoStudents)
+                cell.labelTitle.textColor = Colors.textDark
+                
+                return cell
+            }
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.TeacherStudentTableViewCell) as? TeacherStudentTableViewCell {
+                cell.initializeViews()
+                
+                let cellTap = UITapGestureRecognizer(target: self, action: #selector(didSelectRow(sender:)))
+                cell.addGestureRecognizer(cellTap)
+                cell.tag = indexPath.row
+                
+                let student = self.students[indexPath.row]
 
-            cell.imageViewProfile.image = #imageLiteral(resourceName: "avatar_baby")
-            cell.labelStudentName.text = "Maya Nehme \(indexPath.row)"
-            
-//            let student = self.students[indexPath.row]
-//
-//            if let image = student.image {
-//                cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
-//            }
-//            if let firstName = student.firstname, let lastName = student.lastname {
-//                cell.labelStudentName.text = firstName + " " + lastName
-//            }
-            
-            return cell
+                if let image = student.image, !image.isEmpty {
+                    cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+                } else {
+                    cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
+                    cell.imageViewProfile.tintColor = Colors.lightGray
+                }
+                if let firstName = student.firstname, let lastName = student.lastname {
+                    cell.labelStudentName.text = firstName + " " + lastName
+                }
+                
+                return cell
+            }
         }
         
         return UITableViewCell()
@@ -114,19 +139,14 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
     @objc func didSelectRow(sender: UITapGestureRecognizer) {
         if let cell = sender.view {
             if let teacherStudentDetailVC = teacherStoryboard.instantiateViewController(withIdentifier: StoryboardIds.TeacherStudentDetailViewController) as? TeacherStudentDetailViewController {
-//                if let childId = self.students[cell.tag].id {
-//                    teacherStudentDetailVC.selectedChildId = childId
-//                }
-//                if let childActivities = self.students[cell.tag].activities {
-//                    teacherStudentDetailVC.dailyAgendas = childActivities
-//                }
+                teacherStudentDetailVC.selectedStudent = self.students[cell.tag]
                 self.navigationController?.pushViewController(teacherStudentDetailVC, animated: true)
             }
         }
     }
     
     @IBAction func buttonLogoutTapped(_ sender: Any) {
-        self.showAlertView(message: Localization.string(key: MessageKey.Logout), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
+        self.showAlertView(message: Localization.string(key: MessageKey.LogoutValidation), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
         
         if let alertView = self.customView as? AlertView {
             alertView.buttonOk.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
@@ -134,7 +154,74 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func buttonSubmitTapped(_ sender: Any) {
+        self.showAlertView(message: Localization.string(key: MessageKey.PublishActivities), buttonOkTitle: Localization.string(key: MessageKey.Publish), buttonCancelTitle: Localization.string(key: MessageKey.Cancel))
         
+        if let alertView = self.customView as? AlertView {
+            alertView.buttonOk.addTarget(self, action: #selector(self.submitActivities), for: .touchUpInside)
+        }
+    }
+    
+    @objc func submitActivities() {
+        self.showLoader()
+        
+        let publishActivityId = PublishActivityId(activities_ids: self.getActivitiesIds())
+        
+        DispatchQueue.global(qos: .background).async {
+            let result = appDelegate.services.publishActivity(publishActivityId: publishActivityId)
+            
+            DispatchQueue.main.async {
+                if result?.status == ResponseStatus.SUCCESS.rawValue {
+                    if let message = result?.message {
+                        self.showAlertView(message: message)
+                    } else {
+                        self.showAlertView(message: Localization.string(key: MessageKey.ActivitiesPublished))
+                    }
+                } else {
+                    if let message = result?.message {
+                        self.showAlertView(message: message, isError: true)
+                    } else {
+                        self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
+                    }
+                }
+                
+                self.hideLoader()
+            }
+        }
+    }
+    
+    func getActivitiesIds() -> [Int] {
+        var activitiesIds: [Int] = [Int]()
+        for student in self.students {
+            guard let dailyAgendas = student.activities else {
+                return [Int]()
+            }
+            
+            for activity in dailyAgendas {
+                if let activityId = activity.id {
+                    guard let id = Int(activityId) else {
+                        return [Int]()
+                    }
+                    
+                    activitiesIds.append(id)
+                }
+            }
+        }
+        
+        guard let additionalActivities = Objects.user.additional_activities else {
+            return [Int]()
+        }
+        
+        for activity in additionalActivities {
+            if let activityId = activity.id {
+                guard let id = Int(activityId) else {
+                    return [Int]()
+                }
+                
+                activitiesIds.append(id)
+            }
+        }
+        
+        return activitiesIds
     }
     
     /*

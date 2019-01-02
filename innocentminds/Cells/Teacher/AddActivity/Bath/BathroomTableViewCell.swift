@@ -18,6 +18,9 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     var pickerView: UIPickerView!
     var datePicker: UIDatePicker!
     
+    var bathTypes: [BathType] = [BathType]()
+    var bathPottyTypes: [BathPottyType] = [BathPottyType]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +36,14 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
         self.selectionStyle = .none
         self.layer.cornerRadius = Dimensions.cornerRadiusNormal
         
+        if let bathTypes = Objects.variables.bath_types {
+            self.bathTypes = bathTypes
+        }
+        
+        if let bathPottyTypes = Objects.variables.bath_potty_types {
+            self.bathPottyTypes = bathPottyTypes
+        }
+        
         self.setupPickerViews()
     }
     
@@ -41,6 +52,8 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
             self.pickerView = UIPickerView()
             self.pickerView.delegate = self
             self.pickerView.dataSource = self
+            self.textFieldType.inputView = self.pickerView
+            self.textFieldPottyType.inputView = self.pickerView
             
             self.datePicker = UIDatePicker()
             self.datePicker.datePickerMode = .time
@@ -57,6 +70,8 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
             toolbar.items = [cancelButton, flexibleSpace, doneButton]
             
             self.textFieldTime.inputAccessoryView = toolbar
+            self.textFieldType.inputAccessoryView = toolbar
+            self.textFieldPottyType.inputAccessoryView = toolbar
         }
     }
     
@@ -66,9 +81,9 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if self.textFieldType.isFirstResponder {
-            return 0
+            return self.bathTypes.count
         } else if self.textFieldPottyType.isFirstResponder {
-            return 0
+            return self.bathPottyTypes.count
         }
         
         return 0
@@ -76,9 +91,9 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if self.textFieldType.isFirstResponder {
-            return nil
+            return self.bathTypes[row].title
         } else if self.textFieldPottyType.isFirstResponder {
-            return nil
+            return self.bathPottyTypes[row].title
         }
         
         return nil
@@ -86,12 +101,13 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     
     @objc func doneButtonTapped() {
         if let addDailyAgendaVC = currentVC as? AddDailyAgendaViewController {
+            let row = self.pickerView.selectedRow(inComponent: 0)
             if self.textFieldType.isFirstResponder {
-                self.textFieldType.text = nil
-                addDailyAgendaVC.activity.bath_type_id = nil
+                self.textFieldType.text = self.bathTypes[row].title
+                addDailyAgendaVC.activity.bath_type_id = self.bathTypes[row].id
             } else if self.textFieldPottyType.isFirstResponder {
-                self.textFieldPottyType.text = nil
-                addDailyAgendaVC.activity.bath_potty_type_id = nil
+                self.textFieldPottyType.text = self.bathPottyTypes[row].title
+                addDailyAgendaVC.activity.bath_potty_type_id = self.bathPottyTypes[row].id
             } else if self.textFieldTime.isFirstResponder {
                 let calendar = Calendar.current
                 let component = calendar.dateComponents([.hour, .minute, .second], from: self.datePicker.date)

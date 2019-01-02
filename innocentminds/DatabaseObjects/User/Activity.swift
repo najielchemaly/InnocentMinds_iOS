@@ -12,13 +12,13 @@ import Foundation
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class Activity {
+public class Activity: JSONable {
 	public var id : String?
 	public var type_id : String?
 	public var child_id : String?
-	public var rating : String?
+    public var title : String?
 	public var description : String?
-	public var title : String?
+    public var rating : String?
     public var student_ids : String?
     public var from_date : String?
     public var to_date : String?
@@ -27,7 +27,35 @@ public class Activity {
     public var bath_potty_type_id : String?
 	public var photos : Array<Photo>?
     
+    public func getBathType() -> String? {
+        guard let bathTypeId = bath_type_id else {
+            return nil
+        }
+        
+        guard let bathTypes = Objects.variables.bath_types else {
+            return nil
+        }
+        
+        let bathType = bathTypes.first { $0.id == bathTypeId }
+        return bathType?.title
+    }
+    
+    public func getBathPottyType() -> String? {
+        guard let bathPottyTypeId = bath_potty_type_id else {
+            return nil
+        }
+        
+        guard let bathPottyTypes = Objects.variables.bath_potty_types else {
+            return nil
+        }
+        
+        let bathPottyType = bathPottyTypes.first { $0.id == bathPottyTypeId }
+        return bathPottyType?.title
+    }
+    
     public init() {}
+    
+    public static let key: String = "Activity"
     
 /**
     Returns an array of models based on given dictionary.
@@ -61,7 +89,11 @@ public class Activity {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		id = dictionary["id"] as? String
+		if let id = dictionary["id"] as? String {
+            self.id = id
+        } else if let id = dictionary["id"] as? Int {
+            self.id = "\(id)"
+        }
 		type_id = dictionary["type_id"] as? String
 		child_id = dictionary["child_id"] as? String
 		rating = dictionary["rating"] as? String
@@ -73,7 +105,9 @@ public class Activity {
         time = dictionary["time"] as? String
         bath_type_id = dictionary["bath_type_id"] as? String
         bath_potty_type_id = dictionary["bath_potty_type_id"] as? String
-		if (dictionary["photos"] != nil) { photos = Photo.modelsFromDictionaryArray(array: dictionary["photos"] as! NSArray) }
+        if let photosArray = dictionary["photos"] as? NSArray {
+            photos = Photo.modelsFromDictionaryArray(array: photosArray)
+        }
 	}
 
 		
@@ -102,5 +136,30 @@ public class Activity {
 
 		return dictionary
 	}
+    
+    public class func saveArray(activities: [Activity], key: String = Activity.key) {
+        Cache.shared.setObject(activities as AnyObject, forKey: key as AnyObject)
+    }
+    
+    public class func getArray(key: String) -> [Activity]? {
+        guard let activities = Cache.shared.object(forKey: key as AnyObject) as? [Activity] else {
+            return nil
+        }
+        
+        return activities
+    }
+    
+    public class func saveObject(activity: Activity, key: String = Activity.key) {
+        let dictionary = activity.dictionaryRepresentation()
+        Cache.shared.setObject(dictionary, forKey: key as AnyObject)
+    }
+    
+    public class func getObject(key: String) -> Activity? {
+        guard let dictionary = Cache.shared.object(forKey: key as AnyObject) as? NSDictionary else {
+            return nil
+        }
+        
+        return Activity(dictionary: dictionary)
+    }
 
 }

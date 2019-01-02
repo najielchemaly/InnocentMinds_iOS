@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42034DDB21C0251200C356BE /* BathPottyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42034DD921C0251200C356BE /* BathPottyType.swift */; };
+		42034DDC21C0251200C356BE /* BathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42034DDA21C0251200C356BE /* BathType.swift */; };
+		42058FDD219088F7008B2F31 /* SendActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42058FDC219088F7008B2F31 /* SendActivity.swift */; };
 		4214DC1A212E9C8700C2DCC5 /* Gaegu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4214DC17212E95A000C2DCC5 /* Gaegu-Bold.ttf */; };
 		4214DC1B212E9C8700C2DCC5 /* Gaegu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4214DC18212E95A000C2DCC5 /* Gaegu-Light.ttf */; };
 		4214DC1C212E9C8700C2DCC5 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4214DC19212E95A000C2DCC5 /* Gaegu-Regular.ttf */; };
@@ -91,6 +94,7 @@
 		42541E78214BC54D007CF48D /* SendParentsMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541E77214BC54D007CF48D /* SendParentsMessageView.swift */; };
 		42541E7C214BC790007CF48D /* SendParentsMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541E7A214BC790007CF48D /* SendParentsMessageTableViewCell.swift */; };
 		42541E7D214BC790007CF48D /* SendParentsMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42541E7B214BC790007CF48D /* SendParentsMessageTableViewCell.xib */; };
+		4279087721922054001719AE /* PublishActivityId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279087621922054001719AE /* PublishActivityId.swift */; };
 		427BCA5A2133CF7F006A72C1 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA592133CF7F006A72C1 /* DashboardViewController.swift */; };
 		427BCA5D2133D121006A72C1 /* DashboardHatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA5B2133D121006A72C1 /* DashboardHatTableViewCell.swift */; };
 		427BCA5E2133D121006A72C1 /* DashboardHatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA5C2133D121006A72C1 /* DashboardHatTableViewCell.xib */; };
@@ -164,6 +168,9 @@
 		4291E8092171640B00C8ADA7 /* DiseaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E8072171640B00C8ADA7 /* DiseaseTableViewCell.swift */; };
 		4291E80A2171640B00C8ADA7 /* DiseaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E8082171640B00C8ADA7 /* DiseaseTableViewCell.xib */; };
 		4291E80C217166AE00C8ADA7 /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E80B217166AE00C8ADA7 /* Disease.swift */; };
+		42B78D9E21832CE500BAD83B /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B78D9D21832CE500BAD83B /* EmptyDataView.xib */; };
+		42B78DA021832CFD00BAD83B /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B78D9F21832CFD00BAD83B /* EmptyDataView.swift */; };
+		42B78DA22183484B00BAD83B /* ChildTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B78DA12183484B00BAD83B /* ChildTemperature.swift */; };
 		42D0CB96216388EC00EB6889 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB95216388EC00EB6889 /* SelectLanguageViewController.swift */; };
 		42D0CB9821638B6B00EB6889 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB9721638B6B00EB6889 /* Localization.swift */; };
 		42D0CB9A2163946200EB6889 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB992163946200EB6889 /* SearchViewController.swift */; };
@@ -181,6 +188,7 @@
 		42DE560E2155346500A6ED0A /* AddPhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42DE560C2155346500A6ED0A /* AddPhotosCollectionViewCell.xib */; };
 		42E32649216EC0A100EF6DA2 /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E32647216EC0A100EF6DA2 /* NotificationResponse.swift */; };
 		42E3264A216EC0A100EF6DA2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E32648216EC0A100EF6DA2 /* Notification.swift */; };
+		42E377DF2183B8C200770EE1 /* SendTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E377DE2183B8C200770EE1 /* SendTemperature.swift */; };
 		42E6B7F2213BEB7100F2A135 /* GuestTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B7F1213BEB7100F2A135 /* GuestTabBarViewController.swift */; };
 		42E6B7F4213D253200F2A135 /* Nurse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6B7F3213D253200F2A135 /* Nurse.storyboard */; };
 		42E6B802213D278B00F2A135 /* ClassCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B800213D278B00F2A135 /* ClassCollectionViewCell.swift */; };
@@ -194,6 +202,9 @@
 
 /* Begin PBXFileReference section */
 		31BC830BC17222412CDF6223 /* Pods_innocentminds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_innocentminds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42034DD921C0251200C356BE /* BathPottyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathPottyType.swift; sourceTree = "<group>"; };
+		42034DDA21C0251200C356BE /* BathType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathType.swift; sourceTree = "<group>"; };
+		42058FDC219088F7008B2F31 /* SendActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendActivity.swift; sourceTree = "<group>"; };
 		4214DC17212E95A000C2DCC5 /* Gaegu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Bold.ttf"; sourceTree = "<group>"; };
 		4214DC18212E95A000C2DCC5 /* Gaegu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Light.ttf"; sourceTree = "<group>"; };
 		4214DC19212E95A000C2DCC5 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
@@ -281,6 +292,7 @@
 		42541E77214BC54D007CF48D /* SendParentsMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendParentsMessageView.swift; sourceTree = "<group>"; };
 		42541E7A214BC790007CF48D /* SendParentsMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendParentsMessageTableViewCell.swift; sourceTree = "<group>"; };
 		42541E7B214BC790007CF48D /* SendParentsMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendParentsMessageTableViewCell.xib; sourceTree = "<group>"; };
+		4279087621922054001719AE /* PublishActivityId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishActivityId.swift; sourceTree = "<group>"; };
 		427BCA592133CF7F006A72C1 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		427BCA5B2133D121006A72C1 /* DashboardHatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHatTableViewCell.swift; sourceTree = "<group>"; };
 		427BCA5C2133D121006A72C1 /* DashboardHatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHatTableViewCell.xib; sourceTree = "<group>"; };
@@ -355,6 +367,9 @@
 		4291E8072171640B00C8ADA7 /* DiseaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseTableViewCell.swift; sourceTree = "<group>"; };
 		4291E8082171640B00C8ADA7 /* DiseaseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiseaseTableViewCell.xib; sourceTree = "<group>"; };
 		4291E80B217166AE00C8ADA7 /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
+		42B78D9D21832CE500BAD83B /* EmptyDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
+		42B78D9F21832CFD00BAD83B /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
+		42B78DA12183484B00BAD83B /* ChildTemperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildTemperature.swift; sourceTree = "<group>"; };
 		42D0CB95216388EC00EB6889 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		42D0CB9721638B6B00EB6889 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		42D0CB992163946200EB6889 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +387,7 @@
 		42DE560C2155346500A6ED0A /* AddPhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotosCollectionViewCell.xib; sourceTree = "<group>"; };
 		42E32647216EC0A100EF6DA2 /* NotificationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		42E32648216EC0A100EF6DA2 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		42E377DE2183B8C200770EE1 /* SendTemperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTemperature.swift; sourceTree = "<group>"; };
 		42E6B7F1213BEB7100F2A135 /* GuestTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTabBarViewController.swift; sourceTree = "<group>"; };
 		42E6B7F3213D253200F2A135 /* Nurse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Nurse.storyboard; sourceTree = "<group>"; };
 		42E6B800213D278B00F2A135 /* ClassCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -645,6 +661,8 @@
 		423515C5216D4A69000BB892 /* GlobalVariables */ = {
 			isa = PBXGroup;
 			children = (
+				42034DD921C0251200C356BE /* BathPottyType.swift */,
+				42034DDA21C0251200C356BE /* BathType.swift */,
 				428C740A21750325002EB7C6 /* CharacterType.swift */,
 				4291E80B217166AE00C8ADA7 /* Disease.swift */,
 				4291E7F02170FD6C00C8ADA7 /* BloodType.swift */,
@@ -668,6 +686,10 @@
 		423515DC216D674F000BB892 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				4279087621922054001719AE /* PublishActivityId.swift */,
+				42058FDC219088F7008B2F31 /* SendActivity.swift */,
+				42E377DE2183B8C200770EE1 /* SendTemperature.swift */,
+				42B78DA12183484B00BAD83B /* ChildTemperature.swift */,
 				423515DE216D6771000BB892 /* Activity.swift */,
 				423515E0216D6771000BB892 /* Child.swift */,
 				423515DF216D6771000BB892 /* Class.swift */,
@@ -996,6 +1018,15 @@
 			path = ChildProfile;
 			sourceTree = "<group>";
 		};
+		42B78D9C21832CCE00BAD83B /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				42B78D9D21832CE500BAD83B /* EmptyDataView.xib */,
+				42B78D9F21832CFD00BAD83B /* EmptyDataView.swift */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
 		42D0CB9B21639A1200EB6889 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1044,6 +1075,7 @@
 		42E6B7F5213D26B000F2A135 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				42B78D9C21832CCE00BAD83B /* Empty */,
 				4291E8022171616000C8ADA7 /* ChildProfile */,
 				427BF30F2137CF900077FFB0 /* Contact */,
 				428BF6012136DDDE00555926 /* ImageFullScreen */,
@@ -1299,6 +1331,7 @@
 				422957D8213EDDCC001DDE7D /* NapTableViewCell.xib in Resources */,
 				427BCA9121342766006A72C1 /* MessageTableViewCell.xib in Resources */,
 				4223B2A8213957120068EEA8 /* RegisterChildStep1CollectionViewCell.xib in Resources */,
+				42B78D9E21832CE500BAD83B /* EmptyDataView.xib in Resources */,
 				427BCA622133DE33006A72C1 /* DashboardPostTableViewCell.xib in Resources */,
 				427BCA9B21345E17006A72C1 /* MessageOpponentTableViewCell.xib in Resources */,
 				428BF6092136DF1F00555926 /* LocateUsTableViewCell.xib in Resources */,
@@ -1389,6 +1422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42034DDC21C0251200C356BE /* BathType.swift in Sources */,
 				427BCA8821341CC0006A72C1 /* NotificationTableViewCell.swift in Sources */,
 				42E3264A216EC0A100EF6DA2 /* Notification.swift in Sources */,
 				422957DB213EDDF8001DDE7D /* BathroomTableViewCell.swift in Sources */,
@@ -1415,6 +1449,7 @@
 				423515E4216D6771000BB892 /* Activity.swift in Sources */,
 				4291E8092171640B00C8ADA7 /* DiseaseTableViewCell.swift in Sources */,
 				423515E7216D6771000BB892 /* Photo.swift in Sources */,
+				42B78DA021832CFD00BAD83B /* EmptyDataView.swift in Sources */,
 				422957C2213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.swift in Sources */,
 				42DE5609215531F000A6ED0A /* AddPhotosViewController.swift in Sources */,
 				423515F0216D6CD5000BB892 /* Payment.swift in Sources */,
@@ -1432,6 +1467,7 @@
 				4214DC29212EC22600C2DCC5 /* Alamofire+Synchronous.swift in Sources */,
 				42E6B80A213D51E000F2A135 /* NurseStudentTableViewCell.swift in Sources */,
 				4214DC37212EE8B100C2DCC5 /* AlertView.swift in Sources */,
+				42E377DF2183B8C200770EE1 /* SendTemperature.swift in Sources */,
 				4291E7E0216F688000C8ADA7 /* AdditionalActivityViewController.swift in Sources */,
 				422957AE213E9CC8001DDE7D /* TemperatureFooterTableViewCell.swift in Sources */,
 				422957B5213EA276001DDE7D /* NurseStudentDetailViewController.swift in Sources */,
@@ -1458,11 +1494,13 @@
 				423AEDB7212D5C4700A097A0 /* InitialViewController.swift in Sources */,
 				427BCA5A2133CF7F006A72C1 /* DashboardViewController.swift in Sources */,
 				423515F1216D6CD5000BB892 /* StatementOfAccount.swift in Sources */,
+				4279087721922054001719AE /* PublishActivityId.swift in Sources */,
 				428BF5F42136D7C200555926 /* ContactUsViewController.swift in Sources */,
 				427BCA5D2133D121006A72C1 /* DashboardHatTableViewCell.swift in Sources */,
 				422957C8213EC151001DDE7D /* EmptyActivityTableViewCell.swift in Sources */,
 				421B219821411E4000099EC6 /* AddActivityPostTableViewCell.swift in Sources */,
 				4223B2AB213957320068EEA8 /* RegisterChildStep2CollectionViewCell.swift in Sources */,
+				42058FDD219088F7008B2F31 /* SendActivity.swift in Sources */,
 				4291E7FC2171491400C8ADA7 /* PediatricianCollectionViewCell.swift in Sources */,
 				427BCA932134543F006A72C1 /* MessageDetailsViewController.swift in Sources */,
 				423515D1216D4A77000BB892 /* Contact.swift in Sources */,
@@ -1473,6 +1511,7 @@
 				428BF5EE2136BDA000555926 /* AboutUsViewController.swift in Sources */,
 				423515CE216D4A77000BB892 /* About.swift in Sources */,
 				42541E78214BC54D007CF48D /* SendParentsMessageView.swift in Sources */,
+				42B78DA22183484B00BAD83B /* ChildTemperature.swift in Sources */,
 				423515E5216D6771000BB892 /* Class.swift in Sources */,
 				422957CB213EDA20001DDE7D /* AddAdditionalActivityViewController.swift in Sources */,
 				423515E6216D6771000BB892 /* Child.swift in Sources */,
@@ -1501,6 +1540,7 @@
 				423515CD216D4A77000BB892 /* Config.swift in Sources */,
 				42D0CB9A2163946200EB6889 /* SearchViewController.swift in Sources */,
 				427BCAAF2134B37C006A72C1 /* ImageFullScreenView.swift in Sources */,
+				42034DDB21C0251200C356BE /* BathPottyType.swift in Sources */,
 				4214DC21212EA43B00C2DCC5 /* BaseViewController.swift in Sources */,
 				428BF5F12136C0CE00555926 /* AboutUsCollectionViewCell.swift in Sources */,
 				427BCAA6213466DE006A72C1 /* MenuTableViewCell.swift in Sources */,

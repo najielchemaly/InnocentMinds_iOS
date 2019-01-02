@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PXI-un-jqn">
-                    <rect key="frame" x="20" y="252" width="335" height="50"/>
+                    <rect key="frame" x="20" y="260.5" width="335" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="IMo-CH-nsa"/>
@@ -60,15 +60,30 @@
                     </constraints>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                             <color key="value" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cHp-IN-Fby">
+                    <rect key="frame" x="20" y="376.5" width="335" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="j4G-av-oLJ"/>
+                    </constraints>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                            <color key="value" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rj-xT-yOY">
-                    <rect key="frame" x="20" y="384.5" width="335" height="50"/>
+                    <rect key="frame" x="20" y="442.5" width="335" height="50"/>
                     <color key="backgroundColor" red="0.16125419739999999" green="0.72026985880000005" blue="0.92425370220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="F81-Ys-D7H"/>
@@ -77,6 +92,9 @@
                     <state key="normal" title="Add">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="buttonAddTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="YFU-3Q-Jui"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzH-73-RzF">
                     <rect key="frame" x="156" y="613" width="62" height="34"/>
@@ -94,24 +112,28 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wzH-73-RzF" secondAttribute="bottom" constant="20" id="3cs-5U-sDU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PXI-un-jqn" secondAttribute="trailing" constant="20" id="4Mu-8B-Ugp"/>
                 <constraint firstItem="VcD-Zu-jU0" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="5PN-0o-Aa7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cHp-IN-Fby" secondAttribute="trailing" constant="20" id="8Gy-fd-Cpx"/>
                 <constraint firstItem="CKF-px-cJL" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="9b1-aP-G4F"/>
                 <constraint firstItem="CKF-px-cJL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="FqM-Ax-Ihg"/>
                 <constraint firstItem="jwM-vn-fUh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GB8-oT-mIS"/>
-                <constraint firstItem="6Rj-xT-yOY" firstAttribute="top" secondItem="CKF-px-cJL" secondAttribute="bottom" constant="16" id="GRl-Aa-wgv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Rj-xT-yOY" secondAttribute="trailing" constant="20" id="Gzm-1Z-PdB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jwM-vn-fUh" secondAttribute="trailing" constant="16" id="K6N-AJ-7OI"/>
                 <constraint firstItem="wzH-73-RzF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="O2m-H6-Oc7"/>
+                <constraint firstItem="cHp-IN-Fby" firstAttribute="top" secondItem="CKF-px-cJL" secondAttribute="bottom" constant="8" id="Vo9-Rg-fM5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CKF-px-cJL" secondAttribute="trailing" constant="20" id="c5d-Go-ri3"/>
                 <constraint firstItem="6Rj-xT-yOY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="cMW-ob-wJh"/>
+                <constraint firstItem="6Rj-xT-yOY" firstAttribute="top" secondItem="cHp-IN-Fby" secondAttribute="bottom" constant="16" id="fd9-9A-xVw"/>
                 <constraint firstItem="jwM-vn-fUh" firstAttribute="top" secondItem="VcD-Zu-jU0" secondAttribute="bottom" constant="8" id="lHJ-vR-z8V"/>
                 <constraint firstItem="PXI-un-jqn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="qVN-La-76u"/>
-                <constraint firstItem="CKF-px-cJL" firstAttribute="top" secondItem="PXI-un-jqn" secondAttribute="bottom" constant="16" id="tYi-Or-ZjS"/>
+                <constraint firstItem="CKF-px-cJL" firstAttribute="top" secondItem="PXI-un-jqn" secondAttribute="bottom" constant="8" id="tYi-Or-ZjS"/>
+                <constraint firstItem="cHp-IN-Fby" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="v18-5K-7sR"/>
                 <constraint firstItem="VcD-Zu-jU0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="xwf-Na-hqv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="buttonAdd" destination="6Rj-xT-yOY" id="e0K-Tm-Hoi"/>
+                <outlet property="textFieldComment" destination="cHp-IN-Fby" id="wdR-KS-ONw"/>
                 <outlet property="textFieldTemperature" destination="CKF-px-cJL" id="HxO-xg-r8i"/>
                 <outlet property="textFieldTime" destination="PXI-un-jqn" id="LWk-7J-yiB"/>
             </connections>

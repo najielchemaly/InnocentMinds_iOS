@@ -42,8 +42,8 @@ class AddActivityPostTableViewCell: UITableViewCell {
     
     func initializeViews() {
         self.selectionStyle = .none
-        self.mainView.layer.cornerRadius = Dimensions.cornerRadiusNormal
-        self.topView.layer.cornerRadius = Dimensions.cornerRadiusNormal
+        self.mainView.layer.cornerRadius = Dimensions.cornerRadiusMedium
+        self.topView.layer.cornerRadius = Dimensions.cornerRadiusMedium
     }
     
 }

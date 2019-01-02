@@ -54,15 +54,15 @@ class PediatricianCollectionViewCell: FSPagerViewCell, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let editChildProfileVC = currentVC as? EditChildProfileViewController {
+        if let editChildProfileVC = currentVC as? EditChildProfileViewController, let text = textField.text {
             if self.textFieldFullname.isFirstResponder {
-                editChildProfileVC.selectedChild.ped_fullname = self.textFieldFullname.text
+                editChildProfileVC.selectedChild.ped_fullname = text + string
             } else if self.textFieldWorkPlace.isFirstResponder {
-                editChildProfileVC.selectedChild.ped_workplace = self.textFieldWorkPlace.text
+                editChildProfileVC.selectedChild.ped_workplace = text + string
             } else if self.textFieldPhone.isFirstResponder {
-                editChildProfileVC.selectedChild.ped_phone = self.textFieldPhone.text
+                editChildProfileVC.selectedChild.ped_phone = text + string
             } else if self.textFieldEmail.isFirstResponder {
-                editChildProfileVC.selectedChild.ped_email = self.textFieldEmail.text
+                editChildProfileVC.selectedChild.ped_email = text + string
             }
         }
         

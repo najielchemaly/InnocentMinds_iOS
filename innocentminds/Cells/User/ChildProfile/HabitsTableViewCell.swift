@@ -112,12 +112,16 @@ class HabitsTableViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPickerViewDa
             let row = self.pickerView.selectedRow(inComponent: 0)
             if self.textFieldSleepHabit.isFirstResponder {
                 self.textFieldSleepHabit.text = self.habitRanks[row].title
+                editChildProfileVC.selectedChild.sleep_habit_id = self.habitRanks[row].id
             } else if self.textFieldEatingHabit.isFirstResponder {
                 self.textFieldEatingHabit.text = self.habitRanks[row].title
+                editChildProfileVC.selectedChild.eating_habit_id = self.habitRanks[row].id
             } else if self.textFieldClean.isFirstResponder {
                 self.textFieldClean.text = Objects.answers[row]
+                editChildProfileVC.selectedChild.clean = Objects.answers[row]
             } else if self.textFieldCharacter.isFirstResponder {
                 self.textFieldCharacter.text = self.characterTypes[row].title
+                editChildProfileVC.selectedChild.character_type_id = self.characterTypes[row].id
             }
             
             editChildProfileVC.dismissKeyboard()

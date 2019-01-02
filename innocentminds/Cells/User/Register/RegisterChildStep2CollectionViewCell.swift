@@ -60,6 +60,10 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
         
         self.buttonFather.backgroundColor = .clear
         self.buttonFather.setTitleColor(Colors.white, for: .normal)
+        
+        if let registerChildVC = currentVC as? RegisterChildViewController {
+            registerChildVC.tempUser.parent_type = ParentType.Mother.rawValue
+        }
     }
     
     func setButtonFatherSelected() {
@@ -68,6 +72,10 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
         
         self.buttonMother.backgroundColor = .clear
         self.buttonMother.setTitleColor(Colors.white, for: .normal)
+        
+        if let registerChildVC = currentVC as? RegisterChildViewController {
+            registerChildVC.tempUser.parent_type = ParentType.Father.rawValue
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -128,13 +136,13 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let registerChildVC = currentVC as? RegisterChildViewController {
             if textField == self.textFieldName, let text = textField.text {
-                registerChildVC.tempUser.fullname = text
+                registerChildVC.tempUser.fullname = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             } else if textField == self.textFieldPhone, let text = textField.text {
-                registerChildVC.tempUser.phone = text
+                registerChildVC.tempUser.phone = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             } else if textField == self.textFieldEmail, let text = textField.text {
-                registerChildVC.tempUser.email = text
+                registerChildVC.tempUser.email = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             } else if textField == self.textFieldAddress, let text = textField.text {
-                registerChildVC.tempUser.address = text
+                registerChildVC.tempUser.address = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             }
         }
         

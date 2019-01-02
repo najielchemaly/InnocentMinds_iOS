@@ -24,7 +24,8 @@ class PersonalInformationCollectionViewCell: FSPagerViewCell, UITextFieldDelegat
     @IBOutlet weak var textFieldHomeLanguage: UITextField!
     @IBOutlet weak var textFieldProgramLanguage: UITextField!
     @IBOutlet weak var textFieldTransportation: UITextField!
-
+    @IBOutlet weak var imageViewProfile: UIImageView!
+    
     var datePicker: UIDatePicker!
     var pickerView: UIPickerView!
     
@@ -42,6 +43,7 @@ class PersonalInformationCollectionViewCell: FSPagerViewCell, UITextFieldDelegat
         self.contentView.layer.shadowRadius = 0
         
         self.buttonAddImage.customizeView(width: self.buttonAddImage.frame.height/2)
+        self.imageViewProfile.layer.cornerRadius = self.imageViewProfile.frame.height/2
         
         for view in self.stackView.subviews {
             view.customizeView()
@@ -198,15 +200,15 @@ class PersonalInformationCollectionViewCell: FSPagerViewCell, UITextFieldDelegat
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let editChildProfileVC = currentVC as? EditChildProfileViewController {
+        if let editChildProfileVC = currentVC as? EditChildProfileViewController, let text = textField.text {
             if self.textFieldFirstname.isFirstResponder {
-                editChildProfileVC.selectedChild.firstname = self.textFieldFirstname.text
+                editChildProfileVC.selectedChild.firstname = text + string
             } else if self.textFieldFathername.isFirstResponder {
-                editChildProfileVC.selectedChild.fathername = self.textFieldFathername.text
+                editChildProfileVC.selectedChild.fathername = text + string
             } else if self.textFieldLastname.isFirstResponder {
-                editChildProfileVC.selectedChild.lastname = self.textFieldLastname.text
+                editChildProfileVC.selectedChild.lastname = text + string
             } else if self.textFieldPlaceOfBirth.isFirstResponder {
-                editChildProfileVC.selectedChild.place_of_birth = self.textFieldPlaceOfBirth.text
+                editChildProfileVC.selectedChild.place_of_birth = text + string
             }
         }
         

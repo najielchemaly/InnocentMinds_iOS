@@ -16,12 +16,21 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var buttonFees: UIButton!
     @IBOutlet weak var labelTotal: UILabel!
     
+    var statementOfAccount: StatementOfAccount = StatementOfAccount()
+    var payments: [Payment] = [Payment]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.initializeViews()
         self.setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.getStatementOfAccount()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,33 +44,95 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.viewStack.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.buttonPayments.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.buttonFees.layer.cornerRadius = Dimensions.cornerRadiusNormal
+        
+        self.buttonPayments.isSelected = true
+        
+        self.labelTotal.text = nil
+    }
+    
+    func getStatementOfAccount() {
+        self.showLoader()
+        
+        let userId = Objects.user.id ?? "0"
+        
+        DispatchQueue.global(qos: .background).async {
+            let result = appDelegate.services.getStatementOfAccount(id: userId)
+            
+            DispatchQueue.main.async {
+                if result?.status == ResponseStatus.SUCCESS.rawValue {
+                    if let json = result?.json?.first {
+                        guard let statementOfAccount = StatementOfAccount.init(dictionary: json) else {
+                            return
+                        }
+                        
+                        self.statementOfAccount = statementOfAccount
+                        
+                        if let payments = statementOfAccount.payments {
+                            self.payments = payments
+                        }
+                        
+                        if let totalAmount = statementOfAccount.total_amount, totalAmount > 0 {
+                            self.labelTotal.text = "\(totalAmount)"
+                        }
+                    }
+                    
+                    self.tableView.reloadData()
+                } else if let message = result?.message {
+                    self.showAlertView(message: message, isError: true)
+                } else {
+                    self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
+                }
+                
+                self.hideLoader()
+            }
+        }
     }
     
     func setupTableView() {
         self.tableView.register(UINib.init(nibName: CellIds.PaymentTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.PaymentTableViewCell)
+        self.tableView.register(UINib.init(nibName: CellIds.EmptyDataTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.EmptyDataTableViewCell)
         self.tableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.payments.count == 0 ? 1 : self.payments.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return self.payments.count == 0 ? tableView.frame.height : 220
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.PaymentTableViewCell) as? PaymentTableViewCell {
+        if self.payments.count == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
+                cell.labelTitle.text = Localization.string(key: MessageKey.NoPayments)
+                cell.labelTitle.textColor = Colors.textDark
+                
+                return cell
+            }
+        } else if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.PaymentTableViewCell) as? PaymentTableViewCell {
             cell.initializeViews()
             
-            cell.imageViewProfile.image = #imageLiteral(resourceName: "avatar_baby")
-            cell.labelName.text = "Maya Nehme \(indexPath.row)"
+            let payment = self.payments[indexPath.row]
+
+            let filteredChildren = Objects.user.children?.filter { $0.id == payment.child_id }
+            if let child = filteredChildren?.first {
+                if let image = child.image, !image.isEmpty {
+                    cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+                } else {
+                    cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
+                }
+
+                if let firstName = child.firstname, let lastName = child.lastname {
+                    cell.labelName.text = "\(firstName) \(lastName)"
+                }
+            }
             
             cell.labelAmountTitle.text = self.buttonPayments.isSelected ? "Payment amount" : "Fee amount"
             cell.labelDateTitle.text = self.buttonPayments.isSelected ? "Payment date" : "Due date"
             
-            cell.labelAmount.text = "$500"
-            cell.labelDate.text = "Monday, September 30, 2018"
+            cell.labelAmount.text = payment.amount
+            cell.labelDate.text = payment.date
             
             return cell
         }

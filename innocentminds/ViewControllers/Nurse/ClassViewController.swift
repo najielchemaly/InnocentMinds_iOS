@@ -14,20 +14,44 @@ class ClassViewController: BaseViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var classes: [Class] = [Class]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.initializeViews()
         self.setupCollectionView()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.classes.count == 0 {
+            if let emptyDataView = self.showView(name: Views.EmptyDataView) as? EmptyDataView {
+                emptyDataView.labelTitle.text = Localization.string(key: MessageKey.NoClasses)
+                emptyDataView.frame = self.collectionView.frame
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func initializeViews() {
+        if let classes = Objects.user.classes {
+            self.classes = classes
+        }
+        
+        if let fullname = Objects.user.fullname {
+            self.labelNurseName.text = "\(fullname) (nurse)"
+        }
+    }
+    
     @IBAction func buttonLogoutTapped(_ sender: Any) {
-        self.showAlertView(message: Localization.string(key: MessageKey.Logout), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
+        self.showAlertView(message: Localization.string(key: MessageKey.LogoutValidation), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
         
         if let alertView = self.customView as? AlertView {
             alertView.buttonOk.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
@@ -35,7 +59,10 @@ class ClassViewController: BaseViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func buttonSearchTapped(_ sender: Any) {
-        self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.SearchViewController, type: .present)
+        if let searchViewController = nurseStoryboard.instantiateViewController(withIdentifier: StoryboardIds.SearchViewController) as? SearchViewController, let searchNavigationController = nurseStoryboard.instantiateViewController(withIdentifier: StoryboardIds.SearchNavigationController) as? UINavigationController {
+            searchViewController.classes = self.classes
+            self.present(searchNavigationController, animated: true, completion: nil)
+        }
     }
     
     func setupCollectionView() {
@@ -43,11 +70,14 @@ class ClassViewController: BaseViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.classes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.NurseStudentViewController, type: .push)
+        if let nurseStudentVC = nurseStoryboard.instantiateViewController(withIdentifier: StoryboardIds.NurseStudentViewController) as? NurseStudentViewController {
+            nurseStudentVC.selectedClass = self.classes[indexPath.row]
+            self.navigationController?.pushViewController(nurseStudentVC, animated: true)
+        }
     }
     
     let itemSpacing: CGFloat = 10
@@ -67,8 +97,13 @@ class ClassViewController: BaseViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIds.ClassCollectionViewCell, for: indexPath) as? ClassCollectionViewCell {
+            let classe = self.classes[indexPath.row]
+            cell.labelClassName.text = classe.name
             
-            cell.labelClassName.text = "Class \(indexPath.row+1)-B"
+            if let students = Objects.user.children {
+                let filteredStudents = students.filter { $0.class_id == classe.id }
+                cell.labelStudentsNumber.text = "\(filteredStudents.count) Student (s)"
+            }
             
             return cell
         }

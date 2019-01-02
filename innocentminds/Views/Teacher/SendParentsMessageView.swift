@@ -22,22 +22,22 @@ class SendParentsMessageView: UIView, UITableViewDelegate, UITableViewDataSource
 //    ]
     
     var messages: [Messages] = [Messages]()
-    var selectedChildId: String = "0"
+    var selectedChild: Child = Child()
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
         self.hide(remove: true)
     }
     
     func initializeViews() {
+        if let messages = Objects.variables.messages {
+            self.messages = messages
+        }
+        
         self.buttonSend.isHidden = self.messages.count == 0
         self.buttonSend.layer.cornerRadius = self.buttonSend.frame.height/2
         self.buttonSend.isEnabled(enable: false)
         
         self.setupTableView()
-        
-        if let messages = Objects.variables.messages {
-            self.messages = messages
-        }
     }
     
     private func setupTableView() {
@@ -84,7 +84,6 @@ class SendParentsMessageView: UIView, UITableViewDelegate, UITableViewDataSource
             let message = self.messages[cell.tag]
             let isSelected = message.isSelected == true ? true : false
             self.messages[cell.tag].isSelected = !isSelected
-                
             
             self.tableView.reloadData()
             self.updateButtonSendStatus()
@@ -108,8 +107,11 @@ class SendParentsMessageView: UIView, UITableViewDelegate, UITableViewDataSource
             }
             messageIds.removeLast()
             
+            let childId = self.selectedChild.id ?? "0"
+            let parentId = self.selectedChild.parent_id ?? "0"
+            
             DispatchQueue.global(qos: .background).async {
-                let result = appDelegate.services.sendMessage(childId: self.selectedChildId, messageIds: messageIds)
+                let result = appDelegate.services.sendMessage(userId: parentId, childId: childId, messageIds: messageIds)
                 
                 DispatchQueue.main.async {
                     if result?.status == ResponseStatus.SUCCESS.rawValue {
@@ -117,9 +119,9 @@ class SendParentsMessageView: UIView, UITableViewDelegate, UITableViewDataSource
                             baseVC.showAlertView(message: message)
                         }
                     } else if let message = result?.message {
-                        baseVC.showAlertView(message: message)
+                        baseVC.showAlertView(message: message, isError: true)
                     } else {
-                        baseVC.showAlertView(message: Localization.string(key: MessageKey.InternalServerError))
+                        baseVC.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
                     }
                     
                     baseVC.hideLoader()

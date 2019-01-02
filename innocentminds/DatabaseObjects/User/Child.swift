@@ -9,11 +9,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 import Foundation
+import UIKit
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class Child {
+public class Child: JSONable {
 	public var id : String?
+    public var parent_id : String?
     public var is_born : Bool?
 	public var firstname : String?
     public var fathername : String?
@@ -42,9 +44,144 @@ public class Child {
 	public var character_type_id : String?
     public var home_language_id : String?
     public var desired_language_id : String?
+    public var hear_about_us_id : String?
 	public var activities : Array<Activity>?
+    public var _image : UIImage?
+    public var has_arrived: Bool?
+    public var date_arrived: String?
+    public var child_temps: Array<ChildTemperature>?
 
     public init() {}
+    
+    public func getBranch() -> String? {
+        guard let branchId = branch_id else {
+            return nil
+        }
+        
+        guard let branches = Objects.variables.branches else {
+            return nil
+        }
+        
+        let branch = branches.first { $0.id == branchId }
+        return branch == nil ? branch_id : branch?.title
+    }
+    
+    public func getHeadAboutUs() -> String? {
+        guard let hearAboutUsId = hear_about_us_id else {
+            return nil
+        }
+        
+        guard let hearAboutUss = Objects.variables.hear_about_us else {
+            return nil
+        }
+        
+        let hearAboutUs = hearAboutUss.first { $0.id == hearAboutUsId }
+        return hearAboutUs == nil ? hear_about_us_id : hearAboutUs?.title
+    }
+    
+    public func getGender() -> String? {
+        guard let genderId = gender_id else {
+            return nil
+        }
+        
+        guard let genders = Objects.variables.genders else {
+            return nil
+        }
+        
+        let gender = genders.first { $0.id == genderId }
+        return gender == nil ? gender_id : gender?.title
+    }
+    
+    public func getHomeLanguage() -> String? {
+        guard let homeLanguageId = home_language_id else {
+            return nil
+        }
+        
+        guard let homeLanguages = Objects.variables.home_languages else {
+            return nil
+        }
+        
+        let homeLangugage = homeLanguages.first { $0.id == homeLanguageId }
+        return homeLangugage == nil ? home_language_id : homeLangugage?.title
+    }
+    
+    public func getDesiredLanguage() -> String? {
+        guard let desiredLanguageId = desired_language_id else {
+            return nil
+        }
+        
+        guard let desiredLanguages = Objects.variables.program_languages else {
+            return nil
+        }
+        
+        let desiredLanguage = desiredLanguages.first { $0.id == desiredLanguageId }
+        return desiredLanguage == nil ? desired_language_id : desiredLanguage?.title
+    }
+    
+    public func getTransportation() -> String? {
+        guard let transpId = transp_id else {
+            return nil
+        }
+        
+        guard let transportations = Objects.variables.transportations else {
+            return nil
+        }
+        
+        let transportation = transportations.first { $0.id == transpId }
+        return transportation == nil ? transp_id : transportation?.title
+    }
+    
+    public func getBloodType() -> String? {
+        guard let bloodTypeId = blood_type_id else {
+            return nil
+        }
+        
+        guard let bloodTypes = Objects.variables.blood_types else {
+            return nil
+        }
+        
+        let bloodType = bloodTypes.first { $0.id == bloodTypeId }
+        return bloodType == nil ? blood_type_id : bloodType?.title
+    }
+    
+    public func getSleepHabit() -> String? {
+        guard let sleepHabitId = sleep_habit_id else {
+            return nil
+        }
+        
+        guard let habitRanks = Objects.variables.habit_ranks else {
+            return nil
+        }
+        
+        let habitRank = habitRanks.first { $0.id == sleepHabitId }
+        return habitRank == nil ? sleep_habit_id : habitRank?.title
+    }
+    
+    public func getEatingHabit() -> String? {
+        guard let eatingHabitId = eating_habit_id else {
+            return nil
+        }
+        
+        guard let habitRanks = Objects.variables.habit_ranks else {
+            return nil
+        }
+        
+        let habitRank = habitRanks.first { $0.id == eatingHabitId }
+        return habitRank == nil ? eating_habit_id : habitRank?.title
+    }
+    
+    public func getCharacterType() -> String? {
+        guard let characterTypeId = character_type_id else {
+            return nil
+        }
+        
+        guard let characterTypes = Objects.variables.character_types else {
+            return nil
+        }
+        
+        let characterType = characterTypes.first { $0.id == characterTypeId }
+        return characterType == nil ? character_type_id : characterType?.title
+    }
     
 /**
     Returns an array of models based on given dictionary.
@@ -78,7 +215,16 @@ public class Child {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		id = dictionary["id"] as? String
+		if let id = dictionary["id"] as? String {
+            self.id = id
+        } else if let id = dictionary["id"] as? Int {
+            self.id = "\(id)"
+        }
+        if let parent_id = dictionary["parent_id"] as? String {
+            self.parent_id = parent_id
+        } else if let parent_id = dictionary["parent_id"] as? Int {
+            self.parent_id = "\(parent_id)"
+        }
         is_born = dictionary["is_born"] as? Bool
 		firstname = dictionary["firstname"] as? String
         fathername = dictionary["fathername"] as? String
@@ -107,7 +253,11 @@ public class Child {
 		character_type_id = dictionary["character_type_id"] as? String
         home_language_id = dictionary["home_language_id"] as? String
         desired_language_id = dictionary["desired_language_id"] as? String
+        hear_about_us_id = dictionary["hear_about_us_id"] as? String
+        has_arrived = dictionary["has_arrived"] as? Bool
+        date_arrived = dictionary["date_arrived"] as? String
 		if (dictionary["activities"] != nil) { activities = Activity.modelsFromDictionaryArray(array: dictionary["activities"] as! NSArray) }
+        if (dictionary["child_temps"] != nil) { child_temps = ChildTemperature.modelsFromDictionaryArray(array: dictionary["child_temps"] as! NSArray) }
 	}
 
 		
@@ -121,6 +271,7 @@ public class Child {
 		let dictionary = NSMutableDictionary()
 
 		dictionary.setValue(self.id, forKey: "id")
+        dictionary.setValue(self.parent_id, forKey: "parent_id")
         dictionary.setValue(self.is_born, forKey: "is_born")
 		dictionary.setValue(self.firstname, forKey: "firstname")
         dictionary.setValue(self.fathername, forKey: "fathername")
@@ -149,7 +300,10 @@ public class Child {
 		dictionary.setValue(self.character_type_id, forKey: "character_type_id")
         dictionary.setValue(self.home_language_id, forKey: "home_language_id")
         dictionary.setValue(self.desired_language_id, forKey: "desired_language_id")
+        dictionary.setValue(self.hear_about_us_id, forKey: "hear_about_us_id")
         dictionary.setValue(self.activities, forKey: "activities")
+        dictionary.setValue(self.has_arrived, forKey: "has_arrived")
+        dictionary.setValue(self.date_arrived, forKey: "date_arrived")
 
 		return dictionary
 	}

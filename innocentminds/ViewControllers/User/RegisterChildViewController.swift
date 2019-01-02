@@ -17,9 +17,11 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
     @IBOutlet weak var buttonNext: UIButton!
     @IBOutlet weak var buttonRequestAppointment: UIButton!
     @IBOutlet weak var stackViewRequest: UIStackView!
+    @IBOutlet weak var buttonCancel: UIButton!
     
     var currentIndex = 0
     var tempUser: User = User()
+    var mode: RegisterMode = .request
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,35 +37,63 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
     }
     
     @IBAction func buttonRequestAppointmentTapped(_ sender: Any) {
-        self.showLoader()
-        
-        let roleId = currentUser.role_id == nil ? "0" : currentUser.role_id!
-        
-        DispatchQueue.global(qos: .background).async {
-            let result = appDelegate.services.registerChild(user: self.tempUser, roleId: roleId)
+        if isValidData() {
+            self.showLoader()
             
-            DispatchQueue.main.async {
-                if result?.status == ResponseStatus.SUCCESS.rawValue {
-                    if let id = Int(roleId), id > 0 {
-                        if let message = result?.message {
-                            self.showAlertView(message: message, dismiss: true)
-                        } else {
-                            self.showAlertView(message: Localization.string(key: MessageKey.RegisterComplete), dismiss: true)
-                        }
-                    }
-                } else if let message = result?.message {
-                    self.showAlertView(message: message)
-                } else {
-                    self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError))
-                }
+            let roleId = Objects.user.role_id == nil ? "1" : Objects.user.role_id!
+            let isRequest = self.mode == .request
+            
+            DispatchQueue.global(qos: .background).async {
+                let result = appDelegate.services.registerChild(user: self.tempUser, roleId: roleId, isRequest: isRequest)
                 
-                self.hideLoader()
+                DispatchQueue.main.async {
+                    if result?.status == ResponseStatus.SUCCESS.rawValue {
+                        if let id = Int(roleId), id > 0 {
+                            if let message = result?.message {
+                                self.showAlertView(message: message, dismiss: true)
+                            } else {
+                                self.showAlertView(message: Localization.string(key: MessageKey.RegisterComplete), dismiss: true)
+                            }
+                        }
+                        
+                        self.resetChildInformation()
+                    } else if let message = result?.message {
+                        self.showAlertView(message: message, isError: true)
+                    } else {
+                        self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
+                    }
+                    
+                    self.hideLoader()
+                }
             }
+        } else {
+            self.showAlertView(message: errorMessage, isError: true)
         }
     }
     
+    func resetChildInformation() {
+        self.tempUser = User()
+        self.pagerView.reloadData()
+        self.pagerView.scrollToItem(at: 0, animated: true)
+        self.currentIndex = 0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.stackView.alpha = 1
+            self.stackViewRequest.alpha = 0
+            self.buttonBack.alpha = 0
+        })
+    }
+    
     @IBAction func buttonCancelTapped(_ sender: Any) {
-        self.dismissVC()
+        if let roleId = Objects.user.role_id, roleId == UserRole.Secretary.rawValue {
+            self.showAlertView(message: Localization.string(key: MessageKey.MainMenuValidation), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
+            
+            if let alertView = self.customView as? AlertView {
+                alertView.buttonOk.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
+            }
+        } else {
+            self.dismissVC()
+        }
     }
     
     @IBAction func buttonBackTapped(_ sender: Any) {
@@ -86,7 +116,7 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
     }
     
     @IBAction func buttonNextTapped(_ sender: Any) {
-        if self.validateData() {
+        if self.isValidData() {
             if currentIndex < 2 {
                 currentIndex += 1
                 
@@ -104,12 +134,12 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                 }
             }
         } else {
-            self.showAlertView(message: errorMessage)
+            self.showAlertView(message: errorMessage, isError: true)
         }
     }
     
     var errorMessage: String = ""
-    func validateData() -> Bool {
+    func isValidData() -> Bool {
         if let child = self.tempUser.children?.first {
             switch currentIndex {
             case 0:
@@ -124,7 +154,10 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                     return false
                 }
             case 1:
-                if tempUser.fullname.isNullOrEmpty() {
+                if tempUser.parent_type.isNullOrEmpty() {
+                    errorMessage = Localization.string(key: MessageKey.ParentEmpty)
+                    return false
+                } else if tempUser.fullname.isNullOrEmpty() {
                     errorMessage = Localization.string(key: MessageKey.NameEmpty)
                     return false
                 } else if tempUser.phone.isNullOrEmpty() {
@@ -135,6 +168,17 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                     return false
                 } else if tempUser.address.isNullOrEmpty() {
                     errorMessage = Localization.string(key: MessageKey.AddressEmpty)
+                    return false
+                }
+            case 2:
+                if child.desired_date_of_entry.isNullOrEmpty() {
+                    errorMessage = Localization.string(key: MessageKey.DesiredDateEmpty)
+                    return false
+                } else if child.branch_id.isNullOrEmpty() {
+                    errorMessage = Localization.string(key: MessageKey.BranchEmpty)
+                    return false
+                } else if child.hear_about_us_id.isNullOrEmpty() {
+                    errorMessage = Localization.string(key: MessageKey.HearAboutUsEmpty)
                     return false
                 }
             default:
@@ -153,7 +197,10 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
         
         self.tempUser.children = [Child()]
         
-        if let roleId = currentUser.role_id, roleId == UserRole.Secretary.rawValue {
+        if let roleId = Objects.user.role_id, roleId == UserRole.Secretary.rawValue {
+            self.buttonRequestAppointment.setTitle(Localization.string(key: MessageKey.Register), for: .normal)
+            self.buttonCancel.setTitle(Localization.string(key: MessageKey.Logout), for: .normal)
+        } else if self.mode == .add {
             self.buttonRequestAppointment.setTitle(Localization.string(key: MessageKey.Register), for: .normal)
         }
     }
@@ -176,17 +223,55 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
             if let cell = pagerView.dequeueReusableCell(withReuseIdentifier: CellIds.RegisterChildStep1CollectionViewCell, at: index) as? RegisterChildStep1CollectionViewCell {
                 cell.initializeViews()
                 
+                if let child = self.tempUser.children?.first {
+                    cell.textFieldFirstName.text = child.firstname
+                    cell.textFieldLastName.text = child.lastname
+                    cell.textFieldDateOfBirth.text = child.date_of_birth
+                } else {
+                    cell.textFieldFirstName.text = nil
+                    cell.textFieldLastName.text = nil
+                    cell.textFieldDateOfBirth.text = nil
+                }
+                
                 return cell
             }
         case 1:
             if let cell = pagerView.dequeueReusableCell(withReuseIdentifier: CellIds.RegisterChildStep2CollectionViewCell, at: index) as? RegisterChildStep2CollectionViewCell {
                 cell.initializeViews()
                 
+                if let roleId = Objects.user.role_id, roleId == UserRole.Parent.rawValue {
+                    cell.textFieldName.text = Objects.user.fullname
+                    cell.textFieldPhone.text = Objects.user.phone
+                    cell.textFieldEmail.text = Objects.user.email
+                    cell.textFieldAddress.text = Objects.user.address
+                    
+                    if Objects.user.parent_type == ParentType.Father.rawValue {
+                        cell.setButtonFatherSelected()
+                    } else if Objects.user.parent_type == ParentType.Mother.rawValue {
+                        cell.setButtonMotherSelected()
+                    }
+                } else {
+                    cell.textFieldName.text = self.tempUser.fullname
+                    cell.textFieldPhone.text = self.tempUser.phone
+                    cell.textFieldEmail.text = self.tempUser.email
+                    cell.textFieldAddress.text = self.tempUser.address
+                }
+                
                 return cell
             }
         case 2:
             if let cell = pagerView.dequeueReusableCell(withReuseIdentifier: CellIds.RegisterChildStep3CollectionViewCell, at: index) as? RegisterChildStep3CollectionViewCell {
                 cell.initializeViews()
+                
+                if let child = self.tempUser.children?.first {
+                    cell.textFieldDateOfEntry.text = child.desired_date_of_entry
+                    cell.textFieldBranch.text = child.getBranch()
+                    cell.textFieldHearAboutUs.text = child.getHeadAboutUs()
+                } else {
+                    cell.textFieldDateOfEntry.text = nil
+                    cell.textFieldBranch.text = nil
+                    cell.textFieldHearAboutUs.text = nil
+                }
                 
                 return cell
             }

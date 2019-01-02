@@ -28,9 +28,13 @@ class DiseaseView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.hide(remove: true)
     }
     
-    func initializeViews() {
+    func initializeViews(diseaseIds: String) {
         if let diseases = Objects.variables.diseases {
             self.diseases = diseases
+        }
+        
+        for disease in diseaseIds.split(separator: ",") {
+            self.selectedDiseaseIds.append("\(disease)")
         }
         
         self.buttonConfirm.layer.cornerRadius = self.buttonConfirm.frame.height/2
@@ -62,9 +66,9 @@ class DiseaseView: UIView, UITableViewDelegate, UITableViewDataSource {
                 cell.buttonTitle.setTitle(title, for: .normal)
             }
             
-            if let id = disease.id {
-                cell.buttonTitle.isSelected = self.selectedDiseaseIds.contains(id)
-                cell.imageViewCheck.image = self.selectedDiseaseIds.contains(id) ? #imageLiteral(resourceName: "checked_icon") : #imageLiteral(resourceName: "unchecked_icon")
+            if let title = disease.title {
+                cell.buttonTitle.isSelected = self.selectedDiseaseIds.contains(title)
+                cell.imageViewCheck.image = self.selectedDiseaseIds.contains(title) ? #imageLiteral(resourceName: "checked_icon") : #imageLiteral(resourceName: "unchecked_icon")
             }
             
             cell.buttonTitle.addTarget(self, action: #selector(buttonTitleTapped(sender:)), for: .touchUpInside)
@@ -79,16 +83,16 @@ class DiseaseView: UIView, UITableViewDelegate, UITableViewDataSource {
     @objc func buttonTitleTapped(sender: UIButton) {
         if let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? DiseaseTableViewCell {
             let disease = self.diseases[sender.tag]
-            if let id = disease.id {
-                if self.selectedDiseaseIds.contains(id) {
-                    if let index = self.selectedDiseaseIds.index(of: id) {
+            if let title = disease.title {
+                if self.selectedDiseaseIds.contains(title) {
+                    if let index = self.selectedDiseaseIds.index(of: title) {
                         self.selectedDiseaseIds.remove(at: index)
                     }
                     
                     cell.buttonTitle.isSelected = false
                     cell.imageViewCheck.image = #imageLiteral(resourceName: "unchecked_icon")
                 } else {
-                    self.selectedDiseaseIds.append(id)
+                    self.selectedDiseaseIds.append(title)
                     
                     cell.buttonTitle.isSelected = true
                     cell.imageViewCheck.image = #imageLiteral(resourceName: "checked_icon")
@@ -98,6 +102,16 @@ class DiseaseView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func buttonConfirmTapped(_ sender: Any) {
+        if let editChildProfileVC = currentVC as? EditChildProfileViewController {
+            editChildProfileVC.selectedChild.disease_ids = ""
+            for title in self.selectedDiseaseIds {
+                editChildProfileVC.selectedChild.disease_ids?.append("\(title),")
+            }
+            editChildProfileVC.selectedChild.disease_ids?.removeLast()
+            
+            editChildProfileVC.pagerView.reloadData()
+        }
+        
         self.hide(remove: true)
     }
     

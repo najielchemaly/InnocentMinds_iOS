@@ -15,7 +15,9 @@ struct ServiceName {
     
     static let registerChild = "/registerChild/"
     static let login = "/login/"
+    static let loginToken = "/loginToken/"
     static let changePassword = "/changePassword/"
+    static let editProfile = "/editProfile/"
     static let editChild = "/editChild/"
     static let logout = "/logout/"
     static let getText = "/getText/"
@@ -25,13 +27,16 @@ struct ServiceName {
     static let updateNotification = "/updateNotification/"
     static let getStatementOfAccount = "/getStatementOfAccount/"
     static let sendMessage = "/sendMessage/"
+    static let sendContactUs = "/sendContactUs/"
     static let updateStudentStatus = "/updateStudentStatus/"
     static let addTemperature = "/addTemperature/"
     static let addActivity = "/addActivity/"
+    static let publishActivity = "/publishActivity/"
     static let deleteActivity = "/deleteActivity/"
     static let getActivities = "/getActivities/"
     static let uploadImage = "/uploadImage/"
     static let getGlobalVariables = "/getGlobalVariables/"
+    static let getParentChildren = "/getParentChildren/"
     
 }
 
@@ -73,7 +78,9 @@ class Services {
         }
     }
     
-    static let ConfigUrl = "https://localhost:5001/Api"
+    static let ConfigUrl = "http://localhost:5000/Api"
+//    static let ConfigUrl = "http://najielchemaly-001-site1.itempurl.com/Api"
+//    static let ConfigUrl = "http://api.innocentmindsapp.com/Api"
     
     private static var _BaseUrl: String = ""
     var BaseUrl: String {
@@ -99,7 +106,7 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: ServiceName.getGlobalVariables, isConfig: true)
     }
     
-    func registerChild(user: User, roleId: String) -> ResponseData? {
+    func registerChild(user: User, roleId: String, isRequest: Bool) -> ResponseData? {
         
         var parameters = [String : Any]()
         if let child = user.children?.first {
@@ -113,8 +120,10 @@ class Services {
                 "phone": user.phone!,
                 "email": user.email!,
                 "address": user.address!,
-                "hear_about_us": user.hear_about_us!,
-                "parent_type": user.parent_type!
+                "hear_about_us": child.hear_about_us_id!,
+                "parent_type": user.parent_type!,
+                "is_request": isRequest,
+                "role_id": roleId
             ]
         }
         
@@ -130,68 +139,71 @@ class Services {
         ]
         
         let serviceName = ServiceName.login
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, encoding: JSONEncoding.default)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+    }
+    
+    func login(accessToken: String) -> ResponseData? {
+        
+        let parameters: Parameters = [
+            "access_token": accessToken
+        ]
+        
+        let serviceName = ServiceName.loginToken
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
     func changePassword(id: String, oldPassword: String, newPassword: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "id": id,
-            "oldPassword": oldPassword,
-            "newPassword": newPassword
-        ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
+            "user_id": id,
+            "old_password": oldPassword,
+            "new_password": newPassword
         ]
         
         let serviceName = ServiceName.changePassword
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func editChild(id: String, fullname: String, phoneNumber: String, email: String) -> ResponseData? {
+    func editProfile(id: String, fullname: String, phoneNumber: String, email: String, address: String) -> ResponseData? {
         
         let parameters: Parameters = [
             "id": id,
             "fullname": fullname,
-            "phoneNumber": phoneNumber,
-            "email": email
+            "phone": phoneNumber,
+            "email": email,
+            "address": address
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
+        let serviceName = ServiceName.editProfile
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+    }
+    
+    func editChild(id: String, child: Child) -> ResponseData? {
+        let parameters: Parameters = child.toDict()
         
         let serviceName = ServiceName.editChild
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, encoding: JSONEncoding.default)
     }
     
     func logout(id: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "id": id
-        ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
+            "user_id": id
         ]
         
         let serviceName = ServiceName.logout
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func getText(query: String) -> ResponseData? {
+    func getText(id: String, query: String) -> ResponseData? {
         
         let parameters: Parameters = [
+            "user_id": id,
             "query": query
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
         let serviceName = ServiceName.getText
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
     func forgotPassword(email: String) -> ResponseData? {
@@ -204,54 +216,53 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func updateToken(token: String) -> ResponseData? {
+    func updateToken(id: String, token: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "token": token
-        ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
+            "user_id": id,
+            "firebase_token": token
         ]
         
         let serviceName = ServiceName.updateToken
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func getNotifications() -> ResponseData? {
+    func getNotifications(id: String) -> ResponseData? {
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
+        let parameters: Parameters = [
+            "user_id": id
         ]
         
         let serviceName = ServiceName.getNotifications
-        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func updateNotification(id: String, isRead: Bool = false, isDeleted: Bool = false) -> ResponseData? {
+    func updateNotification(id: String, notifId: String, isRead: Bool? = nil, isDeleted: Bool? = nil) -> ResponseData? {
         
-        let parameters: Parameters = [
-            "id": id,
-            "is_read": isRead,
-            "is_deleted": isDeleted
+        var parameters: Parameters = [
+            "user_id": id,
+            "notif_id": notifId,
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
+        if let is_read = isRead {
+            parameters["is_read"] = "\(is_read)"
+        }
+        if let is_deleted = isDeleted {
+            parameters["is_deleted"] = "\(is_deleted)"
+        }
+
         let serviceName = ServiceName.updateNotification
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func getStatementOfAccount() -> ResponseData? {
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
+    func getStatementOfAccount(id: String) -> ResponseData? {
+
+        let parameters: Parameters = [
+            "user_id": id
         ]
         
         let serviceName = ServiceName.getStatementOfAccount
-        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
     func sendContactUs(firstName: String, lastName: String, email: String, phone: String, branchId: String, inquiry: String) -> ResponseData? {
@@ -264,65 +275,45 @@ class Services {
             "branch_id": branchId,
             "inquiry": inquiry
         ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
-        let serviceName = ServiceName.sendMessage
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+
+        let serviceName = ServiceName.sendContactUs
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
     func updateStudentStatus(childId: String, hasArrived: Bool, dateArrived: String) -> ResponseData? {
         
         let parameters: Parameters = [
             "child_id": childId,
-            "has_arrived": hasArrived,
+            "has_arrived": "\(hasArrived)",
             "date_arrived": dateArrived
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
         let serviceName = ServiceName.updateStudentStatus
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func addTemparature(childId: String, temperatureId: String, date: String, comment: String) -> ResponseData? {
+    func addTemperature(sendTemperature: SendTemperature) -> ResponseData? {
         
-        let parameters: Parameters = [
-            "child_id": childId,
-            "temperature_id": temperatureId,
-            "date": date,
-            "comment": comment
-        ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
+        let parameters: Parameters = sendTemperature.toDict()
+
         let serviceName = ServiceName.addTemperature
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, encoding: JSONEncoding.default)
     }
     
-    func addActivity(typeId: String, childId: String, title: String, description: String, rating: String, studentIds: String) -> ResponseData? {
+    func addActivity(sendActivity: SendActivity) -> ResponseData? {
         
-        let parameters: Parameters = [
-            "type_id": typeId,
-            "child_id": childId,
-            "title": title,
-            "description": description,
-            "rating": rating,
-            "student_ids": studentIds
-        ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
+        let parameters: Parameters = sendActivity.toDict()
+
         let serviceName = ServiceName.addActivity
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, encoding: JSONEncoding.default)
+    }
+    
+    func publishActivity(publishActivityId: PublishActivityId) -> ResponseData? {
+        
+        let parameters: Parameters = publishActivityId.toDict()
+        
+        let serviceName = ServiceName.publishActivity
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, encoding: JSONEncoding.default)
     }
     
     func deleteActivity(id: String) -> ResponseData? {
@@ -331,37 +322,40 @@ class Services {
             "id": id,
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
         let serviceName = ServiceName.deleteActivity
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func sendMessage(childId: String, messageIds: String) -> ResponseData? {
+    func sendMessage(userId: String, childId: String, messageIds: String) -> ResponseData? {
         
         let parameters: Parameters = [
+            "user_id": userId,
             "child_id": childId,
             "message_ids": messageIds
         ]
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
-        ]
-        
         let serviceName = ServiceName.sendMessage
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func getActivities(id: String) -> ResponseData? {
+    func getActivities(childId: String) -> ResponseData? {
 
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + ACCESS_TOKEN
+        let parameters: Parameters = [
+            "child_id": childId
         ]
         
         let serviceName = ServiceName.getActivities
-        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+    }
+    
+    func getParentChildren(userId: String) -> ResponseData? {
+        
+        let parameters: Parameters = [
+            "user_id": userId
+        ]
+        
+        let serviceName = ServiceName.getParentChildren
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
     func uploadImage(image : UIImage, completion:@escaping(_:ResponseData)->Void) {
@@ -505,7 +499,7 @@ class Services {
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         configuration.timeoutIntervalForRequest = 30
         
-        let serverTrustPolicies: [String: ServerTrustPolicy] = ["localhost": .disableEvaluation]
+        let serverTrustPolicies: [String: ServerTrustPolicy] = ["192.168.0.102": .disableEvaluation]
         
         return Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
 //        return SessionManager(configuration: configuration)

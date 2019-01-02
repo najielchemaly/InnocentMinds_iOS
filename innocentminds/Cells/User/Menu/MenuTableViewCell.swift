@@ -31,8 +31,9 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonAddChildTapped(_ sender: Any) {
-        if let baseVC = currentVC as? BaseViewController {
-            baseVC.redirectToVC(storyboardId: StoryboardIds.RegisterChildViewController, type: .present)
+        if let baseVC = currentVC as? BaseViewController, let registerChildVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.RegisterChildViewController) as? RegisterChildViewController {
+            registerChildVC.mode = .add
+            baseVC.present(registerChildVC, animated: true, completion: nil)
         }
     }
     
@@ -43,7 +44,10 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonEditChildProfileTapped(_ sender: Any) {
-        
+        if let dashboardVC = currentVC as? DashboardViewController, let editChildProfileVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.EditChildProfileViewController) as? EditChildProfileViewController {
+            editChildProfileVC.selectedChild = dashboardVC.selectedChild
+            dashboardVC.present(editChildProfileVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func buttonChangeMyPasswordTapped(_ sender: Any) {
@@ -53,8 +57,9 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonSeeImagesTapped(_ sender: Any) {
-        if let baseVC = currentVC as? BaseViewController {
-            baseVC.redirectToVC(storyboardId: StoryboardIds.GalleryViewController, type: .present)
+        if let dashboardVC = currentVC as? DashboardViewController, let galleryVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.GalleryViewController) as? GalleryViewController {
+            galleryVC.selectedChild = dashboardVC.selectedChild
+            dashboardVC.present(galleryVC, animated: true, completion: nil)
         }
     }
     
@@ -84,7 +89,7 @@ class MenuTableViewCell: UITableViewCell {
     
     @IBAction func buttonLogoutTapped(_ sender: Any) {
         if let baseVC = currentVC as? BaseViewController {
-            baseVC.showAlertView(message: Localization.string(key: MessageKey.Logout), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
+            baseVC.showAlertView(message: Localization.string(key: MessageKey.LogoutValidation), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
             
             if let alertView = baseVC.customView as? AlertView {
                 alertView.buttonOk.addTarget(baseVC, action: #selector(baseVC.logout), for: .touchUpInside)

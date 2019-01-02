@@ -26,7 +26,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.4.1</string>
 	<key>FacebookAppID</key>
 	<string>1579204765559733</string>
 	<key>FacebookDisplayName</key>
@@ -44,11 +44,6 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>New item</key>
-			<string>https://localhost:5001/Api</string>
-		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs to access your Camera to allow capturing photos</string>

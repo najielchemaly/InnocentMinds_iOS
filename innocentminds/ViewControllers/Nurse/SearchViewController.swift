@@ -15,6 +15,10 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var buttonClose: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    var students: [Child] = [Child]()
+    var filteredStudents: [Child] = [Child]()
+    var classes: [Class] = [Class]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,28 +34,65 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func initializeViews() {
         self.searchView.layer.cornerRadius = self.searchView.frame.height/2
+        
+        if let students = Objects.user.children {
+            self.students = students
+            self.filteredStudents = students
+        }
+        
+        if let classes = Objects.user.classes {
+            self.classes = classes
+        }
     }
     
     func setupTableView() {
+        self.tableView.register(UINib.init(nibName: CellIds.EmptyDataTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.EmptyDataTableViewCell)
         self.tableView.register(UINib.init(nibName: CellIds.SearchTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.SearchTableViewCell)
         self.tableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.filteredStudents.count == 0 ? 1 : self.filteredStudents.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return self.filteredStudents.count == 0 ? tableView.frame.height : 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.SearchTableViewCell) as? SearchTableViewCell {
+        if self.filteredStudents.count == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
+                cell.labelTitle.text = Localization.string(key: MessageKey.NoResultFound)
+                cell.labelTitle.textColor = Colors.textDark
+                
+                return cell
+            }
+        }else if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.SearchTableViewCell) as? SearchTableViewCell {
             cell.initializeViews()
             
-            cell.imageViewProfile.image = #imageLiteral(resourceName: "avatar_baby")
-            cell.labelName.text = "Maya Nehme \(indexPath.row)"
-            cell.labelClass.text = "Class \(indexPath.row)-A"
+            let student = self.filteredStudents[indexPath.row]
+            
+            if let image = student.image, !image.isEmpty {
+                cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+            } else {
+                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
+                cell.imageViewProfile.tintColor = Colors.lightGray
+            }
+            
+            if let firstName = student.firstname, let lastName = student.lastname {
+                cell.labelName.text = "\(firstName) \(lastName)"
+            }
+            
+            if let classId = student.class_id {
+                let filteredClasses = self.classes.filter { $0.id == classId }
+                if let className = filteredClasses.first?.name {
+                    cell.labelClass.text = className
+                }
+            }
+            
+            let cellTap = UITapGestureRecognizer(target: self, action: #selector(cellTapped(sender:)))
+            cell.addGestureRecognizer(cellTap)
+            cell.tag = indexPath.row
             
             return cell
         }
@@ -59,10 +100,33 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
         return UITableViewCell()
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text {
-            self.tableView.reloadData()
+    @objc func cellTapped(sender: UITapGestureRecognizer) {
+        if let cell = sender.view {
+            if let nurseStudentDetailVC = nurseStoryboard.instantiateViewController(withIdentifier: StoryboardIds.NurseStudentDetailViewController) as? NurseStudentDetailViewController,
+                let navigationController = self.navigationController {
+                nurseStudentDetailVC.selectedStudent = self.filteredStudents[cell.tag]
+                navigationController.pushViewController(nurseStudentDetailVC, animated: true)
+            }
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text, !text.isEmpty {
+            var searchText = text
+            if string.isEmpty {
+                searchText.removeLast()
+            } else {
+                searchText = "\(searchText)\(string)".lowercased()
+            }
+            
+            if !searchText.isEmpty {
+                self.filteredStudents = self.filteredStudents.filter { ($0.firstname?.lowercased().contains(searchText))! || ($0.lastname?.lowercased().contains(searchText))! }
+            } else {
+                self.filteredStudents = self.students
+            }
+        }
+        
+        self.tableView.reloadData()
         
         return true
     }
@@ -73,6 +137,7 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
         self.searchTextField.text = nil
+        self.filteredStudents = self.students
         
         self.tableView.reloadData()
     }

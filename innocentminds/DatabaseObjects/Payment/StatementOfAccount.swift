@@ -15,8 +15,11 @@ import Foundation
 public class StatementOfAccount {
 	public var message : String?
 	public var status : Int?
+    public var total_amount: Double?
 	public var payments : Array<Payment>?
 
+    public init() { }
+    
 /**
     Returns an array of models based on given dictionary.
     
@@ -51,7 +54,10 @@ public class StatementOfAccount {
 
 		message = dictionary["message"] as? String
 		status = dictionary["status"] as? Int
-        if (dictionary["payments"] != nil) { payments = Payment.modelsFromDictionaryArray(array: dictionary["payments"] as! NSArray) }
+        total_amount = dictionary["total_amount"] as? Double
+        if let paymentsArray = dictionary["payments"] as? NSArray {
+            payments = Payment.modelsFromDictionaryArray(array: paymentsArray)
+        }
 	}
 
 		
@@ -66,6 +72,7 @@ public class StatementOfAccount {
 
 		dictionary.setValue(self.message, forKey: "message")
 		dictionary.setValue(self.status, forKey: "status")
+        dictionary.setValue(self.total_amount, forKey: "total_amount")
 
 		return dictionary
 	}

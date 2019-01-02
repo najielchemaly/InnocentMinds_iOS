@@ -34,7 +34,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NnE-wW-qko">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NnE-wW-qko">
                         <rect key="frame" x="137" y="72" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="F9X-iz-4O3"/>
@@ -65,7 +65,7 @@
                                                 <rect key="frame" x="8" y="0.0" width="295" height="46.5"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +87,7 @@
                                                 <rect key="frame" x="8" y="0.0" width="295" height="47"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -109,7 +109,7 @@
                                                 <rect key="frame" x="8" y="0.0" width="295" height="46.5"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,7 +193,7 @@
                                                 <rect key="frame" x="8" y="0.0" width="295" height="46.5"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,6 +346,7 @@
             <connections>
                 <outlet property="buttonAddImage" destination="pE2-mK-vcb" id="3Kk-Ta-dNP"/>
                 <outlet property="buttonChangeImage" destination="56O-uM-n0W" id="WR1-pq-flh"/>
+                <outlet property="imageViewProfile" destination="NnE-wW-qko" id="41a-p3-818"/>
                 <outlet property="scrollView" destination="ms2-BD-ZkM" id="uLe-nD-mUp"/>
                 <outlet property="stackView" destination="0by-Xl-IfB" id="Oaf-pt-nN4"/>
                 <outlet property="textFieldDateOfBirth" destination="xlu-lq-FdS" id="2Qv-IB-jse"/>

@@ -46,17 +46,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food_icon" translatesAutoresizingMaskIntoConstraints="NO" id="tdR-Jz-tRM">
                                 <rect key="frame" x="8" y="32" width="82" height="51"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="94r-4R-Oct"/>
                                     <constraint firstAttribute="width" secondItem="tdR-Jz-tRM" secondAttribute="height" multiplier="82:51" id="Yfn-os-BF7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakfast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKL-Bz-99W">
-                                <rect key="frame" x="98" y="20" width="86" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKL-Bz-99W">
+                                <rect key="frame" x="98" y="30" width="62.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.97299259900000001" green="0.68883693219999997" blue="0.1352578998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOx-YE-3ho">
-                                <rect key="frame" x="98" y="49" width="110" height="20"/>
+                                <rect key="frame" x="98" y="59" width="110" height="20"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jt9-n0-RlK">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -84,8 +85,8 @@
                                     <constraint firstAttribute="width" constant="110" id="hwH-iz-6I8"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kiz-rK-aW4">
-                                <rect key="frame" x="98" y="77" width="269" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kiz-rK-aW4">
+                                <rect key="frame" x="98" y="87" width="269" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.25632992386817932" green="0.20040550827980042" blue="0.19930502772331238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -94,19 +95,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Kiz-rK-aW4" firstAttribute="leading" secondItem="GOx-YE-3ho" secondAttribute="leading" id="9Py-35-rqi"/>
-                            <constraint firstAttribute="bottom" secondItem="tdR-Jz-tRM" secondAttribute="bottom" constant="32" id="HHP-wX-Obe"/>
                             <constraint firstAttribute="bottom" secondItem="TXY-Gu-9nF" secondAttribute="bottom" id="HV2-AS-T91"/>
-                            <constraint firstItem="cKL-Bz-99W" firstAttribute="top" secondItem="BeL-y1-ts0" secondAttribute="top" constant="20" id="IqS-Nd-nl5"/>
+                            <constraint firstItem="cKL-Bz-99W" firstAttribute="top" secondItem="BeL-y1-ts0" secondAttribute="top" constant="30" id="IqS-Nd-nl5"/>
                             <constraint firstItem="cKL-Bz-99W" firstAttribute="leading" secondItem="tdR-Jz-tRM" secondAttribute="trailing" constant="8" id="Mi6-kc-2Rc"/>
                             <constraint firstItem="TXY-Gu-9nF" firstAttribute="leading" secondItem="BeL-y1-ts0" secondAttribute="leading" id="NRv-3F-zKS"/>
                             <constraint firstItem="tdR-Jz-tRM" firstAttribute="leading" secondItem="TXY-Gu-9nF" secondAttribute="trailing" id="Olf-bb-Fm1"/>
                             <constraint firstItem="Kiz-rK-aW4" firstAttribute="top" secondItem="GOx-YE-3ho" secondAttribute="bottom" constant="8" id="Q3k-pA-tS9"/>
                             <constraint firstAttribute="height" constant="115" id="SES-2V-bmE"/>
+                            <constraint firstItem="tdR-Jz-tRM" firstAttribute="centerY" secondItem="BeL-y1-ts0" secondAttribute="centerY" id="dvB-ar-igc"/>
                             <constraint firstItem="TXY-Gu-9nF" firstAttribute="top" secondItem="BeL-y1-ts0" secondAttribute="top" id="e2R-bq-Fnh"/>
                             <constraint firstItem="GOx-YE-3ho" firstAttribute="leading" secondItem="cKL-Bz-99W" secondAttribute="leading" id="g1w-kD-Clo"/>
                             <constraint firstAttribute="trailing" secondItem="Kiz-rK-aW4" secondAttribute="trailing" constant="8" id="k5z-WW-4Ox"/>
                             <constraint firstItem="GOx-YE-3ho" firstAttribute="top" secondItem="cKL-Bz-99W" secondAttribute="bottom" constant="8" id="lnT-xy-EQd"/>
-                            <constraint firstItem="tdR-Jz-tRM" firstAttribute="top" secondItem="BeL-y1-ts0" secondAttribute="top" constant="32" id="nTk-wx-dyE"/>
                         </constraints>
                     </view>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyF-af-6xd">
@@ -157,8 +157,13 @@
                 <outlet property="buttonViewImages" destination="XyF-af-6xd" id="YgU-AX-DgR"/>
                 <outlet property="labelDescription" destination="Kiz-rK-aW4" id="ZFs-rL-nME"/>
                 <outlet property="labelTitle" destination="cKL-Bz-99W" id="4vy-7n-KaP"/>
+                <outlet property="labelTitleTopConstraint" destination="IqS-Nd-nl5" id="UMU-pO-Rb5"/>
                 <outlet property="mainView" destination="GOY-6S-dAN" id="blu-52-jNI"/>
+                <outlet property="stackView" destination="GOx-YE-3ho" id="uTG-jb-jVa"/>
+                <outlet property="stackViewHeightConstraint" destination="6wQ-hV-hPN" id="C14-0K-v9G"/>
+                <outlet property="stackViewTopConstraint" destination="lnT-xy-EQd" id="ExV-lk-K6u"/>
                 <outlet property="topView" destination="BeL-y1-ts0" id="JfC-Ta-z1o"/>
+                <outlet property="topViewHeightConstraint" destination="SES-2V-bmE" id="sxb-9J-Oob"/>
                 <outlet property="typeImageView" destination="tdR-Jz-tRM" id="vxw-Fr-dDB"/>
                 <outlet property="typeView" destination="TXY-Gu-9nF" id="dbV-6c-GhY"/>
             </connections>

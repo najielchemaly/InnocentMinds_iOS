@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PNw-kN-M1Y">
-                    <rect key="frame" x="16" y="122" width="343" height="483"/>
+                    <rect key="frame" x="16" y="126" width="343" height="479"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IG1-p6-a1e">
@@ -50,7 +50,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PNw-kN-M1Y" secondAttribute="trailing" constant="16" id="Oi0-pw-Coa"/>
                 <constraint firstItem="6jQ-FQ-aA2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="ZnL-KY-z0I"/>
                 <constraint firstItem="IG1-p6-a1e" firstAttribute="top" secondItem="PNw-kN-M1Y" secondAttribute="bottom" constant="8" id="ZzX-d6-Ulg"/>
-                <constraint firstItem="PNw-kN-M1Y" firstAttribute="top" secondItem="6jQ-FQ-aA2" secondAttribute="bottom" constant="16" id="bwD-wA-vDJ"/>
+                <constraint firstItem="PNw-kN-M1Y" firstAttribute="top" secondItem="6jQ-FQ-aA2" secondAttribute="bottom" constant="20" id="bwD-wA-vDJ"/>
                 <constraint firstItem="IG1-p6-a1e" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="fkg-ZZ-fZi"/>
                 <constraint firstItem="PNw-kN-M1Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="hln-vY-b51"/>
                 <constraint firstItem="6jQ-FQ-aA2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="iQH-4d-gF6"/>

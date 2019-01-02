@@ -10,10 +10,13 @@ import UIKit
 
 class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var labelNurseName: UILabel!
+    @IBOutlet weak var labelClassName: UILabel!
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
+    var students: [Child] = [Child]()
+    var selectedClass: Class = Class()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,7 @@ class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func buttonLogoutTapped(_ sender: Any) {
-        self.showAlertView(message: Localization.string(key: MessageKey.Logout), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
+        self.showAlertView(message: Localization.string(key: MessageKey.LogoutValidation), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
         
         if let alertView = self.customView as? AlertView {
             alertView.buttonOk.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
@@ -42,6 +45,14 @@ class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITab
     
     func initializeViews() {
         self.buttonBack.imageView?.contentMode = .scaleAspectFit
+        
+        if let students = Objects.user.children {
+            self.students = students.filter { $0.class_id == self.selectedClass.id }
+        }
+        
+        if let className = self.selectedClass.name {
+            self.labelClassName.text = className
+        }
     }
     
     func setupTableView() {
@@ -50,7 +61,7 @@ class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.students.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,9 +76,18 @@ class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITab
             let cellTap = UITapGestureRecognizer(target: self, action: #selector(didSelectRow(sender:)))
             cell.addGestureRecognizer(cellTap)
             cell.tag = indexPath.row
+
+            let student = self.students[indexPath.row]
+            if let image = student.image, !image.isEmpty {
+                cell.imageViewProfile.kf.setImage(with: URL(string:Services.getMediaUrl()+image))
+            } else {
+                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
+                cell.imageViewProfile.tintColor = Colors.lightGray
+            }
             
-            cell.imageViewProfile.image = #imageLiteral(resourceName: "avatar_baby")
-            cell.labelStudentName.text = "Maya Nehme"
+            if let firstName = student.firstname, let lastName = student.lastname {
+                cell.labelStudentName.text = "\(firstName) \(lastName)"
+            }
             
             return cell
         }
@@ -77,7 +97,10 @@ class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITab
     
     @objc func didSelectRow(sender: UITapGestureRecognizer) {
         if let cell = sender.view {
-            self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.NurseStudentDetailViewController, type: .push)
+            if let nurseStudentDetailVC = nurseStoryboard.instantiateViewController(withIdentifier: StoryboardIds.NurseStudentDetailViewController) as? NurseStudentDetailViewController {
+                nurseStudentDetailVC.selectedStudent = self.students[cell.tag]
+                self.navigationController?.pushViewController(nurseStudentDetailVC, animated: true)
+            }
         }
     }
     

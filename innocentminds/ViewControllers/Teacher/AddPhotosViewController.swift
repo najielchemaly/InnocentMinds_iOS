@@ -53,7 +53,7 @@ class AddPhotosViewController: BaseViewController, UICollectionViewDelegate, UIC
             } else {
                 cell.emptyView.isHidden = true
                 cell.buttonDelete.isHidden = false
-                if let image = self.photos[indexPath.row].image, !image.isEmpty {
+                if let image = self.photos[indexPath.row].image, !image.isEmpty, !image.isEmpty {
                     cell.imageViewPhoto.kf.setImage(with: URL(string: Services.getMediaUrl() + image))
                 } else if let _image = self.photos[indexPath.row]._image {
                     cell.imageViewPhoto.image = _image

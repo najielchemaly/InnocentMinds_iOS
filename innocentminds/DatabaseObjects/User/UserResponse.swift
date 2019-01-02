@@ -53,7 +53,9 @@ public class UserResponse {
         
         message = dictionary["message"] as? String
         status = dictionary["status"] as? Int
-        if (dictionary["user"] != nil) { user = User(dictionary: dictionary["user"] as! NSDictionary) }
+        if let userDict = dictionary["user"] as? NSDictionary {
+            user = User(dictionary: userDict)
+        }
     }
     
     

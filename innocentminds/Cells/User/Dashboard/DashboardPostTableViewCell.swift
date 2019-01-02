@@ -21,6 +21,11 @@ class DashboardPostTableViewCell: UITableViewCell {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var buttonViewImages: UIButton!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var labelTitleTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stackViewTopConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

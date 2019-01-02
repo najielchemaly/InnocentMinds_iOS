@@ -35,27 +35,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         FBSDKSettings.setAppID(FACEBOOK_APP_ID)
-
-        // TESTING
-//        if let editChildProfileViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.EditChildProfileViewController) as? EditChildProfileViewController {
-//            window?.rootViewController = editChildProfileViewController
-//        }
         
-        let userDefaults = UserDefaults.standard
-        if !userDefaults.bool(forKey: "didSelectLanguage") {
-            if let selectLanguageViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.SelectLanguageViewController) as? SelectLanguageViewController {
-                window?.rootViewController = selectLanguageViewController
-            }
-        }
+        // TODO Select Language
+//        let userDefaults = UserDefaults.standard
+//        if !userDefaults.bool(forKey: "didSelectLanguage") {
+//            if let selectLanguageViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.SelectLanguageViewController) as? SelectLanguageViewController {
+//                window?.rootViewController = selectLanguageViewController
+//            }
+//        }
         
         self.getGlobalVariables()
         
         return true
     }
     
-    func getGlobalVariables() {
+    @objc func getGlobalVariables() {
         if let baseVC = self.window?.rootViewController?.childViewControllers.last as? BaseViewController {
-            baseVC.showLoader()
+            baseVC.showLoader(backgroundColor: .black)
         
             DispatchQueue.global(qos: .background).async {
                 let result = appDelegate.services.getConfig()
@@ -72,10 +68,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                         
                         Objects.variables = variables
+                        
+                        self.checkIfUserIsLoggedIn()
+                    } else {
+                        baseVC.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), buttonOkTitle: Localization.string(key: MessageKey.Retry), isError: true)
+                        
+                        if let alertView = baseVC.customView as? AlertView {
+                            alertView.buttonOk.addTarget(self, action: #selector(self.getGlobalVariables), for: .touchUpInside)
+                        }
+                        
+                        baseVC.hideLoader()
                     }
-                    
-                    baseVC.hideLoader()
                 }
+            }
+        }
+    }
+    
+    func checkIfUserIsLoggedIn() {
+        if let baseVC = currentVC as? BaseViewController {
+            if let data = UserDefaults.standard.data(forKey: "user"),
+                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
+                Objects.user = user
+                if let userId = user.id, let email = user.email {
+                    DispatchQueue.global(qos: .background).async {
+                        let access_token = "\(userId)\(email)"
+                        let result = self.services.login(accessToken: access_token)
+                        
+                        DispatchQueue.main.async {
+                            if result?.status == ResponseStatus.SUCCESS.rawValue, let json = result?.json?.first {
+                                guard let userResponse = UserResponse.init(dictionary: json) else {
+                                    return
+                                }
+                                
+                                guard let user = userResponse.user else {
+                                    return
+                                }
+                                
+                                Objects.user = user
+                                
+                                self.checkUserRole(user: user)
+                                
+                                baseVC.saveUserInUserDefaults()
+                            } else {
+                                // Navigate to login screen
+                            }
+                            
+                            baseVC.hideLoader()
+                        }
+                    }
+                }
+            } else {
+                // Navigate to login screen
+                baseVC.hideLoader()
+            }
+        }
+    }
+    
+    func checkUserRole(user: User) {
+        if let window = self.window, let role = user.role_id {
+            switch role {
+            case UserRole.Parent.rawValue:
+                if let dashboardNC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.DashboardNavigationBarController) as? UINavigationController {
+                    window.rootViewController = dashboardNC
+                }
+            case UserRole.Nurse.rawValue:
+                if let dashboardNC = nurseStoryboard.instantiateViewController(withIdentifier: StoryboardIds.NurseNavigationController) as? UINavigationController {
+                    window.rootViewController = dashboardNC
+                }
+            case UserRole.Teacher.rawValue, UserRole.TeacherSupervisor.rawValue:
+                if let dashboardNC = teacherStoryboard.instantiateViewController(withIdentifier: StoryboardIds.TeacherNavigationController) as? UINavigationController {
+                    window.rootViewController = dashboardNC
+                }
+            case UserRole.Secretary.rawValue:
+                if let registerChildVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.RegisterChildViewController) as? RegisterChildViewController {
+                    registerChildVC.mode = .add
+                    window.rootViewController = registerChildVC
+                }
+            default:
+                break
             }
         }
     }
@@ -138,7 +208,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().apnsToken = deviceToken
         
         if let fcmToken = Messaging.messaging().fcmToken {
+            UserDefaults.standard.set(fcmToken, forKey: "firebase_token")
+            UserDefaults.standard.synchronize()
             
+            if let userId = Objects.user.id {
+                DispatchQueue.global(qos: .background).async {
+                    _ = appDelegate.services.updateToken(id: userId, token: fcmToken)
+                }
+            }
         }
     }
     
@@ -157,13 +234,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
             
-//            DispatchQueue.main.async {
-//                updateNotificationBadge()
-//
-//                if let baseVC = currentVC as? BaseViewController {
-//                    baseVC.redirectToVC(storyboard: mainStoryboard, storyboardId: StoryboardIds.NotificationsViewController, type: .present)
-//                }
-//            }
+            DispatchQueue.main.async {
+                if let baseVC = currentVC as? BaseViewController {
+                    baseVC.updateNotificationBadge()
+                }
+            }
         }
     }
     
@@ -179,16 +254,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
             
-//            DispatchQueue.main.async {
-//                updateNotificationBadge()
-//
-//                if let homeVC = currentVC as? HomeViewController {
-//                    homeVC.setNotificationBadgeNumber(label: homeVC.labelBadge)
-//                }
+            DispatchQueue.main.async {
+                if let dashboardVC = currentVC as? DashboardViewController {
+                    dashboardVC.updateNotificationBadge()
+                    dashboardVC.setNotificationBadgeNumber(label: dashboardVC.labelBadge)
+                    
+                    if let messagesView = dashboardVC.customView as? MessagesView {
+                        messagesView.getNotifications()
+                    }
+                }
 //                if let notificationsVC = currentVC as? NotificationsViewController {
 //                    notificationsVC.handleRefresh()
 //                }
-//            }
+            }
         }
         
         completionHandler(UIBackgroundFetchResult.newData)

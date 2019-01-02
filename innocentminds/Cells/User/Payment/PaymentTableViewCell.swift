@@ -31,7 +31,10 @@ class PaymentTableViewCell: UITableViewCell {
     
     func initializeViews() {
         self.selectionStyle = .none
+        
         self.mainView.layer.cornerRadius = Dimensions.cornerRadiusMedium
+        self.mainView.layer.borderColor = Colors.lightGray.cgColor
+        self.mainView.layer.borderWidth = 1
     }
     
 }

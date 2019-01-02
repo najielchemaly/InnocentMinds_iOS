@@ -27,6 +27,10 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         swipe.direction = .down
         self.view.addGestureRecognizer(swipe)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         if hasToolBar() {
 //            self.setupToolBarView()
         }
@@ -49,7 +53,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return .lightContent
     }
     
-    func handleCameraTap(sender: UIButton? = nil) {
+    @objc func handleCameraTap(sender: UIButton? = nil) {
         let optionActionSheet = UIAlertController(title: Localization.string(key: MessageKey.SelectSource), message: nil, preferredStyle: .actionSheet)
         optionActionSheet.addAction(UIAlertAction(title: Localization.string(key: MessageKey.Camera), style: .default, handler: openCamera))
         optionActionSheet.addAction(UIAlertAction(title: Localization.string(key: MessageKey.Library), style: .default, handler: openPhotoLibrary))
@@ -95,7 +99,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func saveUserInUserDefaults() {
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: currentUser)
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: Objects.user)
         let userDefaults = UserDefaults.standard
         userDefaults.set(encodedData, forKey: "user")
         userDefaults.set(true, forKey: "isUserLoggedIn")
@@ -132,15 +136,19 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @objc func logout() {
         self.showLoader()
         
-        let userId = currentUser.id
-        DispatchQueue.global(qos: .background).async {
-            _ = appDelegate.services.logout(id: String(describing: userId))
+        let userId = Objects.user.id ?? "0"
+//        DispatchQueue.global(qos: .background).async {
+//            _ = appDelegate.services.logout(id: userId)
             
             DispatchQueue.main.async {
                 let userDefaults = UserDefaults.standard
                 userDefaults.removeObject(forKey: "user")
                 userDefaults.removeObject(forKey: "isUserLoggedIn")
                 userDefaults.synchronize()
+                
+                Objects.user = User()
+                
+                appDelegate.unregisterFromRemoteNotifications()
                 
                 if let window = appDelegate.window {
                     if let mainNavigationBarController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? UINavigationController  {
@@ -150,12 +158,12 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
                 self.hideLoader()
             }
-        }
+//        }
     }
     
     func showLoader(message: String? = nil, type: NVActivityIndicatorType? = .ballScaleMultiple,
-                    color: UIColor? = nil , textColor: UIColor? = nil) {
-        let activityData = ActivityData(message: message, type: type, color: color, textColor: textColor)
+                    color: UIColor? = nil , textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
+        let activityData = ActivityData(message: message, type: type, color: color, backgroundColor: backgroundColor, textColor: textColor)
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
         
         self.dismissKeyboard()
@@ -191,15 +199,19 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     var customView = UIView()
-    func showView(name: String, duration: Double = 0.3) -> UIView {
+    func showView(name: String, duration: Double = 0.3, fromWindow: Bool = true) -> UIView {
         let view = Bundle.main.loadNibNamed(name, owner: self.view, options: nil)
         if let alertView = view?.first as? UIView {
             customView = alertView
             customView.frame = self.view.bounds
             
             customView.alpha = 0
-            self.view.addSubview(customView)
-//            appDelegate.window?.addSubview(customView)
+            
+            if fromWindow {
+                appDelegate.window?.addSubview(customView)
+            } else {
+                self.view.addSubview(customView)
+            }
             
             UIView.animate(withDuration: duration, animations: {
                 self.customView.alpha = 1
@@ -207,6 +219,10 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             UIApplication.shared.keyWindow?.windowLevel = UIWindowLevelStatusBar
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        customView.addGestureRecognizer(tap)
         
         return customView
     }
@@ -231,28 +247,45 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    func showAlertView(title: String = "Innocent Minds", message: String = "", buttonOkTitle: String = "", buttonCancelTitle: String = "", dismiss: Bool = false, logout: Bool = false) {
+    func showAlertView(title: String = "Innocent Minds", message: String = "", buttonOkTitle: String = Localization.string(key: MessageKey.Ok), buttonCancelTitle: String = "", dismiss: Bool = false, logout: Bool = false, isError: Bool = false) {
         if let alertView = self.showView(name: Views.AlertView) as? AlertView {
             alertView.initializeViews()
             
             alertView.labelTitle.text = title.isEmpty ? alertView.labelTitle.text! : title
             alertView.labelDescription.text = message.isEmpty ? alertView.labelDescription.text! : message
             
+            alertView.buttonOk.setTitle(buttonOkTitle, for: .normal)
+            alertView.buttonCancel.setTitle(buttonCancelTitle, for: .normal)
+            
             if buttonCancelTitle.isEmpty {
                 alertView.buttonCancel.removeFromSuperview()
                 alertView.stackViewWidthConstraint.constant = alertView.stackViewWidthConstraint.constant/2
-                
-                if dismiss {
-                    alertView.buttonOk.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
-                } else if !logout {
-                    alertView.buttonOk.addTarget(self, action: #selector(self.hideView), for: .touchUpInside)
-                }
             } else {
                 alertView.buttonCancel.addTarget(self, action: #selector(self.hideView), for: .touchUpInside)
             }
             
+            if dismiss {
+                alertView.buttonOk.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+            } else if !logout {
+                alertView.buttonOk.addTarget(self, action: #selector(self.hideView), for: .touchUpInside)
+            }
+            
+            alertView.imageIcon.image = isError ? #imageLiteral(resourceName: "error_message_icon") : #imageLiteral(resourceName: "alert_message_icon")
+            
             self.tabBarController?.tabBar.isUserInteractionEnabled = false
         }
+    }
+    
+    func updateNotificationBadge() {
+        let userDefaults = UserDefaults.standard
+        if let notificationNumber = userDefaults.value(forKey: "notificationNumber") as? String {
+            if let notificationBadge = Int(notificationNumber) {
+                userDefaults.set(String(describing: notificationBadge + 1), forKey: "notificationNumber")
+            }
+        } else {
+            userDefaults.set(String(describing: "1"), forKey: "notificationNumber")
+        }
+        userDefaults.synchronize()
     }
     
     /*

@@ -20,7 +20,7 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
     var pickerView: UIPickerView!    
     
     var selectedType: ActivityType = .Breakfast
-    var mode: ActivityMode = .add
+    var mode: ActionMode = .add
     
     var activityTypes: [String] = [
         "Breakfast",
@@ -50,6 +50,10 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
         
         if self.mode == .edit {
             self.textFieldActivityType.isEnabled(enable: false)
+            
+            if let typeId = activity.type_id, let row = Int(typeId) {
+                self.textFieldActivityType.text = self.activityTypes[row-1]
+            }
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -221,8 +225,8 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
                         cell.buttonSad.isSelected = index == -1
                     }
                     
-//                    cell.textFieldType.text = self.activity.bath_type_id
-//                    cell.textFieldPottyType.text = self.activity.bath_potty_type_id
+                    cell.textFieldType.text = self.activity.bath_type_id
+                    cell.textFieldPottyType.text = self.activity.bath_potty_type_id
                     cell.textFieldTime.text = self.activity.time
                 }
                 
@@ -259,7 +263,7 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
     
     @IBAction func buttonSaveTapped(_ sender: Any) {
         if let teacherStudentDetailVC = self.presentingViewController?.childViewControllers.last as? TeacherStudentDetailViewController {
-            self.activity.child_id = teacherStudentDetailVC.selectedChildId
+            self.activity.child_id = teacherStudentDetailVC.selectedStudent.id ?? "0"
             switch self.selectedType {
             case .Breakfast:
                 self.activity.type_id = ActivityType.Breakfast.rawValue
@@ -282,16 +286,18 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
             
             if isValidData() {
                 if self.mode == .add {
+                    self.activity.id = "0"
                     teacherStudentDetailVC.dailyAgendas.append(self.activity)
                 } else if self.mode == .edit {
                     teacherStudentDetailVC.dailyAgendas[self.selectedActivityIndex] = self.activity
                 }
                 
+                teacherStudentDetailVC.shouldAskBeforeLeaving = true
                 teacherStudentDetailVC.tableView.reloadData()
                 
                 self.dismissVC()
             } else {
-                self.showAlertView(message: errorMessage)
+                self.showAlertView(message: errorMessage, isError: true)
             }
         }
     }
@@ -399,7 +405,7 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
                 return false
             }
         case .PottyTraining:
-            if self.activity.rating.isNullOrEmpty() && (self.activity.from_date.isNullOrEmpty() || self.activity.to_date.isNullOrEmpty()) {
+            if self.activity.rating.isNullOrEmpty() && self.activity.time.isNullOrEmpty() {
                 errorMessage = Localization.string(key: MessageKey.PottyTime)
                 return false
             }
@@ -408,6 +414,25 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
         }
         
         return true
+    }
+    
+    func getSelectedType() {
+        if let typeId = activity.type_id {
+            switch typeId {
+            case "1":
+                self.selectedType = .Breakfast
+            case "2":
+                self.selectedType = .Lunch
+            case "3":
+                self.selectedType = .Nap
+            case "4":
+                self.selectedType = .Bathroom
+            case "5":
+                self.selectedType = .PottyTraining
+            default:
+                break
+            }
+        }
     }
     
     /*

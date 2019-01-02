@@ -11,6 +11,7 @@ import UIKit
 class ClassCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var labelClassName: UILabel!
+    @IBOutlet weak var labelStudentsNumber: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

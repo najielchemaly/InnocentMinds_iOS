@@ -215,7 +215,7 @@ class ContactUsViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func buttonLogoutTapped(_ sender: Any) {
-        self.showAlertView(message: Localization.string(key: MessageKey.MainMenu), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
+        self.showAlertView(message: Localization.string(key: MessageKey.MainMenuValidation), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel), logout: true)
         
         if let alertView = self.customView as? AlertView {
             alertView.buttonOk.addTarget(self, action: #selector(self.logout), for: .touchUpInside)

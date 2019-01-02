@@ -48,28 +48,28 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         if let branches = Objects.variables.branches {
             self.branches = branches
         }
+        
+        self.setupPickerViews()
     }
     
     func setupPickerViews() {
-        if let baseVC = currentVC as? BaseViewController {
-            self.pickerView = UIPickerView()
-            self.pickerView.delegate = self
-            self.pickerView.dataSource = self
-            
-            self.textFieldBranch.inputView = self.pickerView
-            
-            let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: baseVC.view.frame.width, height: 44))
-            toolbar.sizeToFit()
-            toolbar.barStyle = .default
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: baseVC, action: #selector(baseVC.dismissKeyboard))
-            cancelButton.tintColor = Colors.appBlue
-            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneButtonTapped))
-            doneButton.tintColor = Colors.appBlue
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            toolbar.items = [cancelButton, flexibleSpace, doneButton]
-            
-            self.textFieldBranch.inputAccessoryView = toolbar
-        }
+        self.pickerView = UIPickerView()
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        
+        self.textFieldBranch.inputView = self.pickerView
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
+        toolbar.sizeToFit()
+        toolbar.barStyle = .default
+        let cancelButton = UIBarButtonItem(title: Localization.string(key: MessageKey.Cancel), style: .plain, target: self, action: #selector(self.cancelButtonTapped))
+        cancelButton.tintColor = Colors.appBlue
+        let doneButton = UIBarButtonItem(title: Localization.string(key: MessageKey.Done), style: .plain, target: self, action: #selector(self.doneButtonTapped))
+        doneButton.tintColor = Colors.appBlue
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolbar.items = [cancelButton, flexibleSpace, doneButton]
+        
+        self.textFieldBranch.inputAccessoryView = toolbar
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -84,14 +84,16 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return self.branches[row].title
     }
     
+    @objc func cancelButtonTapped() {
+        textFieldBranch.resignFirstResponder()
+    }
+    
     @objc func doneButtonTapped() {
-        if let baseVC = currentVC as? BaseViewController {
-            let row = self.pickerView.selectedRow(inComponent: 0)
-            self.textFieldBranch.text = self.branches[row].title
-            self.selectedBranchId = self.branches[row].id
-            
-            baseVC.dismissKeyboard()
-        }
+        let row = self.pickerView.selectedRow(inComponent: 0)
+        self.textFieldBranch.text = self.branches[row].title
+        self.selectedBranchId = self.branches[row].id
+
+        textFieldBranch.resignFirstResponder()
     }
     
     @objc func buttonSendTapped(sender: UIButton) {
@@ -99,27 +101,47 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             if isValidData() {
                 baseVC.showLoader()
                 
+                let firstName = self.textFieldFirstName.text!
+                let lastName = self.textFieldLastName.text!
+                let email = self.textFieldEmail.text!
+                let phone = self.textFieldPhoneNumber.text!
+                let branchId = self.textFieldBranch.text!
+                let inquiry = self.textViewInquiry.text!
+                
                 DispatchQueue.global(qos: .background).async {
-                    let result = appDelegate.services.sendContactUs(firstName: self.textFieldFirstName.text!, lastName: self.textFieldLastName.text!, email: self.textFieldEmail.text!, phone: self.textFieldPhoneNumber.text!, branchId: self.selectedBranchId!, inquiry: self.textViewInquiry.text)
+                    let result = appDelegate.services.sendContactUs(firstName: firstName, lastName: lastName, email: email, phone: phone, branchId: branchId, inquiry: inquiry)
                     
                     DispatchQueue.main.async {
                         if result?.status == ResponseStatus.SUCCESS.rawValue {
                             if let message = result?.message {
                                 baseVC.showAlertView(message: message)
+                            } else {
+                                baseVC.showAlertView(message: Localization.string(key: MessageKey.SendContactUs))
                             }
+                            
+                            self.resetFields()
                         } else if let message = result?.message {
-                            baseVC.showAlertView(message: message)
+                            baseVC.showAlertView(message: message, isError: true)
                         } else {
-                            baseVC.showAlertView(message: Localization.string(key: MessageKey.InternalServerError))
+                            baseVC.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
                         }
                         
                         baseVC.hideLoader()
                     }
                 }
             } else {
-                baseVC.showAlertView(message: errorMessage)
+                baseVC.showAlertView(message: errorMessage, isError: true)
             }
         }
+    }
+    
+    func resetFields() {
+        self.textFieldFirstName.text = nil
+        self.textFieldLastName.text = nil
+        self.textFieldPhoneNumber.text = nil
+        self.textFieldEmail.text = nil
+        self.textFieldBranch.text = nil
+        self.textViewInquiry.text = nil
     }
     
     var errorMessage: String = ""

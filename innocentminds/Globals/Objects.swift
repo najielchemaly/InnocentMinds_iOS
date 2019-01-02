@@ -9,8 +9,8 @@
 import Foundation
 
 struct Objects {
-    static var variables: Variables = Variables()
     static var user: User = User()
+    static var variables: Variables = Variables()
     static var payments: [Payment] = [Payment]()
     
     static let answers: [String] = [

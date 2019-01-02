@@ -50,7 +50,11 @@ public class Class {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		id = dictionary["id"] as? String
+		if let id = dictionary["id"] as? String {
+            self.id = id
+        } else if let id = dictionary["id"] as? Int {
+            self.id = "\(id)"
+        }
 		name = dictionary["name"] as? String
 	}
 

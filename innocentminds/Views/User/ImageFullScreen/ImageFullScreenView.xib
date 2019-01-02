@@ -25,10 +25,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" restorationIdentifier="PagerView" translatesAutoresizingMaskIntoConstraints="NO" id="e5a-xf-M1n" customClass="PagerView" customModule="innocentminds" customModuleProvider="target">
-                    <rect key="frame" x="8" y="120" width="359" height="419"/>
+                    <rect key="frame" x="8" y="120" width="359" height="420"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="X7e-V7-oUE"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="gR3-2w-Eus"/>
+                    </connections>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7R-oi-pbd">
-                    <rect key="frame" x="105.5" y="559" width="46" height="32"/>
+                    <rect key="frame" x="109.5" y="560.5" width="42" height="31"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                     <state key="normal" title="Share">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,7 +42,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNL-cw-7mt">
-                    <rect key="frame" x="167.5" y="555" width="40" height="40"/>
+                    <rect key="frame" x="167.5" y="556" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="CeH-jP-wfw"/>
                         <constraint firstAttribute="width" constant="40" id="LiP-0g-tUZ"/>
@@ -49,7 +53,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-SR-9GR">
-                    <rect key="frame" x="217.5" y="555" width="40" height="40"/>
+                    <rect key="frame" x="217.5" y="556" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="1xN-R8-9F9"/>
                         <constraint firstAttribute="width" constant="40" id="fAh-Iy-hO5"/>
@@ -60,7 +64,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPV-X3-l6t">
-                    <rect key="frame" x="160" y="615" width="55" height="32"/>
+                    <rect key="frame" x="162.5" y="616" width="50" height="31"/>
                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                     <state key="normal" title=" Close ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

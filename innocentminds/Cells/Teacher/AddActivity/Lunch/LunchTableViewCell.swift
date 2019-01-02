@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LunchTableViewCell: UITableViewCell {
+class LunchTableViewCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var buttonStar1: UIButton!
@@ -17,6 +17,8 @@ class LunchTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonStar4: UIButton!
     @IBOutlet weak var buttonSad: UIButton!
     @IBOutlet weak var textView: UITextView!
+    
+    let placeholder: String = "Add text"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +39,20 @@ class LunchTableViewCell: UITableViewCell {
         self.buttonStar2.imageView?.contentMode = .scaleAspectFit
         self.buttonStar3.imageView?.contentMode = .scaleAspectFit
         self.buttonStar4.imageView?.contentMode = .scaleAspectFit
+        
+        self.textView.delegate = self
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == self.placeholder {
+            textView.text = nil
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == nil || textView.text == "" {
+            textView.text = self.placeholder
+        }
     }
     
 }

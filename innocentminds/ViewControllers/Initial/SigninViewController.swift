@@ -38,14 +38,14 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func buttonSigninTapped(_ sender: Any) {
         // TODO Dummy
-        if self.textFieldUsername.text == "parent" {
-            self.redirectToVC(storyboardId: StoryboardIds.DashboardNavigationBarController, type: .present)
-        } else if self.textFieldUsername.text == "nurse" {
-            self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.NurseNavigationController, type: .present)
-        } else if self.textFieldUsername.text == "teacher" {
-            self.redirectToVC(storyboard: teacherStoryboard, storyboardId: StoryboardIds.TeacherNavigationController, type: .present)
-        }
-        return
+//        if self.textFieldUsername.text == "parent" {
+//            self.redirectToVC(storyboardId: StoryboardIds.DashboardNavigationBarController, type: .present)
+//        } else if self.textFieldUsername.text == "nurse" {
+//            self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.NurseNavigationController, type: .present)
+//        } else if self.textFieldUsername.text == "teacher" {
+//            self.redirectToVC(storyboard: teacherStoryboard, storyboardId: StoryboardIds.TeacherNavigationController, type: .present)
+//        }
+//        return
 
         if isValidData() {
             self.showLoader()
@@ -67,20 +67,28 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
                         }
 
                         if let roleId = user.role_id {
+                            Objects.user = user
                             self.checkUserRole(role: roleId)
+                            self.saveUserInUserDefaults()
+                            self.resetFields()
                         }
                     } else if let message = result?.message, !message.isEmpty {
-                        self.showAlertView(message: message)
+                        self.showAlertView(message: message, isError: true)
                     } else {
-                        self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError))
+                        self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
                     }
                     
                     self.hideLoader()
                 }
             }
         } else {
-            self.showAlertView(message: errorMessage)
+            self.showAlertView(message: errorMessage, isError: true)
         }
+    }
+    
+    func resetFields() {
+        self.textFieldUsername.text = nil
+        self.textFieldPassword.text = nil
     }
     
     func initializeViews() {
@@ -119,17 +127,19 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
                         } else {
                             self.showAlertView(message: Localization.string(key: MessageKey.EmailSentPref) + "\( email )" + Localization.string(key: MessageKey.EmailSentSuff))
                         }
+                        
+                        self.textFieldEmail.text = nil
                     } else if let message = result?.message, !message.isEmpty {
-                        self.showAlertView(message: message)
+                        self.showAlertView(message: message, isError: true)
                     } else {
-                        self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError))
+                        self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
                     }
                     
                     self.hideLoader()
                 }
             }
         } else {
-            self.showAlertView(message: Localization.string(key: MessageKey.EmailEmpty))
+            self.showAlertView(message: Localization.string(key: MessageKey.EmailEmpty), isError: true)
         }
     }
     
@@ -169,6 +179,11 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
             self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.NurseNavigationController, type: .present)
         case UserRole.Teacher.rawValue, UserRole.TeacherSupervisor.rawValue:
             self.redirectToVC(storyboard: teacherStoryboard, storyboardId: StoryboardIds.TeacherNavigationController, type: .present)
+        case UserRole.Secretary.rawValue:
+            if let registerChildVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.RegisterChildViewController) as? RegisterChildViewController {
+                registerChildVC.mode = .add
+                self.present(registerChildVC, animated: true, completion: nil)
+            }
         default:
             break
         }

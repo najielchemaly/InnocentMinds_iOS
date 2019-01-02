@@ -39,12 +39,26 @@ class ChangeChildView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.children.count == 0 ? 1 : self.children.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.children.count == 0 ? tableView.frame.height : 170
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+        footerView.backgroundColor = .clear
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,11 +74,13 @@ class ChangeChildView: UIView, UITableViewDelegate, UITableViewDataSource {
             
             let cellTapped = UITapGestureRecognizer(target: self, action: #selector(didSelectRow(sender:)))
             cell.addGestureRecognizer(cellTapped)
-            cell.tag = indexPath.row
+            cell.tag = indexPath.section
             
-            let child = self.children[indexPath.row]
-            if let image = child.image {
+            let child = self.children[indexPath.section]
+            if let image = child.image, !image.isEmpty {
                 cell.childImageView.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+            } else {
+                cell.childImageView.image = #imageLiteral(resourceName: "boy_avatar")
             }
             if let firstName = child.firstname, let lastName = child.lastname {
                 cell.labelChildName.text = firstName + " " + lastName
@@ -78,8 +94,10 @@ class ChangeChildView: UIView, UITableViewDelegate, UITableViewDataSource {
     @objc func didSelectRow(sender: UITapGestureRecognizer) {
         if let cell = sender.view, let dashboardVC = currentVC as? DashboardViewController {
             dashboardVC.selectedChild = self.children[cell.tag]
-            dashboardVC.setupChildInfo(reload: true)
+            dashboardVC.setupChildInfo()
         }
+        
+        self.hide(remove: true)
     }
 
 }

@@ -35,10 +35,25 @@ class SelectLanguageViewController: BaseViewController {
         if currentVC is DashboardViewController {
             self.buttonCancel.isHidden = false
             self.isInitial = false
+            
+            let currentLanguage = Localization.currentLanguage()
+            switch currentLanguage.lowercased() {
+            case "en":
+                self.buttonEnglish.isSelected = true
+                self.buttonEnglish.backgroundColor = Colors.appGreen
+            case "fr":
+                self.buttonFrench.isSelected = true
+                self.buttonFrench.backgroundColor = Colors.appGreen
+            default:
+                break
+            }
         }
     }
     
     @IBAction func buttonLanguageTapped(_ sender: Any) {
+        self.buttonEnglish.isSelected = false
+        self.buttonFrench.isSelected = false
+        
         if let button = sender as? UIButton {
             button.isSelected = !button.isSelected
         }
@@ -47,6 +62,8 @@ class SelectLanguageViewController: BaseViewController {
         self.buttonFrench.backgroundColor = self.buttonFrench.isSelected ? Colors.appGreen : Colors.appGray
         
         UserDefaults.standard.set(true, forKey: "didSelectLanguage")
+        
+        Localization.setLanguageTo(self.buttonEnglish.isSelected ? "en" : "fr")
         
         self.showLoader(message: "Setting Language...")
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { timer in

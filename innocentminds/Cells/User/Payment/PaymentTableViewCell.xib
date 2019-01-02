@@ -26,10 +26,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQG-Oe-hYx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <rect key="frame" x="16" y="0.0" width="343" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-SV-t0D">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQb-Pu-7Sc">
                                         <rect key="frame" x="16" y="16" width="38" height="38"/>
@@ -38,12 +38,12 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKG-Th-DY0">
-                                        <rect key="frame" x="62" y="35" width="305" height="0.0"/>
+                                        <rect key="frame" x="62" y="35" width="273" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpp-K2-kml">
-                                        <rect key="frame" x="0.0" y="69" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="69" width="343" height="1"/>
                                         <color key="backgroundColor" red="0.9141657352" green="0.92522078750000003" blue="0.9427878261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="2wF-GE-pVC"/>
@@ -65,13 +65,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CFu-bN-xd1">
-                                <rect key="frame" x="0.0" y="70" width="375" height="130"/>
+                                <rect key="frame" x="0.0" y="70" width="343" height="130"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tor-ou-jWc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="65"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsx-sC-TCd">
-                                                <rect key="frame" x="16" y="8" width="359" height="17.5"/>
+                                                <rect key="frame" x="16" y="8" width="327" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -82,7 +82,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-c1-8Ul">
-                                                <rect key="frame" x="0.0" y="64" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="64" width="343" height="1"/>
                                                 <color key="backgroundColor" red="0.9141657352" green="0.92522078750000003" blue="0.9427878261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Qyj-qs-nGI"/>
@@ -102,10 +102,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j08-Fr-BjX">
-                                        <rect key="frame" x="0.0" y="65" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="65" width="343" height="65"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-5N-fHv">
-                                                <rect key="frame" x="16" y="8" width="359" height="17.5"/>
+                                                <rect key="frame" x="16" y="8" width="327" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -141,8 +141,8 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="BQG-Oe-hYx" secondAttribute="trailing" id="hKu-W5-8aM"/>
-                    <constraint firstItem="BQG-Oe-hYx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ieu-oU-M2S"/>
+                    <constraint firstAttribute="trailing" secondItem="BQG-Oe-hYx" secondAttribute="trailing" constant="16" id="hKu-W5-8aM"/>
+                    <constraint firstItem="BQG-Oe-hYx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ieu-oU-M2S"/>
                     <constraint firstAttribute="bottom" secondItem="BQG-Oe-hYx" secondAttribute="bottom" constant="20" id="ueS-Ao-SbL"/>
                     <constraint firstItem="BQG-Oe-hYx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zua-nf-hx3"/>
                 </constraints>

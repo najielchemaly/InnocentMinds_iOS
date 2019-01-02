@@ -19,9 +19,12 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewSendMessage: UIView!
     @IBOutlet weak var segmentView: UIView!
+    @IBOutlet weak var buttonSubmit: UIButton!
     
     var dailyAgendas: [Activity] = [Activity]()
-    var selectedChildId: String = ""
+    var selectedStudent: Child = Child()
+    
+    var shouldAskBeforeLeaving: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +37,18 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.buttonSubmit.isEnabled(enable: self.dailyAgendas.count > 0)
+    }
 
     func initializeViews() {
         self.buttonBack.imageView?.contentMode = .scaleAspectFit
         
         self.imageViewChild.layer.cornerRadius = self.imageViewChild.frame.height/2
-        self.imageViewChild.layer.borderColor = Colors.darkBlue.cgColor
-        self.imageViewChild.layer.borderWidth = 2
         
         self.segmentView.customizeView()
         
@@ -49,6 +56,19 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
         self.buttonAdditionalActivities.layer.cornerRadius = Dimensions.cornerRadiusNormal
         
 //        self.setButtonActivitySelected(tag: 1)
+        
+        if let activities = self.selectedStudent.activities {
+            self.dailyAgendas = activities
+        }
+        
+        if let image = self.selectedStudent.image, !image.isEmpty {
+            self.imageViewChild.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
+            self.imageViewChild.layer.borderColor = Colors.darkBlue.cgColor
+            self.imageViewChild.layer.borderWidth = 2
+        }
+        if let firstName = self.selectedStudent.firstname, let lastName = self.selectedStudent.lastname {
+            self.labelChildName.text = "\(firstName) \(lastName)"
+        }
         
         let sendMessageTap = UITapGestureRecognizer(target: self, action: #selector(sendMessageTapped))
         self.viewSendMessage.addGestureRecognizer(sendMessageTap)
@@ -67,7 +87,7 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.dailyAgendas.count == 0 ? 150 : indexPath.row == 0 ? 70 : 170
+        return self.dailyAgendas.count == 0 ? 150 : indexPath.row == 0 ? 70 : 160
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,37 +113,56 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
             } else if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.AddActivityPostTableViewCell) as? AddActivityPostTableViewCell {
                 cell.initializeViews()
                 
-                cell.labelTitleTopConstraint.constant = 10
-                cell.stackViewHeightContraint.constant = 20
+                let activity = self.dailyAgendas[indexPath.row-1]
+                
+                cell.labelTitleTopConstraint.constant = activity.description.isNullOrEmpty() ? 24 : 12
                 cell.labelDescriptionTopConstraint.constant = 8
                 
-                let activity = self.dailyAgendas[indexPath.row-1]
                 if let type = activity.type_id {
                     switch type {
                     case ActivityType.Breakfast.rawValue,
                          ActivityType.Lunch.rawValue:
+                        cell.stackViewHeightContraint.constant = 20
                         cell.typeView.backgroundColor = Colors.appOrange
                         cell.labelTitle.textColor = Colors.appOrange
                         cell.typeImageView.image = #imageLiteral(resourceName: "food_icon")
+                        cell.labelDescription.text = activity.description
                     case ActivityType.Nap.rawValue:
+                        cell.stackViewHeightContraint.constant = 0
                         cell.typeView.backgroundColor = Colors.appBlue
                         cell.labelTitle.textColor = Colors.appBlue
                         cell.typeImageView.image = #imageLiteral(resourceName: "nap_icon")
+                        
+                        if let fromTime = activity.from_date, let toTime = activity.to_date {
+                            cell.labelDescription.text = "From \(fromTime) till \(toTime)"
+                        }
                     case ActivityType.Bathroom.rawValue:
+                        cell.stackViewHeightContraint.constant = 0
+                        cell.labelDescriptionTopConstraint.constant = -8
                         cell.typeView.backgroundColor = Colors.appGreen
                         cell.labelTitle.textColor = Colors.appGreen
                         cell.typeImageView.image = #imageLiteral(resourceName: "bath_icon")
+                        
+                        if let type = activity.getBathType(),
+                            let pottyType = activity.getBathPottyType(),
+                            let time = activity.time {
+                            cell.labelDescription.text = "\(type)\n\(pottyType)\n\(time)"
+                        }
                     case ActivityType.PottyTraining.rawValue:
+                        cell.stackViewHeightContraint.constant = 0
                         cell.typeView.backgroundColor = Colors.appRed
                         cell.labelTitle.textColor = Colors.appRed
                         cell.typeImageView.image = #imageLiteral(resourceName: "potty_training_icon")
+                        
+                        if let time = activity.time {
+                            cell.labelDescription.text = "At \(time)"
+                        }
                     default:
                         break
                     }
                 }
                 
                 cell.labelTitle.text = activity.title
-                cell.labelDescription.text = activity.description
                 cell.buttonViewImages.isHidden = true
                 
                 if let rating = activity.rating, let index = Int(rating) {
@@ -154,22 +193,29 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
     
     @objc func sendMessageTapped() {
         if let sendParentsMessageView = self.showView(name: Views.SendParentsMessageView) as? SendParentsMessageView {
+            sendParentsMessageView.selectedChild = self.selectedStudent
             sendParentsMessageView.initializeViews()
-            sendParentsMessageView.selectedChildId = self.selectedChildId
         }
     }
     
     @IBAction func buttonBackTapped(_ sender: Any) {
-        self.popVC()
+        if self.shouldAskBeforeLeaving {
+            self.showAlertView(message: Localization.string(key: MessageKey.LeaveWithoutSaving), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel))
+            
+            if let alertView = self.customView as? AlertView {
+                alertView.buttonOk.addTarget(self, action: #selector(self.popVC), for: .touchUpInside)
+            }
+        } else {
+            self.popVC()
+        }
     }
     
-    var editActivityIndex = 0
     @objc func buttonEditTapped(sender: UIButton) {
-        self.editActivityIndex = sender.tag
         if let addDailyAgendaVC = teacherStoryboard.instantiateViewController(withIdentifier: StoryboardIds.AddDailyAgendaViewController) as? AddDailyAgendaViewController {
             addDailyAgendaVC.mode = .edit
             addDailyAgendaVC.activity = self.dailyAgendas[sender.tag]
             addDailyAgendaVC.selectedActivityIndex = sender.tag
+            addDailyAgendaVC.getSelectedType()
             self.present(addDailyAgendaVC, animated: true, completion: nil)
         }
     }
@@ -202,9 +248,50 @@ class TeacherStudentDetailViewController: BaseViewController, UITableViewDelegat
         
         self.dailyAgendas.remove(at: self.deleteActivityIndex)
         self.tableView.reloadData()
+        
+        self.buttonSubmit.isEnabled(enable: self.dailyAgendas.count > 0)
     }
     
-//    @IBAction func buttonActivityTapped(_ sender: Any) {
+    @IBAction func buttonSubmitTapped(_ sender: Any) {
+        self.showAlertView(message: Localization.string(key: MessageKey.SubmitActivities), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel))
+        
+        if let alertView = self.customView as? AlertView {
+            alertView.buttonOk.addTarget(self, action: #selector(self.submitActivities), for: .touchUpInside)
+        }
+    }
+
+    @objc func submitActivities() {
+        if let childId = self.selectedStudent.id, let child_id = Int(childId), let userId = Objects.user.id, let user_id = Int(userId) {
+            self.showLoader()
+            
+            let sendActivity = SendActivity(user_id: user_id, child_id: child_id, child_activities: self.dailyAgendas)
+
+            DispatchQueue.global(qos: .background).async {
+                let result = appDelegate.services.addActivity(sendActivity: sendActivity)
+                
+                DispatchQueue.main.async {
+                    if result?.status == ResponseStatus.SUCCESS.rawValue {
+                        if let message = result?.message {
+                            self.showAlertView(message: message)
+                        } else {
+                            self.showAlertView(message: Localization.string(key: MessageKey.ActivitiesSent))
+                        }
+                        
+                        self.shouldAskBeforeLeaving = false
+                    } else {
+                        if let message = result?.message {
+                            self.showAlertView(message: message, isError: true)
+                        } else {
+                            self.showAlertView(message: Localization.string(key: MessageKey.InternalServerError), isError: true)
+                        }
+                    }
+                    
+                    self.hideLoader()
+                }
+            }
+        }
+    }
+    //    @IBAction func buttonActivityTapped(_ sender: Any) {
 //        if let button = sender as? UIButton {
 //            self.setButtonActivitySelected(tag: button.tag)
 //        }
