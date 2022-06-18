@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 import FSPagerView
-import FBSDKShareKit
+//import FBSDKShareKit
 
 class ImageFullScreenView: UIView, FSPagerViewDelegate, FSPagerViewDataSource, UIDocumentInteractionControllerDelegate {
 
@@ -40,16 +40,15 @@ class ImageFullScreenView: UIView, FSPagerViewDelegate, FSPagerViewDataSource, U
     }
     
     @IBAction func buttonFacebookTapped(_ sender: Any) {
-        let image = #imageLiteral(resourceName: "gallery_dummy")
-        if let sharePhoto = FBSDKSharePhoto(image: image, userGenerated: true) {
-            let content = FBSDKSharePhotoContent()
-            content.photos = [sharePhoto]
-            let shareDialog = FBSDKShareDialog()
-            if shareDialog.canShow() {
-                shareDialog.shareContent = content
-                shareDialog.show()
-            }
-        }
+//        let image = #imageLiteral(resourceName: "gallery_dummy")
+//        let sharePhoto = SharePhoto(image: image, userGenerated: true)
+//        let content = SharePhotoContent()
+//        content.photos = [sharePhoto]
+//        let shareDialog = ShareDialog()
+//        if shareDialog.canShow {
+//            shareDialog.shareContent = content
+//            shareDialog.show()
+//        }
     }
     
     @IBAction func buttonInstagramTapped(_ sender: Any) {

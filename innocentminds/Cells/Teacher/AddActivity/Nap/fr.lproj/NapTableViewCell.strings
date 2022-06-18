@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Nap"; ObjectID = "fSX-E0-M6J"; */
+"fSX-E0-M6J.text" = "Sieste";
+
+/* Class = "UITextField"; placeholder = "From:"; ObjectID = "sgh-qF-dq2"; */
+"sgh-qF-dq2.placeholder" = "De:";
+
+/* Class = "UITextField"; placeholder = "To:"; ObjectID = "zB8-gu-Uv8"; */
+"zB8-gu-Uv8.placeholder" = "À:";

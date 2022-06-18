@@ -14,7 +14,8 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     @IBOutlet weak var buttonMother: UIButton!
     @IBOutlet weak var buttonFather: UIButton!
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var textFieldName: UITextField!
+    @IBOutlet weak var textFieldFirstname: UITextField!
+    @IBOutlet weak var textFieldLastname: UITextField!
     @IBOutlet weak var textFieldPhone: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldAddress: UITextField!
@@ -36,10 +37,6 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
                 self.setButtonFatherSelected()
             default:
                 break
-            }
-            
-            if let registerChildVC = currentVC as? RegisterChildViewController {
-                registerChildVC.tempUser.parent_type = self.buttonFather.isSelected ? ParentType.Father.rawValue : ParentType.Mother.rawValue
             }
         }
     }
@@ -79,7 +76,9 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if self.textFieldName.isFirstResponder {
+        if self.textFieldFirstname.isFirstResponder {
+            self.textFieldLastname.becomeFirstResponder()
+        } else if self.textFieldLastname.isFirstResponder {
             self.textFieldPhone.becomeFirstResponder()
         } else if self.textFieldPhone.isFirstResponder {
             self.textFieldEmail.becomeFirstResponder()
@@ -97,8 +96,8 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     }
     
     func setupKeyboardObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -135,8 +134,10 @@ class RegisterChildStep2CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let registerChildVC = currentVC as? RegisterChildViewController {
-            if textField == self.textFieldName, let text = textField.text {
-                registerChildVC.tempUser.fullname = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
+            if textField == self.textFieldFirstname, let text = textField.text {
+                registerChildVC.tempUser.firstname = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
+            } else if textField == self.textFieldLastname, let text = textField.text {
+                registerChildVC.tempUser.lastname = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             } else if textField == self.textFieldPhone, let text = textField.text {
                 registerChildVC.tempUser.phone = "\(text)\(string)".replacingOccurrences(of: " ", with: "")
             } else if textField == self.textFieldEmail, let text = textField.text {

@@ -103,7 +103,7 @@ class AddPhotosViewController: BaseViewController, UICollectionViewDelegate, UIC
         if let addAdditionalActivityVC = self.presentingViewController as? AddAdditionalActivityViewController {
             addAdditionalActivityVC.activity.photos = self.photos
             addAdditionalActivityVC.collectionView.reloadData()
-        } else if let navigationController = self.presentingViewController as? UINavigationController, let additionalActivityVC = navigationController.childViewControllers.last as? AdditionalActivityViewController {
+        } else if let navigationController = self.presentingViewController as? UINavigationController, let additionalActivityVC = navigationController.children.last as? AdditionalActivityViewController {
             additionalActivityVC.additionalActivities[self.selectedActivityIndex].photos = self.photos
             additionalActivityVC.tableView.reloadData()
         }

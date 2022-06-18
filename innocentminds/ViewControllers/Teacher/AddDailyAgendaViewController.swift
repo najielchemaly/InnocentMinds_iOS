@@ -23,11 +23,11 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
     var mode: ActionMode = .add
     
     var activityTypes: [String] = [
-        "Breakfast",
-        "Lunch",
-        "Nap",
-        "Bathroom",
-        "Pottry training"
+        Localization.string(key: MessageKey.Breakfast),
+        Localization.string(key: MessageKey.Lunch),
+        Localization.string(key: MessageKey.Nap),
+        Localization.string(key: MessageKey.Bathroom),
+        Localization.string(key: MessageKey.PottyTraining)
     ]
     
     override func viewDidLoad() {
@@ -135,7 +135,7 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
         case .Nap, .PottyTraining:
             return 110
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     
@@ -262,24 +262,24 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func buttonSaveTapped(_ sender: Any) {
-        if let teacherStudentDetailVC = self.presentingViewController?.childViewControllers.last as? TeacherStudentDetailViewController {
+        if let teacherStudentDetailVC = self.presentingViewController?.children.last as? TeacherStudentDetailViewController {
             self.activity.child_id = teacherStudentDetailVC.selectedStudent.id ?? "0"
             switch self.selectedType {
             case .Breakfast:
                 self.activity.type_id = ActivityType.Breakfast.rawValue
-                self.activity.title = ActivityType.Breakfast.identifier
+                self.activity.title = Localization.string(key: MessageKey.Breakfast)
             case .Lunch:
                 self.activity.type_id = ActivityType.Lunch.rawValue
-                self.activity.title = ActivityType.Lunch.identifier
+                self.activity.title = Localization.string(key: MessageKey.Lunch)
             case .Nap:
                 self.activity.type_id = ActivityType.Nap.rawValue
-                self.activity.title = ActivityType.Nap.identifier
+                self.activity.title = Localization.string(key: MessageKey.Nap)
             case .Bathroom:
                 self.activity.type_id = ActivityType.Bathroom.rawValue
-                self.activity.title = ActivityType.Bathroom.identifier
+                self.activity.title = Localization.string(key: MessageKey.Bathroom)
             case .PottyTraining:
                 self.activity.type_id = ActivityType.PottyTraining.rawValue
-                self.activity.title = ActivityType.PottyTraining.identifier
+                self.activity.title = Localization.string(key: MessageKey.PottyTraining)
             default:
                 break
             }
@@ -287,7 +287,13 @@ class AddDailyAgendaViewController: BaseViewController, UITableViewDelegate, UIT
             if isValidData() {
                 if self.mode == .add {
                     self.activity.id = "0"
-                    teacherStudentDetailVC.dailyAgendas.append(self.activity)
+                    if teacherStudentDetailVC.dailyAgendas.contains(where: { $0.type_id == self.activity.type_id && (self.activity.type_id == ActivityType.Breakfast.rawValue || self.activity.type_id == ActivityType.Lunch.rawValue) }) {
+                        self.showAlert(message: Localization.string(key: MessageKey.CannotAddActivity), style: .alert)
+                        
+                        return;
+                    } else {
+                        teacherStudentDetailVC.dailyAgendas.append(self.activity)
+                    }
                 } else if self.mode == .edit {
                     teacherStudentDetailVC.dailyAgendas[self.selectedActivityIndex] = self.activity
                 }

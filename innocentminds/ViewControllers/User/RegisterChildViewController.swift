@@ -40,6 +40,11 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
         if isValidData() {
             self.showLoader()
             
+            if let firstname = self.tempUser.firstname,
+                let lastname = self.tempUser.lastname {
+                self.tempUser.fullname = "\(firstname) \(lastname)"
+            }
+            
             let roleId = Objects.user.role_id == nil ? "1" : Objects.user.role_id!
             let isRequest = self.mode == .request
             
@@ -92,7 +97,11 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                 alertView.buttonOk.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
             }
         } else {
-            self.dismissVC()
+            self.showAlertView(message: Localization.string(key: MessageKey.CancelRegistration), buttonOkTitle: Localization.string(key: MessageKey.Yes), buttonCancelTitle: Localization.string(key: MessageKey.Cancel))
+            
+            if let alertView = self.customView as? AlertView {
+                alertView.buttonOk.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+            }
         }
     }
     
@@ -157,14 +166,17 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                 if tempUser.parent_type.isNullOrEmpty() {
                     errorMessage = Localization.string(key: MessageKey.ParentEmpty)
                     return false
-                } else if tempUser.fullname.isNullOrEmpty() {
+                } else if tempUser.firstname.isNullOrEmpty() {
                     errorMessage = Localization.string(key: MessageKey.NameEmpty)
                     return false
-                } else if tempUser.phone.isNullOrEmpty() {
-                    errorMessage = Localization.string(key: MessageKey.PhoneEmpty)
+                } else if tempUser.lastname.isNullOrEmpty() {
+                    errorMessage = Localization.string(key: MessageKey.NameEmpty)
                     return false
-                } else if tempUser.email.isNullOrEmpty() {
-                    errorMessage = Localization.string(key: MessageKey.EmailEmpty)
+                } else if tempUser.phone.isNullOrEmpty() || tempUser.phone?.isValidPhoneNumber() == false {
+                    errorMessage = Localization.string(key: MessageKey.PhoneNotValid)
+                    return false
+                } else if tempUser.email.isNullOrEmpty() || tempUser.email?.isValidEmail() == false {
+                    errorMessage = Localization.string(key: MessageKey.EmailNotValid)
                     return false
                 } else if tempUser.address.isNullOrEmpty() {
                     errorMessage = Localization.string(key: MessageKey.AddressEmpty)
@@ -195,6 +207,10 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
         self.buttonNext.layer.cornerRadius = self.buttonNext.frame.height/2
         self.buttonBack.alpha = 0
         
+        if let roleId = Objects.user.role_id, roleId == UserRole.Parent.rawValue {
+            self.tempUser = Objects.user
+        }
+        
         self.tempUser.children = [Child()]
         
         if let roleId = Objects.user.role_id, roleId == UserRole.Secretary.rawValue {
@@ -207,6 +223,7 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
     
     func setupPagerView() {
         self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
+        self.pagerView.isScrollEnabled = false
         
         self.pagerView.register(UINib.init(nibName: CellIds.RegisterChildStep1CollectionViewCell, bundle: nil), forCellWithReuseIdentifier: CellIds.RegisterChildStep1CollectionViewCell)
         self.pagerView.register(UINib.init(nibName: CellIds.RegisterChildStep2CollectionViewCell, bundle: nil), forCellWithReuseIdentifier: CellIds.RegisterChildStep2CollectionViewCell)
@@ -240,7 +257,8 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                 cell.initializeViews()
                 
                 if let roleId = Objects.user.role_id, roleId == UserRole.Parent.rawValue {
-                    cell.textFieldName.text = Objects.user.fullname
+                    cell.textFieldFirstname.text = Objects.user.firstname
+                    cell.textFieldLastname.text = Objects.user.lastname
                     cell.textFieldPhone.text = Objects.user.phone
                     cell.textFieldEmail.text = Objects.user.email
                     cell.textFieldAddress.text = Objects.user.address
@@ -251,7 +269,8 @@ class RegisterChildViewController: BaseViewController, FSPagerViewDelegate, FSPa
                         cell.setButtonMotherSelected()
                     }
                 } else {
-                    cell.textFieldName.text = self.tempUser.fullname
+                    cell.textFieldFirstname.text = self.tempUser.firstname
+                    cell.textFieldLastname.text = self.tempUser.lastname
                     cell.textFieldPhone.text = self.tempUser.phone
                     cell.textFieldEmail.text = self.tempUser.email
                     cell.textFieldAddress.text = self.tempUser.address

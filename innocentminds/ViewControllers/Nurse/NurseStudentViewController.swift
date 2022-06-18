@@ -81,8 +81,8 @@ class NurseStudentViewController: BaseViewController, UITableViewDelegate, UITab
             if let image = student.image, !image.isEmpty {
                 cell.imageViewProfile.kf.setImage(with: URL(string:Services.getMediaUrl()+image))
             } else {
-                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
-                cell.imageViewProfile.tintColor = Colors.lightGray
+                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar")//.withRenderingMode(.alwaysTemplate)
+//                cell.imageViewProfile.tintColor = Colors.lightGray
             }
             
             if let firstName = student.firstname, let lastName = student.lastname {

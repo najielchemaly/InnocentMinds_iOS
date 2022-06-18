@@ -1,0 +1,84 @@
+
+/* Class = "UIButton"; normalTitle = "Annuler"; ObjectID = "0QQ-mo-NBW"; */
+"0QQ-mo-NBW.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "44Y-2F-FgT"; */
+"44Y-2F-FgT.normalTitle" = "Confirmer";
+
+/* Class = "UILabel"; text = "Add additional activity"; ObjectID = "4iI-sv-6iq"; */
+"4iI-sv-6iq.text" = "Ajouter une activité supplémentaire";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "51Q-Q4-sMe"; */
+"51Q-Q4-sMe.normalTitle" = " ";
+
+/* Class = "UILabel"; text = "Select students"; ObjectID = "6gI-Rv-ome"; */
+"6gI-Rv-ome.text" = "Sélectionnez des étudiants";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "AKf-Wn-YqF"; */
+"AKf-Wn-YqF.normalTitle" = "Soumettre";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Bz5-Ny-Lnd"; */
+"Bz5-Ny-Lnd.normalTitle" = "Sauvegarder";
+
+/* Class = "UITextField"; placeholder = "Select type"; ObjectID = "Cpd-oU-dgJ"; */
+"Cpd-oU-dgJ.placeholder" = "Sélectionner le genre";
+
+/* Class = "UITextField"; text = "Breakfast"; ObjectID = "Cpd-oU-dgJ"; */
+"Cpd-oU-dgJ.text" = "Petit déjeuner";
+
+/* Class = "UIButton"; normalTitle = "Additional\n activities"; ObjectID = "ESc-VK-xm4"; */
+"ESc-VK-xm4.normalTitle" = "Activités\n supplémentaires";
+
+/* Class = "UIButton"; selectedTitle = "Additional\n activities"; ObjectID = "ESc-VK-xm4"; */
+"ESc-VK-xm4.selectedTitle" = "Activités\n supplémentaires";
+
+/* Class = "UIButton"; normalTitle = "Daily agenda"; ObjectID = "Esa-rN-08e"; */
+"Esa-rN-08e.normalTitle" = "Agenda du jour";
+
+/* Class = "UIButton"; selectedTitle = "Daily agenda"; ObjectID = "Esa-rN-08e"; */
+"Esa-rN-08e.selectedTitle" = "Agenda du jour";
+
+/* Class = "UIButton"; normalTitle = "Confirm & submit"; ObjectID = "KU9-Vb-Jm9"; */
+"KU9-Vb-Jm9.normalTitle" = "Confirmer et soumettre";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "a2D-ud-7dN"; */
+"a2D-ud-7dN.normalTitle" = "Sauvegarder";
+
+/* Class = "UIButton"; normalTitle = "Annuler"; ObjectID = "aZG-J9-cIe"; */
+"aZG-J9-cIe.normalTitle" = "Annuler";
+
+/* Class = "UILabel"; text = "Add daily agenda"; ObjectID = "b0w-Mt-t5w"; */
+"b0w-Mt-t5w.text" = "Ajouter un agenda quotidien";
+
+/* Class = "UIButton"; normalTitle = "Annuler"; ObjectID = "b4g-Up-7ER"; */
+"b4g-Up-7ER.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = "Select students"; ObjectID = "bVG-GD-a4R"; */
+"bVG-GD-a4R.normalTitle" = "Sélectionnez des étudiants";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "cpH-1z-0Rs"; */
+"cpH-1z-0Rs.normalTitle" = "Soumettre";
+
+/* Class = "UIButton"; normalTitle = "Add images"; ObjectID = "dCP-fV-hbY"; */
+"dCP-fV-hbY.normalTitle" = "Ajouter des images";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "eVa-yJ-m4n"; */
+"eVa-yJ-m4n.normalTitle" = "Confirmer";
+
+/* Class = "UILabel"; text = "Add photos"; ObjectID = "fsZ-Gj-fsh"; */
+"fsZ-Gj-fsh.text" = "Ajouter des images";
+
+/* Class = "UILabel"; text = "Send parents a message"; ObjectID = "gCt-Dj-KzD"; */
+"gCt-Dj-KzD.text" = "Envoyer un message aux parents";
+
+/* Class = "UIButton"; normalTitle = "Annuler"; ObjectID = "keP-yJ-007"; */
+"keP-yJ-007.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "nkG-UD-OWH"; */
+"nkG-UD-OWH.normalTitle" = " ";
+
+/* Class = "UITextField"; placeholder = "Title of activity"; ObjectID = "ojr-AL-xFk"; */
+"ojr-AL-xFk.placeholder" = "Titre de l'activité";
+
+/* Class = "UILabel"; text = "Joelle Tannous (teacher)"; ObjectID = "yEZ-LN-AHc"; */
+"yEZ-LN-AHc.text" = "";

@@ -156,7 +156,7 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
             self.tableView.addSubview(self.refreshControl)
         }
         
-        self.refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControl.Event.valueChanged)
     }
     
     @objc func handleRefresh() {
@@ -185,7 +185,7 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
             
             return 100
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     
@@ -196,6 +196,8 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
                     cell.labelTitle.text = Localization.string(key: MessageKey.NoNotifications)
                     cell.labelTitle.textColor = Colors.textDark
+                    
+                    cell.buttonCompleteProfile.isHidden = true
                     
                     return cell
                 }
@@ -265,8 +267,8 @@ class MessagesView: UIView, UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
             if let id = self.notifications[indexPath.row].id {
                 let userId = Objects.user.id ?? "0"
                 DispatchQueue.global(qos: .background).async {

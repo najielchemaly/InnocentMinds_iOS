@@ -51,6 +51,11 @@ class SelectLanguageViewController: BaseViewController {
     }
     
     @IBAction func buttonLanguageTapped(_ sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        if button.isSelected { return }
+        
         self.buttonEnglish.isSelected = false
         self.buttonFrench.isSelected = false
         
@@ -65,12 +70,16 @@ class SelectLanguageViewController: BaseViewController {
         
         Localization.setLanguageTo(self.buttonEnglish.isSelected ? "en" : "fr")
         
-        self.showLoader(message: "Setting Language...")
+        self.showLoader(message: Localization.string(key: MessageKey.SettingLanguage))
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { timer in
             if self.isInitial {
-                self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+                if let mainNavigationController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? UINavigationController {
+                    appDelegate.window?.rootViewController = mainNavigationController
+                }
             } else {
-                self.dismissVC()
+                if let dashboardNavigationController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIds.DashboardNavigationBarController) as? UINavigationController {
+                    appDelegate.window?.rootViewController = dashboardNavigationController
+                }
             }
             
             self.hideLoader()

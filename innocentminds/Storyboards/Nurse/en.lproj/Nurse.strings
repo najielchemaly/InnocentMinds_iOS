@@ -1,0 +1,36 @@
+
+/* Class = "UITextField"; placeholder = "Enter time"; ObjectID = "2kw-sT-jJ8"; */
+"2kw-sT-jJ8.placeholder" = "Enter time";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "8Lw-QP-9Zh"; */
+"8Lw-QP-9Zh.normalTitle" = " ";
+
+/* Class = "UIButton"; normalTitle = "Save Temperatures"; ObjectID = "CtR-eN-f3M"; */
+"CtR-eN-f3M.normalTitle" = "Save Temperatures";
+
+/* Class = "UIButton"; normalTitle = "Student has arrived"; ObjectID = "L3q-Zo-hoS"; */
+"L3q-Zo-hoS.normalTitle" = "Student has arrived";
+
+/* Class = "UIButton"; selectedTitle = "Student has arrived"; ObjectID = "L3q-Zo-hoS"; */
+"L3q-Zo-hoS.selectedTitle" = "Student has arrived";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "QnS-bW-dbo"; */
+"QnS-bW-dbo.placeholder" = "Search";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "RdF-Qq-8CF"; */
+"RdF-Qq-8CF.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "SQf-mT-8kS"; */
+"SQf-mT-8kS.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Maya Nehme"; ObjectID = "Uaq-6t-V7r"; */
+"Uaq-6t-V7r.text" = "Maya Nehme";
+
+/* Class = "UILabel"; text = "Time of arrival"; ObjectID = "lRS-1s-flN"; */
+"lRS-1s-flN.text" = "Time of arrival";
+
+/* Class = "UILabel"; text = "Hello"; ObjectID = "r62-o3-MLj"; */
+"r62-o3-MLj.text" = "Hello";
+
+/* Class = "UILabel"; text = "Choose a class"; ObjectID = "wDK-6O-iAm"; */
+"wDK-6O-iAm.text" = "Choose a class";

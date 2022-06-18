@@ -23,47 +23,88 @@
 		4214DC30212EE08300C2DCC5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4214DC2E212EE08100C2DCC5 /* Montserrat-Bold.ttf */; };
 		4214DC31212EE08300C2DCC5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4214DC2F212EE08200C2DCC5 /* Montserrat-Regular.ttf */; };
 		4214DC33212EE5CD00C2DCC5 /* RegisterChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214DC32212EE5CD00C2DCC5 /* RegisterChildViewController.swift */; };
-		4214DC35212EE89D00C2DCC5 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4214DC34212EE89D00C2DCC5 /* AlertView.xib */; };
 		4214DC37212EE8B100C2DCC5 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214DC36212EE8B100C2DCC5 /* AlertView.swift */; };
+		4217663E22295897003AEB51 /* SelectStudentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217664022295897003AEB51 /* SelectStudentsTableViewCell.xib */; };
+		42176645222958B8003AEB51 /* AddPhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42176647222958B8003AEB51 /* AddPhotosCollectionViewCell.xib */; };
+		4217664C222958D1003AEB51 /* SendParentsMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217664E222958D1003AEB51 /* SendParentsMessageTableViewCell.xib */; };
+		421766532229595B003AEB51 /* EmptyActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766552229595B003AEB51 /* EmptyActivityTableViewCell.xib */; };
+		4217665A22295981003AEB51 /* TeacherStudentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217665C22295981003AEB51 /* TeacherStudentHeaderTableViewCell.xib */; };
+		4217666122295999003AEB51 /* TeacherStudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217666322295999003AEB51 /* TeacherStudentTableViewCell.xib */; };
+		4217666822295AC5003AEB51 /* AdditionalImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217666A22295AC5003AEB51 /* AdditionalImageCollectionViewCell.xib */; };
+		4217666F22295ADC003AEB51 /* AddActivityPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217667122295ADC003AEB51 /* AddActivityPostTableViewCell.xib */; };
+		4217667622295B01003AEB51 /* AddActivityHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217667822295B01003AEB51 /* AddActivityHeaderTableViewCell.xib */; };
+		4217667D22295BC9003AEB51 /* PottyTrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217667F22295BC9003AEB51 /* PottyTrainingTableViewCell.xib */; };
+		4217668022295BD7003AEB51 /* BathroomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217668222295BD7003AEB51 /* BathroomTableViewCell.xib */; };
+		4217668322295BDE003AEB51 /* NapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217668522295BDE003AEB51 /* NapTableViewCell.xib */; };
+		4217668622295BE5003AEB51 /* LunchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217668822295BE5003AEB51 /* LunchTableViewCell.xib */; };
+		4217668922295BEC003AEB51 /* BreakfastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217668B22295BEC003AEB51 /* BreakfastTableViewCell.xib */; };
+		4217668C22295BF2003AEB51 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217668E22295BF2003AEB51 /* SearchTableViewCell.xib */; };
+		4217668F22295BF9003AEB51 /* TemperatureFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217669122295BF9003AEB51 /* TemperatureFooterTableViewCell.xib */; };
+		4217669222295C00003AEB51 /* TemperatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217669422295C00003AEB51 /* TemperatureTableViewCell.xib */; };
+		4217669522295C06003AEB51 /* NurseStudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217669722295C06003AEB51 /* NurseStudentTableViewCell.xib */; };
+		4217669822295C0C003AEB51 /* ClassCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217669A22295C0C003AEB51 /* ClassCollectionViewCell.xib */; };
+		4217669B22295C12003AEB51 /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217669D22295C12003AEB51 /* EventsTableViewCell.xib */; };
+		4217669E22295C18003AEB51 /* EmptyDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766A022295C18003AEB51 /* EmptyDataTableViewCell.xib */; };
+		421766A122295C28003AEB51 /* PersonalInformationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766A322295C28003AEB51 /* PersonalInformationCollectionViewCell.xib */; };
+		421766A422295C2E003AEB51 /* SchoolBusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766A622295C2E003AEB51 /* SchoolBusCollectionViewCell.xib */; };
+		421766A722295C34003AEB51 /* PediatricianCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766A922295C34003AEB51 /* PediatricianCollectionViewCell.xib */; };
+		421766AA22295C3B003AEB51 /* MedicalInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766AC22295C3B003AEB51 /* MedicalInfoCollectionViewCell.xib */; };
+		421766AD22295C42003AEB51 /* DiseaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766AF22295C42003AEB51 /* DiseaseTableViewCell.xib */; };
+		421766B022295C47003AEB51 /* HabitsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766B222295C47003AEB51 /* HabitsTableViewCell.xib */; };
+		421766B322295C4E003AEB51 /* PaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766B522295C4E003AEB51 /* PaymentTableViewCell.xib */; };
+		421766B622295C53003AEB51 /* RegisterChildStep1CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766B822295C53003AEB51 /* RegisterChildStep1CollectionViewCell.xib */; };
+		421766B922295C5A003AEB51 /* RegisterChildStep2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766BB22295C5A003AEB51 /* RegisterChildStep2CollectionViewCell.xib */; };
+		421766BC22295C60003AEB51 /* RegisterChildStep3CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766BE22295C60003AEB51 /* RegisterChildStep3CollectionViewCell.xib */; };
+		421766BF22295C67003AEB51 /* ImageFullCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766C122295C67003AEB51 /* ImageFullCollectionViewCell.xib */; };
+		421766C222295C6C003AEB51 /* ImageViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766C422295C6C003AEB51 /* ImageViewCollectionViewCell.xib */; };
+		421766C522295C72003AEB51 /* PhoneNumberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766C722295C72003AEB51 /* PhoneNumberTableViewCell.xib */; };
+		421766C822295C77003AEB51 /* LocateUsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766CA22295C77003AEB51 /* LocateUsTableViewCell.xib */; };
+		421766CB22295C7D003AEB51 /* SendUsMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766CD22295C7D003AEB51 /* SendUsMessageTableViewCell.xib */; };
+		421766CE22295C83003AEB51 /* SendUsMessageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766D022295C83003AEB51 /* SendUsMessageDetailTableViewCell.xib */; };
+		421766D122295C9A003AEB51 /* AboutUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766D322295C9A003AEB51 /* AboutUsCollectionViewCell.xib */; };
+		421766D422295CA7003AEB51 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766D622295CA7003AEB51 /* MenuTableViewCell.xib */; };
+		421766D722295CAD003AEB51 /* AddNewMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766D922295CAD003AEB51 /* AddNewMessageTableViewCell.xib */; };
+		421766DA22295CB4003AEB51 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766DC22295CB4003AEB51 /* MessageTableViewCell.xib */; };
+		421766DD22295CBA003AEB51 /* MessageOpponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766DF22295CBA003AEB51 /* MessageOpponentTableViewCell.xib */; };
+		421766E022295CCA003AEB51 /* MessageMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766E222295CCA003AEB51 /* MessageMeTableViewCell.xib */; };
+		421766E322295CD2003AEB51 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766E522295CD2003AEB51 /* NotificationTableViewCell.xib */; };
+		421766E622295CDA003AEB51 /* ChildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766E822295CDA003AEB51 /* ChildTableViewCell.xib */; };
+		421766E922295CEF003AEB51 /* DashboardHatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766EB22295CEF003AEB51 /* DashboardHatTableViewCell.xib */; };
+		421766EC22295CF9003AEB51 /* DashboardPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766EE22295CF9003AEB51 /* DashboardPostTableViewCell.xib */; };
+		421766EF22295D0F003AEB51 /* SendParentsMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766F122295D0F003AEB51 /* SendParentsMessageView.xib */; };
+		421766F222295D19003AEB51 /* AddTemperatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766F422295D19003AEB51 /* AddTemperatureView.xib */; };
+		421766F522295D20003AEB51 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766F722295D20003AEB51 /* EmptyDataView.xib */; };
+		421766F822295D27003AEB51 /* DiseaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766FA22295D27003AEB51 /* DiseaseView.xib */; };
+		421766FB22295D2D003AEB51 /* SendUsMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421766FD22295D2D003AEB51 /* SendUsMessageView.xib */; };
+		421766FE22295D38003AEB51 /* ImageFullScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217670022295D38003AEB51 /* ImageFullScreenView.xib */; };
+		4217670122295D3F003AEB51 /* PlusActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217670322295D3F003AEB51 /* PlusActionView.xib */; };
+		4217670422295D48003AEB51 /* MessagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217670622295D48003AEB51 /* MessagesView.xib */; };
+		4217670722295D4F003AEB51 /* ChangeChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217670922295D4F003AEB51 /* ChangeChildView.xib */; };
+		4217670A22295D56003AEB51 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4217670C22295D56003AEB51 /* AlertView.xib */; };
+		421767CF222978B1003AEB51 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 421767D1222978B1003AEB51 /* Localizable.strings */; };
 		421B219321411D5D00099EC6 /* AddActivityHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421B219121411D5D00099EC6 /* AddActivityHeaderTableViewCell.swift */; };
-		421B219421411D5D00099EC6 /* AddActivityHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421B219221411D5D00099EC6 /* AddActivityHeaderTableViewCell.xib */; };
 		421B219821411E4000099EC6 /* AddActivityPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421B219621411E4000099EC6 /* AddActivityPostTableViewCell.swift */; };
-		421B219921411E4000099EC6 /* AddActivityPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421B219721411E4000099EC6 /* AddActivityPostTableViewCell.xib */; };
 		421B219D2141277800099EC6 /* AdditionalImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421B219B2141277800099EC6 /* AdditionalImageCollectionViewCell.swift */; };
-		421B219E2141277800099EC6 /* AdditionalImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421B219C2141277800099EC6 /* AdditionalImageCollectionViewCell.xib */; };
 		421B21A0214142C100099EC6 /* TeacherStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421B219F214142C100099EC6 /* TeacherStudentDetailViewController.swift */; };
 		4223B2A7213957120068EEA8 /* RegisterChildStep1CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223B2A5213957120068EEA8 /* RegisterChildStep1CollectionViewCell.swift */; };
-		4223B2A8213957120068EEA8 /* RegisterChildStep1CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223B2A6213957120068EEA8 /* RegisterChildStep1CollectionViewCell.xib */; };
 		4223B2AB213957320068EEA8 /* RegisterChildStep2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223B2A9213957320068EEA8 /* RegisterChildStep2CollectionViewCell.swift */; };
-		4223B2AC213957320068EEA8 /* RegisterChildStep2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223B2AA213957320068EEA8 /* RegisterChildStep2CollectionViewCell.xib */; };
 		4223B2AF213957470068EEA8 /* RegisterChildStep3CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223B2AD213957470068EEA8 /* RegisterChildStep3CollectionViewCell.swift */; };
-		4223B2B0213957470068EEA8 /* RegisterChildStep3CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223B2AE213957470068EEA8 /* RegisterChildStep3CollectionViewCell.xib */; };
 		422957AE213E9CC8001DDE7D /* TemperatureFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957AC213E9CC8001DDE7D /* TemperatureFooterTableViewCell.swift */; };
-		422957AF213E9CC8001DDE7D /* TemperatureFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957AD213E9CC8001DDE7D /* TemperatureFooterTableViewCell.xib */; };
 		422957B2213E9E72001DDE7D /* TemperatureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957B0213E9E72001DDE7D /* TemperatureTableViewCell.swift */; };
-		422957B3213E9E72001DDE7D /* TemperatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957B1213E9E72001DDE7D /* TemperatureTableViewCell.xib */; };
 		422957B5213EA276001DDE7D /* NurseStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957B4213EA276001DDE7D /* NurseStudentDetailViewController.swift */; };
-		422957B7213EA800001DDE7D /* AddTemperatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957B6213EA800001DDE7D /* AddTemperatureView.xib */; };
 		422957B9213EA80C001DDE7D /* AddTemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957B8213EA80C001DDE7D /* AddTemperatureView.swift */; };
-		422957BB213EB259001DDE7D /* Teacher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422957BA213EB259001DDE7D /* Teacher.storyboard */; };
-		422957BE213EB340001DDE7D /* TeacherStudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957BC213EB340001DDE7D /* TeacherStudentTableViewCell.xib */; };
 		422957BF213EB340001DDE7D /* TeacherStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957BD213EB340001DDE7D /* TeacherStudentTableViewCell.swift */; };
 		422957C2213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957C0213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.swift */; };
-		422957C3213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957C1213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.xib */; };
 		422957C5213EB543001DDE7D /* TeacherStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957C4213EB543001DDE7D /* TeacherStudentViewController.swift */; };
 		422957C8213EC151001DDE7D /* EmptyActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957C6213EC151001DDE7D /* EmptyActivityTableViewCell.swift */; };
-		422957C9213EC151001DDE7D /* EmptyActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957C7213EC151001DDE7D /* EmptyActivityTableViewCell.xib */; };
 		422957CB213EDA20001DDE7D /* AddAdditionalActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957CA213EDA20001DDE7D /* AddAdditionalActivityViewController.swift */; };
 		422957CF213EDD7E001DDE7D /* BreakfastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957CD213EDD7E001DDE7D /* BreakfastTableViewCell.swift */; };
-		422957D0213EDD7E001DDE7D /* BreakfastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957CE213EDD7E001DDE7D /* BreakfastTableViewCell.xib */; };
 		422957D3213EDDB5001DDE7D /* LunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957D1213EDDB5001DDE7D /* LunchTableViewCell.swift */; };
-		422957D4213EDDB5001DDE7D /* LunchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957D2213EDDB5001DDE7D /* LunchTableViewCell.xib */; };
 		422957D7213EDDCC001DDE7D /* NapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957D5213EDDCC001DDE7D /* NapTableViewCell.swift */; };
-		422957D8213EDDCC001DDE7D /* NapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957D6213EDDCC001DDE7D /* NapTableViewCell.xib */; };
 		422957DB213EDDF8001DDE7D /* BathroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957D9213EDDF8001DDE7D /* BathroomTableViewCell.swift */; };
-		422957DC213EDDF8001DDE7D /* BathroomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957DA213EDDF8001DDE7D /* BathroomTableViewCell.xib */; };
 		422957DF213EDE18001DDE7D /* PottyTrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422957DD213EDE18001DDE7D /* PottyTrainingTableViewCell.swift */; };
-		422957E0213EDE18001DDE7D /* PottyTrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422957DE213EDE18001DDE7D /* PottyTrainingTableViewCell.xib */; };
+		422C6F3423316C1A00E5D733 /* PayFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C6F3323316C1A00E5D733 /* PayFeeViewController.swift */; };
+		422E277A220E1C3E00FFE522 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E2778220E1C3E00FFE522 /* EventsTableViewCell.swift */; };
 		423515CD216D4A77000BB892 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423515C6216D4A77000BB892 /* Config.swift */; };
 		423515CE216D4A77000BB892 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423515C7216D4A77000BB892 /* About.swift */; };
 		423515CF216D4A77000BB892 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423515C8216D4A77000BB892 /* Branch.swift */; };
@@ -89,68 +130,45 @@
 		423AEDBC212D5C4700A097A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 423AEDBB212D5C4700A097A0 /* Assets.xcassets */; };
 		423AEDBF212D5C4700A097A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 423AEDBD212D5C4700A097A0 /* LaunchScreen.storyboard */; };
 		4253095321807F1B00FDA58B /* EmptyDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4253095121807F1B00FDA58B /* EmptyDataTableViewCell.swift */; };
-		4253095421807F1B00FDA58B /* EmptyDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4253095221807F1B00FDA58B /* EmptyDataTableViewCell.xib */; };
-		42541E76214BC543007CF48D /* SendParentsMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42541E75214BC543007CF48D /* SendParentsMessageView.xib */; };
 		42541E78214BC54D007CF48D /* SendParentsMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541E77214BC54D007CF48D /* SendParentsMessageView.swift */; };
 		42541E7C214BC790007CF48D /* SendParentsMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541E7A214BC790007CF48D /* SendParentsMessageTableViewCell.swift */; };
-		42541E7D214BC790007CF48D /* SendParentsMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42541E7B214BC790007CF48D /* SendParentsMessageTableViewCell.xib */; };
+		426A262E220F305E00CAE7C2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A262D220F305E00CAE7C2 /* Event.swift */; };
+		426A2631220F3E0200CAE7C2 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A262F220F3E0000CAE7C2 /* EventsViewController.swift */; };
+		426A2632220F3E0200CAE7C2 /* EventsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426A2630220F3E0100CAE7C2 /* EventsDetailsViewController.swift */; };
 		4279087721922054001719AE /* PublishActivityId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279087621922054001719AE /* PublishActivityId.swift */; };
 		427BCA5A2133CF7F006A72C1 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA592133CF7F006A72C1 /* DashboardViewController.swift */; };
 		427BCA5D2133D121006A72C1 /* DashboardHatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA5B2133D121006A72C1 /* DashboardHatTableViewCell.swift */; };
-		427BCA5E2133D121006A72C1 /* DashboardHatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA5C2133D121006A72C1 /* DashboardHatTableViewCell.xib */; };
 		427BCA612133DE33006A72C1 /* DashboardPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA5F2133DE33006A72C1 /* DashboardPostTableViewCell.swift */; };
-		427BCA622133DE33006A72C1 /* DashboardPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA602133DE33006A72C1 /* DashboardPostTableViewCell.xib */; };
-		427BCA7B2133F1BE006A72C1 /* ChangeChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA7A2133F1BE006A72C1 /* ChangeChildView.xib */; };
 		427BCA7D2133F1CA006A72C1 /* ChangeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA7C2133F1CA006A72C1 /* ChangeChildView.swift */; };
 		427BCA802133F72A006A72C1 /* ChildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA7E2133F72A006A72C1 /* ChildTableViewCell.swift */; };
-		427BCA812133F72A006A72C1 /* ChildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA7F2133F72A006A72C1 /* ChildTableViewCell.xib */; };
-		427BCA83213413B4006A72C1 /* MessagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA82213413B4006A72C1 /* MessagesView.xib */; };
 		427BCA85213413C2006A72C1 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA84213413C2006A72C1 /* MessagesView.swift */; };
 		427BCA8821341CC0006A72C1 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA8621341CC0006A72C1 /* NotificationTableViewCell.swift */; };
-		427BCA8921341CC0006A72C1 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA8721341CC0006A72C1 /* NotificationTableViewCell.xib */; };
 		427BCA8C21342489006A72C1 /* AddNewMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA8A21342489006A72C1 /* AddNewMessageTableViewCell.swift */; };
-		427BCA8D21342489006A72C1 /* AddNewMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA8B21342489006A72C1 /* AddNewMessageTableViewCell.xib */; };
 		427BCA9021342766006A72C1 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA8E21342766006A72C1 /* MessageTableViewCell.swift */; };
-		427BCA9121342766006A72C1 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA8F21342766006A72C1 /* MessageTableViewCell.xib */; };
 		427BCA932134543F006A72C1 /* MessageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA922134543F006A72C1 /* MessageDetailsViewController.swift */; };
 		427BCA9A21345E17006A72C1 /* MessageOpponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA9821345E17006A72C1 /* MessageOpponentTableViewCell.swift */; };
-		427BCA9B21345E17006A72C1 /* MessageOpponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA9921345E17006A72C1 /* MessageOpponentTableViewCell.xib */; };
 		427BCA9E21345E29006A72C1 /* MessageMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCA9C21345E29006A72C1 /* MessageMeTableViewCell.swift */; };
-		427BCA9F21345E29006A72C1 /* MessageMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCA9D21345E29006A72C1 /* MessageMeTableViewCell.xib */; };
-		427BCAA12134642E006A72C1 /* PlusActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCAA02134642E006A72C1 /* PlusActionView.xib */; };
 		427BCAA321346439006A72C1 /* PlusActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCAA221346439006A72C1 /* PlusActionView.swift */; };
 		427BCAA6213466DE006A72C1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCAA4213466DE006A72C1 /* MenuTableViewCell.swift */; };
-		427BCAA7213466DE006A72C1 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCAA5213466DE006A72C1 /* MenuTableViewCell.xib */; };
 		427BCAA92134ABD7006A72C1 /* EditMyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCAA82134ABD7006A72C1 /* EditMyProfileViewController.swift */; };
 		427BCAAB2134B27B006A72C1 /* ChangeMyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCAAA2134B27B006A72C1 /* ChangeMyPasswordViewController.swift */; };
-		427BCAAD2134B371006A72C1 /* ImageFullScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BCAAC2134B371006A72C1 /* ImageFullScreenView.xib */; };
 		427BCAAF2134B37C006A72C1 /* ImageFullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BCAAE2134B37C006A72C1 /* ImageFullScreenView.swift */; };
-		427BF3112137CFA30077FFB0 /* SendUsMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BF3102137CFA30077FFB0 /* SendUsMessageView.xib */; };
 		427BF3132137CFB20077FFB0 /* SendUsMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BF3122137CFB20077FFB0 /* SendUsMessageView.swift */; };
 		427BF3162137D1250077FFB0 /* SendUsMessageDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BF3142137D1250077FFB0 /* SendUsMessageDetailTableViewCell.swift */; };
-		427BF3172137D1250077FFB0 /* SendUsMessageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BF3152137D1250077FFB0 /* SendUsMessageDetailTableViewCell.xib */; };
 		427BF31C2137F0EA0077FFB0 /* ImageFullCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BF31A2137F0EA0077FFB0 /* ImageFullCollectionViewCell.swift */; };
-		427BF31D2137F0EA0077FFB0 /* ImageFullCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BF31B2137F0EA0077FFB0 /* ImageFullCollectionViewCell.xib */; };
 		427BF3202137F2F20077FFB0 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BF31F2137F2F20077FFB0 /* GalleryViewController.swift */; };
 		427BF3232137F4160077FFB0 /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BF3212137F4160077FFB0 /* ImageViewCollectionViewCell.swift */; };
-		427BF3242137F4160077FFB0 /* ImageViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427BF3222137F4160077FFB0 /* ImageViewCollectionViewCell.xib */; };
 		428BF5EE2136BDA000555926 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF5ED2136BDA000555926 /* AboutUsViewController.swift */; };
 		428BF5F12136C0CE00555926 /* AboutUsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF5EF2136C0CE00555926 /* AboutUsCollectionViewCell.swift */; };
-		428BF5F22136C0CE00555926 /* AboutUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428BF5F02136C0CE00555926 /* AboutUsCollectionViewCell.xib */; };
 		428BF5F42136D7C200555926 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF5F32136D7C200555926 /* ContactUsViewController.swift */; };
 		428BF6042136DE1600555926 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF6022136DE1600555926 /* PhoneNumberTableViewCell.swift */; };
-		428BF6052136DE1600555926 /* PhoneNumberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428BF6032136DE1600555926 /* PhoneNumberTableViewCell.xib */; };
 		428BF6082136DF1F00555926 /* LocateUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF6062136DF1F00555926 /* LocateUsTableViewCell.swift */; };
-		428BF6092136DF1F00555926 /* LocateUsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428BF6072136DF1F00555926 /* LocateUsTableViewCell.xib */; };
 		428BF60C2136E11F00555926 /* SendUsMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF60A2136E11F00555926 /* SendUsMessageTableViewCell.swift */; };
-		428BF60D2136E11F00555926 /* SendUsMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428BF60B2136E11F00555926 /* SendUsMessageTableViewCell.xib */; };
 		428C74082174FD20002EB7C6 /* HabitsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C74062174FD20002EB7C6 /* HabitsTableViewCell.swift */; };
-		428C74092174FD20002EB7C6 /* HabitsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428C74072174FD20002EB7C6 /* HabitsTableViewCell.xib */; };
 		428C740B21750325002EB7C6 /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C740A21750325002EB7C6 /* CharacterType.swift */; };
 		4291E7E0216F688000C8ADA7 /* AdditionalActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7DF216F688000C8ADA7 /* AdditionalActivityViewController.swift */; };
 		4291E7E22170D9F500C8ADA7 /* EditChildProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7E12170D9F500C8ADA7 /* EditChildProfileViewController.swift */; };
 		4291E7E62170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7E42170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.swift */; };
-		4291E7E72170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E7E52170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.xib */; };
 		4291E7EC2170FBCE00C8ADA7 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7E82170FBCD00C8ADA7 /* Gender.swift */; };
 		4291E7ED2170FBCE00C8ADA7 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7E92170FBCE00C8ADA7 /* Transportation.swift */; };
 		4291E7EE2170FBCE00C8ADA7 /* ProgramLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7EA2170FBCE00C8ADA7 /* ProgramLanguage.swift */; };
@@ -158,45 +176,34 @@
 		4291E7F32170FD6D00C8ADA7 /* BloodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7F02170FD6C00C8ADA7 /* BloodType.swift */; };
 		4291E7F52170FD6D00C8ADA7 /* HabitRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7F22170FD6C00C8ADA7 /* HabitRank.swift */; };
 		4291E7F821710A9F00C8ADA7 /* SchoolBusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7F621710A9F00C8ADA7 /* SchoolBusCollectionViewCell.swift */; };
-		4291E7F921710A9F00C8ADA7 /* SchoolBusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E7F721710A9F00C8ADA7 /* SchoolBusCollectionViewCell.xib */; };
 		4291E7FC2171491400C8ADA7 /* PediatricianCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7FA2171491400C8ADA7 /* PediatricianCollectionViewCell.swift */; };
-		4291E7FD2171491400C8ADA7 /* PediatricianCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E7FB2171491400C8ADA7 /* PediatricianCollectionViewCell.xib */; };
 		4291E800217150A600C8ADA7 /* MedicalInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E7FE217150A600C8ADA7 /* MedicalInfoCollectionViewCell.swift */; };
-		4291E801217150A600C8ADA7 /* MedicalInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E7FF217150A600C8ADA7 /* MedicalInfoCollectionViewCell.xib */; };
-		4291E8042171617300C8ADA7 /* DiseaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E8032171617300C8ADA7 /* DiseaseView.xib */; };
 		4291E8062171617F00C8ADA7 /* DiseaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E8052171617F00C8ADA7 /* DiseaseView.swift */; };
 		4291E8092171640B00C8ADA7 /* DiseaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E8072171640B00C8ADA7 /* DiseaseTableViewCell.swift */; };
-		4291E80A2171640B00C8ADA7 /* DiseaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4291E8082171640B00C8ADA7 /* DiseaseTableViewCell.xib */; };
 		4291E80C217166AE00C8ADA7 /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291E80B217166AE00C8ADA7 /* Disease.swift */; };
-		42B78D9E21832CE500BAD83B /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B78D9D21832CE500BAD83B /* EmptyDataView.xib */; };
+		42ADAE6B221C9FF40064F849 /* Nurse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42ADAE6D221C9FF40064F849 /* Nurse.storyboard */; };
+		42ADAE70221CA00E0064F849 /* Teacher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42ADAE72221CA00E0064F849 /* Teacher.storyboard */; };
 		42B78DA021832CFD00BAD83B /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B78D9F21832CFD00BAD83B /* EmptyDataView.swift */; };
 		42B78DA22183484B00BAD83B /* ChildTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B78DA12183484B00BAD83B /* ChildTemperature.swift */; };
 		42D0CB96216388EC00EB6889 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB95216388EC00EB6889 /* SelectLanguageViewController.swift */; };
 		42D0CB9821638B6B00EB6889 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB9721638B6B00EB6889 /* Localization.swift */; };
 		42D0CB9A2163946200EB6889 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB992163946200EB6889 /* SearchViewController.swift */; };
 		42D0CB9E21639A2A00EB6889 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CB9C21639A2A00EB6889 /* SearchTableViewCell.swift */; };
-		42D0CB9F21639A2A00EB6889 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D0CB9D21639A2A00EB6889 /* SearchTableViewCell.xib */; };
 		42D0CBA12163AF7200EB6889 /* SelectStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CBA02163AF7200EB6889 /* SelectStudentsViewController.swift */; };
 		42D0CBA52163AFF100EB6889 /* SelectStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CBA32163AFF100EB6889 /* SelectStudentsTableViewCell.swift */; };
-		42D0CBA62163AFF100EB6889 /* SelectStudentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D0CBA42163AFF100EB6889 /* SelectStudentsTableViewCell.xib */; };
 		42D0CBA82163C0BE00EB6889 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CBA72163C0BE00EB6889 /* PaymentViewController.swift */; };
 		42D0CBAC2163EDD000EB6889 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D0CBAA2163EDD000EB6889 /* PaymentTableViewCell.swift */; };
-		42D0CBAD2163EDD000EB6889 /* PaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D0CBAB2163EDD000EB6889 /* PaymentTableViewCell.xib */; };
 		42D57647217DC92500DC69CF /* AddDailyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D57646217DC92500DC69CF /* AddDailyAgendaViewController.swift */; };
 		42DE5609215531F000A6ED0A /* AddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE5608215531F000A6ED0A /* AddPhotosViewController.swift */; };
 		42DE560D2155346500A6ED0A /* AddPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE560B2155346500A6ED0A /* AddPhotosCollectionViewCell.swift */; };
-		42DE560E2155346500A6ED0A /* AddPhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42DE560C2155346500A6ED0A /* AddPhotosCollectionViewCell.xib */; };
 		42E32649216EC0A100EF6DA2 /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E32647216EC0A100EF6DA2 /* NotificationResponse.swift */; };
 		42E3264A216EC0A100EF6DA2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E32648216EC0A100EF6DA2 /* Notification.swift */; };
 		42E377DF2183B8C200770EE1 /* SendTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E377DE2183B8C200770EE1 /* SendTemperature.swift */; };
 		42E6B7F2213BEB7100F2A135 /* GuestTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B7F1213BEB7100F2A135 /* GuestTabBarViewController.swift */; };
-		42E6B7F4213D253200F2A135 /* Nurse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6B7F3213D253200F2A135 /* Nurse.storyboard */; };
 		42E6B802213D278B00F2A135 /* ClassCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B800213D278B00F2A135 /* ClassCollectionViewCell.swift */; };
-		42E6B803213D278B00F2A135 /* ClassCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E6B801213D278B00F2A135 /* ClassCollectionViewCell.xib */; };
 		42E6B805213D2B2000F2A135 /* ClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B804213D2B2000F2A135 /* ClassViewController.swift */; };
 		42E6B807213D4CC000F2A135 /* NurseStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B806213D4CC000F2A135 /* NurseStudentViewController.swift */; };
 		42E6B80A213D51E000F2A135 /* NurseStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6B808213D51E000F2A135 /* NurseStudentTableViewCell.swift */; };
-		42E6B80B213D51E000F2A135 /* NurseStudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E6B809213D51E000F2A135 /* NurseStudentTableViewCell.xib */; };
 		E1E12CB8EFF7D0425E9020EB /* Pods_innocentminds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BC830BC17222412CDF6223 /* Pods_innocentminds.framework */; };
 /* End PBXBuildFile section */
 
@@ -219,47 +226,204 @@
 		4214DC2E212EE08100C2DCC5 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		4214DC2F212EE08200C2DCC5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		4214DC32212EE5CD00C2DCC5 /* RegisterChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildViewController.swift; sourceTree = "<group>"; };
-		4214DC34212EE89D00C2DCC5 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		4214DC36212EE8B100C2DCC5 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		4217663F22295897003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectStudentsTableViewCell.xib; sourceTree = "<group>"; };
+		421766422229589E003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectStudentsTableViewCell.strings; sourceTree = "<group>"; };
+		42176644222958A4003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SelectStudentsTableViewCell.strings; sourceTree = "<group>"; };
+		42176646222958B8003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddPhotosCollectionViewCell.xib; sourceTree = "<group>"; };
+		42176649222958C0003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddPhotosCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217664B222958C6003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AddPhotosCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217664D222958D1003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendParentsMessageTableViewCell.xib; sourceTree = "<group>"; };
+		421766502229594A003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SendParentsMessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217665222295951003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SendParentsMessageTableViewCell.strings; sourceTree = "<group>"; };
+		421766542229595B003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EmptyActivityTableViewCell.xib; sourceTree = "<group>"; };
+		4217665722295961003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EmptyActivityTableViewCell.strings; sourceTree = "<group>"; };
+		4217665922295966003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EmptyActivityTableViewCell.strings; sourceTree = "<group>"; };
+		4217665B22295981003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TeacherStudentHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		4217665E22295986003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TeacherStudentHeaderTableViewCell.strings; sourceTree = "<group>"; };
+		421766602229598B003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TeacherStudentHeaderTableViewCell.strings; sourceTree = "<group>"; };
+		4217666222295999003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TeacherStudentTableViewCell.xib; sourceTree = "<group>"; };
+		421766652229599F003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TeacherStudentTableViewCell.strings; sourceTree = "<group>"; };
+		42176667222959A5003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TeacherStudentTableViewCell.strings; sourceTree = "<group>"; };
+		4217666922295AC5003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdditionalImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		4217666C22295ACB003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AdditionalImageCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217666E22295AD1003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AdditionalImageCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217667022295ADC003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddActivityPostTableViewCell.xib; sourceTree = "<group>"; };
+		4217667322295AEA003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddActivityPostTableViewCell.strings; sourceTree = "<group>"; };
+		4217667522295AF0003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AddActivityPostTableViewCell.strings; sourceTree = "<group>"; };
+		4217667722295B01003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddActivityHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		4217667A22295B07003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddActivityHeaderTableViewCell.strings; sourceTree = "<group>"; };
+		4217667C22295B1A003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AddActivityHeaderTableViewCell.strings; sourceTree = "<group>"; };
+		4217667E22295BC9003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PottyTrainingTableViewCell.xib; sourceTree = "<group>"; };
+		4217668122295BD7003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BathroomTableViewCell.xib; sourceTree = "<group>"; };
+		4217668422295BDE003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NapTableViewCell.xib; sourceTree = "<group>"; };
+		4217668722295BE5003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LunchTableViewCell.xib; sourceTree = "<group>"; };
+		4217668A22295BEC003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BreakfastTableViewCell.xib; sourceTree = "<group>"; };
+		4217668D22295BF2003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchTableViewCell.xib; sourceTree = "<group>"; };
+		4217669022295BF9003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TemperatureFooterTableViewCell.xib; sourceTree = "<group>"; };
+		4217669322295C00003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TemperatureTableViewCell.xib; sourceTree = "<group>"; };
+		4217669622295C06003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NurseStudentTableViewCell.xib; sourceTree = "<group>"; };
+		4217669922295C0C003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ClassCollectionViewCell.xib; sourceTree = "<group>"; };
+		4217669C22295C12003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EventsTableViewCell.xib; sourceTree = "<group>"; };
+		4217669F22295C18003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EmptyDataTableViewCell.xib; sourceTree = "<group>"; };
+		421766A222295C28003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PersonalInformationCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766A522295C2E003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SchoolBusCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766A822295C34003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PediatricianCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766AB22295C3B003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MedicalInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766AE22295C42003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DiseaseTableViewCell.xib; sourceTree = "<group>"; };
+		421766B122295C47003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HabitsTableViewCell.xib; sourceTree = "<group>"; };
+		421766B422295C4E003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PaymentTableViewCell.xib; sourceTree = "<group>"; };
+		421766B722295C53003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RegisterChildStep1CollectionViewCell.xib; sourceTree = "<group>"; };
+		421766BA22295C5A003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RegisterChildStep2CollectionViewCell.xib; sourceTree = "<group>"; };
+		421766BD22295C60003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RegisterChildStep3CollectionViewCell.xib; sourceTree = "<group>"; };
+		421766C022295C67003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ImageFullCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766C322295C6C003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ImageViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766C622295C72003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhoneNumberTableViewCell.xib; sourceTree = "<group>"; };
+		421766C922295C77003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LocateUsTableViewCell.xib; sourceTree = "<group>"; };
+		421766CC22295C7D003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendUsMessageTableViewCell.xib; sourceTree = "<group>"; };
+		421766CF22295C83003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendUsMessageDetailTableViewCell.xib; sourceTree = "<group>"; };
+		421766D222295C9A003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutUsCollectionViewCell.xib; sourceTree = "<group>"; };
+		421766D522295CA7003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MenuTableViewCell.xib; sourceTree = "<group>"; };
+		421766D822295CAD003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddNewMessageTableViewCell.xib; sourceTree = "<group>"; };
+		421766DB22295CB4003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessageTableViewCell.xib; sourceTree = "<group>"; };
+		421766DE22295CBA003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessageOpponentTableViewCell.xib; sourceTree = "<group>"; };
+		421766E122295CCA003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessageMeTableViewCell.xib; sourceTree = "<group>"; };
+		421766E422295CD2003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		421766E722295CDA003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ChildTableViewCell.xib; sourceTree = "<group>"; };
+		421766EA22295CEF003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DashboardHatTableViewCell.xib; sourceTree = "<group>"; };
+		421766ED22295CF9003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DashboardPostTableViewCell.xib; sourceTree = "<group>"; };
+		421766F022295D0F003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendParentsMessageView.xib; sourceTree = "<group>"; };
+		421766F322295D19003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTemperatureView.xib; sourceTree = "<group>"; };
+		421766F622295D20003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EmptyDataView.xib; sourceTree = "<group>"; };
+		421766F922295D27003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DiseaseView.xib; sourceTree = "<group>"; };
+		421766FC22295D2D003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendUsMessageView.xib; sourceTree = "<group>"; };
+		421766FF22295D38003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ImageFullScreenView.xib; sourceTree = "<group>"; };
+		4217670222295D3F003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlusActionView.xib; sourceTree = "<group>"; };
+		4217670522295D48003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessagesView.xib; sourceTree = "<group>"; };
+		4217670822295D4F003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ChangeChildView.xib; sourceTree = "<group>"; };
+		4217670B22295D56003AEB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AlertView.xib; sourceTree = "<group>"; };
+		4217670E22295E26003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PottyTrainingTableViewCell.strings; sourceTree = "<group>"; };
+		4217671022295E2B003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PottyTrainingTableViewCell.strings; sourceTree = "<group>"; };
+		4217671222295E32003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BathroomTableViewCell.strings; sourceTree = "<group>"; };
+		4217671422295E39003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/BathroomTableViewCell.strings; sourceTree = "<group>"; };
+		4217671622295E44003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NapTableViewCell.strings; sourceTree = "<group>"; };
+		4217671822295E4A003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NapTableViewCell.strings; sourceTree = "<group>"; };
+		4217671A22295E52003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LunchTableViewCell.strings; sourceTree = "<group>"; };
+		4217671C22295E57003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LunchTableViewCell.strings; sourceTree = "<group>"; };
+		4217671E22295E5F003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BreakfastTableViewCell.strings; sourceTree = "<group>"; };
+		4217672022295E65003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/BreakfastTableViewCell.strings; sourceTree = "<group>"; };
+		4217672222295E6C003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SearchTableViewCell.strings; sourceTree = "<group>"; };
+		4217672422295E72003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SearchTableViewCell.strings; sourceTree = "<group>"; };
+		4217672622295E7A003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TemperatureFooterTableViewCell.strings; sourceTree = "<group>"; };
+		4217672822295E80003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TemperatureFooterTableViewCell.strings; sourceTree = "<group>"; };
+		4217672A22295E95003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TemperatureTableViewCell.strings; sourceTree = "<group>"; };
+		4217672C22295E9A003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TemperatureTableViewCell.strings; sourceTree = "<group>"; };
+		4217672E22295EA6003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NurseStudentTableViewCell.strings; sourceTree = "<group>"; };
+		4217673022295EAD003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NurseStudentTableViewCell.strings; sourceTree = "<group>"; };
+		4217673222295EB5003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ClassCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217673422295EBB003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ClassCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217673622295EC1003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EventsTableViewCell.strings; sourceTree = "<group>"; };
+		4217673822295EC6003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EventsTableViewCell.strings; sourceTree = "<group>"; };
+		4217673A22295ECD003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EmptyDataTableViewCell.strings; sourceTree = "<group>"; };
+		4217673C22295ED2003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EmptyDataTableViewCell.strings; sourceTree = "<group>"; };
+		4217674222295EE4003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SchoolBusCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217674422295EEC003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SchoolBusCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217674E22295F19003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DiseaseTableViewCell.strings; sourceTree = "<group>"; };
+		4217675022295F1F003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DiseaseTableViewCell.strings; sourceTree = "<group>"; };
+		4217675622295F3C003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PaymentTableViewCell.strings; sourceTree = "<group>"; };
+		4217675822295F41003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PaymentTableViewCell.strings; sourceTree = "<group>"; };
+		4217675A22295F6A003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RegisterChildStep1CollectionViewCell.strings; sourceTree = "<group>"; };
+		4217675C22295F70003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RegisterChildStep1CollectionViewCell.strings; sourceTree = "<group>"; };
+		4217675E22295F7F003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RegisterChildStep2CollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676022295F8D003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RegisterChildStep2CollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676222295F94003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RegisterChildStep3CollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676422295F99003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RegisterChildStep3CollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676622295FA9003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ImageFullCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676822295FB0003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ImageFullCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676A22295FCE003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ImageViewCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676C22295FD5003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ImageViewCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217676E22295FDF003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PhoneNumberTableViewCell.strings; sourceTree = "<group>"; };
+		4217677022295FE5003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PhoneNumberTableViewCell.strings; sourceTree = "<group>"; };
+		4217677222295FEE003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LocateUsTableViewCell.strings; sourceTree = "<group>"; };
+		4217677422295FF3003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LocateUsTableViewCell.strings; sourceTree = "<group>"; };
+		4217677622295FFC003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SendUsMessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217677822296001003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SendUsMessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217677A22296009003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SendUsMessageDetailTableViewCell.strings; sourceTree = "<group>"; };
+		4217677C2229600F003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SendUsMessageDetailTableViewCell.strings; sourceTree = "<group>"; };
+		4217677E22296018003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutUsCollectionViewCell.strings; sourceTree = "<group>"; };
+		421767802229601F003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AboutUsCollectionViewCell.strings; sourceTree = "<group>"; };
+		4217678222296028003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MenuTableViewCell.strings; sourceTree = "<group>"; };
+		4217678422296031003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MenuTableViewCell.strings; sourceTree = "<group>"; };
+		421767862229603C003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddNewMessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217678822296043003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AddNewMessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217678A2229604E003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217678C22296055003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MessageTableViewCell.strings; sourceTree = "<group>"; };
+		4217678E2229605C003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessageOpponentTableViewCell.strings; sourceTree = "<group>"; };
+		4217679022296061003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MessageOpponentTableViewCell.strings; sourceTree = "<group>"; };
+		421767922229606B003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessageMeTableViewCell.strings; sourceTree = "<group>"; };
+		4217679422296070003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MessageMeTableViewCell.strings; sourceTree = "<group>"; };
+		4217679622296079003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NotificationTableViewCell.strings; sourceTree = "<group>"; };
+		4217679822296081003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NotificationTableViewCell.strings; sourceTree = "<group>"; };
+		4217679A2229609F003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ChildTableViewCell.strings; sourceTree = "<group>"; };
+		4217679C222960A8003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ChildTableViewCell.strings; sourceTree = "<group>"; };
+		4217679E222960AF003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DashboardHatTableViewCell.strings; sourceTree = "<group>"; };
+		421767A0222960B5003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DashboardHatTableViewCell.strings; sourceTree = "<group>"; };
+		421767A2222960C0003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DashboardPostTableViewCell.strings; sourceTree = "<group>"; };
+		421767A4222960C7003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DashboardPostTableViewCell.strings; sourceTree = "<group>"; };
+		421767A6222960D9003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SendParentsMessageView.strings; sourceTree = "<group>"; };
+		421767A8222960E0003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SendParentsMessageView.strings; sourceTree = "<group>"; };
+		421767AA22296381003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddTemperatureView.strings; sourceTree = "<group>"; };
+		421767AC22296390003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AddTemperatureView.strings; sourceTree = "<group>"; };
+		421767AE222963A4003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EmptyDataView.strings; sourceTree = "<group>"; };
+		421767B0222963AB003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EmptyDataView.strings; sourceTree = "<group>"; };
+		421767B2222963BA003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DiseaseView.strings; sourceTree = "<group>"; };
+		421767B4222963BF003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DiseaseView.strings; sourceTree = "<group>"; };
+		421767B6222963C7003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SendUsMessageView.strings; sourceTree = "<group>"; };
+		421767B8222963CC003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SendUsMessageView.strings; sourceTree = "<group>"; };
+		421767BA222963D5003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ImageFullScreenView.strings; sourceTree = "<group>"; };
+		421767BC222963DA003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ImageFullScreenView.strings; sourceTree = "<group>"; };
+		421767BE222963E1003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PlusActionView.strings; sourceTree = "<group>"; };
+		421767C0222963E7003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PlusActionView.strings; sourceTree = "<group>"; };
+		421767C2222963EE003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessagesView.strings; sourceTree = "<group>"; };
+		421767C4222963F5003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MessagesView.strings; sourceTree = "<group>"; };
+		421767C622296405003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ChangeChildView.strings; sourceTree = "<group>"; };
+		421767C82229640B003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ChangeChildView.strings; sourceTree = "<group>"; };
+		421767CA22296414003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AlertView.strings; sourceTree = "<group>"; };
+		421767CC2229641A003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AlertView.strings; sourceTree = "<group>"; };
+		421767D0222978B1003AEB51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		421767D2222978B4003AEB51 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		421B219121411D5D00099EC6 /* AddActivityHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		421B219221411D5D00099EC6 /* AddActivityHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddActivityHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		421B219621411E4000099EC6 /* AddActivityPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityPostTableViewCell.swift; sourceTree = "<group>"; };
-		421B219721411E4000099EC6 /* AddActivityPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddActivityPostTableViewCell.xib; sourceTree = "<group>"; };
 		421B219B2141277800099EC6 /* AdditionalImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		421B219C2141277800099EC6 /* AdditionalImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		421B219F214142C100099EC6 /* TeacherStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherStudentDetailViewController.swift; sourceTree = "<group>"; };
+		4220393521FD9845000C1921 /* KGSevenSixteen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGSevenSixteen.ttf; sourceTree = "<group>"; };
 		4223B2A5213957120068EEA8 /* RegisterChildStep1CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildStep1CollectionViewCell.swift; sourceTree = "<group>"; };
-		4223B2A6213957120068EEA8 /* RegisterChildStep1CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterChildStep1CollectionViewCell.xib; sourceTree = "<group>"; };
 		4223B2A9213957320068EEA8 /* RegisterChildStep2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildStep2CollectionViewCell.swift; sourceTree = "<group>"; };
-		4223B2AA213957320068EEA8 /* RegisterChildStep2CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterChildStep2CollectionViewCell.xib; sourceTree = "<group>"; };
 		4223B2AD213957470068EEA8 /* RegisterChildStep3CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildStep3CollectionViewCell.swift; sourceTree = "<group>"; };
-		4223B2AE213957470068EEA8 /* RegisterChildStep3CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterChildStep3CollectionViewCell.xib; sourceTree = "<group>"; };
 		422957AC213E9CC8001DDE7D /* TemperatureFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFooterTableViewCell.swift; sourceTree = "<group>"; };
-		422957AD213E9CC8001DDE7D /* TemperatureFooterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemperatureFooterTableViewCell.xib; sourceTree = "<group>"; };
 		422957B0213E9E72001DDE7D /* TemperatureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTableViewCell.swift; sourceTree = "<group>"; };
-		422957B1213E9E72001DDE7D /* TemperatureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemperatureTableViewCell.xib; sourceTree = "<group>"; };
 		422957B4213EA276001DDE7D /* NurseStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NurseStudentDetailViewController.swift; sourceTree = "<group>"; };
-		422957B6213EA800001DDE7D /* AddTemperatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTemperatureView.xib; sourceTree = "<group>"; };
 		422957B8213EA80C001DDE7D /* AddTemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTemperatureView.swift; sourceTree = "<group>"; };
-		422957BA213EB259001DDE7D /* Teacher.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Teacher.storyboard; sourceTree = "<group>"; };
-		422957BC213EB340001DDE7D /* TeacherStudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherStudentTableViewCell.xib; sourceTree = "<group>"; };
 		422957BD213EB340001DDE7D /* TeacherStudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherStudentTableViewCell.swift; sourceTree = "<group>"; };
 		422957C0213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherStudentHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		422957C1213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeacherStudentHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		422957C4213EB543001DDE7D /* TeacherStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherStudentViewController.swift; sourceTree = "<group>"; };
 		422957C6213EC151001DDE7D /* EmptyActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActivityTableViewCell.swift; sourceTree = "<group>"; };
-		422957C7213EC151001DDE7D /* EmptyActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyActivityTableViewCell.xib; sourceTree = "<group>"; };
 		422957CA213EDA20001DDE7D /* AddAdditionalActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdditionalActivityViewController.swift; sourceTree = "<group>"; };
 		422957CD213EDD7E001DDE7D /* BreakfastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakfastTableViewCell.swift; sourceTree = "<group>"; };
-		422957CE213EDD7E001DDE7D /* BreakfastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreakfastTableViewCell.xib; sourceTree = "<group>"; };
 		422957D1213EDDB5001DDE7D /* LunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchTableViewCell.swift; sourceTree = "<group>"; };
-		422957D2213EDDB5001DDE7D /* LunchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LunchTableViewCell.xib; sourceTree = "<group>"; };
 		422957D5213EDDCC001DDE7D /* NapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapTableViewCell.swift; sourceTree = "<group>"; };
-		422957D6213EDDCC001DDE7D /* NapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NapTableViewCell.xib; sourceTree = "<group>"; };
 		422957D9213EDDF8001DDE7D /* BathroomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomTableViewCell.swift; sourceTree = "<group>"; };
-		422957DA213EDDF8001DDE7D /* BathroomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BathroomTableViewCell.xib; sourceTree = "<group>"; };
 		422957DD213EDE18001DDE7D /* PottyTrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PottyTrainingTableViewCell.swift; sourceTree = "<group>"; };
-		422957DE213EDE18001DDE7D /* PottyTrainingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PottyTrainingTableViewCell.xib; sourceTree = "<group>"; };
+		422C6F3323316C1A00E5D733 /* PayFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayFeeViewController.swift; sourceTree = "<group>"; };
+		422E2778220E1C3E00FFE522 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		42308D232230F0C100B0C826 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MedicalInfoCollectionViewCell.strings; sourceTree = "<group>"; };
+		42308D252230F0CA00B0C826 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MedicalInfoCollectionViewCell.strings; sourceTree = "<group>"; };
+		42308D272230F11B00B0C826 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PediatricianCollectionViewCell.strings; sourceTree = "<group>"; };
+		42308D292230F12100B0C826 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PediatricianCollectionViewCell.strings; sourceTree = "<group>"; };
+		42308D2B2230F15500B0C826 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HabitsTableViewCell.strings; sourceTree = "<group>"; };
+		42308D2D2230F15A00B0C826 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/HabitsTableViewCell.strings; sourceTree = "<group>"; };
+		42308D2F2230F19000B0C826 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PersonalInformationCollectionViewCell.strings; sourceTree = "<group>"; };
+		42308D312230F19500B0C826 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PersonalInformationCollectionViewCell.strings; sourceTree = "<group>"; };
 		423515C6216D4A77000BB892 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		423515C7216D4A77000BB892 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		423515C8216D4A77000BB892 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -287,69 +451,46 @@
 		423AEDBE212D5C4700A097A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		423AEDC0212D5C4700A097A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4253095121807F1B00FDA58B /* EmptyDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataTableViewCell.swift; sourceTree = "<group>"; };
-		4253095221807F1B00FDA58B /* EmptyDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDataTableViewCell.xib; sourceTree = "<group>"; };
-		42541E75214BC543007CF48D /* SendParentsMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendParentsMessageView.xib; sourceTree = "<group>"; };
 		42541E77214BC54D007CF48D /* SendParentsMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendParentsMessageView.swift; sourceTree = "<group>"; };
 		42541E7A214BC790007CF48D /* SendParentsMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendParentsMessageTableViewCell.swift; sourceTree = "<group>"; };
-		42541E7B214BC790007CF48D /* SendParentsMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendParentsMessageTableViewCell.xib; sourceTree = "<group>"; };
+		426A262D220F305E00CAE7C2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		426A262F220F3E0000CAE7C2 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		426A2630220F3E0100CAE7C2 /* EventsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailsViewController.swift; sourceTree = "<group>"; };
 		4279087621922054001719AE /* PublishActivityId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishActivityId.swift; sourceTree = "<group>"; };
 		427BCA592133CF7F006A72C1 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		427BCA5B2133D121006A72C1 /* DashboardHatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHatTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA5C2133D121006A72C1 /* DashboardHatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHatTableViewCell.xib; sourceTree = "<group>"; };
 		427BCA5F2133DE33006A72C1 /* DashboardPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPostTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA602133DE33006A72C1 /* DashboardPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardPostTableViewCell.xib; sourceTree = "<group>"; };
-		427BCA7A2133F1BE006A72C1 /* ChangeChildView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeChildView.xib; sourceTree = "<group>"; };
 		427BCA7C2133F1CA006A72C1 /* ChangeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeChildView.swift; sourceTree = "<group>"; };
 		427BCA7E2133F72A006A72C1 /* ChildTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA7F2133F72A006A72C1 /* ChildTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChildTableViewCell.xib; sourceTree = "<group>"; };
-		427BCA82213413B4006A72C1 /* MessagesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesView.xib; sourceTree = "<group>"; };
 		427BCA84213413C2006A72C1 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		427BCA8621341CC0006A72C1 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA8721341CC0006A72C1 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		427BCA8A21342489006A72C1 /* AddNewMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMessageTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA8B21342489006A72C1 /* AddNewMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewMessageTableViewCell.xib; sourceTree = "<group>"; };
 		427BCA8E21342766006A72C1 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA8F21342766006A72C1 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		427BCA922134543F006A72C1 /* MessageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailsViewController.swift; sourceTree = "<group>"; };
 		427BCA9821345E17006A72C1 /* MessageOpponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOpponentTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA9921345E17006A72C1 /* MessageOpponentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageOpponentTableViewCell.xib; sourceTree = "<group>"; };
 		427BCA9C21345E29006A72C1 /* MessageMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMeTableViewCell.swift; sourceTree = "<group>"; };
-		427BCA9D21345E29006A72C1 /* MessageMeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageMeTableViewCell.xib; sourceTree = "<group>"; };
-		427BCAA02134642E006A72C1 /* PlusActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlusActionView.xib; sourceTree = "<group>"; };
 		427BCAA221346439006A72C1 /* PlusActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusActionView.swift; sourceTree = "<group>"; };
 		427BCAA4213466DE006A72C1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		427BCAA5213466DE006A72C1 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		427BCAA82134ABD7006A72C1 /* EditMyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyProfileViewController.swift; sourceTree = "<group>"; };
 		427BCAAA2134B27B006A72C1 /* ChangeMyPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMyPasswordViewController.swift; sourceTree = "<group>"; };
-		427BCAAC2134B371006A72C1 /* ImageFullScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageFullScreenView.xib; sourceTree = "<group>"; };
 		427BCAAE2134B37C006A72C1 /* ImageFullScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFullScreenView.swift; sourceTree = "<group>"; };
-		427BF3102137CFA30077FFB0 /* SendUsMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendUsMessageView.xib; sourceTree = "<group>"; };
 		427BF3122137CFB20077FFB0 /* SendUsMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUsMessageView.swift; sourceTree = "<group>"; };
 		427BF3142137D1250077FFB0 /* SendUsMessageDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUsMessageDetailTableViewCell.swift; sourceTree = "<group>"; };
-		427BF3152137D1250077FFB0 /* SendUsMessageDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendUsMessageDetailTableViewCell.xib; sourceTree = "<group>"; };
 		427BF3192137EFD00077FFB0 /* FSPagerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FSPagerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		427BF31A2137F0EA0077FFB0 /* ImageFullCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFullCollectionViewCell.swift; sourceTree = "<group>"; };
-		427BF31B2137F0EA0077FFB0 /* ImageFullCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageFullCollectionViewCell.xib; sourceTree = "<group>"; };
 		427BF31F2137F2F20077FFB0 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		427BF3212137F4160077FFB0 /* ImageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		427BF3222137F4160077FFB0 /* ImageViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		428BF5ED2136BDA000555926 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		428BF5EF2136C0CE00555926 /* AboutUsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsCollectionViewCell.swift; sourceTree = "<group>"; };
-		428BF5F02136C0CE00555926 /* AboutUsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsCollectionViewCell.xib; sourceTree = "<group>"; };
 		428BF5F32136D7C200555926 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		428BF6022136DE1600555926 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
-		428BF6032136DE1600555926 /* PhoneNumberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneNumberTableViewCell.xib; sourceTree = "<group>"; };
 		428BF6062136DF1F00555926 /* LocateUsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateUsTableViewCell.swift; sourceTree = "<group>"; };
-		428BF6072136DF1F00555926 /* LocateUsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocateUsTableViewCell.xib; sourceTree = "<group>"; };
 		428BF60A2136E11F00555926 /* SendUsMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUsMessageTableViewCell.swift; sourceTree = "<group>"; };
-		428BF60B2136E11F00555926 /* SendUsMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendUsMessageTableViewCell.xib; sourceTree = "<group>"; };
 		428C74062174FD20002EB7C6 /* HabitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsTableViewCell.swift; sourceTree = "<group>"; };
-		428C74072174FD20002EB7C6 /* HabitsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitsTableViewCell.xib; sourceTree = "<group>"; };
 		428C740A21750325002EB7C6 /* CharacterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
 		4291E7DF216F688000C8ADA7 /* AdditionalActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalActivityViewController.swift; sourceTree = "<group>"; };
 		4291E7E12170D9F500C8ADA7 /* EditChildProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildProfileViewController.swift; sourceTree = "<group>"; };
 		4291E7E42170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationCollectionViewCell.swift; sourceTree = "<group>"; };
-		4291E7E52170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInformationCollectionViewCell.xib; sourceTree = "<group>"; };
 		4291E7E82170FBCD00C8ADA7 /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		4291E7E92170FBCE00C8ADA7 /* Transportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
 		4291E7EA2170FBCE00C8ADA7 /* ProgramLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramLanguage.swift; sourceTree = "<group>"; };
@@ -357,45 +498,42 @@
 		4291E7F02170FD6C00C8ADA7 /* BloodType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodType.swift; sourceTree = "<group>"; };
 		4291E7F22170FD6C00C8ADA7 /* HabitRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitRank.swift; sourceTree = "<group>"; };
 		4291E7F621710A9F00C8ADA7 /* SchoolBusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolBusCollectionViewCell.swift; sourceTree = "<group>"; };
-		4291E7F721710A9F00C8ADA7 /* SchoolBusCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchoolBusCollectionViewCell.xib; sourceTree = "<group>"; };
 		4291E7FA2171491400C8ADA7 /* PediatricianCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PediatricianCollectionViewCell.swift; sourceTree = "<group>"; };
-		4291E7FB2171491400C8ADA7 /* PediatricianCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PediatricianCollectionViewCell.xib; sourceTree = "<group>"; };
 		4291E7FE217150A600C8ADA7 /* MedicalInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalInfoCollectionViewCell.swift; sourceTree = "<group>"; };
-		4291E7FF217150A600C8ADA7 /* MedicalInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedicalInfoCollectionViewCell.xib; sourceTree = "<group>"; };
-		4291E8032171617300C8ADA7 /* DiseaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiseaseView.xib; sourceTree = "<group>"; };
 		4291E8052171617F00C8ADA7 /* DiseaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseView.swift; sourceTree = "<group>"; };
 		4291E8072171640B00C8ADA7 /* DiseaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseTableViewCell.swift; sourceTree = "<group>"; };
-		4291E8082171640B00C8ADA7 /* DiseaseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiseaseTableViewCell.xib; sourceTree = "<group>"; };
 		4291E80B217166AE00C8ADA7 /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
-		42B78D9D21832CE500BAD83B /* EmptyDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
+		42ADAE6A221C9FB50064F849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		42ADAE6C221C9FF40064F849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Nurse.storyboard; sourceTree = "<group>"; };
+		42ADAE6F221C9FFC0064F849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Nurse.strings; sourceTree = "<group>"; };
+		42ADAE71221CA00E0064F849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Teacher.storyboard; sourceTree = "<group>"; };
+		42ADAE74221CA0160064F849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Teacher.strings; sourceTree = "<group>"; };
+		42ADAE75221CA0390064F849 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		42ADAE76221CA03A0064F849 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		42ADAE77221CA03C0064F849 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Nurse.strings; sourceTree = "<group>"; };
+		42ADAE78221CA03D0064F849 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Teacher.strings; sourceTree = "<group>"; };
+		42ADAE7A221CA2980064F849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		42B78D9F21832CFD00BAD83B /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		42B78DA12183484B00BAD83B /* ChildTemperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildTemperature.swift; sourceTree = "<group>"; };
 		42D0CB95216388EC00EB6889 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		42D0CB9721638B6B00EB6889 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		42D0CB992163946200EB6889 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		42D0CB9C21639A2A00EB6889 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		42D0CB9D21639A2A00EB6889 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		42D0CBA02163AF7200EB6889 /* SelectStudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStudentsViewController.swift; sourceTree = "<group>"; };
 		42D0CBA32163AFF100EB6889 /* SelectStudentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentsTableViewCell.swift; sourceTree = "<group>"; };
-		42D0CBA42163AFF100EB6889 /* SelectStudentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStudentsTableViewCell.xib; sourceTree = "<group>"; };
 		42D0CBA72163C0BE00EB6889 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		42D0CBAA2163EDD000EB6889 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
-		42D0CBAB2163EDD000EB6889 /* PaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableViewCell.xib; sourceTree = "<group>"; };
 		42D57646217DC92500DC69CF /* AddDailyAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDailyAgendaViewController.swift; sourceTree = "<group>"; };
 		42DE5608215531F000A6ED0A /* AddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotosViewController.swift; sourceTree = "<group>"; };
 		42DE560B2155346500A6ED0A /* AddPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
-		42DE560C2155346500A6ED0A /* AddPhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotosCollectionViewCell.xib; sourceTree = "<group>"; };
 		42E32647216EC0A100EF6DA2 /* NotificationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		42E32648216EC0A100EF6DA2 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		42E377DE2183B8C200770EE1 /* SendTemperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTemperature.swift; sourceTree = "<group>"; };
 		42E6B7F1213BEB7100F2A135 /* GuestTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTabBarViewController.swift; sourceTree = "<group>"; };
-		42E6B7F3213D253200F2A135 /* Nurse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Nurse.storyboard; sourceTree = "<group>"; };
 		42E6B800213D278B00F2A135 /* ClassCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCollectionViewCell.swift; sourceTree = "<group>"; };
-		42E6B801213D278B00F2A135 /* ClassCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassCollectionViewCell.xib; sourceTree = "<group>"; };
 		42E6B804213D2B2000F2A135 /* ClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassViewController.swift; sourceTree = "<group>"; };
 		42E6B806213D4CC000F2A135 /* NurseStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NurseStudentViewController.swift; sourceTree = "<group>"; };
 		42E6B808213D51E000F2A135 /* NurseStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NurseStudentTableViewCell.swift; sourceTree = "<group>"; };
-		42E6B809213D51E000F2A135 /* NurseStudentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NurseStudentTableViewCell.xib; sourceTree = "<group>"; };
 		CFCB48DEA2A5954905320766 /* Pods-innocentminds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-innocentminds.release.xcconfig"; path = "Pods/Target Support Files/Pods-innocentminds/Pods-innocentminds.release.xcconfig"; sourceTree = "<group>"; };
 		EB3312246F17659A5FCF9C13 /* Pods-innocentminds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-innocentminds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-innocentminds/Pods-innocentminds.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -439,6 +577,7 @@
 				4214DC28212EC22600C2DCC5 /* Alamofire+Synchronous.swift */,
 				4214DC2A212EC24D00C2DCC5 /* Services.swift */,
 				423515D4216D4AA4000BB892 /* Objects.swift */,
+				421767D1222978B1003AEB51 /* Localizable.strings */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -491,6 +630,7 @@
 		4214DC16212E959700C2DCC5 /* AppFonts */ = {
 			isa = PBXGroup;
 			children = (
+				4220393521FD9845000C1921 /* KGSevenSixteen.ttf */,
 				4214DC2E212EE08100C2DCC5 /* Montserrat-Bold.ttf */,
 				4214DC2F212EE08200C2DCC5 /* Montserrat-Regular.ttf */,
 				4214DC17212E95A000C2DCC5 /* Gaegu-Bold.ttf */,
@@ -504,7 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				421B219121411D5D00099EC6 /* AddActivityHeaderTableViewCell.swift */,
-				421B219221411D5D00099EC6 /* AddActivityHeaderTableViewCell.xib */,
+				4217667822295B01003AEB51 /* AddActivityHeaderTableViewCell.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -513,7 +653,7 @@
 			isa = PBXGroup;
 			children = (
 				421B219621411E4000099EC6 /* AddActivityPostTableViewCell.swift */,
-				421B219721411E4000099EC6 /* AddActivityPostTableViewCell.xib */,
+				4217667122295ADC003AEB51 /* AddActivityPostTableViewCell.xib */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -522,7 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				421B219B2141277800099EC6 /* AdditionalImageCollectionViewCell.swift */,
-				421B219C2141277800099EC6 /* AdditionalImageCollectionViewCell.xib */,
+				4217666A22295AC5003AEB51 /* AdditionalImageCollectionViewCell.xib */,
 			);
 			path = Additional;
 			sourceTree = "<group>";
@@ -531,11 +671,11 @@
 			isa = PBXGroup;
 			children = (
 				4223B2A5213957120068EEA8 /* RegisterChildStep1CollectionViewCell.swift */,
-				4223B2A6213957120068EEA8 /* RegisterChildStep1CollectionViewCell.xib */,
+				421766B822295C53003AEB51 /* RegisterChildStep1CollectionViewCell.xib */,
 				4223B2A9213957320068EEA8 /* RegisterChildStep2CollectionViewCell.swift */,
-				4223B2AA213957320068EEA8 /* RegisterChildStep2CollectionViewCell.xib */,
+				421766BB22295C5A003AEB51 /* RegisterChildStep2CollectionViewCell.xib */,
 				4223B2AD213957470068EEA8 /* RegisterChildStep3CollectionViewCell.swift */,
-				4223B2AE213957470068EEA8 /* RegisterChildStep3CollectionViewCell.xib */,
+				421766BE22295C60003AEB51 /* RegisterChildStep3CollectionViewCell.xib */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -559,7 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				422957CD213EDD7E001DDE7D /* BreakfastTableViewCell.swift */,
-				422957CE213EDD7E001DDE7D /* BreakfastTableViewCell.xib */,
+				4217668B22295BEC003AEB51 /* BreakfastTableViewCell.xib */,
 			);
 			path = Breakfast;
 			sourceTree = "<group>";
@@ -568,7 +708,7 @@
 			isa = PBXGroup;
 			children = (
 				422957D1213EDDB5001DDE7D /* LunchTableViewCell.swift */,
-				422957D2213EDDB5001DDE7D /* LunchTableViewCell.xib */,
+				4217668822295BE5003AEB51 /* LunchTableViewCell.xib */,
 			);
 			path = Lunch;
 			sourceTree = "<group>";
@@ -577,7 +717,7 @@
 			isa = PBXGroup;
 			children = (
 				422957D5213EDDCC001DDE7D /* NapTableViewCell.swift */,
-				422957D6213EDDCC001DDE7D /* NapTableViewCell.xib */,
+				4217668522295BDE003AEB51 /* NapTableViewCell.xib */,
 			);
 			path = Nap;
 			sourceTree = "<group>";
@@ -586,7 +726,7 @@
 			isa = PBXGroup;
 			children = (
 				422957D9213EDDF8001DDE7D /* BathroomTableViewCell.swift */,
-				422957DA213EDDF8001DDE7D /* BathroomTableViewCell.xib */,
+				4217668222295BD7003AEB51 /* BathroomTableViewCell.xib */,
 			);
 			path = Bath;
 			sourceTree = "<group>";
@@ -595,7 +735,7 @@
 			isa = PBXGroup;
 			children = (
 				422957DD213EDE18001DDE7D /* PottyTrainingTableViewCell.swift */,
-				422957DE213EDE18001DDE7D /* PottyTrainingTableViewCell.xib */,
+				4217667F22295BC9003AEB51 /* PottyTrainingTableViewCell.xib */,
 			);
 			path = PottyTrain;
 			sourceTree = "<group>";
@@ -604,9 +744,9 @@
 			isa = PBXGroup;
 			children = (
 				422957C0213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.swift */,
-				422957C1213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.xib */,
+				4217665C22295981003AEB51 /* TeacherStudentHeaderTableViewCell.xib */,
 				422957BD213EB340001DDE7D /* TeacherStudentTableViewCell.swift */,
-				422957BC213EB340001DDE7D /* TeacherStudentTableViewCell.xib */,
+				4217666322295999003AEB51 /* TeacherStudentTableViewCell.xib */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -615,7 +755,7 @@
 			isa = PBXGroup;
 			children = (
 				422957C6213EC151001DDE7D /* EmptyActivityTableViewCell.swift */,
-				422957C7213EC151001DDE7D /* EmptyActivityTableViewCell.xib */,
+				421766552229595B003AEB51 /* EmptyActivityTableViewCell.xib */,
 			);
 			path = Empty;
 			sourceTree = "<group>";
@@ -624,7 +764,7 @@
 			isa = PBXGroup;
 			children = (
 				42E6B800213D278B00F2A135 /* ClassCollectionViewCell.swift */,
-				42E6B801213D278B00F2A135 /* ClassCollectionViewCell.xib */,
+				4217669A22295C0C003AEB51 /* ClassCollectionViewCell.xib */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -633,7 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				42E6B808213D51E000F2A135 /* NurseStudentTableViewCell.swift */,
-				42E6B809213D51E000F2A135 /* NurseStudentTableViewCell.xib */,
+				4217669722295C06003AEB51 /* NurseStudentTableViewCell.xib */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -642,9 +782,9 @@
 			isa = PBXGroup;
 			children = (
 				422957AC213E9CC8001DDE7D /* TemperatureFooterTableViewCell.swift */,
-				422957AD213E9CC8001DDE7D /* TemperatureFooterTableViewCell.xib */,
+				4217669122295BF9003AEB51 /* TemperatureFooterTableViewCell.xib */,
 				422957B0213E9E72001DDE7D /* TemperatureTableViewCell.swift */,
-				422957B1213E9E72001DDE7D /* TemperatureTableViewCell.xib */,
+				4217669422295C00003AEB51 /* TemperatureTableViewCell.xib */,
 			);
 			path = Temperature;
 			sourceTree = "<group>";
@@ -652,10 +792,19 @@
 		422957EB213EDEAB001DDE7D /* Temperature */ = {
 			isa = PBXGroup;
 			children = (
-				422957B6213EA800001DDE7D /* AddTemperatureView.xib */,
+				421766F422295D19003AEB51 /* AddTemperatureView.xib */,
 				422957B8213EA80C001DDE7D /* AddTemperatureView.swift */,
 			);
 			path = Temperature;
+			sourceTree = "<group>";
+		};
+		422E2777220E1C1C00FFE522 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				422E2778220E1C3E00FFE522 /* EventsTableViewCell.swift */,
+				4217669D22295C12003AEB51 /* EventsTableViewCell.xib */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		423515C5216D4A69000BB892 /* GlobalVariables */ = {
@@ -686,6 +835,7 @@
 		423515DC216D674F000BB892 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				426A262D220F305E00CAE7C2 /* Event.swift */,
 				4279087621922054001719AE /* PublishActivityId.swift */,
 				42058FDC219088F7008B2F31 /* SendActivity.swift */,
 				42E377DE2183B8C200770EE1 /* SendTemperature.swift */,
@@ -763,7 +913,7 @@
 			isa = PBXGroup;
 			children = (
 				4253095121807F1B00FDA58B /* EmptyDataTableViewCell.swift */,
-				4253095221807F1B00FDA58B /* EmptyDataTableViewCell.xib */,
+				421766A022295C18003AEB51 /* EmptyDataTableViewCell.xib */,
 			);
 			path = Empty;
 			sourceTree = "<group>";
@@ -772,7 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				42541E7A214BC790007CF48D /* SendParentsMessageTableViewCell.swift */,
-				42541E7B214BC790007CF48D /* SendParentsMessageTableViewCell.xib */,
+				4217664E222958D1003AEB51 /* SendParentsMessageTableViewCell.xib */,
 			);
 			path = SendMessage;
 			sourceTree = "<group>";
@@ -780,7 +930,7 @@
 		427BF30F2137CF900077FFB0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				427BF3102137CFA30077FFB0 /* SendUsMessageView.xib */,
+				421766FD22295D2D003AEB51 /* SendUsMessageView.xib */,
 				427BF3122137CFB20077FFB0 /* SendUsMessageView.swift */,
 			);
 			path = Contact;
@@ -790,9 +940,9 @@
 			isa = PBXGroup;
 			children = (
 				427BF31A2137F0EA0077FFB0 /* ImageFullCollectionViewCell.swift */,
-				427BF31B2137F0EA0077FFB0 /* ImageFullCollectionViewCell.xib */,
+				421766C122295C67003AEB51 /* ImageFullCollectionViewCell.xib */,
 				427BF3212137F4160077FFB0 /* ImageViewCollectionViewCell.swift */,
-				427BF3222137F4160077FFB0 /* ImageViewCollectionViewCell.xib */,
+				421766C422295C6C003AEB51 /* ImageViewCollectionViewCell.xib */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -801,9 +951,9 @@
 			isa = PBXGroup;
 			children = (
 				427BCA5B2133D121006A72C1 /* DashboardHatTableViewCell.swift */,
-				427BCA5C2133D121006A72C1 /* DashboardHatTableViewCell.xib */,
+				421766EB22295CEF003AEB51 /* DashboardHatTableViewCell.xib */,
 				427BCA5F2133DE33006A72C1 /* DashboardPostTableViewCell.swift */,
-				427BCA602133DE33006A72C1 /* DashboardPostTableViewCell.xib */,
+				421766EE22295CF9003AEB51 /* DashboardPostTableViewCell.xib */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -812,7 +962,7 @@
 			isa = PBXGroup;
 			children = (
 				427BCA7E2133F72A006A72C1 /* ChildTableViewCell.swift */,
-				427BCA7F2133F72A006A72C1 /* ChildTableViewCell.xib */,
+				421766E822295CDA003AEB51 /* ChildTableViewCell.xib */,
 			);
 			path = Child;
 			sourceTree = "<group>";
@@ -830,7 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				427BCA8621341CC0006A72C1 /* NotificationTableViewCell.swift */,
-				427BCA8721341CC0006A72C1 /* NotificationTableViewCell.xib */,
+				421766E522295CD2003AEB51 /* NotificationTableViewCell.xib */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -839,13 +989,13 @@
 			isa = PBXGroup;
 			children = (
 				427BCA8A21342489006A72C1 /* AddNewMessageTableViewCell.swift */,
-				427BCA8B21342489006A72C1 /* AddNewMessageTableViewCell.xib */,
+				421766D922295CAD003AEB51 /* AddNewMessageTableViewCell.xib */,
 				427BCA8E21342766006A72C1 /* MessageTableViewCell.swift */,
-				427BCA8F21342766006A72C1 /* MessageTableViewCell.xib */,
+				421766DC22295CB4003AEB51 /* MessageTableViewCell.xib */,
 				427BCA9821345E17006A72C1 /* MessageOpponentTableViewCell.swift */,
-				427BCA9921345E17006A72C1 /* MessageOpponentTableViewCell.xib */,
+				421766DF22295CBA003AEB51 /* MessageOpponentTableViewCell.xib */,
 				427BCA9C21345E29006A72C1 /* MessageMeTableViewCell.swift */,
-				427BCA9D21345E29006A72C1 /* MessageMeTableViewCell.xib */,
+				421766E222295CCA003AEB51 /* MessageMeTableViewCell.xib */,
 			);
 			path = Inbox;
 			sourceTree = "<group>";
@@ -854,7 +1004,7 @@
 			isa = PBXGroup;
 			children = (
 				427BCAA4213466DE006A72C1 /* MenuTableViewCell.swift */,
-				427BCAA5213466DE006A72C1 /* MenuTableViewCell.xib */,
+				421766D622295CA7003AEB51 /* MenuTableViewCell.xib */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -863,7 +1013,7 @@
 			isa = PBXGroup;
 			children = (
 				428BF5EF2136C0CE00555926 /* AboutUsCollectionViewCell.swift */,
-				428BF5F02136C0CE00555926 /* AboutUsCollectionViewCell.xib */,
+				421766D322295C9A003AEB51 /* AboutUsCollectionViewCell.xib */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -872,13 +1022,13 @@
 			isa = PBXGroup;
 			children = (
 				428BF6022136DE1600555926 /* PhoneNumberTableViewCell.swift */,
-				428BF6032136DE1600555926 /* PhoneNumberTableViewCell.xib */,
+				421766C722295C72003AEB51 /* PhoneNumberTableViewCell.xib */,
 				428BF6062136DF1F00555926 /* LocateUsTableViewCell.swift */,
-				428BF6072136DF1F00555926 /* LocateUsTableViewCell.xib */,
+				421766CA22295C77003AEB51 /* LocateUsTableViewCell.xib */,
 				428BF60A2136E11F00555926 /* SendUsMessageTableViewCell.swift */,
-				428BF60B2136E11F00555926 /* SendUsMessageTableViewCell.xib */,
+				421766CD22295C7D003AEB51 /* SendUsMessageTableViewCell.xib */,
 				427BF3142137D1250077FFB0 /* SendUsMessageDetailTableViewCell.swift */,
-				427BF3152137D1250077FFB0 /* SendUsMessageDetailTableViewCell.xib */,
+				421766D022295C83003AEB51 /* SendUsMessageDetailTableViewCell.xib */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -886,7 +1036,7 @@
 		428BF5FD2136DDAB00555926 /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
-				4214DC34212EE89D00C2DCC5 /* AlertView.xib */,
+				4217670C22295D56003AEB51 /* AlertView.xib */,
 				4214DC36212EE8B100C2DCC5 /* AlertView.swift */,
 			);
 			path = AlertView;
@@ -895,7 +1045,7 @@
 		428BF5FE2136DDB800555926 /* Child */ = {
 			isa = PBXGroup;
 			children = (
-				427BCA7A2133F1BE006A72C1 /* ChangeChildView.xib */,
+				4217670922295D4F003AEB51 /* ChangeChildView.xib */,
 				427BCA7C2133F1CA006A72C1 /* ChangeChildView.swift */,
 			);
 			path = Child;
@@ -904,7 +1054,7 @@
 		428BF5FF2136DDC700555926 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				427BCA82213413B4006A72C1 /* MessagesView.xib */,
+				4217670622295D48003AEB51 /* MessagesView.xib */,
 				427BCA84213413C2006A72C1 /* MessagesView.swift */,
 			);
 			path = Message;
@@ -913,7 +1063,7 @@
 		428BF6002136DDD200555926 /* PlusAction */ = {
 			isa = PBXGroup;
 			children = (
-				427BCAA02134642E006A72C1 /* PlusActionView.xib */,
+				4217670322295D3F003AEB51 /* PlusActionView.xib */,
 				427BCAA221346439006A72C1 /* PlusActionView.swift */,
 			);
 			path = PlusAction;
@@ -922,7 +1072,7 @@
 		428BF6012136DDDE00555926 /* ImageFullScreen */ = {
 			isa = PBXGroup;
 			children = (
-				427BCAAC2134B371006A72C1 /* ImageFullScreenView.xib */,
+				4217670022295D38003AEB51 /* ImageFullScreenView.xib */,
 				427BCAAE2134B37C006A72C1 /* ImageFullScreenView.swift */,
 			);
 			path = ImageFullScreen;
@@ -950,7 +1100,7 @@
 		4291E7DA216F4DEB00C8ADA7 /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
-				422957BA213EB259001DDE7D /* Teacher.storyboard */,
+				42ADAE72221CA00E0064F849 /* Teacher.storyboard */,
 			);
 			path = Teacher;
 			sourceTree = "<group>";
@@ -958,7 +1108,7 @@
 		4291E7DB216F4DF100C8ADA7 /* Nurse */ = {
 			isa = PBXGroup;
 			children = (
-				42E6B7F3213D253200F2A135 /* Nurse.storyboard */,
+				42ADAE6D221C9FF40064F849 /* Nurse.storyboard */,
 			);
 			path = Nurse;
 			sourceTree = "<group>";
@@ -994,17 +1144,17 @@
 			isa = PBXGroup;
 			children = (
 				4291E7E42170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.swift */,
-				4291E7E52170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.xib */,
+				421766A322295C28003AEB51 /* PersonalInformationCollectionViewCell.xib */,
 				4291E7F621710A9F00C8ADA7 /* SchoolBusCollectionViewCell.swift */,
-				4291E7F721710A9F00C8ADA7 /* SchoolBusCollectionViewCell.xib */,
+				421766A622295C2E003AEB51 /* SchoolBusCollectionViewCell.xib */,
 				4291E7FA2171491400C8ADA7 /* PediatricianCollectionViewCell.swift */,
-				4291E7FB2171491400C8ADA7 /* PediatricianCollectionViewCell.xib */,
+				421766A922295C34003AEB51 /* PediatricianCollectionViewCell.xib */,
 				4291E7FE217150A600C8ADA7 /* MedicalInfoCollectionViewCell.swift */,
-				4291E7FF217150A600C8ADA7 /* MedicalInfoCollectionViewCell.xib */,
+				421766AC22295C3B003AEB51 /* MedicalInfoCollectionViewCell.xib */,
 				4291E8072171640B00C8ADA7 /* DiseaseTableViewCell.swift */,
-				4291E8082171640B00C8ADA7 /* DiseaseTableViewCell.xib */,
+				421766AF22295C42003AEB51 /* DiseaseTableViewCell.xib */,
 				428C74062174FD20002EB7C6 /* HabitsTableViewCell.swift */,
-				428C74072174FD20002EB7C6 /* HabitsTableViewCell.xib */,
+				421766B222295C47003AEB51 /* HabitsTableViewCell.xib */,
 			);
 			path = ChildProfile;
 			sourceTree = "<group>";
@@ -1013,7 +1163,7 @@
 			isa = PBXGroup;
 			children = (
 				4291E8052171617F00C8ADA7 /* DiseaseView.swift */,
-				4291E8032171617300C8ADA7 /* DiseaseView.xib */,
+				421766FA22295D27003AEB51 /* DiseaseView.xib */,
 			);
 			path = ChildProfile;
 			sourceTree = "<group>";
@@ -1021,7 +1171,7 @@
 		42B78D9C21832CCE00BAD83B /* Empty */ = {
 			isa = PBXGroup;
 			children = (
-				42B78D9D21832CE500BAD83B /* EmptyDataView.xib */,
+				421766F722295D20003AEB51 /* EmptyDataView.xib */,
 				42B78D9F21832CFD00BAD83B /* EmptyDataView.swift */,
 			);
 			path = Empty;
@@ -1031,7 +1181,7 @@
 			isa = PBXGroup;
 			children = (
 				42D0CB9C21639A2A00EB6889 /* SearchTableViewCell.swift */,
-				42D0CB9D21639A2A00EB6889 /* SearchTableViewCell.xib */,
+				4217668E22295BF2003AEB51 /* SearchTableViewCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1040,7 +1190,7 @@
 			isa = PBXGroup;
 			children = (
 				42D0CBA32163AFF100EB6889 /* SelectStudentsTableViewCell.swift */,
-				42D0CBA42163AFF100EB6889 /* SelectStudentsTableViewCell.xib */,
+				4217664022295897003AEB51 /* SelectStudentsTableViewCell.xib */,
 			);
 			path = SelectStudents;
 			sourceTree = "<group>";
@@ -1049,7 +1199,7 @@
 			isa = PBXGroup;
 			children = (
 				42D0CBAA2163EDD000EB6889 /* PaymentTableViewCell.swift */,
-				42D0CBAB2163EDD000EB6889 /* PaymentTableViewCell.xib */,
+				421766B522295C4E003AEB51 /* PaymentTableViewCell.xib */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1058,7 +1208,7 @@
 			isa = PBXGroup;
 			children = (
 				42DE560B2155346500A6ED0A /* AddPhotosCollectionViewCell.swift */,
-				42DE560C2155346500A6ED0A /* AddPhotosCollectionViewCell.xib */,
+				42176647222958B8003AEB51 /* AddPhotosCollectionViewCell.xib */,
 			);
 			path = AddPhotos;
 			sourceTree = "<group>";
@@ -1098,7 +1248,7 @@
 		42E6B7F7213D26CB00F2A135 /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
-				42541E75214BC543007CF48D /* SendParentsMessageView.xib */,
+				421766F122295D0F003AEB51 /* SendParentsMessageView.xib */,
 				42541E77214BC54D007CF48D /* SendParentsMessageView.swift */,
 			);
 			path = Teacher;
@@ -1107,6 +1257,7 @@
 		42E6B7F8213D26D300F2A135 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				422E2777220E1C1C00FFE522 /* Calendar */,
 				4253095021807F0200FDA58B /* Empty */,
 				4291E7E32170DBB100C8ADA7 /* ChildProfile */,
 				42D0CBA92163EDB900EB6889 /* Payment */,
@@ -1157,6 +1308,8 @@
 		42E6B7FC213D26F500F2A135 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				426A2630220F3E0100CAE7C2 /* EventsDetailsViewController.swift */,
+				426A262F220F3E0000CAE7C2 /* EventsViewController.swift */,
 				4214DC32212EE5CD00C2DCC5 /* RegisterChildViewController.swift */,
 				427BCA592133CF7F006A72C1 /* DashboardViewController.swift */,
 				427BCA922134543F006A72C1 /* MessageDetailsViewController.swift */,
@@ -1165,6 +1318,7 @@
 				427BF31F2137F2F20077FFB0 /* GalleryViewController.swift */,
 				42D0CBA72163C0BE00EB6889 /* PaymentViewController.swift */,
 				4291E7E12170D9F500C8ADA7 /* EditChildProfileViewController.swift */,
+				422C6F3323316C1A00E5D733 /* PayFeeViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1260,6 +1414,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 423AEDA8212D5C4700A097A0;
 			productRefGroup = 423AEDB2212D5C4700A097A0 /* Products */;
@@ -1276,73 +1431,75 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				428BF5F22136C0CE00555926 /* AboutUsCollectionViewCell.xib in Resources */,
-				4291E8042171617300C8ADA7 /* DiseaseView.xib in Resources */,
-				422957D0213EDD7E001DDE7D /* BreakfastTableViewCell.xib in Resources */,
+				421766D122295C9A003AEB51 /* AboutUsCollectionViewCell.xib in Resources */,
+				421766F822295D27003AEB51 /* DiseaseView.xib in Resources */,
+				4217668922295BEC003AEB51 /* BreakfastTableViewCell.xib in Resources */,
 				4214DC31212EE08300C2DCC5 /* Montserrat-Regular.ttf in Resources */,
-				422957C3213EB3AB001DDE7D /* TeacherStudentHeaderTableViewCell.xib in Resources */,
-				42E6B80B213D51E000F2A135 /* NurseStudentTableViewCell.xib in Resources */,
-				4291E7F921710A9F00C8ADA7 /* SchoolBusCollectionViewCell.xib in Resources */,
-				421B219421411D5D00099EC6 /* AddActivityHeaderTableViewCell.xib in Resources */,
-				422957AF213E9CC8001DDE7D /* TemperatureFooterTableViewCell.xib in Resources */,
-				4223B2B0213957470068EEA8 /* RegisterChildStep3CollectionViewCell.xib in Resources */,
-				4291E80A2171640B00C8ADA7 /* DiseaseTableViewCell.xib in Resources */,
-				422957C9213EC151001DDE7D /* EmptyActivityTableViewCell.xib in Resources */,
-				422957D4213EDDB5001DDE7D /* LunchTableViewCell.xib in Resources */,
+				4217665A22295981003AEB51 /* TeacherStudentHeaderTableViewCell.xib in Resources */,
+				4217669522295C06003AEB51 /* NurseStudentTableViewCell.xib in Resources */,
+				421766A422295C2E003AEB51 /* SchoolBusCollectionViewCell.xib in Resources */,
+				4217667622295B01003AEB51 /* AddActivityHeaderTableViewCell.xib in Resources */,
+				4217668F22295BF9003AEB51 /* TemperatureFooterTableViewCell.xib in Resources */,
+				421766BC22295C60003AEB51 /* RegisterChildStep3CollectionViewCell.xib in Resources */,
+				421766AD22295C42003AEB51 /* DiseaseTableViewCell.xib in Resources */,
+				421766532229595B003AEB51 /* EmptyActivityTableViewCell.xib in Resources */,
+				4217668622295BE5003AEB51 /* LunchTableViewCell.xib in Resources */,
 				4214DC1A212E9C8700C2DCC5 /* Gaegu-Bold.ttf in Resources */,
-				42541E7D214BC790007CF48D /* SendParentsMessageTableViewCell.xib in Resources */,
-				427BCAA12134642E006A72C1 /* PlusActionView.xib in Resources */,
-				427BCA812133F72A006A72C1 /* ChildTableViewCell.xib in Resources */,
-				422957B3213E9E72001DDE7D /* TemperatureTableViewCell.xib in Resources */,
-				422957B7213EA800001DDE7D /* AddTemperatureView.xib in Resources */,
-				428BF6052136DE1600555926 /* PhoneNumberTableViewCell.xib in Resources */,
+				4217664C222958D1003AEB51 /* SendParentsMessageTableViewCell.xib in Resources */,
+				4217670122295D3F003AEB51 /* PlusActionView.xib in Resources */,
+				421766E622295CDA003AEB51 /* ChildTableViewCell.xib in Resources */,
+				4217669222295C00003AEB51 /* TemperatureTableViewCell.xib in Resources */,
+				421766F222295D19003AEB51 /* AddTemperatureView.xib in Resources */,
+				421766C522295C72003AEB51 /* PhoneNumberTableViewCell.xib in Resources */,
 				4214DC1B212E9C8700C2DCC5 /* Gaegu-Light.ttf in Resources */,
-				42D0CBAD2163EDD000EB6889 /* PaymentTableViewCell.xib in Resources */,
-				42E6B7F4213D253200F2A135 /* Nurse.storyboard in Resources */,
-				422957BB213EB259001DDE7D /* Teacher.storyboard in Resources */,
-				427BCA7B2133F1BE006A72C1 /* ChangeChildView.xib in Resources */,
-				4223B2AC213957320068EEA8 /* RegisterChildStep2CollectionViewCell.xib in Resources */,
-				4291E801217150A600C8ADA7 /* MedicalInfoCollectionViewCell.xib in Resources */,
-				428C74092174FD20002EB7C6 /* HabitsTableViewCell.xib in Resources */,
-				427BF3112137CFA30077FFB0 /* SendUsMessageView.xib in Resources */,
+				421766B322295C4E003AEB51 /* PaymentTableViewCell.xib in Resources */,
+				42ADAE6B221C9FF40064F849 /* Nurse.storyboard in Resources */,
+				42ADAE70221CA00E0064F849 /* Teacher.storyboard in Resources */,
+				4217670722295D4F003AEB51 /* ChangeChildView.xib in Resources */,
+				421766B922295C5A003AEB51 /* RegisterChildStep2CollectionViewCell.xib in Resources */,
+				421766AA22295C3B003AEB51 /* MedicalInfoCollectionViewCell.xib in Resources */,
+				421766B022295C47003AEB51 /* HabitsTableViewCell.xib in Resources */,
+				421766FB22295D2D003AEB51 /* SendUsMessageView.xib in Resources */,
 				4214DC1C212E9C8700C2DCC5 /* Gaegu-Regular.ttf in Resources */,
-				427BCAAD2134B371006A72C1 /* ImageFullScreenView.xib in Resources */,
-				4291E7FD2171491400C8ADA7 /* PediatricianCollectionViewCell.xib in Resources */,
-				42D0CB9F21639A2A00EB6889 /* SearchTableViewCell.xib in Resources */,
+				421766FE22295D38003AEB51 /* ImageFullScreenView.xib in Resources */,
+				421766A722295C34003AEB51 /* PediatricianCollectionViewCell.xib in Resources */,
+				4217668C22295BF2003AEB51 /* SearchTableViewCell.xib in Resources */,
 				423AEDBF212D5C4700A097A0 /* LaunchScreen.storyboard in Resources */,
-				427BCAA7213466DE006A72C1 /* MenuTableViewCell.xib in Resources */,
-				422957DC213EDDF8001DDE7D /* BathroomTableViewCell.xib in Resources */,
-				422957E0213EDE18001DDE7D /* PottyTrainingTableViewCell.xib in Resources */,
-				421B219921411E4000099EC6 /* AddActivityPostTableViewCell.xib in Resources */,
-				42D0CBA62163AFF100EB6889 /* SelectStudentsTableViewCell.xib in Resources */,
-				4253095421807F1B00FDA58B /* EmptyDataTableViewCell.xib in Resources */,
+				421766D422295CA7003AEB51 /* MenuTableViewCell.xib in Resources */,
+				421767CF222978B1003AEB51 /* Localizable.strings in Resources */,
+				4217668022295BD7003AEB51 /* BathroomTableViewCell.xib in Resources */,
+				4217667D22295BC9003AEB51 /* PottyTrainingTableViewCell.xib in Resources */,
+				4217666F22295ADC003AEB51 /* AddActivityPostTableViewCell.xib in Resources */,
+				4217663E22295897003AEB51 /* SelectStudentsTableViewCell.xib in Resources */,
+				4217669E22295C18003AEB51 /* EmptyDataTableViewCell.xib in Resources */,
 				4214DC30212EE08300C2DCC5 /* Montserrat-Bold.ttf in Resources */,
-				42541E76214BC543007CF48D /* SendParentsMessageView.xib in Resources */,
-				4291E7E72170DBEF00C8ADA7 /* PersonalInformationCollectionViewCell.xib in Resources */,
-				427BCA8921341CC0006A72C1 /* NotificationTableViewCell.xib in Resources */,
+				421766EF22295D0F003AEB51 /* SendParentsMessageView.xib in Resources */,
+				421766A122295C28003AEB51 /* PersonalInformationCollectionViewCell.xib in Resources */,
+				4217669B22295C12003AEB51 /* EventsTableViewCell.xib in Resources */,
+				421766E322295CD2003AEB51 /* NotificationTableViewCell.xib in Resources */,
 				423AEDBC212D5C4700A097A0 /* Assets.xcassets in Resources */,
-				427BCA8D21342489006A72C1 /* AddNewMessageTableViewCell.xib in Resources */,
-				421B219E2141277800099EC6 /* AdditionalImageCollectionViewCell.xib in Resources */,
-				428BF60D2136E11F00555926 /* SendUsMessageTableViewCell.xib in Resources */,
-				427BF3242137F4160077FFB0 /* ImageViewCollectionViewCell.xib in Resources */,
-				42DE560E2155346500A6ED0A /* AddPhotosCollectionViewCell.xib in Resources */,
-				4214DC35212EE89D00C2DCC5 /* AlertView.xib in Resources */,
-				427BCA83213413B4006A72C1 /* MessagesView.xib in Resources */,
-				422957D8213EDDCC001DDE7D /* NapTableViewCell.xib in Resources */,
-				427BCA9121342766006A72C1 /* MessageTableViewCell.xib in Resources */,
-				4223B2A8213957120068EEA8 /* RegisterChildStep1CollectionViewCell.xib in Resources */,
-				42B78D9E21832CE500BAD83B /* EmptyDataView.xib in Resources */,
-				427BCA622133DE33006A72C1 /* DashboardPostTableViewCell.xib in Resources */,
-				427BCA9B21345E17006A72C1 /* MessageOpponentTableViewCell.xib in Resources */,
-				428BF6092136DF1F00555926 /* LocateUsTableViewCell.xib in Resources */,
-				427BCA9F21345E29006A72C1 /* MessageMeTableViewCell.xib in Resources */,
+				421766D722295CAD003AEB51 /* AddNewMessageTableViewCell.xib in Resources */,
+				4217666822295AC5003AEB51 /* AdditionalImageCollectionViewCell.xib in Resources */,
+				421766CB22295C7D003AEB51 /* SendUsMessageTableViewCell.xib in Resources */,
+				421766C222295C6C003AEB51 /* ImageViewCollectionViewCell.xib in Resources */,
+				42176645222958B8003AEB51 /* AddPhotosCollectionViewCell.xib in Resources */,
+				4217670A22295D56003AEB51 /* AlertView.xib in Resources */,
+				4217670422295D48003AEB51 /* MessagesView.xib in Resources */,
+				4217668322295BDE003AEB51 /* NapTableViewCell.xib in Resources */,
+				421766DA22295CB4003AEB51 /* MessageTableViewCell.xib in Resources */,
+				421766B622295C53003AEB51 /* RegisterChildStep1CollectionViewCell.xib in Resources */,
+				421766F522295D20003AEB51 /* EmptyDataView.xib in Resources */,
+				421766EC22295CF9003AEB51 /* DashboardPostTableViewCell.xib in Resources */,
+				421766DD22295CBA003AEB51 /* MessageOpponentTableViewCell.xib in Resources */,
+				421766C822295C77003AEB51 /* LocateUsTableViewCell.xib in Resources */,
+				421766E022295CCA003AEB51 /* MessageMeTableViewCell.xib in Resources */,
 				423AEDBA212D5C4700A097A0 /* Main.storyboard in Resources */,
-				427BF3172137D1250077FFB0 /* SendUsMessageDetailTableViewCell.xib in Resources */,
-				427BCA5E2133D121006A72C1 /* DashboardHatTableViewCell.xib in Resources */,
-				422957BE213EB340001DDE7D /* TeacherStudentTableViewCell.xib in Resources */,
-				42E6B803213D278B00F2A135 /* ClassCollectionViewCell.xib in Resources */,
+				421766CE22295C83003AEB51 /* SendUsMessageDetailTableViewCell.xib in Resources */,
+				421766E922295CEF003AEB51 /* DashboardHatTableViewCell.xib in Resources */,
+				4217666122295999003AEB51 /* TeacherStudentTableViewCell.xib in Resources */,
+				4217669822295C0C003AEB51 /* ClassCollectionViewCell.xib in Resources */,
 				4214DC1F212EA25C00C2DCC5 /* GoogleService-Info.plist in Resources */,
-				427BF31D2137F0EA0077FFB0 /* ImageFullCollectionViewCell.xib in Resources */,
+				421766BF22295C67003AEB51 /* ImageFullCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,15 +1532,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-innocentminds/Pods-innocentminds-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -1394,15 +1545,9 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -1427,12 +1572,14 @@
 				42E3264A216EC0A100EF6DA2 /* Notification.swift in Sources */,
 				422957DB213EDDF8001DDE7D /* BathroomTableViewCell.swift in Sources */,
 				4291E7ED2170FBCE00C8ADA7 /* Transportation.swift in Sources */,
+				426A2632220F3E0200CAE7C2 /* EventsDetailsViewController.swift in Sources */,
 				428BF6082136DF1F00555926 /* LocateUsTableViewCell.swift in Sources */,
 				428C740B21750325002EB7C6 /* CharacterType.swift in Sources */,
 				42DE560D2155346500A6ED0A /* AddPhotosCollectionViewCell.swift in Sources */,
 				422957B9213EA80C001DDE7D /* AddTemperatureView.swift in Sources */,
 				42D0CBA52163AFF100EB6889 /* SelectStudentsTableViewCell.swift in Sources */,
 				422957B2213E9E72001DDE7D /* TemperatureTableViewCell.swift in Sources */,
+				422E277A220E1C3E00FFE522 /* EventsTableViewCell.swift in Sources */,
 				421B219D2141277800099EC6 /* AdditionalImageCollectionViewCell.swift in Sources */,
 				4291E7EF2170FBCE00C8ADA7 /* HomeLanguage.swift in Sources */,
 				427BCA8C21342489006A72C1 /* AddNewMessageTableViewCell.swift in Sources */,
@@ -1474,6 +1621,7 @@
 				4214DC27212EC1CF00C2DCC5 /* Extensions.swift in Sources */,
 				42D0CBA12163AF7200EB6889 /* SelectStudentsViewController.swift in Sources */,
 				42D57647217DC92500DC69CF /* AddDailyAgendaViewController.swift in Sources */,
+				426A2631220F3E0200CAE7C2 /* EventsViewController.swift in Sources */,
 				427BF31C2137F0EA0077FFB0 /* ImageFullCollectionViewCell.swift in Sources */,
 				422957DF213EDE18001DDE7D /* PottyTrainingTableViewCell.swift in Sources */,
 				427BCA9E21345E29006A72C1 /* MessageMeTableViewCell.swift in Sources */,
@@ -1529,6 +1677,7 @@
 				423515EC216D6C71000BB892 /* TermsPrivacy.swift in Sources */,
 				427BF3232137F4160077FFB0 /* ImageViewCollectionViewCell.swift in Sources */,
 				427BCA7D2133F1CA006A72C1 /* ChangeChildView.swift in Sources */,
+				422C6F3423316C1A00E5D733 /* PayFeeViewController.swift in Sources */,
 				4214DC2B212EC24D00C2DCC5 /* Services.swift in Sources */,
 				4291E800217150A600C8ADA7 /* MedicalInfoCollectionViewCell.swift in Sources */,
 				422957CF213EDD7E001DDE7D /* BreakfastTableViewCell.swift in Sources */,
@@ -1538,6 +1687,7 @@
 				42D0CB9E21639A2A00EB6889 /* SearchTableViewCell.swift in Sources */,
 				422957BF213EB340001DDE7D /* TeacherStudentTableViewCell.swift in Sources */,
 				423515CD216D4A77000BB892 /* Config.swift in Sources */,
+				426A262E220F305E00CAE7C2 /* Event.swift in Sources */,
 				42D0CB9A2163946200EB6889 /* SearchViewController.swift in Sources */,
 				427BCAAF2134B37C006A72C1 /* ImageFullScreenView.swift in Sources */,
 				42034DDB21C0251200C356BE /* BathPottyType.swift in Sources */,
@@ -1551,10 +1701,591 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4217664022295897003AEB51 /* SelectStudentsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217663F22295897003AEB51 /* Base */,
+				421766422229589E003AEB51 /* en */,
+				42176644222958A4003AEB51 /* fr */,
+			);
+			name = SelectStudentsTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		42176647222958B8003AEB51 /* AddPhotosCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42176646222958B8003AEB51 /* Base */,
+				42176649222958C0003AEB51 /* en */,
+				4217664B222958C6003AEB51 /* fr */,
+			);
+			name = AddPhotosCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217664E222958D1003AEB51 /* SendParentsMessageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217664D222958D1003AEB51 /* Base */,
+				421766502229594A003AEB51 /* en */,
+				4217665222295951003AEB51 /* fr */,
+			);
+			name = SendParentsMessageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766552229595B003AEB51 /* EmptyActivityTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766542229595B003AEB51 /* Base */,
+				4217665722295961003AEB51 /* en */,
+				4217665922295966003AEB51 /* fr */,
+			);
+			name = EmptyActivityTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217665C22295981003AEB51 /* TeacherStudentHeaderTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217665B22295981003AEB51 /* Base */,
+				4217665E22295986003AEB51 /* en */,
+				421766602229598B003AEB51 /* fr */,
+			);
+			name = TeacherStudentHeaderTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217666322295999003AEB51 /* TeacherStudentTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217666222295999003AEB51 /* Base */,
+				421766652229599F003AEB51 /* en */,
+				42176667222959A5003AEB51 /* fr */,
+			);
+			name = TeacherStudentTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217666A22295AC5003AEB51 /* AdditionalImageCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217666922295AC5003AEB51 /* Base */,
+				4217666C22295ACB003AEB51 /* en */,
+				4217666E22295AD1003AEB51 /* fr */,
+			);
+			name = AdditionalImageCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217667122295ADC003AEB51 /* AddActivityPostTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217667022295ADC003AEB51 /* Base */,
+				4217667322295AEA003AEB51 /* en */,
+				4217667522295AF0003AEB51 /* fr */,
+			);
+			name = AddActivityPostTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217667822295B01003AEB51 /* AddActivityHeaderTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217667722295B01003AEB51 /* Base */,
+				4217667A22295B07003AEB51 /* en */,
+				4217667C22295B1A003AEB51 /* fr */,
+			);
+			name = AddActivityHeaderTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217667F22295BC9003AEB51 /* PottyTrainingTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217667E22295BC9003AEB51 /* Base */,
+				4217670E22295E26003AEB51 /* en */,
+				4217671022295E2B003AEB51 /* fr */,
+			);
+			name = PottyTrainingTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217668222295BD7003AEB51 /* BathroomTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217668122295BD7003AEB51 /* Base */,
+				4217671222295E32003AEB51 /* en */,
+				4217671422295E39003AEB51 /* fr */,
+			);
+			name = BathroomTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217668522295BDE003AEB51 /* NapTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217668422295BDE003AEB51 /* Base */,
+				4217671622295E44003AEB51 /* en */,
+				4217671822295E4A003AEB51 /* fr */,
+			);
+			name = NapTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217668822295BE5003AEB51 /* LunchTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217668722295BE5003AEB51 /* Base */,
+				4217671A22295E52003AEB51 /* en */,
+				4217671C22295E57003AEB51 /* fr */,
+			);
+			name = LunchTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217668B22295BEC003AEB51 /* BreakfastTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217668A22295BEC003AEB51 /* Base */,
+				4217671E22295E5F003AEB51 /* en */,
+				4217672022295E65003AEB51 /* fr */,
+			);
+			name = BreakfastTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217668E22295BF2003AEB51 /* SearchTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217668D22295BF2003AEB51 /* Base */,
+				4217672222295E6C003AEB51 /* en */,
+				4217672422295E72003AEB51 /* fr */,
+			);
+			name = SearchTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217669122295BF9003AEB51 /* TemperatureFooterTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217669022295BF9003AEB51 /* Base */,
+				4217672622295E7A003AEB51 /* en */,
+				4217672822295E80003AEB51 /* fr */,
+			);
+			name = TemperatureFooterTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217669422295C00003AEB51 /* TemperatureTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217669322295C00003AEB51 /* Base */,
+				4217672A22295E95003AEB51 /* en */,
+				4217672C22295E9A003AEB51 /* fr */,
+			);
+			name = TemperatureTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217669722295C06003AEB51 /* NurseStudentTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217669622295C06003AEB51 /* Base */,
+				4217672E22295EA6003AEB51 /* en */,
+				4217673022295EAD003AEB51 /* fr */,
+			);
+			name = NurseStudentTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217669A22295C0C003AEB51 /* ClassCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217669922295C0C003AEB51 /* Base */,
+				4217673222295EB5003AEB51 /* en */,
+				4217673422295EBB003AEB51 /* fr */,
+			);
+			name = ClassCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		4217669D22295C12003AEB51 /* EventsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217669C22295C12003AEB51 /* Base */,
+				4217673622295EC1003AEB51 /* en */,
+				4217673822295EC6003AEB51 /* fr */,
+			);
+			name = EventsTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766A022295C18003AEB51 /* EmptyDataTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217669F22295C18003AEB51 /* Base */,
+				4217673A22295ECD003AEB51 /* en */,
+				4217673C22295ED2003AEB51 /* fr */,
+			);
+			name = EmptyDataTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766A322295C28003AEB51 /* PersonalInformationCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766A222295C28003AEB51 /* Base */,
+				42308D2F2230F19000B0C826 /* en */,
+				42308D312230F19500B0C826 /* fr */,
+			);
+			name = PersonalInformationCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766A622295C2E003AEB51 /* SchoolBusCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766A522295C2E003AEB51 /* Base */,
+				4217674222295EE4003AEB51 /* en */,
+				4217674422295EEC003AEB51 /* fr */,
+			);
+			name = SchoolBusCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766A922295C34003AEB51 /* PediatricianCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766A822295C34003AEB51 /* Base */,
+				42308D272230F11B00B0C826 /* en */,
+				42308D292230F12100B0C826 /* fr */,
+			);
+			name = PediatricianCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766AC22295C3B003AEB51 /* MedicalInfoCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766AB22295C3B003AEB51 /* Base */,
+				42308D232230F0C100B0C826 /* en */,
+				42308D252230F0CA00B0C826 /* fr */,
+			);
+			name = MedicalInfoCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766AF22295C42003AEB51 /* DiseaseTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766AE22295C42003AEB51 /* Base */,
+				4217674E22295F19003AEB51 /* en */,
+				4217675022295F1F003AEB51 /* fr */,
+			);
+			name = DiseaseTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766B222295C47003AEB51 /* HabitsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766B122295C47003AEB51 /* Base */,
+				42308D2B2230F15500B0C826 /* en */,
+				42308D2D2230F15A00B0C826 /* fr */,
+			);
+			name = HabitsTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766B522295C4E003AEB51 /* PaymentTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766B422295C4E003AEB51 /* Base */,
+				4217675622295F3C003AEB51 /* en */,
+				4217675822295F41003AEB51 /* fr */,
+			);
+			name = PaymentTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766B822295C53003AEB51 /* RegisterChildStep1CollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766B722295C53003AEB51 /* Base */,
+				4217675A22295F6A003AEB51 /* en */,
+				4217675C22295F70003AEB51 /* fr */,
+			);
+			name = RegisterChildStep1CollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766BB22295C5A003AEB51 /* RegisterChildStep2CollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766BA22295C5A003AEB51 /* Base */,
+				4217675E22295F7F003AEB51 /* en */,
+				4217676022295F8D003AEB51 /* fr */,
+			);
+			name = RegisterChildStep2CollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766BE22295C60003AEB51 /* RegisterChildStep3CollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766BD22295C60003AEB51 /* Base */,
+				4217676222295F94003AEB51 /* en */,
+				4217676422295F99003AEB51 /* fr */,
+			);
+			name = RegisterChildStep3CollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766C122295C67003AEB51 /* ImageFullCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766C022295C67003AEB51 /* Base */,
+				4217676622295FA9003AEB51 /* en */,
+				4217676822295FB0003AEB51 /* fr */,
+			);
+			name = ImageFullCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766C422295C6C003AEB51 /* ImageViewCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766C322295C6C003AEB51 /* Base */,
+				4217676A22295FCE003AEB51 /* en */,
+				4217676C22295FD5003AEB51 /* fr */,
+			);
+			name = ImageViewCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766C722295C72003AEB51 /* PhoneNumberTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766C622295C72003AEB51 /* Base */,
+				4217676E22295FDF003AEB51 /* en */,
+				4217677022295FE5003AEB51 /* fr */,
+			);
+			name = PhoneNumberTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766CA22295C77003AEB51 /* LocateUsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766C922295C77003AEB51 /* Base */,
+				4217677222295FEE003AEB51 /* en */,
+				4217677422295FF3003AEB51 /* fr */,
+			);
+			name = LocateUsTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766CD22295C7D003AEB51 /* SendUsMessageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766CC22295C7D003AEB51 /* Base */,
+				4217677622295FFC003AEB51 /* en */,
+				4217677822296001003AEB51 /* fr */,
+			);
+			name = SendUsMessageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766D022295C83003AEB51 /* SendUsMessageDetailTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766CF22295C83003AEB51 /* Base */,
+				4217677A22296009003AEB51 /* en */,
+				4217677C2229600F003AEB51 /* fr */,
+			);
+			name = SendUsMessageDetailTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766D322295C9A003AEB51 /* AboutUsCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766D222295C9A003AEB51 /* Base */,
+				4217677E22296018003AEB51 /* en */,
+				421767802229601F003AEB51 /* fr */,
+			);
+			name = AboutUsCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766D622295CA7003AEB51 /* MenuTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766D522295CA7003AEB51 /* Base */,
+				4217678222296028003AEB51 /* en */,
+				4217678422296031003AEB51 /* fr */,
+			);
+			name = MenuTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766D922295CAD003AEB51 /* AddNewMessageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766D822295CAD003AEB51 /* Base */,
+				421767862229603C003AEB51 /* en */,
+				4217678822296043003AEB51 /* fr */,
+			);
+			name = AddNewMessageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766DC22295CB4003AEB51 /* MessageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766DB22295CB4003AEB51 /* Base */,
+				4217678A2229604E003AEB51 /* en */,
+				4217678C22296055003AEB51 /* fr */,
+			);
+			name = MessageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766DF22295CBA003AEB51 /* MessageOpponentTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766DE22295CBA003AEB51 /* Base */,
+				4217678E2229605C003AEB51 /* en */,
+				4217679022296061003AEB51 /* fr */,
+			);
+			name = MessageOpponentTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766E222295CCA003AEB51 /* MessageMeTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766E122295CCA003AEB51 /* Base */,
+				421767922229606B003AEB51 /* en */,
+				4217679422296070003AEB51 /* fr */,
+			);
+			name = MessageMeTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766E522295CD2003AEB51 /* NotificationTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766E422295CD2003AEB51 /* Base */,
+				4217679622296079003AEB51 /* en */,
+				4217679822296081003AEB51 /* fr */,
+			);
+			name = NotificationTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766E822295CDA003AEB51 /* ChildTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766E722295CDA003AEB51 /* Base */,
+				4217679A2229609F003AEB51 /* en */,
+				4217679C222960A8003AEB51 /* fr */,
+			);
+			name = ChildTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766EB22295CEF003AEB51 /* DashboardHatTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766EA22295CEF003AEB51 /* Base */,
+				4217679E222960AF003AEB51 /* en */,
+				421767A0222960B5003AEB51 /* fr */,
+			);
+			name = DashboardHatTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766EE22295CF9003AEB51 /* DashboardPostTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766ED22295CF9003AEB51 /* Base */,
+				421767A2222960C0003AEB51 /* en */,
+				421767A4222960C7003AEB51 /* fr */,
+			);
+			name = DashboardPostTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		421766F122295D0F003AEB51 /* SendParentsMessageView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766F022295D0F003AEB51 /* Base */,
+				421767A6222960D9003AEB51 /* en */,
+				421767A8222960E0003AEB51 /* fr */,
+			);
+			name = SendParentsMessageView.xib;
+			sourceTree = "<group>";
+		};
+		421766F422295D19003AEB51 /* AddTemperatureView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766F322295D19003AEB51 /* Base */,
+				421767AA22296381003AEB51 /* en */,
+				421767AC22296390003AEB51 /* fr */,
+			);
+			name = AddTemperatureView.xib;
+			sourceTree = "<group>";
+		};
+		421766F722295D20003AEB51 /* EmptyDataView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766F622295D20003AEB51 /* Base */,
+				421767AE222963A4003AEB51 /* en */,
+				421767B0222963AB003AEB51 /* fr */,
+			);
+			name = EmptyDataView.xib;
+			sourceTree = "<group>";
+		};
+		421766FA22295D27003AEB51 /* DiseaseView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766F922295D27003AEB51 /* Base */,
+				421767B2222963BA003AEB51 /* en */,
+				421767B4222963BF003AEB51 /* fr */,
+			);
+			name = DiseaseView.xib;
+			sourceTree = "<group>";
+		};
+		421766FD22295D2D003AEB51 /* SendUsMessageView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766FC22295D2D003AEB51 /* Base */,
+				421767B6222963C7003AEB51 /* en */,
+				421767B8222963CC003AEB51 /* fr */,
+			);
+			name = SendUsMessageView.xib;
+			sourceTree = "<group>";
+		};
+		4217670022295D38003AEB51 /* ImageFullScreenView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421766FF22295D38003AEB51 /* Base */,
+				421767BA222963D5003AEB51 /* en */,
+				421767BC222963DA003AEB51 /* fr */,
+			);
+			name = ImageFullScreenView.xib;
+			sourceTree = "<group>";
+		};
+		4217670322295D3F003AEB51 /* PlusActionView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217670222295D3F003AEB51 /* Base */,
+				421767BE222963E1003AEB51 /* en */,
+				421767C0222963E7003AEB51 /* fr */,
+			);
+			name = PlusActionView.xib;
+			sourceTree = "<group>";
+		};
+		4217670622295D48003AEB51 /* MessagesView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217670522295D48003AEB51 /* Base */,
+				421767C2222963EE003AEB51 /* en */,
+				421767C4222963F5003AEB51 /* fr */,
+			);
+			name = MessagesView.xib;
+			sourceTree = "<group>";
+		};
+		4217670922295D4F003AEB51 /* ChangeChildView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217670822295D4F003AEB51 /* Base */,
+				421767C622296405003AEB51 /* en */,
+				421767C82229640B003AEB51 /* fr */,
+			);
+			name = ChangeChildView.xib;
+			sourceTree = "<group>";
+		};
+		4217670C22295D56003AEB51 /* AlertView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4217670B22295D56003AEB51 /* Base */,
+				421767CA22296414003AEB51 /* en */,
+				421767CC2229641A003AEB51 /* fr */,
+			);
+			name = AlertView.xib;
+			sourceTree = "<group>";
+		};
+		421767D1222978B1003AEB51 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				421767D0222978B1003AEB51 /* en */,
+				421767D2222978B4003AEB51 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		423AEDB8212D5C4700A097A0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				423AEDB9212D5C4700A097A0 /* Base */,
+				42ADAE6A221C9FB50064F849 /* en */,
+				42ADAE76221CA03A0064F849 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1563,8 +2294,30 @@
 			isa = PBXVariantGroup;
 			children = (
 				423AEDBE212D5C4700A097A0 /* Base */,
+				42ADAE75221CA0390064F849 /* fr */,
+				42ADAE7A221CA2980064F849 /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		42ADAE6D221C9FF40064F849 /* Nurse.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42ADAE6C221C9FF40064F849 /* Base */,
+				42ADAE6F221C9FFC0064F849 /* en */,
+				42ADAE77221CA03C0064F849 /* fr */,
+			);
+			name = Nurse.storyboard;
+			sourceTree = "<group>";
+		};
+		42ADAE72221CA00E0064F849 /* Teacher.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42ADAE71221CA00E0064F849 /* Base */,
+				42ADAE74221CA0160064F849 /* en */,
+				42ADAE78221CA03D0064F849 /* fr */,
+			);
+			name = Teacher.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1574,6 +2327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1631,6 +2385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1690,8 +2445,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.infosys.innocentminds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1708,8 +2463,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.infosys.innocentminds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Home lang:"; ObjectID = "4Jd-Dz-ENV"; */
+"4Jd-Dz-ENV.text" = "Home lang:";
+
+/* Class = "UIButton"; normalTitle = "Child image"; ObjectID = "56O-uM-n0W"; */
+"56O-uM-n0W.normalTitle" = "Child image";
+
+/* Class = "UILabel"; text = "Gender:"; ObjectID = "8u8-oN-Noh"; */
+"8u8-oN-Noh.text" = "Gender:";
+
+/* Class = "UILabel"; text = "Transportation:"; ObjectID = "9AB-e4-qx3"; */
+"9AB-e4-qx3.text" = "Transportation:";
+
+/* Class = "UILabel"; text = "Program lang:"; ObjectID = "Ge6-wk-8hj"; */
+"Ge6-wk-8hj.text" = "Program lang:";
+
+/* Class = "UILabel"; text = "Father's name:"; ObjectID = "PYL-Hy-YNM"; */
+"PYL-Hy-YNM.text" = "Father's name:";
+
+/* Class = "UILabel"; text = "Personal information"; ObjectID = "hWb-95-FWr"; */
+"hWb-95-FWr.text" = "Personal information";
+
+/* Class = "UILabel"; text = "Lastname:"; ObjectID = "ipw-bB-5sN"; */
+"ipw-bB-5sN.text" = "Lastname:";
+
+/* Class = "UILabel"; text = "Place of birth:"; ObjectID = "kW1-sg-GJt"; */
+"kW1-sg-GJt.text" = "Place of birth:";
+
+/* Class = "UILabel"; text = "Date of birth:"; ObjectID = "rng-Ku-xaY"; */
+"rng-Ku-xaY.text" = "Date of birth:";
+
+/* Class = "UILabel"; text = "Firstname:"; ObjectID = "z0J-3k-9F2"; */
+"z0J-3k-9F2.text" = "Firstname:";

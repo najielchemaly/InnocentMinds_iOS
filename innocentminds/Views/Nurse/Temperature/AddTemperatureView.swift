@@ -46,16 +46,23 @@ class AddTemperatureView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         self.buttonAdd.layer.cornerRadius = self.buttonAdd.frame.height/2
         
         if self.mode == .edit {
-            self.textFieldTime.text = childTemperature.date
             self.textFieldTemperature.text = childTemperature.temperature
             self.textFieldComment.text = childTemperature.comment
             
             self.buttonAdd.setTitle(Localization.string(key: MessageKey.Save), for: .normal)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            if let strDate = childTemperature.date,
+                let date = dateFormatter.date(from: strDate) {
+                self.updateTimeOfTemperature(date: date)
+            }
+        } else {
+            self.updateTimeOfTemperature(date: Date())
         }
         
         self.setupDatePicker()
         self.setupTempPickerView()
-        self.updateTimeOfTemperature(date: Date())
     }
     
     func setupTempPickerView() {
@@ -80,6 +87,9 @@ class AddTemperatureView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     func setupDatePicker() {
         self.datePicker = UIDatePicker()
         self.datePicker.datePickerMode = .time
+        self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
+        self.datePicker.setMaxDate()
+        
         self.textFieldTime.inputView = self.datePicker
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))

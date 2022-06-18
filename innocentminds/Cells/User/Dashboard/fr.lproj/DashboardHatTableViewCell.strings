@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Dashboard"; ObjectID = "G5Z-eM-ej9"; */
+"G5Z-eM-ej9.text" = "Tableau de bord";
+
+/* Class = "UILabel"; text = "Viewing"; ObjectID = "bz9-my-R3X"; */
+"bz9-my-R3X.text" = "Visualisation";
+
+/* Class = "UIButton"; normalTitle = "Change child"; ObjectID = "jhA-vq-dae"; */
+"jhA-vq-dae.normalTitle" = "Changer d'enfant";
+
+/* Class = "UILabel"; text = "23"; ObjectID = "wWT-uy-psF"; */
+"wWT-uy-psF.text" = "";

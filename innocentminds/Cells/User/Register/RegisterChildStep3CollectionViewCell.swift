@@ -53,6 +53,8 @@ class RegisterChildStep3CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
             
             self.datePicker = UIDatePicker()
             self.datePicker.datePickerMode = .date
+            self.datePicker.minimumDate = Date()
+            self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
             self.textFieldDateOfEntry.inputView = self.datePicker
             
             let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: baseVC.view.frame.width, height: 44))
@@ -116,7 +118,7 @@ class RegisterChildStep3CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     
     func handleDatePicker() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         self.textFieldDateOfEntry.text = dateFormatter.string(from: self.datePicker.date)
         
         if let registerChildVC = currentVC as? RegisterChildViewController, let child = registerChildVC.tempUser.children?.first {
@@ -137,5 +139,15 @@ class RegisterChildStep3CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
         
         return true
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.pickerView.reloadAllComponents()
+    }
+    
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        self.pickerView.reloadAllComponents()
+//        
+//        return true
+//    }
 
 }

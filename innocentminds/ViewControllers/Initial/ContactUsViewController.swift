@@ -25,6 +25,10 @@ class ContactUsViewController: BaseViewController, UITableViewDelegate, UITableV
         self.initiliazeViews()
         self.setupTableView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -114,7 +118,7 @@ class ContactUsViewController: BaseViewController, UITableViewDelegate, UITableV
         case 2:
             return 90
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     
@@ -135,12 +139,32 @@ class ContactUsViewController: BaseViewController, UITableViewDelegate, UITableV
                 cell.selectionStyle = .none
                 cell.initializeViews()
                 
-                if let phoneList = self.filteredContactUsList.first?.phone_numbers {
+                cell.buttonCall.tag = indexPath.row
+                cell.buttonCall.addTarget(self, action: #selector(buttonCallTapped(sender:)), for: .touchUpInside)
+                
+                guard let contactUs = self.filteredContactUsList.first else {
+                    return cell
+                }
+                
+                if let phoneList = contactUs.phone_numbers {
                     cell.labelPhone.text = phoneList[indexPath.row].text
                 }
                 
-                cell.buttonCall.tag = indexPath.row
-                cell.buttonCall.addTarget(self, action: #selector(buttonCallTapped(sender:)), for: .touchUpInside)
+                if let branchId = contactUs.branch_id {
+                    switch branchId {
+                    case "1":
+                        cell.mainView.backgroundColor = Colors.appGreen
+                        break
+                    case "2":
+                        cell.mainView.backgroundColor = Colors.appRed
+                        break
+                    case "3":
+                        cell.mainView.backgroundColor = Colors.appBlue
+                        break
+                    default:
+                        break
+                    }
+                }
                 
                 return cell
             }
@@ -184,7 +208,8 @@ class ContactUsViewController: BaseViewController, UITableViewDelegate, UITableV
     @objc func locateUsTapped() {
         if let location = self.filteredContactUsList.first?.location {
             let coordinates = location.split{$0 == ","}.map(String.init)
-            if let latitude = coordinates.first, let longitude = coordinates.last {
+            if let latitude = coordinates.first?.trimmingCharacters(in: .whitespacesAndNewlines),
+                let longitude = coordinates.last?.trimmingCharacters(in: .whitespacesAndNewlines) {
                 guard let googleMapsUrl = URL(string: "comgooglemaps://") else {
                     return
                 }
@@ -195,14 +220,12 @@ class ContactUsViewController: BaseViewController, UITableViewDelegate, UITableV
                     }
                     
                     UIApplication.shared.open(mapUrl)
-                } else if (UIApplication.shared.canOpenURL(googleMapsUrl)) {
+                } else {
                     guard let mapUrl = URL(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving") else {
                         return
                     }
                     
                     UIApplication.shared.open(mapUrl)
-                } else {
-                    NSLog("Can't use com.google.maps://")
                 }
             }
         }

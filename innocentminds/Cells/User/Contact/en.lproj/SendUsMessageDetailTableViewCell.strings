@@ -1,0 +1,18 @@
+
+/* Class = "UITextField"; placeholder = "*First name"; ObjectID = "2Zc-1Z-bVD"; */
+"2Zc-1Z-bVD.placeholder" = "*First name";
+
+/* Class = "UIButton"; normalTitle = "*Branch"; ObjectID = "JSM-AR-u3H"; */
+"JSM-AR-u3H.normalTitle" = "*Branch";
+
+/* Class = "UITextField"; placeholder = "*Phone number"; ObjectID = "Y7a-7R-jJp"; */
+"Y7a-7R-jJp.placeholder" = "*Phone number";
+
+/* Class = "UIButton"; normalTitle = "Send message"; ObjectID = "nUQ-si-yPA"; */
+"nUQ-si-yPA.normalTitle" = "Send message";
+
+/* Class = "UITextField"; placeholder = "*Last name"; ObjectID = "qfC-LL-Htu"; */
+"qfC-LL-Htu.placeholder" = "*Last name";
+
+/* Class = "UITextField"; placeholder = "*Email"; ObjectID = "t9n-Yi-F7g"; */
+"t9n-Yi-F7g.placeholder" = "*Email";

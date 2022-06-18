@@ -18,7 +18,7 @@ extension UIColor {
         
         if hexString.hasPrefix("#") {
             let start = hexString.index(hexString.startIndex, offsetBy: 1)
-            let hexColor = hexString.substring(from: start)
+            let hexColor = String(hexString[start...])
             
             if hexColor.count == 6 {
                 let scanner = Scanner(string: hexColor)
@@ -114,7 +114,7 @@ extension UIView {
     }
     
     func hide(remove: Bool = false) {
-        UIApplication.shared.keyWindow?.windowLevel = UIWindowLevelNormal        
+        UIApplication.shared.keyWindow?.windowLevel = UIWindow.Level.normal
         
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
@@ -141,6 +141,21 @@ extension UIView {
         self.endEditing(true)
     }
     
+    func showError() {
+        self.layer.borderColor = Colors.appRed.cgColor
+        self.layer.borderWidth = 2
+    }
+    
+    func hideError() {
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.borderWidth = 0
+    }
+    
+    func addTapGestureToHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.addGestureRecognizer(tap)
+    }
 }
 
 extension UITextField {
@@ -150,7 +165,7 @@ extension UITextField {
             return self.placeHolderColor
         }
         set {
-            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedStringKey.foregroundColor: newValue!])
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: newValue!])
         }
     }
     
@@ -211,9 +226,9 @@ extension BaseViewController {
             case .fromBottom:
                 let transition = CATransition()
                 transition.duration = 0.3
-                transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                transition.type = kCATransitionPush;
-                transition.subtype = kCATransitionFromTop;
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.push;
+                transition.subtype = CATransitionSubtype.fromTop;
                 currentVC.navigationController?.view.layer.add(transition, forKey: kCATransition)
                 currentVC.navigationController?.pushViewController(destinationVC, animated: false)
                 break
@@ -221,7 +236,7 @@ extension BaseViewController {
         }
     }
     
-    func showAlert(title: String = "Innocent Minds", message: String, style: UIAlertControllerStyle, popVC: Bool = false, dismissVC: Bool = false) {
+    func showAlert(title: String = "Innocent Minds", message: String, style: UIAlertController.Style, popVC: Bool = false, dismissVC: Bool = false) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         alert.addAction(UIAlertAction(title: Localization.string(key: MessageKey.Ok), style: .default, handler: { action in
@@ -246,9 +261,9 @@ extension BaseViewController {
         } else if fromTop {
             let transition = CATransition()
             transition.duration = 0.3
-            transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            transition.type = kCATransitionPush
-            transition.subtype = kCATransitionFromBottom
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromBottom
             navigationController?.view.layer.add(transition, forKey:kCATransition)
             self.navigationController?.popViewController(animated: false)
         } else {
@@ -270,9 +285,9 @@ extension UIButton {
     }
     
     func setAttributedText(firstText: String, secondText: String, color: UIColor) {
-        let firstAttrs = [NSAttributedStringKey.foregroundColor : color]
+        let firstAttrs = [NSAttributedString.Key.foregroundColor : color]
         let attributedString = NSMutableAttributedString(string: firstText, attributes: firstAttrs)
-        let secondAttrs = [NSAttributedStringKey.font : Fonts.montserrat_TextFont_Bold, NSAttributedStringKey.foregroundColor : color]
+        let secondAttrs = [NSAttributedString.Key.font : Fonts.montserrat_TextFont_Bold, NSAttributedString.Key.foregroundColor : color]
         let attrString = NSMutableAttributedString(string: secondText, attributes:secondAttrs)
         attributedString.append(attrString)
         self.setAttributedTitle(attributedString, for: .normal)
@@ -339,14 +354,14 @@ extension String {
     
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.height)
     }
     
     func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.width)
     }
@@ -356,6 +371,24 @@ extension String {
         return addingPercentEncoding(withAllowedCharacters: allowedCharacters)
     }
     
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let email = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return email.evaluate(with: self)
+    }
+    
+    func isValidPhoneNumber() -> Bool {
+        return self.count >= 8
+    }
+    
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }
 
 extension Optional where Wrapped == String {
@@ -393,13 +426,13 @@ extension UIImage {
     /// Returns the data for the specified image in PNG format
     /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
     /// - returns: A data object containing the PNG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
-    var png: Data? { return UIImagePNGRepresentation(self) }
+    var png: Data? { return self.pngData() }
     
     /// Returns the data for the specified image in JPEG format.
     /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
     /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
     func jpeg(_ quality: JPEGQuality) -> Data? {
-        return UIImageJPEGRepresentation(self, quality.rawValue)
+        return UIImage().jpegData(compressionQuality: quality.rawValue)
     }
     
 }
@@ -418,6 +451,12 @@ extension Date {
         dateFormatter.dateFormat = "MMMM"
         let strMonth = dateFormatter.monthSymbols[number-1]
         return strMonth
+    }
+    
+    func getWeekNumber() -> Int {
+        let calendar = Calendar.current
+        let weekOfYear = calendar.component(.weekOfMonth, from: Date())
+        return weekOfYear-1
     }
     
 }
@@ -497,6 +536,6 @@ extension UIWindow {
     func showLoader(message: String? = nil, type: NVActivityIndicatorType? = .ballScaleMultiple,
                     color: UIColor? = nil , textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         let activityData = ActivityData(message: message, type: type, color: color, backgroundColor: backgroundColor, textColor: textColor)
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)        
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)        
     }
 }

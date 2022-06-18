@@ -38,6 +38,7 @@ class NapTableViewCell: UITableViewCell {
         if let baseVC = currentVC as? BaseViewController {
             self.datePicker = UIDatePicker()
             self.datePicker.datePickerMode = .time
+            self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
             self.textFieldFrom.inputView = self.datePicker
             self.textFieldTo.inputView = self.datePicker
             

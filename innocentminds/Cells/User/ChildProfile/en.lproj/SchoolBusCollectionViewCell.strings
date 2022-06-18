@@ -1,0 +1,39 @@
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "0AH-9O-weE"; */
+"0AH-9O-weE.placeholder" = "Phone number";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "2vM-X8-b8b"; */
+"2vM-X8-b8b.placeholder" = "Phone number";
+
+/* Class = "UILabel"; text = "School bus"; ObjectID = "42s-b8-VwM"; */
+"42s-b8-VwM.text" = "School bus";
+
+/* Class = "UITextField"; placeholder = "Full name"; ObjectID = "6hy-2R-ysX"; */
+"6hy-2R-ysX.placeholder" = "Full name";
+
+/* Class = "UITextField"; placeholder = "Full name"; ObjectID = "JBy-f3-rNC"; */
+"JBy-f3-rNC.placeholder" = "Full name";
+
+/* Class = "UILabel"; text = "PERSON 1"; ObjectID = "Jgf-5a-1US"; */
+"Jgf-5a-1US.text" = "PERSON 1";
+
+/* Class = "UILabel"; text = "PERSON 3"; ObjectID = "OWs-wd-CEb"; */
+"OWs-wd-CEb.text" = "PERSON 3";
+
+/* Class = "UITextField"; placeholder = "Full name"; ObjectID = "Sh6-30-Pk9"; */
+"Sh6-30-Pk9.placeholder" = "Full name";
+
+/* Class = "UILabel"; text = "PERSON 2"; ObjectID = "Vve-XW-p2a"; */
+"Vve-XW-p2a.text" = "PERSON 2";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "a5y-39-miN"; */
+"a5y-39-miN.placeholder" = "Phone number";
+
+/* Class = "UITextField"; placeholder = "Relationship"; ObjectID = "f1m-Sb-ZQc"; */
+"f1m-Sb-ZQc.placeholder" = "Relationship";
+
+/* Class = "UITextField"; placeholder = "Relationship"; ObjectID = "nmX-Q1-KF0"; */
+"nmX-Q1-KF0.placeholder" = "Relationship";
+
+/* Class = "UITextField"; placeholder = "Relationship"; ObjectID = "xeD-u9-mLs"; */
+"xeD-u9-mLs.placeholder" = "Relationship";

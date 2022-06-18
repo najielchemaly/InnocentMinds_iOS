@@ -25,6 +25,7 @@ class NurseStudentDetailViewController: BaseViewController, UITableViewDelegate,
     var childTemperatures: [ChildTemperature] = [ChildTemperature]()
     var shouldAskBeforeLeaving: Bool = false
     var datePicker: UIDatePicker!
+    var dateArrived: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -222,8 +223,8 @@ class NurseStudentDetailViewController: BaseViewController, UITableViewDelegate,
         self.showLoader()
         
         let studentId = self.selectedStudent.id ?? "0"
-        let time = self.textFieldTimeOfArrival.text ?? ""
-        
+        let time = self.dateArrived ?? ""
+
         DispatchQueue.global(qos: .background).async {
             let result = appDelegate.services.updateStudentStatus(childId: studentId, hasArrived: true, dateArrived: time)
             
@@ -254,13 +255,23 @@ class NurseStudentDetailViewController: BaseViewController, UITableViewDelegate,
         self.viewTimeOfArrival.isEnabled(enable: self.buttonArrived.isSelected)
         
         if self.buttonArrived.isSelected {
-            self.updateTimeOfArrival(date: Date())
+            if self.selectedStudent.has_arrived == true {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                if let strDate = self.selectedStudent.date_arrived,
+                    let date = dateFormatter.date(from: strDate) {
+                    self.updateTimeOfArrival(date: date)
+                }
+            } else {
+                self.updateTimeOfArrival(date: Date())
+            }
         }
     }
     
     func setupDatePicker() {
         self.datePicker = UIDatePicker()
         self.datePicker.datePickerMode = .dateAndTime
+        self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
         self.textFieldTimeOfArrival.inputView = self.datePicker
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
@@ -286,6 +297,9 @@ class NurseStudentDetailViewController: BaseViewController, UITableViewDelegate,
 //        formatter.dateFormat = "HH:mm"
 //        let time = formatter.string(from: date)
 //        self.textFieldTimeOfArrival.text = time
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        self.dateArrived = dateFormatter.string(from: date)
         let calendar = Calendar.current
         let component = calendar.dateComponents([.hour, .minute], from: date)
         if let hour = component.hour, let minute = component.minute {
@@ -298,7 +312,7 @@ class NurseStudentDetailViewController: BaseViewController, UITableViewDelegate,
     }
     
     @IBAction func buttonSubmitTemperatureTapped(_ sender: Any) {
-        if self.childTemperatures.count > 1 {
+//        if self.childTemperatures.count > 1 {
             if let childId = self.selectedStudent.id, let id = Int(childId) {
                 self.showLoader()
                 
@@ -326,7 +340,7 @@ class NurseStudentDetailViewController: BaseViewController, UITableViewDelegate,
                         self.hideLoader()
                     }
                 }
-            }
+//            }
         } else {
             self.showAlertView(message: Localization.string(key: MessageKey.TemperatureRequired), isError: true)
         }

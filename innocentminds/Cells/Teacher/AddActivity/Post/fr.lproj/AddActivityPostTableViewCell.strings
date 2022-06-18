@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "FIp-eJ-wss"; */
+"FIp-eJ-wss.normalTitle" = "Effacer";
+
+/* Class = "UIButton"; normalTitle = "View selected students"; ObjectID = "Hc4-7f-Gwa"; */
+"Hc4-7f-Gwa.normalTitle" = "Voir les étudiants sélectionnés";
+
+/* Class = "UIButton"; normalTitle = "View images"; ObjectID = "coN-Qb-9lM"; */
+"coN-Qb-9lM.normalTitle" = "Voir les images";
+
+/* Class = "UILabel"; text = "Breakfast"; ObjectID = "eFJ-16-NKu"; */
+"eFJ-16-NKu.text" = "Petit déjeuner";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "sNw-i8-gtK"; */
+"sNw-i8-gtK.normalTitle" = "Modifier";

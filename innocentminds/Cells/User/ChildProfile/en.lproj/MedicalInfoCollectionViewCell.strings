@@ -1,0 +1,24 @@
+
+/* Class = "UITextView"; text = "If yes, specify regular medication"; ObjectID = "68s-ay-nF9"; */
+"68s-ay-nF9.text" = "If yes, specify regular medication";
+
+/* Class = "UILabel"; text = "Medications:"; ObjectID = "Cxr-4e-vVg"; */
+"Cxr-4e-vVg.text" = "Medications:";
+
+/* Class = "UILabel"; text = "Medical info"; ObjectID = "D9T-YQ-i3t"; */
+"D9T-YQ-i3t.text" = "Medical info";
+
+/* Class = "UILabel"; text = "Blood type:"; ObjectID = "E2S-MR-DUJ"; */
+"E2S-MR-DUJ.text" = "Blood type:";
+
+/* Class = "UILabel"; text = "Allergy:"; ObjectID = "Iu4-s2-0Ab"; */
+"Iu4-s2-0Ab.text" = "Allergy:";
+
+/* Class = "UILabel"; text = "Disease:"; ObjectID = "JZK-Jr-t2f"; */
+"JZK-Jr-t2f.text" = "Disease:";
+
+/* Class = "UITextView"; text = "If yes, specify allergy"; ObjectID = "lY7-2t-JCH"; */
+"lY7-2t-JCH.text" = "If yes, specify allergy";
+
+/* Class = "UITextView"; text = "Special medical conditions"; ObjectID = "mql-hj-HXz"; */
+"mql-hj-HXz.text" = "Special medical conditions";

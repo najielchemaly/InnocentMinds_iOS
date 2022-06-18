@@ -66,8 +66,8 @@ class SelectStudentsViewController: BaseViewController, UITableViewDelegate, UIT
             if let image = student.image, !image.isEmpty {
                 cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
             } else {
-                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
-                cell.imageViewProfile.tintColor = Colors.lightGray
+                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar")//.withRenderingMode(.alwaysTemplate)
+//                cell.imageViewProfile.tintColor = Colors.lightGray
             }
             
             if let firstName = student.firstname, let lastName = student.lastname {
@@ -97,7 +97,7 @@ class SelectStudentsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBAction func buttonConfirmTapped(_ sender: Any) {
         if let addAdditionalActivityVC = self.presentingViewController as? AddAdditionalActivityViewController {
             addAdditionalActivityVC.selectedStudentIds = self.selectedIds
-        } else if let navigationController = self.presentingViewController as? UINavigationController, let additionalActivityVC = navigationController.childViewControllers.last as? AdditionalActivityViewController {
+        } else if let navigationController = self.presentingViewController as? UINavigationController, let additionalActivityVC = navigationController.children.last as? AdditionalActivityViewController {
             let activity = additionalActivityVC.additionalActivities[self.selectedActivityIndex]
             activity.student_ids = ""
             for id in self.selectedIds {

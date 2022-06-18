@@ -1,0 +1,18 @@
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "6Rj-xT-yOY"; */
+"6Rj-xT-yOY.normalTitle" = "Add";
+
+/* Class = "UITextField"; placeholder = "Temperature"; ObjectID = "CKF-px-cJL"; */
+"CKF-px-cJL.placeholder" = "Temperature";
+
+/* Class = "UITextField"; placeholder = "Time"; ObjectID = "PXI-un-jqn"; */
+"PXI-un-jqn.placeholder" = "Time";
+
+/* Class = "UITextField"; placeholder = "Comment"; ObjectID = "cHp-IN-Fby"; */
+"cHp-IN-Fby.placeholder" = "Comment";
+
+/* Class = "UILabel"; text = "Add a temperature"; ObjectID = "jwM-vn-fUh"; */
+"jwM-vn-fUh.text" = "Add a temperature";
+
+/* Class = "UIButton"; normalTitle = " Close "; ObjectID = "wzH-73-RzF"; */
+"wzH-73-RzF.normalTitle" = " Close ";

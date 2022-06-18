@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Gi3-4s-eIU"; */
+"Gi3-4s-eIU.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "ZZP-ma-Y66"; */
+"ZZP-ma-Y66.normalTitle" = "D'accord";
+
+/* Class = "UILabel"; text = "Thank you!"; ObjectID = "jYU-sH-XI4"; */
+"jYU-sH-XI4.text" = "Je vous remercie!";

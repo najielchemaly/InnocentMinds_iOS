@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Email:"; ObjectID = "ETw-QD-EnY"; */
+"ETw-QD-EnY.text" = "Email:";
+
+/* Class = "UILabel"; text = "Pediatrician"; ObjectID = "J6y-kg-Vr8"; */
+"J6y-kg-Vr8.text" = "Pediatrician";
+
+/* Class = "UILabel"; text = "Fullname:"; ObjectID = "gad-7V-GCA"; */
+"gad-7V-GCA.text" = "Fullname:";
+
+/* Class = "UILabel"; text = "Phone:"; ObjectID = "pX9-Zj-LJB"; */
+"pX9-Zj-LJB.text" = "Phone:";
+
+/* Class = "UILabel"; text = "Workplace:"; ObjectID = "uvY-UR-Nvj"; */
+"uvY-UR-Nvj.text" = "Workplace:";

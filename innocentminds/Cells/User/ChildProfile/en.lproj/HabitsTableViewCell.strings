@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Sleep habit:"; ObjectID = "E2R-Td-ykg"; */
+"E2R-Td-ykg.text" = "Sleep habit:";
+
+/* Class = "UILabel"; text = "Clean:"; ObjectID = "Jzc-Bb-wsJ"; */
+"Jzc-Bb-wsJ.text" = "Clean:";
+
+/* Class = "UITextView"; text = "Doudou, tetine, etc."; ObjectID = "KDv-fE-mda"; */
+"KDv-fE-mda.text" = "Doudou, tetine, etc.";
+
+/* Class = "UILabel"; text = "Eating habit:"; ObjectID = "VKA-9Y-40o"; */
+"VKA-9Y-40o.text" = "Eating habit:";
+
+/* Class = "UILabel"; text = "Habits"; ObjectID = "dLT-vD-ILa"; */
+"dLT-vD-ILa.text" = "Habits";
+
+/* Class = "UILabel"; text = "Character:"; ObjectID = "esr-aq-Eki"; */
+"esr-aq-Eki.text" = "Character:";

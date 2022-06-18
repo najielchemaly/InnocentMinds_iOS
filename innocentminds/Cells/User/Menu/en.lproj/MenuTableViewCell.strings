@@ -1,0 +1,36 @@
+
+/* Class = "UIButton"; normalTitle = "Payment & fees"; ObjectID = "1do-7f-f2m"; */
+"1do-7f-f2m.normalTitle" = "Payment & fees";
+
+/* Class = "UIButton"; normalTitle = "+ Add a child"; ObjectID = "4r6-3x-vBa"; */
+"4r6-3x-vBa.normalTitle" = "+ Add a child";
+
+/* Class = "UIButton"; normalTitle = "Edit child profile"; ObjectID = "5VB-f1-Iu4"; */
+"5VB-f1-Iu4.normalTitle" = "Edit child profile";
+
+/* Class = "UIButton"; normalTitle = "Change language"; ObjectID = "EN1-bC-ppB"; */
+"EN1-bC-ppB.normalTitle" = "Change language";
+
+/* Class = "UIButton"; normalTitle = "Edit my profile"; ObjectID = "JmR-6E-KUd"; */
+"JmR-6E-KUd.normalTitle" = "Edit my profile";
+
+/* Class = "UIButton"; normalTitle = "Gallery"; ObjectID = "SQ4-DM-dY8"; */
+"SQ4-DM-dY8.normalTitle" = "Gallery";
+
+/* Class = "UIButton"; normalTitle = "About us"; ObjectID = "ffj-9Z-TQH"; */
+"ffj-9Z-TQH.normalTitle" = "About us";
+
+/* Class = "UIButton"; normalTitle = "Events"; ObjectID = "g8m-cU-ICb"; */
+"g8m-cU-ICb.normalTitle" = "Events";
+
+/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "lkz-wJ-9tl"; */
+"lkz-wJ-9tl.normalTitle" = "Contact us";
+
+/* Class = "UIButton"; normalTitle = "Food Calendar"; ObjectID = "n5E-0K-oiB"; */
+"n5E-0K-oiB.normalTitle" = "Food Calendar";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "oqN-fY-EtE"; */
+"oqN-fY-EtE.normalTitle" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "Change my password"; ObjectID = "wjw-v1-IxW"; */
+"wjw-v1-IxW.normalTitle" = "Change my password";

@@ -17,11 +17,16 @@ class AlertView: UIView {
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var stackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageIcon: UIImageView!
+    @IBOutlet weak var labelTitleTopConstraint: NSLayoutConstraint!
     
     func initializeViews() {
         self.mainView.layer.cornerRadius = Dimensions.cornerRadiusHigh
         
         self.buttonOk.layer.cornerRadius = self.buttonOk.frame.height/2
+        self.buttonOk.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        self.buttonCancel.layer.cornerRadius = self.buttonCancel.frame.height/2
+        self.buttonCancel.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     /*

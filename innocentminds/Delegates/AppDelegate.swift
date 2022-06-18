@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import UserNotifications
-import FBSDKCoreKit
+//import FBSDKCoreKit
 import SwiftyJSON
 
 @UIApplicationMain
@@ -31,26 +31,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let gcmMessageIDKey: String = "gcm.message_id"
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+//        Settings.appID = FACEBOOK_APP_ID
         
-        // TODO Select Language
-//        let userDefaults = UserDefaults.standard
-//        if !userDefaults.bool(forKey: "didSelectLanguage") {
-//            if let selectLanguageViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.SelectLanguageViewController) as? SelectLanguageViewController {
-//                window?.rootViewController = selectLanguageViewController
-//            }
-//        }
+        Localization.doTheExchange()
         
         self.getGlobalVariables()
+        
+        // TODO Select Language
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.bool(forKey: "didSelectLanguage") {
+            if let selectLanguageViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.SelectLanguageViewController) as? SelectLanguageViewController {
+                window?.rootViewController = selectLanguageViewController
+            }
+        }
         
         return true
     }
     
     @objc func getGlobalVariables() {
-        if let baseVC = self.window?.rootViewController?.childViewControllers.last as? BaseViewController {
+        if let baseVC = self.window?.rootViewController?.children.last as? BaseViewController {
             baseVC.showLoader(backgroundColor: .black)
         
             DispatchQueue.global(qos: .background).async {
@@ -106,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 
                                 Objects.user = user
                                 
-                                self.checkUserRole(user: user)
+                                self.checkUserRole(user: user, message: result?.message ?? "")
                                 
                                 baseVC.saveUserInUserDefaults()
                             } else {
@@ -124,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func checkUserRole(user: User) {
+    func checkUserRole(user: User, message: String = "") {
         if let window = self.window, let role = user.role_id {
             switch role {
             case UserRole.Parent.rawValue:
@@ -137,6 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             case UserRole.Teacher.rawValue, UserRole.TeacherSupervisor.rawValue:
                 if let dashboardNC = teacherStoryboard.instantiateViewController(withIdentifier: StoryboardIds.TeacherNavigationController) as? UINavigationController {
+                    studentsNotArrived = message.isEmpty ? false : true
                     window.rootViewController = dashboardNC
                 }
             case UserRole.Secretary.rawValue:
@@ -180,24 +183,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.registerForRemoteNotifications()
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        var sourceApplication: String = ""
-        var annotation: String = ""
-        if options[.sourceApplication] != nil {
-            sourceApplication = options[.sourceApplication] as! String
-        }
-        if options[.annotation] != nil {
-            annotation = options[.annotation] as! String
-        }
-        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        var sourceApplication: String = ""
+//        var annotation: String = ""
+//        if options[.sourceApplication] != nil {
+//            sourceApplication = options[.sourceApplication] as! String
+//        }
+//        if options[.annotation] != nil {
+//            annotation = options[.annotation] as! String
+//        }
+//        let handled: Bool = ApplicationDelegate.shared.application(app, open: url, sourceApplication: sourceApplication, annotation: annotation)
         
-        return handled
+        return true
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+//        let handled: Bool = ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         
-        return handled
+        return true
     }
     
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {

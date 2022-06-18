@@ -42,6 +42,7 @@ class RegisterChildStep1CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
             self.datePicker = UIDatePicker()
             self.datePicker.datePickerMode = .date
             self.datePicker.maximumDate = Date()
+            self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
             self.textFieldDateOfBirth.inputView = self.datePicker
             
             let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: baseVC.view.frame.width, height: 44))
@@ -68,7 +69,7 @@ class RegisterChildStep1CollectionViewCell: FSPagerViewCell, UITextFieldDelegate
     
     func handleDatePicker() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         self.textFieldDateOfBirth.text = dateFormatter.string(from: self.datePicker.date)
         
         if let registerChildVC = currentVC as? RegisterChildViewController, let child = registerChildVC.tempUser.children?.first {

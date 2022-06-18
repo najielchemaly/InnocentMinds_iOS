@@ -9,7 +9,7 @@
 import UIKit
 import FSPagerView
 
-class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
+class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textFieldBloodType: UITextField!
@@ -41,11 +41,6 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
         if let bloodTypes = Objects.variables.blood_types {
             self.bloodTypes = bloodTypes
         }
-        
-        self.textViewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
-        self.viewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
-        self.textViewRegularMedications.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
-        self.viewRegularMedication.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
         
         self.setupDelegates()
         self.setupPickerViews()
@@ -103,6 +98,12 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
         }
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.pickerView.selectRow(0, inComponent: 0, animated: false)
+        
+        return true
+    }
+    
     @objc func doneButtonTapped() {
         if let editChildProfileVC = currentVC as? EditChildProfileViewController {
             let row = self.pickerView.selectedRow(inComponent: 0)
@@ -110,15 +111,25 @@ class MedicalInfoCollectionViewCell: FSPagerViewCell, UIPickerViewDelegate, UIPi
                 self.textFieldBloodType.text = self.bloodTypes[row].title
                 editChildProfileVC.selectedChild.blood_type_id = self.bloodTypes[row].id
             } else if self.textFieldAllergy.isFirstResponder {
+                let allergy = editChildProfileVC.selectedChild.allergy.isNullOrEmpty() ? Localization.string(key: MessageKey.SpecifyAllergy) : editChildProfileVC.selectedChild.allergy
                 self.textFieldAllergy.text = Objects.answers[row]
                 self.textViewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
                 self.viewAllergy.isEnabled(enable: self.textFieldAllergy.text == "Yes")
-//                self.textViewAllergy.text = self.textFieldAllergy.text == "Yes" ? nil : Localization.string(key: MessageKey.Specify)
+                self.textViewAllergy.text = self.textFieldAllergy.text == "Yes" ? allergy : Localization.string(key: MessageKey.SpecifyAllergy)
+                
+                if self.textFieldAllergy.text == "No" {
+                    editChildProfileVC.selectedChild.allergy = nil
+                }
             } else if self.textFieldRegularMedications.isFirstResponder {
+                let medications = editChildProfileVC.selectedChild.regular_medication.isNullOrEmpty() ? Localization.string(key: MessageKey.SpecifyMedications) : editChildProfileVC.selectedChild.regular_medication
                 self.textFieldRegularMedications.text = Objects.answers[row]
                 self.textViewRegularMedications.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
                 self.viewRegularMedication.isEnabled(enable: self.textFieldRegularMedications.text == "Yes")
-//                self.textViewRegularMedications.text = self.textFieldRegularMedications.text == "Yes" ? nil : Localization.string(key: MessageKey.Specify)
+                self.textViewRegularMedications.text = self.textFieldRegularMedications.text == "Yes" ? medications : Localization.string(key: MessageKey.SpecifyMedications)
+                
+                if self.textFieldRegularMedications.text == "No" {
+                    editChildProfileVC.selectedChild.regular_medication = nil
+                }
             }
         
             editChildProfileVC.dismissKeyboard()

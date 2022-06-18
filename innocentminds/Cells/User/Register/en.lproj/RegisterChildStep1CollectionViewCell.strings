@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Not born yet"; ObjectID = "Fav-PV-oBJ"; */
+"Fav-PV-oBJ.normalTitle" = "Not born yet";
+
+/* Class = "UITextField"; placeholder = "Child's Last Name"; ObjectID = "Il7-QS-j2H"; */
+"Il7-QS-j2H.placeholder" = "Child's Last Name";
+
+/* Class = "UITextField"; placeholder = "Child's Date of birth"; ObjectID = "RDU-xV-FAx"; */
+"RDU-xV-FAx.placeholder" = "Child's Date of birth";
+
+/* Class = "UITextField"; placeholder = "Child's First Name"; ObjectID = "kJP-qp-QXo"; */
+"kJP-qp-QXo.placeholder" = "Child's First Name";

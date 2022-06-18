@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewFirstName: UIView!
@@ -25,6 +25,8 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var textFieldBranch: UITextField!
     @IBOutlet weak var buttonBranch: UIButton!
     @IBOutlet weak var textViewInquiry: UITextView!
+    @IBOutlet weak var viewConfirmEmail: UIView!
+    @IBOutlet weak var textFieldConfirmEmail: UITextField!
     
     var pickerView: UIPickerView!
     var branches: [Branch] = [Branch]()
@@ -34,10 +36,11 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         self.hide(remove: true)
     }
     
-    func initializeViews() {
+    func initializeViews() {        
         self.viewFirstName.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.viewLastName.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.viewEmail.layer.cornerRadius = Dimensions.cornerRadiusNormal
+        self.viewConfirmEmail.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.viewPhoneNumber.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.viewBranch.layer.cornerRadius = Dimensions.cornerRadiusNormal
         self.viewInquiry.layer.cornerRadius = Dimensions.cornerRadiusNormal
@@ -50,6 +53,7 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
         self.setupPickerViews()
+        self.setupTextFieldsDelegates()
     }
     
     func setupPickerViews() {
@@ -135,6 +139,16 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+    func setupTextFieldsDelegates() {
+        self.textFieldFirstName.delegate = self
+        self.textFieldLastName.delegate = self
+        self.textFieldEmail.delegate = self
+        self.textFieldConfirmEmail.delegate = self
+        self.textFieldPhoneNumber.delegate = self
+        self.textFieldBranch.delegate = self
+        self.textViewInquiry.delegate = self
+    }
+    
     func resetFields() {
         self.textFieldFirstName.text = nil
         self.textFieldLastName.text = nil
@@ -144,26 +158,97 @@ class SendUsMessageView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         self.textViewInquiry.text = nil
     }
     
-    var errorMessage: String = ""
+    var errorMessage: String = Localization.string(key: MessageKey.MissingInfo)
     func isValidData() -> Bool {
+        self.resetError()
+        
+        var isValid = true
+        
         if self.textFieldFirstName.text.isNullOrEmpty() {
-            errorMessage = Localization.string(key: MessageKey.FirstNameEmpty)
+            self.viewFirstName.showError()
+//            errorMessage = Localization.string(key: MessageKey.FirstNameEmpty)
+            isValid = false
+        }
+        if self.textFieldLastName.text.isNullOrEmpty() {
+            self.viewLastName.showError()
+//            errorMessage = Localization.string(key: MessageKey.LastNameEmpty)
+            isValid = false
+        }
+        if let phoneText = self.textFieldPhoneNumber.text {
+            if !phoneText.isValidPhoneNumber() {
+//            errorMessage = Localization.string(key: MessageKey.PhoneEmpty)
+                self.viewPhoneNumber.showError()
+                isValid = false
+            }
+        }
+        if let emailText = self.textFieldEmail.text {
+            if !emailText.isValidEmail() {
+//            errorMessage = Localization.string(key: MessageKey.EmailEmpty)
+                self.viewEmail.showError()
+                isValid = false
+            }
+        }
+        if self.textFieldConfirmEmail.text.isNullOrEmpty() ||
+           self.textFieldConfirmEmail.text != self.textFieldEmail.text {
+            self.viewConfirmEmail.showError()
+            //            errorMessage = Localization.string(key: MessageKey.EmailEmpty)
+            isValid = false
+        }
+        if self.textFieldBranch.text.isNullOrEmpty() {
+            self.viewBranch.showError()
+//            errorMessage = Localization.string(key: MessageKey.BranchEmpty)
+            isValid = false
+        }
+        if self.textViewInquiry.text == nil || self.textViewInquiry.text == "" {
+            self.viewInquiry.showError()
+//            errorMessage = Localization.string(key: MessageKey.InquiryEmpty)
+            isValid = false
+        }
+        
+        return isValid
+    }
+    
+    func resetError() {
+        self.viewFirstName.hideError()
+        self.viewLastName.hideError()
+        self.viewPhoneNumber.hideError()
+        self.viewEmail.hideError()
+        self.viewConfirmEmail.hideError()
+        self.viewBranch.hideError()
+        self.viewInquiry.hideError()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let view = textField.superview else {
             return false
-        } else if self.textFieldLastName.text.isNullOrEmpty() {
-            errorMessage = Localization.string(key: MessageKey.LastNameEmpty)
+        }
+        view.hideError()
+        
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let view = textView.superview else {
             return false
-        } else if self.textFieldPhoneNumber.text.isNullOrEmpty() {
-            errorMessage = Localization.string(key: MessageKey.PhoneEmpty)
-            return false
-        } else if self.textFieldEmail.text.isNullOrEmpty() {
-            errorMessage = Localization.string(key: MessageKey.EmailEmpty)
-            return false
-        } else if self.textFieldBranch.text.isNullOrEmpty() {
-            errorMessage = Localization.string(key: MessageKey.BranchEmpty)
-            return false
-        } else if self.textViewInquiry.text == nil || self.textViewInquiry.text == "" {
-            errorMessage = Localization.string(key: MessageKey.InquiryEmpty)
-            return false
+        }
+        view.hideError()
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textFieldFirstName.isFirstResponder {
+            textFieldLastName.becomeFirstResponder()
+        } else if textFieldLastName.isFirstResponder {
+            textFieldEmail.becomeFirstResponder()
+        } else if textFieldEmail.isFirstResponder {
+            textFieldConfirmEmail.becomeFirstResponder()
+        } else if textFieldConfirmEmail.isFirstResponder {
+            textFieldPhoneNumber.becomeFirstResponder()
+        } else if textFieldPhoneNumber.isFirstResponder {
+            textFieldBranch.becomeFirstResponder()
+        } else if textFieldBranch.isFirstResponder {
+            textViewInquiry.becomeFirstResponder()
         }
         
         return true

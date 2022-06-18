@@ -17,6 +17,7 @@ class PaymentTableViewCell: UITableViewCell {
     @IBOutlet weak var labelDateTitle: UILabel!
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var buttonPay: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

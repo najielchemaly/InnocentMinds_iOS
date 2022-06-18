@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyActivityTableViewCell" id="KGk-i7-Jjw" customClass="EmptyActivityTableViewCell" customModule="innocentminds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="xsG-Vm-r9i">
+                        <rect key="frame" x="36" y="19" width="303" height="48"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72D-t2-2O0">
+                        <rect key="frame" x="16" y="75" width="343" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIn-Cd-rOO">
+                        <rect key="frame" x="16" y="83" width="343" height="56"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                        <state key="normal" title="Add">
+                            <color key="titleColor" red="0.16125419739999999" green="0.72026985880000005" blue="0.92425370220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="buttonAddTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AZq-rm-tkG"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xsG-Vm-r9i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="2XJ-Rn-rwu"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="vIn-Cd-rOO" secondAttribute="bottom" id="5zh-38-UBH"/>
+                    <constraint firstItem="72D-t2-2O0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AuN-p1-UvJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="72D-t2-2O0" secondAttribute="trailing" id="VN9-au-e9x"/>
+                    <constraint firstItem="vIn-Cd-rOO" firstAttribute="top" secondItem="72D-t2-2O0" secondAttribute="bottom" constant="8" id="Vxq-q7-hth"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vIn-Cd-rOO" secondAttribute="trailing" id="cEb-NO-EL3"/>
+                    <constraint firstItem="vIn-Cd-rOO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="gN1-M8-PUM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xsG-Vm-r9i" secondAttribute="trailing" constant="20" id="gbL-tw-A3o"/>
+                    <constraint firstItem="72D-t2-2O0" firstAttribute="top" secondItem="xsG-Vm-r9i" secondAttribute="bottom" constant="8" id="qZd-zS-bYs"/>
+                    <constraint firstItem="xsG-Vm-r9i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="uBy-A8-cJp"/>
+                    <constraint firstItem="72D-t2-2O0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="z9Y-z2-6Jf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="labelDescription" destination="72D-t2-2O0" id="121-kS-BlE"/>
+                <outlet property="labelTitle" destination="xsG-Vm-r9i" id="PWD-df-Jbh"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

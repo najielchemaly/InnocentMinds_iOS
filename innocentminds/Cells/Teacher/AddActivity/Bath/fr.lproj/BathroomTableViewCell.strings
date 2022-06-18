@@ -1,0 +1,12 @@
+
+/* Class = "UITextField"; placeholder = "Type"; ObjectID = "Qg5-u7-dis"; */
+"Qg5-u7-dis.placeholder" = "Type";
+
+/* Class = "UITextField"; placeholder = "Time"; ObjectID = "ZQc-tH-bod"; */
+"ZQc-tH-bod.placeholder" = "Temps";
+
+/* Class = "UILabel"; text = "Bathroom"; ObjectID = "a22-hb-sWE"; */
+"a22-hb-sWE.text" = "Toilette";
+
+/* Class = "UITextField"; placeholder = "Type"; ObjectID = "do2-fm-84B"; */
+"do2-fm-84B.placeholder" = "Type";

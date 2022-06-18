@@ -1,0 +1,24 @@
+
+/* Class = "UITextField"; placeholder = "*First name"; ObjectID = "6df-H6-wtu"; */
+"6df-H6-wtu.placeholder" = "*First name";
+
+/* Class = "UITextField"; placeholder = "*Email"; ObjectID = "E4J-GL-Kfh"; */
+"E4J-GL-Kfh.placeholder" = "*Email";
+
+/* Class = "UITextField"; placeholder = "*Phone number"; ObjectID = "FWP-Gu-S9P"; */
+"FWP-Gu-S9P.placeholder" = "*Phone number";
+
+/* Class = "UITextField"; placeholder = "*Confirm email"; ObjectID = "Yf7-ry-BBj"; */
+"Yf7-ry-BBj.placeholder" = "*Confirm email";
+
+/* Class = "UITextField"; placeholder = "*Branch"; ObjectID = "cQ2-YR-dwQ"; */
+"cQ2-YR-dwQ.placeholder" = "*Branch";
+
+/* Class = "UIButton"; normalTitle = " Close "; ObjectID = "ifR-4s-cza"; */
+"ifR-4s-cza.normalTitle" = " Close ";
+
+/* Class = "UIButton"; normalTitle = "Send message"; ObjectID = "t8R-Te-7Kv"; */
+"t8R-Te-7Kv.normalTitle" = "Send message";
+
+/* Class = "UITextField"; placeholder = "*Last name"; ObjectID = "tHv-qI-W9s"; */
+"tHv-qI-W9s.placeholder" = "*Last name";

@@ -16,20 +16,18 @@ class AboutUsViewController: BaseViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var buttonClose: UIButton!
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageView: UIImageView!
     
     let options: [AboutUsOption] = [
-        AboutUsOption.init(title: "Overview", selected: true),
-        AboutUsOption.init(title: "Director's Note", selected: false),
-        AboutUsOption.init(title: "Our Mission", selected: false),
-        AboutUsOption.init(title: "Our Staff", selected: false)
+        AboutUsOption.init(title: Localization.string(key: MessageKey.Overview), selected: true),
+        AboutUsOption.init(title: Localization.string(key: MessageKey.DirectoryNote), selected: false),
+        AboutUsOption.init(title: Localization.string(key: MessageKey.OurMission), selected: false),
+        AboutUsOption.init(title: Localization.string(key: MessageKey.OurStaff), selected: false)
     ]
-    
-//    var webView: WKWebView!
     
     override func loadView() {
         super.loadView()
-        
-//        self.setupWebView()
     }
     
     override func viewDidLoad() {
@@ -38,12 +36,39 @@ class AboutUsViewController: BaseViewController, UICollectionViewDelegate, UICol
         // Do any additional setup after loading the view.
         self.initiliazeViews()
         self.setupCollectionView()
-//        self.loadWebView(suffix: AboutUs.Overview.rawValue)
+        self.fetchAboutUs()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func fetchAboutUs() {
+        self.showLoader()
+        
+        DispatchQueue.global(qos: .background).async {
+            let result = appDelegate.services.getAboutUs()
+            
+            DispatchQueue.main.async {
+                if result?.status == ResponseStatus.SUCCESS.rawValue {
+                    if let jsonObject = result?.json?.first,
+                    let json = jsonObject["about_us"] as? NSDictionary {
+                        guard let about = About.init(dictionary: json) else {
+                            return
+                        }
+                        
+                        Objects.variables.about = about
+                    }
+                }
+                
+                self.textView.text = Objects.variables.about?.overview
+                self.imageView.image = UIImage(named: "overview")
+                self.imageViewHeightConstraint.constant = 175
+                
+                self.hideLoader()
+            }
+        }
     }
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
@@ -59,7 +84,7 @@ class AboutUsViewController: BaseViewController, UICollectionViewDelegate, UICol
             self.buttonLogout.isHidden = true
         }
         
-        self.textView.text = Objects.variables.about?.overview
+//        self.textView.text = Objects.variables.about?.overview
     }
     
     func setupCollectionView() {
@@ -68,24 +93,6 @@ class AboutUsViewController: BaseViewController, UICollectionViewDelegate, UICol
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         self.collectionView.setCollectionViewLayout(layout, animated: true)
-    }
-    
-    func setupWebView() {
-//        let webConfiguration = WKWebViewConfiguration()
-//        self.webView = WKWebView(frame: self.contentView.bounds, configuration: webConfiguration)
-//        self.webView.scrollView.backgroundColor = UIColor.clear
-//        self.webView.backgroundColor = UIColor.clear
-//        self.webView.isOpaque = false
-//        self.webView.uiDelegate = self
-//
-//        self.contentView.addSubview(self.webView)
-    }
-    
-    func loadWebView(suffix: String) {
-//        if let url = URL(string: aboutUrl + suffix) {
-//            let request = URLRequest(url: url)
-//            self.webView.load(request)
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -146,12 +153,19 @@ class AboutUsViewController: BaseViewController, UICollectionViewDelegate, UICol
         switch sender.tag {
         case 0:
             self.textView.text = Objects.variables.about?.overview
+            self.imageView.image = UIImage(named: "overview")
+            self.imageViewHeightConstraint.constant = 175
         case 1:
             self.textView.text = Objects.variables.about?.director_note
+            self.imageView.image = UIImage(named: "director_note")
+            self.imageViewHeightConstraint.constant = 175
         case 2:
             self.textView.text = Objects.variables.about?.our_mission
+            self.imageView.image = UIImage(named: "our_mission")
+            self.imageViewHeightConstraint.constant = 175
         case 3:
             self.textView.text = Objects.variables.about?.our_staff
+            self.imageViewHeightConstraint.constant = 0
         default:
             break
         }

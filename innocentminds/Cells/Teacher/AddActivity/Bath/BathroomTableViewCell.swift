@@ -57,6 +57,7 @@ class BathroomTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
             
             self.datePicker = UIDatePicker()
             self.datePicker.datePickerMode = .time
+            self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
             self.textFieldTime.inputView = self.datePicker
             
             let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: baseVC.view.frame.width, height: 44))

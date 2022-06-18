@@ -13,6 +13,7 @@ class MenuTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonAddChild: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var viewAboutUs: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,8 @@ class MenuTableViewCell: UITableViewCell {
     func initializeViews() {
         self.buttonAddChild.layer.cornerRadius = Dimensions.cornerRadiusHigh
         self.mainView.layer.cornerRadius = Dimensions.cornerRadiusHigh
+        
+        self.viewAboutUs.isHidden = true
     }
     
     @IBAction func buttonAddChildTapped(_ sender: Any) {
@@ -94,6 +97,20 @@ class MenuTableViewCell: UITableViewCell {
             if let alertView = baseVC.customView as? AlertView {
                 alertView.buttonOk.addTarget(baseVC, action: #selector(baseVC.logout), for: .touchUpInside)
             }
+        }
+    }
+    
+    @IBAction func buttonEventsTapped(_ sender: Any) {
+        if let baseVC = currentVC as? BaseViewController, let calendarVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.EventsNavigationController) as? UINavigationController {
+            calendarType = CalendarType.Event.rawValue
+            baseVC.present(calendarVC, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func buttonFoodTapped(_ sender: Any) {
+        if let baseVC = currentVC as? BaseViewController, let calendarVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.EventsNavigationController) as? UINavigationController {
+            calendarType = CalendarType.Food.rawValue
+            baseVC.present(calendarVC, animated: true, completion: nil)
         }
     }
     

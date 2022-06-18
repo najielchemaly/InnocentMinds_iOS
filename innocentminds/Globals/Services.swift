@@ -34,9 +34,12 @@ struct ServiceName {
     static let publishActivity = "/publishActivity/"
     static let deleteActivity = "/deleteActivity/"
     static let getActivities = "/getActivities/"
-    static let uploadImage = "/uploadImage/"
+    static let uploadPhoto = "/uploadPhoto/"
     static let getGlobalVariables = "/getGlobalVariables/"
     static let getParentChildren = "/getParentChildren/"
+    static let getEvents = "/getEvents/"
+    static let getFoodCalendar = "/getFoodCalendar/"
+    static let getAboutUs = "/getAboutUs"
     
 }
 
@@ -78,9 +81,10 @@ class Services {
         }
     }
     
-    static let ConfigUrl = "http://localhost:5000/Api"
-//    static let ConfigUrl = "http://najielchemaly-001-site1.itempurl.com/Api"
+//    static let ConfigUrl = "http://192.168.0.133:5000/Api"
+    static let ConfigUrl = "http://najielchemaly-001-site1.itempurl.com/Api"
 //    static let ConfigUrl = "http://api.innocentmindsapp.com/Api"
+//    static let ConfigUrl = "http://localhost:5000/Api"
     
     private static var _BaseUrl: String = ""
     var BaseUrl: String {
@@ -116,14 +120,17 @@ class Services {
                 "child_dob": child.date_of_birth!,
                 "branch": child.branch_id!,
                 "desired_date": child.desired_date_of_entry!,
+                "firstname": user.firstname!,
+                "lastname": user.lastname!,
                 "fullname": user.fullname!,
                 "phone": user.phone!,
                 "email": user.email!,
                 "address": user.address!,
                 "hear_about_us": child.hear_about_us_id!,
                 "parent_type": user.parent_type!,
-                "is_request": isRequest,
-                "role_id": roleId
+                "is_request": isRequest ? 1 : 0,
+                "role_id": roleId,
+                "lang": Localization.currentLanguage()
             ]
         }
         
@@ -135,7 +142,8 @@ class Services {
         
         let parameters: Parameters = [
             "email": email,
-            "password": password
+            "password": password,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.login
@@ -145,7 +153,8 @@ class Services {
     func login(accessToken: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "access_token": accessToken
+            "access_token": accessToken,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.loginToken
@@ -157,7 +166,8 @@ class Services {
         let parameters: Parameters = [
             "user_id": id,
             "old_password": oldPassword,
-            "new_password": newPassword
+            "new_password": newPassword,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.changePassword
@@ -171,7 +181,8 @@ class Services {
             "fullname": fullname,
             "phone": phoneNumber,
             "email": email,
-            "address": address
+            "address": address,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.editProfile
@@ -179,7 +190,8 @@ class Services {
     }
     
     func editChild(id: String, child: Child) -> ResponseData? {
-        let parameters: Parameters = child.toDict()
+        var parameters: Parameters = child.toDict()
+        parameters["lang"] = Localization.currentLanguage()
         
         let serviceName = ServiceName.editChild
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, encoding: JSONEncoding.default)
@@ -209,7 +221,8 @@ class Services {
     func forgotPassword(email: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "email": email
+            "email": email,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.forgotPassword
@@ -230,7 +243,8 @@ class Services {
     func getNotifications(id: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "user_id": id
+            "user_id": id,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.getNotifications
@@ -255,10 +269,12 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func getStatementOfAccount(id: String) -> ResponseData? {
+    func getStatementOfAccount(id: String, erp_id: String) -> ResponseData? {
 
         let parameters: Parameters = [
-            "user_id": id
+            "user_id": id,
+            "erp_id": erp_id,
+            "lang": Localization.currentLanguage()
         ]
         
         let serviceName = ServiceName.getStatementOfAccount
@@ -273,7 +289,8 @@ class Services {
             "email": email,
             "phone": phone,
             "branch_id": branchId,
-            "inquiry": inquiry
+            "inquiry": inquiry,
+            "lang": Localization.currentLanguage()
         ]
 
         let serviceName = ServiceName.sendContactUs
@@ -348,29 +365,74 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func getParentChildren(userId: String) -> ResponseData? {
+    func getParentChildren(userId: String, filterDate: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "user_id": userId
+            "user_id": userId,
+            "filter_date": filterDate
         ]
         
         let serviceName = ServiceName.getParentChildren
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func uploadImage(image : UIImage, completion:@escaping(_:ResponseData)->Void) {
-        self.uploadImageData(serviceName: ServiceName.uploadImage, imageFile: image, completion: completion)
+    func getEvents(userId: String) -> ResponseData? {
+        
+        let parameters: Parameters = [
+            "userId": userId,
+            "lang": Localization.currentLanguage()
+        ]
+        
+        let serviceName = ServiceName.getEvents
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func uploadImageData(serviceName: String, imageFile : UIImage, completion:@escaping(_:ResponseData)->Void) {
+    func getFoodCalendar(userId: String) -> ResponseData? {
+        
+        let parameters: Parameters = [
+            "userId": userId,
+            "lang": Localization.currentLanguage()
+        ]
+        
+        let serviceName = ServiceName.getFoodCalendar
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+    }
+    
+    func getAboutUs() -> ResponseData? {
+        let parameters: Parameters = [
+            "lang": Localization.currentLanguage()
+        ]
+        
+        let serviceName = ServiceName.getAboutUs
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+    }
+    
+    func uploadPhoto(childId: String, image : UIImage, completion:@escaping(_:ResponseData)->Void) {
+        self.uploadImageData(childId: childId, serviceName: ServiceName.uploadPhoto, imageFile: image, completion: completion)
+    }
+    
+    func uploadImageData(childId: String, serviceName: String, imageFile : UIImage, completion:@escaping(_:ResponseData)->Void) {
+        
+        let parameters: Parameters = [
+            "childId": childId,
+        ]
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + ACCESS_TOKEN
         ]
         
-        let imageData = imageFile.jpeg(.medium)
+        guard let imageData = imageFile.pngData() else {
+            return
+        }
+        
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageData!, withName: "file", fileName: "image.jpeg", mimeType: "image/jpeg")
+            multipartFormData.append(imageData, withName: "file", fileName: "image.jpeg", mimeType: "image/jpeg")
+            
+            for (key, value) in parameters {
+                if let data = "\(value)".data(using: String.Encoding.utf8) {
+                    multipartFormData.append(data, withName: key as String)
+                }
+            }
         }, to: BaseUrl + serviceName, headers: headers)
         { (result) in
             let responseData = ResponseData()

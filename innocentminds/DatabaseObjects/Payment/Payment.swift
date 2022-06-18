@@ -18,6 +18,7 @@ public class Payment {
 	public var date : String?
 	public var description : String?
 	public var type_id : String?
+    public var invoice_number : String?
 
 /**
     Returns an array of models based on given dictionary.
@@ -56,6 +57,7 @@ public class Payment {
 		date = dictionary["date"] as? String
 		description = dictionary["description"] as? String
 		type_id = dictionary["type_id"] as? String
+        invoice_number = dictionary["invoice_number"] as? String
 	}
 
 		
@@ -73,6 +75,7 @@ public class Payment {
 		dictionary.setValue(self.date, forKey: "date")
 		dictionary.setValue(self.description, forKey: "description")
 		dictionary.setValue(self.type_id, forKey: "type_id")
+        dictionary.setValue(self.invoice_number, forKey: "invoice_number")
 
 		return dictionary
 	}

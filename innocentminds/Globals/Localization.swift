@@ -16,13 +16,14 @@ class Localization: NSObject {
         var languageArray: NSArray
         if forDevice {
             let language = userDef.object(forKey: DEVICE_LANGUAGE_KEY) as! String
-            let currentLanguageWithoutLocale = language.substring(to: language.index(language.startIndex, offsetBy: 2))
+            let currentLanguageWithoutLocale = String(language[..<language.index(language.startIndex, offsetBy: 2)])
             return currentLanguageWithoutLocale
         } else {
             languageArray = userDef.object(forKey: APPLE_LANGUAGE_KEY) as! NSArray
         }
         let currentLanguage = languageArray.firstObject as! String
-        let currentLanguageWithoutLocale = currentLanguage.substring(to: currentLanguage.index(currentLanguage.startIndex, offsetBy: 2))
+        
+        let currentLanguageWithoutLocale = String(currentLanguage[..<currentLanguage.index(currentLanguage.startIndex, offsetBy: 2)])
         return currentLanguageWithoutLocale
     }
     
@@ -31,34 +32,34 @@ class Localization: NSObject {
         userDef.set([lang, currentLanguage()], forKey: APPLE_LANGUAGE_KEY)
         userDef.synchronize()
         
-        if lang == "en" {
-            if #available(iOS 9.0, *) {
-                UIView.appearance().semanticContentAttribute = .forceRightToLeft
-            } else {
-                // Fallback on earlier versions
-            }
-            UISwitch.appearance().semanticContentAttribute = .forceRightToLeft
-            UIImageView.appearance().semanticContentAttribute = .forceRightToLeft
-            UIPageControl.appearance().semanticContentAttribute = .forceLeftToRight
-        } else if lang == "ar" {
-            if #available(iOS 9.0, *) {
-                UIView.appearance().semanticContentAttribute = .forceLeftToRight
-            } else {
-                // Fallback on earlier versions
-            }
-            UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-            UIImageView.appearance().semanticContentAttribute = .forceLeftToRight
-            UIPageControl.appearance().semanticContentAttribute = .forceRightToLeft
-        }
+//        if lang == "en" {
+//            if #available(iOS 9.0, *) {
+//                UIView.appearance().semanticContentAttribute = .forceRightToLeft
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//            UISwitch.appearance().semanticContentAttribute = .forceRightToLeft
+//            UIImageView.appearance().semanticContentAttribute = .forceRightToLeft
+//            UIPageControl.appearance().semanticContentAttribute = .forceLeftToRight
+//        } else if lang == "ar" {
+//            if #available(iOS 9.0, *) {
+//                UIView.appearance().semanticContentAttribute = .forceLeftToRight
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//            UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
+//            UIImageView.appearance().semanticContentAttribute = .forceLeftToRight
+//            UIPageControl.appearance().semanticContentAttribute = .forceRightToLeft
+//        }
     }
     
     class func doTheExchange() {
-        exchangeMethods(UIApplication.self, originalSelector: #selector(getter: UIApplication.userInterfaceLayoutDirection), overrideSelector: #selector(getter: UIApplication.cstm_userInterfaceLayoutDirection))
+//        exchangeMethods(UIApplication.self, originalSelector: #selector(getter: UIApplication.userInterfaceLayoutDirection), overrideSelector: #selector(getter: UIApplication.cstm_userInterfaceLayoutDirection))
         exchangeMethods(Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)), overrideSelector: #selector(Bundle.specialLocalizedStringForKey(_:value:table:)))
-        exchangeMethods(UITextField.self, originalSelector: #selector(UITextField.layoutSubviews), overrideSelector: #selector(UITextField.cstmlayoutSubviews))
-        exchangeMethods(UITextView.self, originalSelector: #selector(UITextField.layoutSubviews), overrideSelector: #selector(UITextView.cstmlayoutSubviews))
-        exchangeMethods(UILabel.self, originalSelector: #selector(UILabel.layoutSubviews), overrideSelector: #selector(UILabel.cstmlayoutSubviews))
-        exchangeMethods(UIButton.self, originalSelector: #selector(UIButton.layoutSubviews), overrideSelector: #selector(UIButton.cstmlayoutSubviews))
+//        exchangeMethods(UITextField.self, originalSelector: #selector(UITextField.layoutSubviews), overrideSelector: #selector(UITextField.cstmlayoutSubviews))
+//        exchangeMethods(UITextView.self, originalSelector: #selector(UITextField.layoutSubviews), overrideSelector: #selector(UITextView.cstmlayoutSubviews))
+//        exchangeMethods(UILabel.self, originalSelector: #selector(UILabel.layoutSubviews), overrideSelector: #selector(UILabel.cstmlayoutSubviews))
+//        exchangeMethods(UIButton.self, originalSelector: #selector(UIButton.layoutSubviews), overrideSelector: #selector(UIButton.cstmlayoutSubviews))
     }
 
     // Exchange the implementation of two methods for the same Class
@@ -74,6 +75,7 @@ class Localization: NSObject {
     
     class func setTextAlignment(textfield: UITextField) {
         let language = currentLanguage()
+        textfield.textAlignment = .left
         if language == "en" {
             textfield.textAlignment = .left
         } else if language == "ar" {
@@ -106,8 +108,8 @@ extension Bundle {
 
 extension UITextField {
     @objc public func cstmlayoutSubviews() {
-        
         if self.tag <= 0 {
+            self.textAlignment = .left
             if Localization.currentLanguage() == "ar" && self.textAlignment != .right {
                 self.textAlignment = .right
             } else if Localization.currentLanguage() == "en" && self.textAlignment != .left {
@@ -121,12 +123,12 @@ extension UITextField {
 
 extension UILabel {
     @objc public func cstmlayoutSubviews() {
-        
         if currentVC == nil || (currentVC.presentedViewController as? UIAlertController) != nil {
             return
         }
         
         if self.tag <= 0 {
+            self.textAlignment = .left
             if Localization.currentLanguage() == "ar" && self.textAlignment != .right {
                 self.textAlignment = .right
             } else if Localization.currentLanguage() == "en" && self.textAlignment != .left {
@@ -140,8 +142,9 @@ extension UILabel {
 
 extension UIButton {
     @objc public func cstmlayoutSubviews() {
-        
         if self.tag < 0 {
+            self.contentHorizontalAlignment = .left
+            self.contentEdgeInsets.left = 10
             if Localization.currentLanguage() == "ar" {
                 self.contentHorizontalAlignment = .right
             } else if Localization.currentLanguage() == "en" {
@@ -158,8 +161,8 @@ extension UIButton {
 
 extension UITextView {
     @objc public func cstmlayoutSubviews() {
-        
         if self.tag <= 0 {
+            self.textAlignment = .left
             if Localization.currentLanguage() == "ar" && self.textAlignment != .right {
                 self.textAlignment = .right
             } else if Localization.currentLanguage() == "en" && self.textAlignment != .left {

@@ -70,7 +70,7 @@ class ChangeMyPasswordViewController: BaseViewController, UITextFieldDelegate {
         self.textFieldsView.layer.borderWidth = 1
         
         self.buttonSave.layer.cornerRadius = self.buttonSave.frame.height/2
-        self.buttonSave.layer.cornerRadius = self.buttonSave.frame.height/2
+        self.buttonSave.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     var errorMessage: String = ""

@@ -65,6 +65,8 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
                 cell.labelTitle.text = Localization.string(key: MessageKey.NoResultFound)
                 cell.labelTitle.textColor = Colors.textDark
                 
+                cell.buttonCompleteProfile.isHidden = true
+                
                 return cell
             }
         }else if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.SearchTableViewCell) as? SearchTableViewCell {
@@ -75,8 +77,8 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
             if let image = student.image, !image.isEmpty {
                 cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
             } else {
-                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
-                cell.imageViewProfile.tintColor = Colors.lightGray
+                cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar")//.withRenderingMode(.alwaysTemplate)
+//                cell.imageViewProfile.tintColor = Colors.lightGray
             }
             
             if let firstName = student.firstname, let lastName = student.lastname {

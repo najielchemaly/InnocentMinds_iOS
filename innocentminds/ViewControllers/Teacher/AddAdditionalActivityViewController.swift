@@ -59,7 +59,7 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
         
         self.imagePickerDelegate = self
         
-        self.labelTitle.text = "Add additional activity"
+        self.labelTitle.text = Localization.string(key: MessageKey.AddAdditionalActivity)
         
         self.collectionView.isHidden = true
         self.viewActivityTitle.isHidden = false
@@ -119,7 +119,7 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
 //                self.activity.photos?.append(photo)
 //            }
             
-            if let navigationController = self.presentingViewController as? UINavigationController, let additionalActivityVC = navigationController.childViewControllers.last as? AdditionalActivityViewController {
+            if let navigationController = self.presentingViewController as? UINavigationController, let additionalActivityVC = navigationController.children.last as? AdditionalActivityViewController {
                 if self.mode == .add {
                     additionalActivityVC.additionalActivities.append(activity)
                 } else if self.mode == .edit {
@@ -128,6 +128,8 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
                 
                 additionalActivityVC.shouldAskBeforeLeaving = true
                 additionalActivityVC.tableView.reloadData()
+                
+                Objects.user.additional_activities = additionalActivityVC.additionalActivities
                 
                 if let userId = Objects.user.id {
                     Activity.saveArray(activities: additionalActivityVC.additionalActivities, key: Activity.key+userId)
@@ -223,7 +225,7 @@ class AddAdditionalActivityViewController: BaseViewController, UICollectionViewD
         let leftInset = (collectionViewWidth-CGFloat(totalCellWidth+totalSpacingWidth))/itemsCount
         let rightInset = leftInset
         
-        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
     
     func didFinishPickingMedia(data: UIImage?) {

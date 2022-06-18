@@ -49,6 +49,7 @@ public class Child: JSONable {
     public var _image : UIImage?
     public var has_arrived: Bool?
     public var date_arrived: String?
+    public var is_completed : Bool?
     public var child_temps: Array<ChildTemperature>?
 
     public init() {}
@@ -256,8 +257,13 @@ public class Child: JSONable {
         hear_about_us_id = dictionary["hear_about_us_id"] as? String
         has_arrived = dictionary["has_arrived"] as? Bool
         date_arrived = dictionary["date_arrived"] as? String
-		if (dictionary["activities"] != nil) { activities = Activity.modelsFromDictionaryArray(array: dictionary["activities"] as! NSArray) }
-        if (dictionary["child_temps"] != nil) { child_temps = ChildTemperature.modelsFromDictionaryArray(array: dictionary["child_temps"] as! NSArray) }
+        is_completed = dictionary["is_completed"] as? Bool
+        if let activitiesArray = dictionary["activities"] as? NSArray {
+            activities = Activity.modelsFromDictionaryArray(array: activitiesArray)
+        }
+        if let childTempsArray = dictionary["child_temps"] as? NSArray {
+            child_temps = ChildTemperature.modelsFromDictionaryArray(array: childTempsArray)
+        }        
 	}
 
 		
@@ -304,6 +310,7 @@ public class Child: JSONable {
         dictionary.setValue(self.activities, forKey: "activities")
         dictionary.setValue(self.has_arrived, forKey: "has_arrived")
         dictionary.setValue(self.date_arrived, forKey: "date_arrived")
+        dictionary.setValue(self.is_completed, forKey: "is_completed")
 
 		return dictionary
 	}

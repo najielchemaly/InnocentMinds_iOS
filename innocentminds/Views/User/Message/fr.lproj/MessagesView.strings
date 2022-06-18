@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "2"; ObjectID = "Gft-Qf-QEG"; */
+"Gft-Qf-QEG.text" = "";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "KKA-Zu-yvr"; */
+"KKA-Zu-yvr.text" = "";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "OdS-r6-kSH"; */
+"OdS-r6-kSH.normalTitle" = "Fermer";
+
+/* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "V4e-zW-b0q"; */
+"V4e-zW-b0q.normalTitle" = "Messages";
+
+/* Class = "UIButton"; normalTitle = "My Notifications"; ObjectID = "kNl-dw-jlJ"; */
+"kNl-dw-jlJ.normalTitle" = "Mes Notifications";

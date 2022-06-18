@@ -15,7 +15,8 @@ import Foundation
 public class StatementOfAccount {
 	public var message : String?
 	public var status : Int?
-    public var total_amount: Double?
+    public var total_payments_amount: Double?
+    public var total_fees_amount: Double?
 	public var payments : Array<Payment>?
 
     public init() { }
@@ -54,7 +55,8 @@ public class StatementOfAccount {
 
 		message = dictionary["message"] as? String
 		status = dictionary["status"] as? Int
-        total_amount = dictionary["total_amount"] as? Double
+        total_payments_amount = dictionary["total_payments_amount"] as? Double
+        total_fees_amount = dictionary["total_fees_amount"] as? Double
         if let paymentsArray = dictionary["payments"] as? NSArray {
             payments = Payment.modelsFromDictionaryArray(array: paymentsArray)
         }
@@ -72,7 +74,8 @@ public class StatementOfAccount {
 
 		dictionary.setValue(self.message, forKey: "message")
 		dictionary.setValue(self.status, forKey: "status")
-        dictionary.setValue(self.total_amount, forKey: "total_amount")
+        dictionary.setValue(self.total_payments_amount, forKey: "total_payments_amount")
+        dictionary.setValue(self.total_fees_amount, forKey: "total_fees_amount")
 
 		return dictionary
 	}

@@ -15,6 +15,7 @@ class PediatricianCollectionViewCell: FSPagerViewCell, UITextFieldDelegate {
     @IBOutlet weak var textFieldWorkPlace: UITextField!
     @IBOutlet weak var textFieldPhone: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,10 +25,9 @@ class PediatricianCollectionViewCell: FSPagerViewCell, UITextFieldDelegate {
     func initializeViews() {
         self.contentView.layer.shadowRadius = 0
         
-        self.textFieldFullname.customizeView(width: Dimensions.cornerRadiusNormal)
-        self.textFieldWorkPlace.customizeView(width: Dimensions.cornerRadiusNormal)
-        self.textFieldPhone.customizeView(width: Dimensions.cornerRadiusNormal)
-        self.textFieldEmail.customizeView(width: Dimensions.cornerRadiusNormal)
+        for subview in self.stackView.subviews {
+            subview.customizeView(width: Dimensions.cornerRadiusNormal)
+        }
         
         self.setupDelegates()
     }

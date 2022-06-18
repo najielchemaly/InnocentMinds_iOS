@@ -32,6 +32,10 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     @IBAction func buttonForgotPasswordTapped(_ sender: Any) {
         self.forgotPasswordView.show()
     }
@@ -68,7 +72,7 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
 
                         if let roleId = user.role_id {
                             Objects.user = user
-                            self.checkUserRole(role: roleId)
+                            self.checkUserRole(role: roleId, message: result?.message ?? "")
                             self.saveUserInUserDefaults()
                             self.resetFields()
                         }
@@ -98,9 +102,15 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
         
         self.buttonSignin.layer.cornerRadius = self.buttonSignin.frame.height/2
         self.buttonSubmit.layer.cornerRadius = self.buttonSignin.frame.height/2
+        
         self.textFieldEmail.layer.cornerRadius = self.textFieldEmail.frame.height/2
         self.textFieldEmail.layer.borderColor = UIColor.white.cgColor
         self.textFieldEmail.layer.borderWidth = 1
+
+        self.buttonForgotPassword.layer.cornerRadius = self.buttonForgotPassword.frame.height/2
+        self.buttonForgotPassword.layer.borderColor = UIColor.white.cgColor
+        self.buttonForgotPassword.layer.borderWidth = 1
+        self.buttonForgotPassword.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     func setupDelegates() {
@@ -171,13 +181,14 @@ class SigninViewController: BaseViewController, UITextFieldDelegate {
         return true
     }
     
-    func checkUserRole(role: String) {
+    func checkUserRole(role: String, message: String = "") {
         switch role {
         case UserRole.Parent.rawValue:
             self.redirectToVC(storyboardId: StoryboardIds.DashboardNavigationBarController, type: .present)
         case UserRole.Nurse.rawValue:
             self.redirectToVC(storyboard: nurseStoryboard, storyboardId: StoryboardIds.NurseNavigationController, type: .present)
         case UserRole.Teacher.rawValue, UserRole.TeacherSupervisor.rawValue:
+            studentsNotArrived = message.isEmpty ? false : true
             self.redirectToVC(storyboard: teacherStoryboard, storyboardId: StoryboardIds.TeacherNavigationController, type: .present)
         case UserRole.Secretary.rawValue:
             if let registerChildVC = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.RegisterChildViewController) as? RegisterChildViewController {

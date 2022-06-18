@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "fXC-JK-cdP"; */
+"fXC-JK-cdP.normalTitle" = "Send";
+
+/* Class = "UILabel"; text = "Send a message"; ObjectID = "gkQ-BB-vBA"; */
+"gkQ-BB-vBA.text" = "Send a message";
+
+/* Class = "UILabel"; text = "Select which message you would like to send to the parents"; ObjectID = "ibV-1i-m1r"; */
+"ibV-1i-m1r.text" = "Select which message you would like to send to the parents";
+
+/* Class = "UIButton"; normalTitle = " Close "; ObjectID = "jol-eL-xLc"; */
+"jol-eL-xLc.normalTitle" = " Close ";

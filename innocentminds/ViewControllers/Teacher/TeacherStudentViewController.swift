@@ -104,8 +104,10 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.students.count == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
-                cell.labelTitle.text = Localization.string(key: MessageKey.NoStudents)
+                cell.labelTitle.text = Localization.string(key: studentsNotArrived ? MessageKey.NotYetStudents : MessageKey.NoStudents)
                 cell.labelTitle.textColor = Colors.textDark
+                
+                cell.buttonCompleteProfile.isHidden = true
                 
                 return cell
             }
@@ -122,8 +124,8 @@ class TeacherStudentViewController: BaseViewController, UITableViewDelegate, UIT
                 if let image = student.image, !image.isEmpty {
                     cell.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl()+image))
                 } else {
-                    cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar").withRenderingMode(.alwaysTemplate)
-                    cell.imageViewProfile.tintColor = Colors.lightGray
+                    cell.imageViewProfile.image = #imageLiteral(resourceName: "boy_avatar")//.withRenderingMode(.alwaysTemplate)
+//                    cell.imageViewProfile.tintColor = Colors.lightGray
                 }
                 if let firstName = student.firstname, let lastName = student.lastname {
                     cell.labelStudentName.text = firstName + " " + lastName

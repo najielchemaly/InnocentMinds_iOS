@@ -22,7 +22,7 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
 
         // Do any additional setup after loading the view.
         self.initializeViews()
-        self.setupTableView()        
+        self.setupTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +52,7 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return additionalActivities.count == 0 ? 150 : indexPath.row == 0 ? 70 : 160
+        return additionalActivities.count == 0 ? Localization.currentLanguage() == "en" ? 150 : 200 : indexPath.row == 0 ? 70 : 160
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -74,8 +74,8 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
             if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyActivityTableViewCell) as? EmptyActivityTableViewCell {
                 cell.initializeViews()
                 
-                cell.labelTitle.text = "No additional activities yet"
-                cell.labelDescription.text = "You haven't logged any additional activities for this student today"
+                cell.labelTitle.text = Localization.string(key: MessageKey.NoAdditionalActivities)
+                cell.labelDescription.text = Localization.string(key: MessageKey.NoAdditionalActivitiesMessage)
                 
                 return cell
             }
@@ -84,7 +84,7 @@ class AdditionalActivityViewController: BaseViewController, UITableViewDelegate,
                 if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.AddActivityHeaderTableViewCell) as? AddActivityHeaderTableViewCell {
                     cell.initializeViews()
                     
-                    cell.labelTitle.text = "Add additional activity"
+                    cell.labelTitle.text = Localization.string(key: MessageKey.AddAdditionalActivity)
                     
                     let cellTap = UITapGestureRecognizer(target: self, action: #selector(addActivityCellTapped))
                     cell.addGestureRecognizer(cellTap)

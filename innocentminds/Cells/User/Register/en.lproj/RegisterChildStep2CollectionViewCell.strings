@@ -1,0 +1,30 @@
+
+/* Class = "UITextField"; placeholder = "Lastname"; ObjectID = "8xj-Az-eqx"; */
+"8xj-Az-eqx.placeholder" = "Lastname";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "RF3-tJ-x0I"; */
+"RF3-tJ-x0I.placeholder" = "Address";
+
+/* Class = "UITextField"; placeholder = "Tel/Mobile"; ObjectID = "Sfm-cB-eJR"; */
+"Sfm-cB-eJR.placeholder" = "Tel/Mobile";
+
+/* Class = "UILabel"; text = "I am"; ObjectID = "UhY-KL-N6K"; */
+"UhY-KL-N6K.text" = "I am";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "iLO-wk-KQB"; */
+"iLO-wk-KQB.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Father"; ObjectID = "k5K-0c-wSU"; */
+"k5K-0c-wSU.normalTitle" = "Father";
+
+/* Class = "UIButton"; selectedTitle = "Father"; ObjectID = "k5K-0c-wSU"; */
+"k5K-0c-wSU.selectedTitle" = "Father";
+
+/* Class = "UIButton"; normalTitle = "Mother"; ObjectID = "lpi-IF-NhY"; */
+"lpi-IF-NhY.normalTitle" = "Mother";
+
+/* Class = "UIButton"; selectedTitle = "Mother"; ObjectID = "lpi-IF-NhY"; */
+"lpi-IF-NhY.selectedTitle" = "Mother";
+
+/* Class = "UITextField"; placeholder = "Firstname"; ObjectID = "ots-zp-zMu"; */
+"ots-zp-zMu.placeholder" = "Firstname";

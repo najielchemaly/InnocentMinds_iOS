@@ -98,6 +98,7 @@ class PersonalInformationCollectionViewCell: FSPagerViewCell, UITextFieldDelegat
             
             self.datePicker = UIDatePicker()
             self.datePicker.datePickerMode = .date
+            self.datePicker.locale = Locale(identifier: Localization.currentLanguage())
             self.textFieldDateOfBirth.inputView = self.datePicker
             
             let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: baseVC.view.frame.width, height: 44))
@@ -175,7 +176,7 @@ class PersonalInformationCollectionViewCell: FSPagerViewCell, UITextFieldDelegat
     
     func handleDatePicker() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         self.textFieldDateOfBirth.text = dateFormatter.string(from: self.datePicker.date)
         
         if let editChildProfileVC = currentVC as? EditChildProfileViewController {

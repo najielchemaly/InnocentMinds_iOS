@@ -13,6 +13,7 @@ class ChangeChildView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonClose: UIButton!
+    @IBOutlet weak var labelTitle: UILabel!
     
     var children: [Child] = [Child]()
     
@@ -65,6 +66,8 @@ class ChangeChildView: UIView, UITableViewDelegate, UITableViewDataSource {
         if self.children.count == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
                 cell.labelTitle.text = Localization.string(key: MessageKey.NoChildren)
+                
+                cell.buttonCompleteProfile.isHidden = true
                 
                 return cell
             }

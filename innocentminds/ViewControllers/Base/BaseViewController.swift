@@ -23,13 +23,11 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        swipe.direction = .down
-        self.view.addGestureRecognizer(swipe)
+//        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        swipe.direction = .down
+//        self.view.addGestureRecognizer(swipe)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        self.view.addTapGestureToHideKeyboard()
         
         if hasToolBar() {
 //            self.setupToolBarView()
@@ -74,18 +72,18 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(self.imagePickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var pickedImage: UIImage? = nil
         
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             pickedImage = image
-        } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             pickedImage = image
         }
         
         self.imagePickerDelegate.didFinishPickingMedia(data: pickedImage)
         dismiss(animated: true, completion: nil)
+
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -137,8 +135,8 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.showLoader()
         
         let userId = Objects.user.id ?? "0"
-//        DispatchQueue.global(qos: .background).async {
-//            _ = appDelegate.services.logout(id: userId)
+        DispatchQueue.global(qos: .background).async {
+            _ = appDelegate.services.logout(id: userId)
             
             DispatchQueue.main.async {
                 let userDefaults = UserDefaults.standard
@@ -153,24 +151,26 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 if let window = appDelegate.window {
                     if let mainNavigationBarController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? UINavigationController  {
                         window.rootViewController = mainNavigationBarController
+                        
+                        UIApplication.shared.keyWindow?.windowLevel = UIWindow.Level.normal
                     }
                 }
                 
                 self.hideLoader()
             }
-//        }
+        }
     }
     
     func showLoader(message: String? = nil, type: NVActivityIndicatorType? = .ballScaleMultiple,
                     color: UIColor? = nil , textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         let activityData = ActivityData(message: message, type: type, color: color, backgroundColor: backgroundColor, textColor: textColor)
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
         
         self.dismissKeyboard()
     }
     
     func hideLoader() {
-        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
     }
     
     func showToast(message: String) {
@@ -217,12 +217,10 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 self.customView.alpha = 1
             })
             
-            UIApplication.shared.keyWindow?.windowLevel = UIWindowLevelStatusBar
+            UIApplication.shared.keyWindow?.windowLevel = UIWindow.Level.statusBar
         }
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        customView.addGestureRecognizer(tap)
+
+        customView.addTapGestureToHideKeyboard()
         
         return customView
     }
@@ -270,7 +268,8 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 alertView.buttonOk.addTarget(self, action: #selector(self.hideView), for: .touchUpInside)
             }
             
-            alertView.imageIcon.image = isError ? #imageLiteral(resourceName: "error_message_icon") : #imageLiteral(resourceName: "alert_message_icon")
+            alertView.imageIcon.image = isError ? nil : #imageLiteral(resourceName: "alert_message_icon")
+            alertView.labelTitleTopConstraint.constant = isError ? 20 : 40
             
             self.tabBarController?.tabBar.isUserInteractionEnabled = false
         }
@@ -286,6 +285,20 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             userDefaults.set(String(describing: "1"), forKey: "notificationNumber")
         }
         userDefaults.synchronize()
+    }
+    
+    func getWeekNumberOfMonth(_ date: Date) -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.weekOfMonth, from: date)
+    }
+    
+    func getNumberOfWeeksInMonth(_ date: Date) -> Int {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 1
+        let weekRange = calendar.range(of: .weekday,
+                                       in: .month,
+                                       for: date)
+        return weekRange?.count ?? 0
     }
     
     /*

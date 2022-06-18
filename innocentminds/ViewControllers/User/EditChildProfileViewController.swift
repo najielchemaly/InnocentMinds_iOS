@@ -18,7 +18,6 @@ class EditChildProfileViewController: BaseViewController, FSPagerViewDelegate, F
     var currentIndex = 0
     var numberOfPages = 4
     
-    var selectedChildIndex = 0
     var selectedChild: Child = Child()
     
     override func viewDidLoad() {
@@ -106,12 +105,21 @@ class EditChildProfileViewController: BaseViewController, FSPagerViewDelegate, F
                 cell.initializeViews()
                 
                 cell.textFieldBloodType.text = self.selectedChild.getBloodType()
-                cell.textFieldAllergy.text = self.selectedChild.allergy == nil ? "No" : "Yes"
-                cell.textViewAllergy.text = self.selectedChild.allergy ?? cell.textViewAllergy.text
-                cell.textFieldRegularMedications.text = self.selectedChild.regular_medication == nil ? "No" : "Yes"
-                cell.textViewRegularMedications.text = self.selectedChild.regular_medication ?? cell.textViewRegularMedications.text
+                
+                cell.textFieldAllergy.text = self.selectedChild.allergy.isNullOrEmpty() ? "No" : "Yes"
+                cell.textViewAllergy.text = self.selectedChild.allergy.isNullOrEmpty() ? Localization.string(key: MessageKey.SpecifyAllergy) : self.selectedChild.allergy
+                
+                cell.textFieldRegularMedications.text = self.selectedChild.regular_medication.isNullOrEmpty() ? "No" : "Yes"
+                cell.textViewRegularMedications.text = self.selectedChild.regular_medication.isNullOrEmpty() ? Localization.string(key: MessageKey.SpecifyMedications) : self.selectedChild.regular_medication
+                
                 cell.textViewSpecialMedicalConditions.text = self.selectedChild.special_medical_conditions ?? cell.textViewSpecialMedicalConditions.text
+                
                 cell.buttonDesease.setTitle(self.selectedChild.disease_ids ?? "Diseases", for: .normal)
+                
+                cell.textViewAllergy.isEnabled(enable: cell.textFieldAllergy.text?.contains("Yes") ?? false)
+                cell.viewAllergy.isEnabled(enable: cell.textFieldAllergy.text?.contains("Yes") ?? false)
+                cell.textViewRegularMedications.isEnabled(enable: cell.textFieldRegularMedications.text?.contains("Yes") ?? false)
+                cell.viewRegularMedication.isEnabled(enable: cell.textFieldRegularMedications.text?.contains("Yes") ?? false)
                 
                 return cell
             }
@@ -189,7 +197,15 @@ class EditChildProfileViewController: BaseViewController, FSPagerViewDelegate, F
                         self.showAlertView(message: Localization.string(key: MessageKey.EditChildProfile), dismiss: true)
                     }
                     
-                    Objects.user.children?[self.selectedChildIndex] = self.selectedChild
+                    self.selectedChild.is_completed = true
+                    if let selectedChildIndex = Objects.user.children?.lastIndex(where: { $0.id == self.selectedChild.id }) {
+                        Objects.user.children?[selectedChildIndex] = self.selectedChild
+                    }
+                    
+                    if let navigationController = self.presentingViewController as? UINavigationController,
+                        let dashboardVC = navigationController.children.last as? DashboardViewController {
+                        dashboardVC.setupChildInfo()
+                    }
                 } else {
                     if let message = result?.message {
                         self.showAlertView(message: message, isError: true)
@@ -209,8 +225,6 @@ class EditChildProfileViewController: BaseViewController, FSPagerViewDelegate, F
     
     var errorMessage: String = ""
     func validateData() -> Bool {
-        // TODO Dummy
-        return true
         switch currentIndex {
         case 0:
             if self.selectedChild.firstname.isNullOrEmpty() {
@@ -262,11 +276,11 @@ class EditChildProfileViewController: BaseViewController, FSPagerViewDelegate, F
                 errorMessage = Localization.string(key: MessageKey.BloodTypeEmpty)
                 return false
             } else if self.selectedChild.allergy.isNullOrEmpty() {
-                errorMessage = Localization.string(key: MessageKey.AllergyEmpty)
-                return false
+//                errorMessage = Localization.string(key: MessageKey.AllergyEmpty)
+//                return false
             } else if self.selectedChild.regular_medication.isNullOrEmpty() {
-                errorMessage = Localization.string(key: MessageKey.RegularMedicationEmpty)
-                return false
+//                errorMessage = Localization.string(key: MessageKey.RegularMedicationEmpty)
+//                return false
             } else if self.selectedChild.disease_ids.isNullOrEmpty() {
                 errorMessage = Localization.string(key: MessageKey.DiseaseEmpty)
                 return false
@@ -299,6 +313,20 @@ class EditChildProfileViewController: BaseViewController, FSPagerViewDelegate, F
         if let image = data {
             self.selectedChild._image = image
             self.pagerView.reloadData()
+            
+            DispatchQueue.global(qos: .background).async {
+                appDelegate.services.uploadPhoto(childId: self.selectedChild.id ?? "", image: image, completion: { result in
+                    DispatchQueue.main.async {
+                        if result.status == ResponseStatus.SUCCESS.rawValue {
+                            
+                        } else {
+                            
+                        }
+                        
+                        self.hideLoader()
+                    }
+                })
+            }
         }
     }
     

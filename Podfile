@@ -6,15 +6,15 @@ use_frameworks!
 
 target ‘innocentminds’ do
 pod 'Alamofire'
-pod 'SwiftyJSON'
+pod 'SwiftyJSON', '4.2.0'
 pod 'ObjectMapper'
 pod 'Kingfisher'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'FSPagerView'
 pod 'NVActivityIndicatorView'
-pod 'FBSDKLoginKit'
-pod 'FacebookShare'
+#pod 'FBSDKLoginKit'
+#pod 'FacebookShare'
 pod 'Cache'
 
 end

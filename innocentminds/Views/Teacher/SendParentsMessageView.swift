@@ -50,13 +50,15 @@ class SendParentsMessageView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.messages.count == 0 ? tableView.frame.height : UITableViewAutomaticDimension
+        return self.messages.count == 0 ? tableView.frame.height : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.messages.count == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.EmptyDataTableViewCell) as? EmptyDataTableViewCell {
                 cell.labelTitle.text = Localization.string(key: MessageKey.NoMessage)
+                
+                cell.buttonCompleteProfile.isHidden = true
                 
                 return cell
             }

@@ -16,6 +16,8 @@ public class User: NSObject, NSCoding {
 	public var id : String?
 	public var role_id : String?
 	public var parent_type : String?
+    public var firstname : String?
+    public var lastname : String?
 	public var fullname : String?
 	public var phone : String?
 	public var email : String?
@@ -27,6 +29,7 @@ public class User: NSObject, NSCoding {
 	public var children : Array<Child>?
     public var additional_activities : Array<Activity>?
     public var firebase_token : String?
+    public var erp_id : String?
     
     public static let key: String = "User"
     
@@ -56,6 +59,8 @@ public class User: NSObject, NSCoding {
         id = decoder.decodeObject(forKey:"id") as? String
         role_id = decoder.decodeObject(forKey:"role_id") as? String
         parent_type = decoder.decodeObject(forKey:"parent_type") as? String
+        firstname = decoder.decodeObject(forKey:"firstname") as? String
+        lastname = decoder.decodeObject(forKey:"lastname") as? String
         fullname = decoder.decodeObject(forKey:"fullname") as? String
         phone = decoder.decodeObject(forKey:"phone") as? String
         email = decoder.decodeObject(forKey:"email") as? String
@@ -64,12 +69,15 @@ public class User: NSObject, NSCoding {
         now = decoder.decodeObject(forKey:"now") as? String
         hear_about_us = decoder.decodeObject(forKey:"hear_about_us") as? String
         firebase_token = decoder.decodeObject(forKey:"firebase_token") as? String
+        erp_id = decoder.decodeObject(forKey:"erp_id") as? String
     }
     
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
         coder.encode(role_id, forKey: "role_id")
         coder.encode(parent_type, forKey: "parent_type")
+        coder.encode(firstname, forKey: "firstname")
+        coder.encode(lastname, forKey: "lastname")
         coder.encode(fullname, forKey: "fullname")
         coder.encode(phone, forKey: "phone")
         coder.encode(email, forKey: "email")
@@ -78,6 +86,7 @@ public class User: NSObject, NSCoding {
         coder.encode(now, forKey: "now")
         coder.encode(hear_about_us, forKey: "hear_about_us")
         coder.encode(firebase_token, forKey: "firebase_token")
+        coder.encode(erp_id, forKey: "erp_id")
     }
     
 /**
@@ -99,6 +108,8 @@ public class User: NSObject, NSCoding {
         }
         role_id = dictionary["role_id"] as? String
 		parent_type = dictionary["parent_type"] as? String
+        firstname = dictionary["firstname"] as? String
+        lastname = dictionary["lastname"] as? String
 		fullname = dictionary["fullname"] as? String
 		phone = dictionary["phone"] as? String
 		email = dictionary["email"] as? String
@@ -107,6 +118,7 @@ public class User: NSObject, NSCoding {
 		now = dictionary["now"] as? String
         hear_about_us = dictionary["hear_about_us"] as? String
         firebase_token = dictionary["firebase_token"] as? String
+        erp_id = dictionary["erp_id"] as? String
         if let classesDict = dictionary["classes"] as? NSArray {
             classes = Class.modelsFromDictionaryArray(array: classesDict)
         }
@@ -131,7 +143,9 @@ public class User: NSObject, NSCoding {
 		dictionary.setValue(self.id, forKey: "id")
 		dictionary.setValue(self.role_id, forKey: "role_id")
 		dictionary.setValue(self.parent_type, forKey: "parent_type")
-		dictionary.setValue(self.fullname, forKey: "fullname")
+		dictionary.setValue(self.firstname, forKey: "firstname")
+        dictionary.setValue(self.lastname, forKey: "lastname")
+        dictionary.setValue(self.fullname, forKey: "fullname")
 		dictionary.setValue(self.phone, forKey: "phone")
 		dictionary.setValue(self.email, forKey: "email")
 		dictionary.setValue(self.address, forKey: "address")
